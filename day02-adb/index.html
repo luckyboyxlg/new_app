@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>二、adb - My Docs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href=".." target="_blank" class="custom-link">My Docs</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="..">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD/">
+<a href="../day01-%E5%BC%80%E7%8F%AD/">一、前期准备</a>
+<li class="chapter active" data-path="day02-adb/">
+<a href="./">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">
+<a href="../day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">
+<a href="../day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">
+<a href="../day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001/">
+<a href="../day06-java%E5%9F%BA%E7%A1%8001/">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002/">
+<a href="../day07-java%E5%9F%BA%E7%A1%8002/">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003/">
+<a href="../day08-java%E5%9F%BA%E7%A1%8003/">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">
+<a href="../day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">
+<a href="../day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">
+<a href="../day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">
+<a href="../day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">
+<a href="../day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91/">
+<a href="../day13-JNI%E5%BC%80%E5%8F%91/">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">
+<a href="../day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app/">
+<a href="../day15-%E8%AF%86%E8%B4%A7app/">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app/">
+<a href="../day16-%E5%BE%97%E7%89%A9app/">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">
+<a href="../day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902/">
+<a href="../day18-B%E7%AB%9902/">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903/">
+<a href="../day19-B%E7%AB%9903/">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">
+<a href="../day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">
+<a href="../day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM/">
+<a href="../day22-DYM/">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91/">
+<a href="../day23-%E9%85%92%E4%BB%99%E7%BD%91/">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">
+<a href="../day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A/">
+<a href="../day25-unidbg-%E4%B8%8A/">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87/">
+<a href="../day26-unidbg-%E4%B8%AD%E7%AF%87/">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B/">
+<a href="../day27-unidbg-%E4%B8%8B/">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A/">
+<a href="../day28-xhs-%E4%B8%8A/">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B/">
+<a href="../day29-xhs-%E4%B8%8B/">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">
+<a href="../day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="adb">二、adb</h1>
+<h1 id="1-app">1 app逆向的基本流程</h1>
+<p>我们学习的课程，针对的是安卓app</p>
+<ol>
+<li>
+<p>获取目标app（官网,豌豆荚，老师给的-资料包中），尽量不要去华为应用市场，小米应用市场下载--》多渠道打包--》本来安卓手机只有谷歌应用市场---》国内访问不到--》不同厂商就有了自己的应用市场</p>
+</li>
+<li>
+<p>安装到手机上，打开app，使用抓包工具--》抓包(charles,fiddler)--&gt;分析接口</p>
+</li>
+</ol>
+<p>3 . 使用反编译工具（jadx,jd-gui..）,把apk反编译成java代码---》读java代码逻辑--》分析流程</p>
+<p>4 . 使用动态分析工具(HOOK工具：frida，xposed)，hook代码，动态跟踪代码，确定位置--》理解程序执行流程</p>
+<p>5 . 使用python还原代码，模拟发送请求，获取我们想要的数据，完成我们的操作</p>
+<ol>
+<li>比如我们要抓取app的搜索数据？对某些商品点赞？</li>
+</ol>
+<h1 id="2-adb">2 ADB的配置和使用</h1>
+<h2 id="21-adb">2.1 ADB是什么？</h2>
+<p><strong>说明</strong></p>
+<p>「adb」即 Android Debug Bridge ，亦称安卓调试桥，是谷歌为安卓开发者提供的开发工具之一，可以让你的电脑以指令窗口的方式控制手机</p>
+<p><strong>工具从哪获取？</strong></p>
+<p>可以在安卓开发者网页中的 SDK 平台工具页面下直接下载对应系统的 adb 配置文件，大小只有几十MB</p>
+<p><strong>下载地址：</strong></p>
+<ul>
+<li>
+<p>下载地址(下载对应平台的adb)最新版：
+    https://developer.android.com/studio/releases/platform-tools?hl=zh-cn</p>
+</li>
+<li>
+<p>各平台历史版本下载地址：</p>
+</li>
+</ul>
+<p><code>https://androidmtk.com/download-android-sdk-platform-tools</code></p>
+<ul>
+<li>
+<p>目前最新：35.0.0 版本
+       -win
+       -mac
+       -linux</p>
+</li>
+<li>
+<p>我们使用老师提供的资料包中的：
+    win：platform-tools_r30.0.5-windows  </p>
+</li>
+</ul>
+<p><img alt="image-20240306201912663" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306201912663.png" /></p>
+<p><img alt="image-20240306202210087" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306202210087.png" /></p>
+<h2 id="22-adb">2.2 ADB版本选择</h2>
+<p>目前，在官网最新adb版本是：35.0.0 版本（2024年3月份）</p>
+<p>建议选择： 30.0.5 放到资料包中了，从百度网盘下载即可</p>
+<pre><code>-亲测刷机pixel 2xl，使用高版本不成功
+-猜测：2xl是2017年的手机--》需要使用稍微老一点的adb，才能正常数据
+-后续，刷完机--》做安卓开发，用最新的了
+</code></pre>
+<p><strong>资料包中：</strong></p>
+<pre><code>platform-tools_r30.0.5-windows.zip # win
+platform-tools_r30.0.5-mac.zip  # mac
+platform-tools_r30.0.5-linux.zip # linux
+</code></pre>
+<h2 id="23-adb">2.3 ADB的安装和配置</h2>
+<h3 id="231-win">2.3.1 win 平台安装和配置</h3>
+<ul>
+<li>
+<p>拿到：platform-tools_r30.0.5-windows.zip 解压--》放到 D:\soft\platform-tools
+    -如下图，目录下有 adb.exe 和 fastboot.exe</p>
+</li>
+<li>
+<p>把当前路径，加入到环境变量： 我的电脑--》属性--》高级系统设置--》环境变量--》用户环境变量--&gt;path </p>
+</li>
+<li>
+<p>打开cmd，输入 ，如果正确输出，就表示配置好了</p>
+</li>
+</ul>
+<p><code>adb version
+      ---打印出---
+      C:\Users\Administrator&gt;adb version
+      Android Debug Bridge version 1.0.41
+      Version 30.0.5-6877874
+      Installed as D:\soft\platform-tools\adb.exe</code></p>
+<p><img alt="image-20240306203020554" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306203020554.png" /></p>
+<p><img alt="image-20240306203256795" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306203256795.png" /></p>
+<p><img alt="image-20230613154453483" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230613154453483.png" /></p>
+<h3 id="232-mac">2.3.2 mac平台安卓和配置</h3>
+<ul>
+<li>
+<p>把：platform-tools_r30.0.5-mac.zip  解压，解压到 
+    /User/你的名字/soft/platform-tools
+      这个路径下会有：adb 和 fastboot命令</p>
+</li>
+<li>
+<p>这个路径加入到环境变量：/User/你的名字/soft/platform-tools</p>
+</li>
+<li>
+<p>打开Terminal  --》等同于win的cmd</p>
+</li>
+<li>
+<p>敲命令 ：cd   ---》回到加路径---》/User/你的名字/</p>
+</li>
+<li>
+<p>敲名 ： open .  ---》打开当前目录---》目录下创建文件夹 soft</p>
+</li>
+<li>
+<p>把 platform-tools 拷贝到 soft目录下</p>
+</li>
+<li>
+<p>敲 cd  ---》回到家目录(别的目录没有这个文件---》用户环境变量)</p>
+</li>
+<li>
+<p>敲  vi .zprofile </p>
+</li>
+<li>
+<p>敲 a ---&gt;就跟用记事本打开一样，但是不能输入文字，巧了a后，才可以</p>
+<p>上下移动光标，到最后一行</p>
+</li>
+<li>
+<p>粘贴下面这句话</p>
+<p><code>export PATH=${PATH}:/Users/你的名字/soft/platform-tools # 粘贴到最后</code></p>
+<p>按esc
+敲： :wq  敲回车   ---&gt;退出来了</p>
+</li>
+<li>
+<p>让刚刚修改的配置生效
+    source .zprofile</p>
+</li>
+<li>
+<p>再打开一个新的Terminal，输入 
+    adb version  # 输出跟win一样，表示配置成功</p>
+</li>
+</ul>
+<p><img alt="image-20240306204223922" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306204223922.png" /></p>
+<h3 id="233">2.3.3 环境变量</h3>
+<ul>
+<li>
+<p>无论在win还是在mac上，都需要配置环境变量</p>
+</li>
+<li>
+<p>环境变量是什么？</p>
+</li>
+</ul>
+<p>环境变量是操作系统中用于存储系统级别配置信息的一种机制，可以为应用程序提供统一的配置和运行环境</p>
+<pre><code class="language-python"># 环境变量有什么作用？Path 它内部放了很多 路径
+-我们如果在命令行中(cmd,termial),敲一个命令，有反应原因是
+    -1 当前路径下有这个可执行文件  dir.exe  exe可以省略
+    -2 在path配置的环境变量路径下有这个可执行文件
+-我们如果把：D:\soft\platform-tools 加入到path的环境变量，保证了，以后在任意路径下敲 adb，都能执行
+    adb.exe
+
+-如果以后敲一个命令没反应
+    -1 当前目录下没有这个可执行文件
+    -2 path目录下没有这个可执行文件
+
+- 来到exe所在目录，敲命令，也能找到，但是每次要使用这个命令，如果都要进入对应的目录下，就太麻烦了，所以我们要把 adb所在目录加入到环境变量--》保证以后任意路径敲 adb 都能找到
+
+- 如果环境变量的路径中，有多个 adb ，我们敲adb的时候，会怎么样？
+    -优先找最上面的
+
+
+
+# 用户环境变量和系统环境变量
+    -操作系统是分用户的，可以多用户使用系统
+    -设置在系统环境变量下的 ：path，所有人都能用到
+    -设置在用户环境变量下的path，只有当前用户能用到
+
+</code></pre>
+<h2 id="24-adb">2.4 ADB常用和不常用命令</h2>
+<h3 id="241-adb-usb">2.4.1 使用adb操作手机--》手机端开启usb调试</h3>
+<ul>
+<li>
+<p>点击Settings(设置) -&gt;  About phone(关于手机) -&gt;版本号(最底部)---&gt;点击7次（开启usb调试）</p>
+</li>
+<li>
+<p>点击Settings(设置) -&gt; 系统---&gt; 高级---&gt;开发者选项--》进入</p>
+</li>
+</ul>
+<p>开启USB调试</p>
+<ul>
+<li>
+<p>数据线连接电脑，按照下图提示操作</p>
+</li>
+<li>
+<p>询问是否允许--》点永远允许</p>
+</li>
+<li>
+<p>后续在电脑上敲命令--》才能控制手机</p>
+</li>
+</ul>
+<p><img src="imgs/day02-课堂笔记.assets/image-20230613155951855.png" alt="image-20230613155951855" style="zoom:50%;" /></p>
+<p><img src="imgs/day02-课堂笔记.assets/image-20230613160021349.png" alt="image-20230613160021349" style="zoom:50%;" /></p>
+<p><img alt="image-20240306210523448" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306210523448.png" /></p>
+<p><img src="imgs/day02-课堂笔记.assets/image-20230613160045440.png" alt="image-20230613160045440" style="zoom:50%;" /></p>
+<p><img src="imgs/day02-课堂笔记.assets/image-20230613160134616.png" alt="image-20230613160134616" style="zoom:50%;" /></p>
+<h3 id="242-adb">2.4.2 adb常用命令</h3>
+<ul>
+<li>开启和关闭adb服务(了解即可)</li>
+</ul>
+<p>adb start-server     启动ADB
+  adb kill-server          关闭ADB</p>
+<ul>
+<li>查看当前链接的手机设备（敲任意一个adb命令，adb server会自动启动）</li>
+</ul>
+<p>adb devices 
+  adb -s emulator-5554 shell</p>
+<p>List of devices attached
+  801KPUU1367574  device  可以看到一个设备
+  如果你们看不到--》说明--》usb调试没搞好--》线拔掉--》重新插入</p>
+<ul>
+<li>向手机上传文件</li>
+</ul>
+<p>adb -s 设备id号 push 电脑目录  手机目录
+   adb  push 电脑目录  手机目录 # 如果电脑只连接了一个手机设备，-s可以不加</p>
+<p>```</p>
+<blockquote>
+<p>adb push D:\爬虫逆向11期\day02\软件\apps\爱学生.apk /sdcard/a.apk
+  ```</p>
+</blockquote>
+<ul>
+<li>adb -s 设备id号 pull 手机目录和文件 电脑目录</li>
+</ul>
+<p>```</p>
+<blockquote>
+<p>adb pull /sdcard/a.apk ./ # 把sdcard下的a.apk 拉倒电脑的当前目录下
+  ```</p>
+</blockquote>
+<ul>
+<li>安装卸载app</li>
+</ul>
+<p>```
+  adb install 路径  # 电脑上的路径</p>
+<blockquote>
+<p>adb install D:\爬虫逆向11期\day02\软件\apps\爱学生.apk
+  adb uninstall 包名  # 目前不知道包名是什么
+  # 查看手机上装了那些应用，显示包名
+  adb  shell pm list packages                 # 查看包列表
+  adb  shell pm list packages -e  justin
+  ```</p>
+</blockquote>
+<ul>
+<li>查看手机处理器(32位，64位)</li>
+</ul>
+<p><code>adb shell -s 设备id号 getprop ro.product.cpu.abi 
+  adb shell getprop ro.product.cpu.abi</code></p>
+<p>armeabi-v7a（32位ARM设备）
+  arm64-v8a  （64位ARM设备）</p>
+<ul>
+<li>进入到手机内部--》查看文件，删除文件，创建文件。。。--》敲的命令都是linux命令</li>
+</ul>
+<p><code>adb shell   # 进入到手机
+  cd          # 切换到某个目录下
+  cd /sdcard
+  ls          # 查看当前目录下有哪些文件和文件夹
+  exit       # 退回到电脑</code></p>
+<p><img alt="image-20240306211120170" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306211120170.png" /></p>
+<p><img alt="image-20240306212611903" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306212611903.png" /></p>
+<h3 id="243-adb">2.4.3 adb不常用命令</h3>
+<ul>
+<li>查看手机设备：adb devices</li>
+<li>查看设备型号：adb shell getprop ro.product.model</li>
+<li>查看电池信息：adb shell dumpsys battery</li>
+<li>查看设备ID：adb shell settings get secure android_id</li>
+<li>查看设备IMEI：adb shell dumpsys iphonesubinfo</li>
+<li>查看Android版本：adb shell getprop ro.build.version.release</li>
+<li>查看手机网络信息：adb shell ifconfig</li>
+<li>查看设备日志：adb logcat</li>
+<li>重启手机设备：adb reboot</li>
+<li>安装一个apk：adb install /path/demo.apk</li>
+<li>卸载一个apk：adb uninstall <package></li>
+<li>查看系统运行进程：adb shell ps</li>
+<li>查看系统磁盘情况：adb shell ls /path/</li>
+<li>手机设备截屏：adb shell screencap -p /sdcard/aa.png</li>
+<li>手机文件下载到电脑：adb pull /sdcard/aa.png ./</li>
+<li>电脑文件上传到手机：adb push aa.png /data/local/</li>
+<li>手机设备录像：adb shell screenrecord /sdcard/ab.mp4</li>
+<li>手机屏幕分辨率：adb shell wm size</li>
+<li>手机屏幕密度：adb shell wm density</li>
+<li>手机屏幕点击：adb shell input tap xvalue yvalue</li>
+<li>手机屏幕滑动：adb shell input swipe 1000 1500 200 200</li>
+<li>手机屏幕带时间滑动：adb shell input swipe 1000 1500 0 0 1000</li>
+<li>手机文本输入：adb shell input text xxxxx</li>
+<li>手机键盘事件：adb shell input keyevent xx</li>
+</ul>
+<h2 id="25-scrcpy">2.5 scrcpy手机投屏</h2>
+<pre><code class="language-python"># 老师讲课，需要投屏--》给同学们看
+# 你们做逆向，用不到它---》只能投安卓手机
+
+# https://mp.weixin.qq.com/s/QXR_0HXH4zCIN-s30KYZxw  分享一款使用最好的投屏软件
+# https://zhuanlan.zhihu.com/p/653295589
+
+
+# 电视是安卓系统
+-这个软件，只能装在 win和mac 
+-有别的软件可以做投屏
+</code></pre>
+<h1 id="3-root">3 刷机和root</h1>
+<pre><code class="language-python"># 刷机----》类似于在电脑上装操作系统
+    -买回来的手机：安卓版本 8，9，11
+    -而且没有root
+    -统一把系统刷成 11版本，并且要root掉
+    -刷机的目的是，统一系统环境--》为root做准备---》为后期逆向做准备
+# 线刷手机---》使用数据线连接到电脑和手机上
+https://www.cnblogs.com/liuqingzheng/p/17462127.html
+</code></pre>
+<h2 id="3110">3.1刷机(10期第二天刷机视频)</h2>
+<pre><code class="language-python"># 0 谷歌手机拿到了--》2xl，4xl--》不包含 小米，华为。。。
+# 1 谷歌手机官网，下载刷机包（装系统）
+https://developers.google.cn/android/images?hl=zh-cn#taimen
+
+# 2 根据手机型号（2xl的），找安装包，下载 taimen-rp1a.201005.004.a1-factory-2f5c4987.zip
+# 3 解压，copy到d盘根路径
+# 4 以【管理员身份】打开 cmd窗口，进入到刚刚那个路径下，确保目录下有 flash-all.bat
+# 先敲  D:
+# cd D:\taimen-rp1a.201005.004.a1-factory-2f5c4987\taimen-rp1a.201005.004.a1
+
+# 5 扩展：
+flash-all.bat：win的刷机命令    
+flash-all.sh：mac的刷机命令
+
+# 6 执行adb命令，重启手机，进入到fastboot模式
+adb reboot bootloader
+
+# 7 敲命令看看手机是否顺利连接到电脑上--》如果没有输出，不能进行下面操作
+# 没有输出的原因是 安卓驱动没装好
+# 设备管理器中---》更改驱动程序---》装好老师提供的驱动---》？ 就没了
+fastboot devices
+# 801KPUU1367574  fastboot
+
+
+# 8 开始刷机（注意路径，管理员身份运行，线不能掉）之前手机上所有东西都没了
+flash-all.bat # 开始刷机了，等待完成
+
+# 9 刷机结束---》会自动重启---》系统是安卓11版本的最新系统--》界面根之前的可能也不一样了
+fastboot reboot  或者按开机键
+# 10 开机，配置网络，语言--》进入到手机界面
+    所有数据都没了
+
+#11 打开usb调试---》之前学过了
+
+### 大家不要拿着其他型号手机--》刷这个系统，是刷不进去的
+</code></pre>
+<p><img alt="image-20231114214904138" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114214904138.png" /></p>
+<p><img alt="image-20231114215119320" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114215119320.png" /></p>
+<p><img alt="image-20231114215437258" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114215437258.png" /></p>
+<p><img alt="image-20240306191450380" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306191450380.png" /></p>
+<p><img alt="image-20231114181808225" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114181808225.png" /></p>
+<p><img alt="image-20231114215637865" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114215637865.png" /></p>
+<p><img alt="image-20231114215758696" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114215758696.png" /></p>
+<p><img alt="image-20240306191550553" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306191550553.png" /></p>
+<p><img alt="image-20240306191702363" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306191702363.png" /></p>
+<p><img alt="image-20231114220312939" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114220312939.png" /></p>
+<h2 id="32-root">3.2 root手机</h2>
+<ul>
+<li>
+<p>获取到手机root权限--》以后手机完全由我们自己掌控--》想进哪个目录进哪个目录</p>
+</li>
+<li>
+<p>下载Magisk给手机root（已经下好了）</p>
+</li>
+</ul>
+<p>地址： https://github.com/topjohnwu/Magisk/releases</p>
+<ul>
+<li>
+<p>下载 Magisk-v26.1.apk</p>
+</li>
+<li>
+<p>把Magisk-v26.1.apk安装在手机上</p>
+</li>
+</ul>
+<p><code>adb install -r /Users/lqz/soft/Magisk-v26.1.apk
+  # 显示安装成功
+  Performing Streamed Install
+  Success
+  # 此时打开Magisk，看到超级用户栏是无法点选的，因为没有root</code></p>
+<ul>
+<li>解压压缩包，刚刚装系统的压缩包解压后有image-taimen-rp1a.201005.004.a1.zip，把它解压</li>
+</ul>
+<p><code>'''
+  bootloader-taimen-tmz30m.img
+  flash-all.bat
+  flash-all.sh
+  flash-base.sh
+  image-taimen-rp1a.201005.004.a1.zip
+  radio-taimen-g8998-00034-2006052136.img
+  '''</code></p>
+<ul>
+<li>文件如下</li>
+</ul>
+<p><code>'''
+  android-info.txt
+  boot.img         # 引导镜像
+  dtbo.img
+  system_other.img
+  system.img
+  vbmeta.img
+  vendor.img
+  '''</code></p>
+<ul>
+<li>把引导镜像[boot.img]，使用Magisk修补[一定要注意文件路径]</li>
+</ul>
+<p><code>adb push ./boot.img /sdcard/Download</code></p>
+<ul>
+<li>在手机上打开Magisk，选择安装--》选择修补一个文件---》选择上传的 boot.img ---》点击开始---》修补完成后变成</li>
+</ul>
+<p><code>adb pull /sdcard/Download/magisk_patched.img ./</code></p>
+<p>从手机拖到电脑上了 </p>
+<ul>
+<li>手机进入fastboot模式</li>
+</ul>
+<p><code>adb reboot bootloader
+  fastboot devices</code></p>
+<ul>
+<li>执行 (注意路径)</li>
+</ul>
+<p><code>fastboot flash boot ./magisk_patched.img</code></p>
+<ul>
+<li>重启手机，root完成</li>
+</ul>
+<p><code>fastboot reboot</code></p>
+<ul>
+<li>开启手机，打开Magisk，运行一下，重启后--发现root成功</li>
+</ul>
+<p><img alt="image-20231114221005264" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114221005264.png" /></p>
+<p><img alt="image-20231114221111639" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114221111639.png" /></p>
+<p><img alt="image-20240306191942380" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240306191942380.png" /></p>
+<p><img alt="image-20231114221547252" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114221547252.png" /><img alt="image-20231114221955293" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114221955293.png" /></p>
+<p><img alt="image-20231114222101256" src="../imgs/day02-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20231114222101256.png" /></p>
+<h2 id="33">3.3 补充</h2>
+<ul>
+<li>
+<p>使用面具root
+    -boot.img---&gt;手机引导文件--》不是root权限
+    -使用面具--》修补--》注入一些东西----》刷入到手机中---》这样手机就是root权限了</p>
+</li>
+<li>
+<p>还有其它root方式，不建议大家用：twrp recovery root手机
+  https://www.cnblogs.com/liuqingzheng/p/17462146.html</p>
+</li>
+<li>
+<p>咱们可以不刷机，直接root
+    --先刷了机--》使用刷机包--》使用面具修补--》刷入到手机
+    --如果已经知道手机系统是哪个版本，官方下载 对应的zip</p>
+</li>
+<li>
+<p>买了手机--》卖家已经root好了--》装了面具 --》点root能进去
+    刷机，root 你都可以不用做了</p>
+</li>
+</ul>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../js/main.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/gitbook.min.js"></script>
+<script src="../js/theme.min.js"></script>
+</body>
+</html>

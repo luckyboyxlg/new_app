@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>十、安卓基础加密拦截器 - My Docs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href=".." target="_blank" class="custom-link">My Docs</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="..">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD/">
+<a href="../day01-%E5%BC%80%E7%8F%AD/">一、前期准备</a>
+<li class="chapter" data-path="day02-adb/">
+<a href="../day02-adb/">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">
+<a href="../day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">
+<a href="../day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">
+<a href="../day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001/">
+<a href="../day06-java%E5%9F%BA%E7%A1%8001/">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002/">
+<a href="../day07-java%E5%9F%BA%E7%A1%8002/">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003/">
+<a href="../day08-java%E5%9F%BA%E7%A1%8003/">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">
+<a href="../day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">
+<a href="../day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">十、安卓开发02</a>
+<li class="chapter active" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">
+<a href="./">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">
+<a href="../day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">
+<a href="../day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91/">
+<a href="../day13-JNI%E5%BC%80%E5%8F%91/">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">
+<a href="../day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app/">
+<a href="../day15-%E8%AF%86%E8%B4%A7app/">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app/">
+<a href="../day16-%E5%BE%97%E7%89%A9app/">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">
+<a href="../day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902/">
+<a href="../day18-B%E7%AB%9902/">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903/">
+<a href="../day19-B%E7%AB%9903/">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">
+<a href="../day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">
+<a href="../day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM/">
+<a href="../day22-DYM/">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91/">
+<a href="../day23-%E9%85%92%E4%BB%99%E7%BD%91/">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">
+<a href="../day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A/">
+<a href="../day25-unidbg-%E4%B8%8A/">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87/">
+<a href="../day26-unidbg-%E4%B8%AD%E7%AF%87/">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B/">
+<a href="../day27-unidbg-%E4%B8%8B/">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A/">
+<a href="../day28-xhs-%E4%B8%8A/">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B/">
+<a href="../day29-xhs-%E4%B8%8B/">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">
+<a href="../day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="_1">十、安卓基础加密拦截器</h1>
+<h2 id="app-">一、开发一个app案例--登录</h2>
+<h3 id="1">(1) 示例</h3>
+<p><img alt="image-20230711145637658" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20230711145637658.png" /></p>
+<pre><code class="language-python"># 我们要学到的
+    1 安卓端页面布局（逆向不需要关注布局-了解）
+    2 java操作xml （逆向也不需要--了解）
+    3 java发送http请求到后端（重要--》逆向）
+    4 Python编写app后端：flask(django,fastapi)
+</code></pre>
+<h3 id="2-xml">(2) xml编写</h3>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;216dp&quot;
+        android:background=&quot;#dddddd&quot;
+        android:layout_marginTop=&quot;150dp&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;TextView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_marginTop=&quot;10dp&quot;
+            android:text=&quot;用户登录&quot;
+            android:textAlignment=&quot;center&quot;
+            android:textSize=&quot;25dp&quot;&gt;&lt;/TextView&gt;
+
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:paddingRight=&quot;15dp&quot;
+            android:paddingLeft=&quot;15dp&quot;
+            android:orientation=&quot;horizontal&quot;&gt;
+            &lt;TextView
+                android:layout_width=&quot;60dp&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:text=&quot;用户名&quot;
+                android:gravity=&quot;center&quot;&gt;&lt;/TextView&gt;
+            &lt;EditText
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:id=&quot;@+id/txt_user&quot;&gt;&lt;/EditText&gt;
+
+
+        &lt;/LinearLayout&gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:paddingRight=&quot;15dp&quot;
+            android:paddingLeft=&quot;15dp&quot;
+            android:orientation=&quot;horizontal&quot;&gt;
+            &lt;TextView
+                android:layout_width=&quot;60dp&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:text=&quot;密码&quot;
+                android:gravity=&quot;center&quot;&gt;&lt;/TextView&gt;
+            &lt;EditText
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:inputType=&quot;textPassword&quot;
+                android:id=&quot;@+id/txt_pwd&quot;&gt;&lt;/EditText&gt;
+
+
+        &lt;/LinearLayout&gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:paddingRight=&quot;15dp&quot;
+            android:paddingLeft=&quot;15dp&quot;
+            android:gravity=&quot;center&quot;
+            android:orientation=&quot;horizontal&quot;&gt;
+            &lt;Button
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:id=&quot;@+id/btn_login&quot;
+                android:layout_marginRight=&quot;15dp&quot;
+                android:text=&quot;登录&quot;&gt;&lt;/Button&gt;
+            &lt;Button
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:id=&quot;@+id/btn_reset&quot;
+                android:text=&quot;重置&quot;&gt;&lt;/Button&gt;
+
+
+
+        &lt;/LinearLayout&gt;
+
+
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+<pre><code class="language-python"># 1 LinearLayout 只有：vertical    horizontal
+# 2 app可以安装在任意的安卓手机上--》系统版本要高于8
+</code></pre>
+<h3 id="3-java">(3) 安卓端java编写</h3>
+<pre><code class="language-java">package com.justin.s11day10;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+public class MainActivity extends AppCompatActivity {
+
+    // 用户名输入框，密码输入框
+    // 登录按钮，重置按钮
+    private EditText txtUser,txtPwd;
+    private Button btnLogin,btnReset;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // 初始化页面
+        initView();
+        // 给按钮绑定事件
+        initListener();
+    }
+
+    private void initView(){
+        // 找到标签
+        txtUser=findViewById(R.id.txt_user);
+        txtPwd=findViewById(R.id.txt_pwd);
+        // 找到按钮
+        btnLogin=findViewById(R.id.btn_login);
+        btnReset=findViewById(R.id.btn_reset);
+
+    }
+    private void initListener(){
+        // 重置按钮绑定事件
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 输入的内容置空
+                txtUser.setText(&quot;&quot;);
+                txtPwd.setText(&quot;&quot;);
+            }
+        });
+
+        // 登录按钮绑定事件
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //登录逻辑--》取出用户名密码--》向后端发送请求
+                loginForm();
+            }
+        });
+
+    }
+
+
+    private void loginForm(){
+        // 1 取出用户名和密码
+        String username =String.valueOf(txtUser.getText());
+        String password =String.valueOf(txtPwd.getText());
+
+        Toast t= Toast.makeText(MainActivity.this,&quot;请求成功&quot;,Toast.LENGTH_LONG);
+        // 2 发送网络请求到后端--》使用第三方库：okhttp3，retrofit--》引入到项目中
+        // 2.1 安卓端--》发送网络请求，必须写在一个新的线程中
+        new Thread(){
+            @Override
+            public void run() {
+                // 写代码--》这个代码，以后就会在另一条线程中执行
+                // 发送网络请求 OKHTTP3 --》等同于python的requests模块
+                // 1 new 出一个客户端
+                OkHttpClient client = new OkHttpClient.Builder().build();
+                // 2 构建form对象---》放入用户名和密码--》请求体
+                FormBody form =new FormBody.Builder().add(&quot;username&quot;,username).add(&quot;password&quot;,password).build();
+                // 3 构建一个request对象，使用request对象，发送请求
+                Request req=new Request.Builder().url(&quot;http://192.168.71.100:8080/login&quot;).post(form).build();
+                // 4 使用request对象，发送请求
+                Call call=client.newCall(req);
+                // 5 真正发送请求，获取返回的数据，必须放在异常捕获中
+                try {
+                    // 6 真正发送请求
+                    Response res=call.execute();
+                    // 7 从响应对象中取出响应体内容
+                    ResponseBody body=res.body();
+                    // 8 把返回的数据，转成 字符串型---》json字符串
+                    String dataString=body.string();
+                    Log.e(&quot;MainActivity&quot;,dataString);
+                    // 9 打印吐司，提示用户--》吐司打印 是ui 线程里的
+                    t.show();
+
+
+                }catch (Exception e){
+                    Log.e(&quot;MainActivity&quot;,&quot;网络请求异常&quot;);
+                }
+
+
+
+
+
+
+            }
+        }.start();
+    }
+}
+</code></pre>
+<h3 id="4-http">(4) 配置安卓发送http请求</h3>
+<pre><code class="language-python"># 1 借助于第三方模块：okhttp3，默认情况，只能发送https请求--》目前后端只是http请求，额外配置
+
+# 2 如何在安卓项目中引入 okhttp3
+1.引入，在build.gradle中 implementation &quot;com.squareup.okhttp3:okhttp:4.9.1&quot;
+2.配置，在AndroidManifest.xml中 
+&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+3.支持http（仅测试使用）
+    -在res/xml下新建security.xml，写入
+        &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        &lt;network-security-config&gt;
+            &lt;base-config cleartextTrafficPermitted=&quot;true&quot; /&gt;
+        &lt;/network-security-config&gt;
+
+    -在AndroidManifest.xml加入
+     &lt;application
+        ...
+        android:networkSecurityConfig=&quot;@xml/security&quot;
+        ...&gt;
+</code></pre>
+<h3 id="5-pythonapp-flask">(5)  Python编写app后端--flask</h3>
+<p><img alt="image-20240410204913609" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240410204913609.png" /></p>
+<pre><code class="language-python"># 安装 pip install flask  9期视频--》项目
+import uuid
+
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    # 1 取出前端 app 传过来的用户名和密码
+    username = request.form.get('username')
+    password = request.form.get('password')
+    # 2 校验用户名密码--》正常应该去数据库查，只是为了演示，就写死了
+    if username == 'justin' and password == 'justin':
+        token = str(uuid.uuid4())
+        return jsonify({'code': 100, 'msg': '登录成功', 'token': token})
+    else:
+        return jsonify({'code': 101, 'msg': '用户名或密码错误'})
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 8080)
+
+</code></pre>
+<h2 id="app">二、app端请求加密</h2>
+<p><strong>说明</strong></p>
+<pre><code class="language-python"># 一般移动端为了防止用户抓包--》请求的数据，密码这种字段是加密的，还会带sign等，模拟这个过程
+</code></pre>
+<h3 id="1_1">(1) 移动端加密</h3>
+<pre><code class="language-java">private void loginForm() {
+        // 1 取出用户名和密码
+        String username = String.valueOf(txtUser.getText());
+        String password = String.valueOf(txtPwd.getText());
+        // 密码使用md5加密---》java写一个md5加密方式
+        String md5Password = Utils.Md5(password);
+        // 一般，请求中会带sign: 加密逻辑是：用户名加 加密后密码，使用md5加密
+        //String sign=Utils.Md5(username+md5Password);
+
+        // 还可以带个时间戳--》在后端校验，如果时间过久，这个请求就不能用了
+        // 1 后端校验这个请求的时间戳--》有点时间差
+        // 2 后端校验sign：用户名+传入的时间戳，使用md5加密得到--》后端用同样的加密方式--》比较两个md5串是否一样
+        // 3 如果用户自己取了当前时间发送请求，但是sign 会校验不过
+        String t1 = String.valueOf(System.currentTimeMillis() / 1000);
+        String sign = Utils.Md5(t1 + username);
+
+        Toast t = Toast.makeText(MainActivity.this, &quot;请求成功&quot;, Toast.LENGTH_LONG);
+        // 2 发送网络请求到后端--》使用第三方库：okhttp3，retrofit--》引入到项目中
+        // 2.1 安卓端--》发送网络请求，必须写在一个新的线程中
+        new Thread() {
+            @Override
+            public void run() {
+                // 写代码--》这个代码，以后就会在另一条线程中执行
+                // 发送网络请求 OKHTTP3 --》等同于python的requests模块
+                // 1 new 出一个客户端
+                OkHttpClient client = new OkHttpClient.Builder().build();
+                // 2 构建form对象---》放入用户名和密码--》请求体
+                // 请求体中：用户名，密码（加密的），t1,sign
+                FormBody form = new FormBody.Builder().add(&quot;username&quot;, username).add(&quot;password&quot;, md5Password).add(&quot;sign&quot;, sign).add(&quot;t1&quot;, t1).build();
+                // 3 构建一个request对象，使用request对象，发送请求
+                Request req = new Request.Builder().url(&quot;http://192.168.71.100:8080/login&quot;).post(form).build();
+                // 4 使用request对象，发送请求
+                Call call = client.newCall(req);
+                // 5 真正发送请求，获取返回的数据，必须放在异常捕获中
+                try {
+                    // 6 真正发送请求
+                    Response res = call.execute();
+                    // 7 从响应对象中取出响应体内容
+                    ResponseBody body = res.body();
+                    // 8 把返回的数据，转成 字符串型---》json字符串
+                    String dataString = body.string();
+                    Log.e(&quot;MainActivity&quot;, dataString);
+                    // 9 打印吐司，提示用户--》吐司打印 是ui 线程里的
+                    t.show();
+
+
+                } catch (Exception e) {
+                    Log.e(&quot;MainActivity&quot;, &quot;网络请求异常&quot;);
+                }
+
+
+            }
+        }.start();
+    }
+</code></pre>
+<h3 id="2">(2)  后端处理</h3>
+<pre><code class="language-python"># 安装 pip install flask  9期视频--》项目
+import uuid, hashlib
+
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+
+def get_md5(s):
+    md5 = hashlib.md5()
+    md5.update(s.encode('utf-8'))
+    return md5.hexdigest()
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    # 0 取出 请求发送时间t1，sign，校验
+    t1 = request.form.get('t1')
+    sign = request.form.get('sign')
+
+    # 1 取出前端 app 传过来的用户名和密码
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    # 校验sign是否正确
+    new_sign = get_md5(t1 + username)
+    if new_sign == sign:
+        # 2 校验用户名密码--》正常应该去数据库查，只是为了演示，就写死了
+        if username == 'justin' and password == get_md5('justin'):
+            token = str(uuid.uuid4())
+            return jsonify({'code': 100, 'msg': '登录成功', 'token': token})
+        else:
+            return jsonify({'code': 101, 'msg': '用户名或密码错误'})
+    else:
+        return jsonify({'code': 102, 'msg': '您的签名错误，不要恶意访问，您的ip已经被监控'})
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 8080)
+
+</code></pre>
+<h3 id="3">(3)  模拟抓包，破解</h3>
+<pre><code class="language-python">import time
+
+import requests
+
+# 除非它反编译--》知道我们的加密逻辑--》才能破解我们
+data = {
+    'username': 'justin',
+    'password': '53dd9c6005f3cdfc5a69c5c07388016d',
+    'sign': '0c879ea002d66d33efc9ea6e486d7554',
+    't1': int(time.time()),
+}
+res = requests.post(&quot;http://192.168.71.100:8080/login&quot;, data=data)
+print(res.json())
+
+</code></pre>
+<p><img alt="image-20240410220011136" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240410220011136.png" /></p>
+<h2 id="_2">三、序列化</h2>
+<h3 id="1_2">(1) 说明</h3>
+<p>前端(app) 和 后端(python-flask) 交互---》通过json格式字符串通信的--》字符串
+ - app端：把后端返回给我们的json格式字符串--》转成java的对象来使用---》反序列化
+ - app端，把java的对象，转成json格式字符串--》序列化</p>
+<h3 id="2_1">(2) 前端</h3>
+<p>前端 add("username", username).add("password", md5Password)--》最终 转成字符串放到了请求体中
+    ----之间交互--》都是josn格式字符串-----</p>
+<h3 id="3_1">(3) 后端 取前端传入的数据</h3>
+<pre><code class="language-python">username = request.form.get('username')
+password = request.form.get('password')
+</code></pre>
+<h3 id="4">(4) 后端返回数据</h3>
+<p>python的flask--》返回的数据{'code': 100, 'msg': '登录成功', 'token': token}</p>
+<p>到了app端--》是json格式字符串</p>
+<h3 id="5-appjson">(5) App处理json字符串为对象</h3>
+<p>现在咱们需要学习一个在安卓中，可以把json格式 字符串，转成java对象的包</p>
+<ul>
+<li>python：josn模块</li>
+<li>js中：JSON.parser  JSON.stringify</li>
+<li>安卓中：</li>
+<li>Google提供的Gson--》安卓上用这个多</li>
+<li>fastjson第三库</li>
+</ul>
+<h3 id="6-gson">(6) 如何使用Gson</h3>
+<ol>
+<li>在build.gradle中注册---》自动下载模块</li>
+</ol>
+<p><code>java
+   implementation 'com.google.code.gson:gson:2.8.6'</code></p>
+<ol>
+<li>新建类</li>
+</ol>
+<p><code>java
+     json字符串 {'code': 100, 'msg': '登录成功', 'token': token}
+     -LoginResponse的对象
+     r.code
+     r.msg
+     r.token</code></p>
+<ol>
+<li>使用Gson做序列化</li>
+</ol>
+<p><code>java
+   LoginResponse login= new LoginResponse(101,"失败了","asdfasd-asdfads-ss");
+   String s=new Gson().toJson(login);</code></p>
+<ol>
+<li>使用 Gson做反序列化</li>
+</ol>
+<p><code>java
+   LoginResponse r=new Gson().fromJson(dataString,LoginResponse.class);</code></p>
+<ol>
+<li>图例<img alt="image-20240410222411406" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240410222411406.png" /></li>
+</ol>
+<h2 id="-">四、登录成功后跳转到新页面--显示电影信息</h2>
+<p><img alt="image-20230711184712505" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20230711184712505.png" /></p>
+<h3 id="1-mainactivity">(1) MainActivity</h3>
+<pre><code class="language-java"># 登录成功：
+ if(r.code==100){
+     // 登录成功--》跳转到另一个页面
+     t.show();
+     Intent intent = new Intent(MainActivity.this,IndexActivity.class);
+     // 启动新的 Activity
+     startActivity(intent);
+ }else {
+     Log.e(&quot;MainActivity&quot;, &quot;网络请求异常&quot;);
+ }
+</code></pre>
+<h3 id="2-indexactivityjavaxml">(2) 新建IndexActivity（java,xml）</h3>
+<p><img alt="image-20240410222859701" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240410222859701.png" /></p>
+<h3 id="3-list_itmexml">(3)  list_itme.xml</h3>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.IndexActivity&quot;&gt;
+
+    &lt;ListView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:id=&quot;@+id/mylist&quot;&gt;
+
+    &lt;/ListView&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+<h3 id="4_1">(4)  后端代码</h3>
+<pre><code class="language-python"># 安装 pip install flask  9期视频--》项目
+import json
+import uuid, hashlib
+
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+
+def get_md5(s):
+    md5 = hashlib.md5()
+    md5.update(s.encode('utf-8'))
+    return md5.hexdigest()
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    # 0 取出 请求发送时间t1，sign，校验
+    t1 = request.form.get('t1')
+    sign = request.form.get('sign')
+
+    # 1 取出前端 app 传过来的用户名和密码
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    # 校验sign是否正确
+    new_sign = get_md5(t1 + username)
+    if new_sign == sign:
+        # 2 校验用户名密码--》正常应该去数据库查，只是为了演示，就写死了
+        if username == 'justin' and password == get_md5('justin'):
+            token = str(uuid.uuid4())
+            return jsonify({'code': 100, 'msg': '登录成功', 'token': token})
+        else:
+            return jsonify({'code': 101, 'msg': '用户名或密码错误'})
+    else:
+        return jsonify({'code': 102, 'msg': '您的签名错误，不要恶意访问，您的ip已经被监控'})
+
+
+# 返回前端电影数据
+@app.route('/film', methods=['GET'])
+def film():
+    with open('./film.json', 'r', encoding='utf-8') as f:
+        dic = json.load(f)
+    return jsonify(dic)
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 8080)
+
+</code></pre>
+<h3 id="5">(5)  电影数据</h3>
+<pre><code class="language-json">{
+    &quot;code&quot;: 100,
+    &quot;msg&quot;: &quot;ok&quot;,
+    &quot;results&quot;: [
+            {
+                &quot;filmId&quot;: 6821,
+                &quot;name&quot;: &quot;你想活出怎样的人生&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/57116f984c95f7e0abe768550bd78ef9.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;宫崎骏&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/589bd0777f174e554b866cbc61145422.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;山时聪真&quot;,
+                        &quot;role&quot;: &quot;真人&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/ed862a087874582813cf62ff331be69d.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;刘昊然&quot;,
+                        &quot;role&quot;: &quot;真人（中文配音）&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/a7b242f9b8167e42c460d3b96d28a721.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;菅田将晖&quot;,
+                        &quot;role&quot;: &quot;苍鹭&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/06eae5dd0a6a705ae6eb1f2c625fc1e0.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;大鹏&quot;,
+                        &quot;role&quot;: &quot;苍鹭\u0026苍鹭男（中文配音）&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/3125ea2b699584e68cb3c3b9ae586217.png&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;宫崎骏&quot;,
+                &quot;category&quot;: &quot;动画|奇幻|冒险&quot;,
+                &quot;synopsis&quot;: &quot;电影讲述了少年牧真人的母亲葬身火海后，他随父亲与继母组成新家庭。深陷悲伤的真人阴郁孤僻，难以融入新环境。一次意外，他跟随一只会说话的苍鹭闯入废弃的神秘塔楼，却不料进入了奇幻的“亡灵世界”，开始了一场不可思议的冒险……&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;value&quot;: 1
+                },
+                &quot;nation&quot;: &quot;日本&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1712102400,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 124,
+                &quot;grade&quot;: &quot;7.4&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;type&quot;: 1
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6753,
+                &quot;name&quot;: &quot;哥斯拉大战金刚2：帝国崛起&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/be17f0784f8a83fbe6be79df1ce1914b.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;亚当·温加德&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/de782ff4f69db74eb031ff33a035f8c8.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;金刚&quot;,
+                        &quot;role&quot;: &quot;演员&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/cab8709e5703861909485b45abae59c0.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;哥斯拉&quot;,
+                        &quot;role&quot;: &quot;演员&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/f7b2715cecfc4365ff749a5a9e6b025c.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;丽贝卡·豪尔&quot;,
+                        &quot;role&quot;: &quot; 艾琳 Ilene Andrews&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/467d85cafb939c0285ab69ae887fce84.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;布莱恩·泰里·亨利&quot;,
+                        &quot;role&quot;: &quot; 伯尼 Bernie Hayes&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/c10d99a613d070ce83c60e25d169cb64.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;亚当·温加德&quot;,
+                &quot;category&quot;: &quot;动作|冒险|科幻&quot;,
+                &quot;synopsis&quot;: &quot;继上一次的怪兽高燃对战之后，金刚和哥斯拉将再度联手对抗一个潜伏在世界中的巨大威胁，并逐步探索这些巨兽们的起源以及骷髅岛等地的奥秘。同时，上古之战的面纱也将会被揭晓，而正是那场战斗创造出了这些超凡的生物，并深刻影响了人类世界的命运。&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;3D&quot;,
+                    &quot;value&quot;: 2
+                },
+                &quot;nation&quot;: &quot;美国&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1711670400,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 115,
+                &quot;grade&quot;: &quot;7.2&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;3D&quot;,
+                    &quot;type&quot;: 2
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6812,
+                &quot;name&quot;: &quot;草木人间&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/7a4e3daddbe3a35aa4247cb4ae6273cd.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;陈建斌&quot;,
+                        &quot;role&quot;: &quot;老钱&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/7fc8f50b79675adaeb37a83833696652.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;王佳佳&quot;,
+                        &quot;role&quot;: &quot;万晴&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/655d3d188544bec01ebab82c5adaee3e.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;顾晓刚&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/83acc483e3d165bf99083da374aaec20.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;吴磊&quot;,
+                        &quot;role&quot;: &quot;何目莲&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/42ab0462b8b3bc7c2203713320ab9c8e.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;蒋勤勤&quot;,
+                        &quot;role&quot;: &quot;吴苔花&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/529786e75f23f5d5b45ddf3f2d32c652.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;顾晓刚&quot;,
+                &quot;category&quot;: &quot;剧情|犯罪&quot;,
+                &quot;synopsis&quot;: &quot;丈夫何山凭空消失了十年后，苔花（蒋勤勤饰）正要迈进新生，但命运却把她推向了另一重绝境——她前脚被情人（陈建斌饰）母亲从采茶园赶走，后脚就被最亲近的好姐妹金兰骗进了传销组织“蝴蝶国际”。母亲沉迷其中，让一边寻父一边救母的儿子目莲（吴磊饰）身心疲惫，而蝴蝶国际却如藤蔓疯长一般，将恶魔的种子根植在无数百姓心中。苔花也摇身一变，从衣着打扮到言行举止都宛如“新生”，疯癫的举动让目莲感到诧异。母亲如蝴蝶一般翩翩于梦中之际，儿子想尽一切办法奋力解救……这座人间炼狱究竟该怎样逃脱？现代版“目连救母”能否成功？&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;value&quot;: 1
+                },
+                &quot;nation&quot;: &quot;中国大陆&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1712102400,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 118,
+                &quot;grade&quot;: &quot;7.7&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;type&quot;: 1
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6801,
+                &quot;name&quot;: &quot;白日之下&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/11bf63b107d048357e8ca630fc39ae35.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;姜大卫&quot;,
+                        &quot;role&quot;: &quot; 周健通(通伯)&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/542a5a0e25aed5c3bae6ea68f1d63600.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;余香凝&quot;,
+                        &quot;role&quot;: &quot; 凌晓琪&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/496d1fed33ad248efb3ceea0b408d0cf.jpeg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;林保怡&quot;,
+                        &quot;role&quot;: &quot; 章剑华&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/4b1c4459cc5b00ec4588482ce997f3db.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;梁仲恒&quot;,
+                        &quot;role&quot;: &quot; 阿亮&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/8d0e65025c7e9a51caf5eeeb4d92b344.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;简君晋&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/f6705ea1b27e72a8c93a06d7b2649153.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;简君晋&quot;,
+                &quot;category&quot;: &quot;剧情|犯罪&quot;,
+                &quot;synopsis&quot;: &quot;故事改编自真实事件，揭露隐藏在新闻背后、鲜为人知的残疾院舍真相。新闻社接获一宗有关残疾院舍“彩桥之家”虐待院友的线报，侦查小组为揭露残疾院舍监管问题，记者晓琪（余香凝 饰）潜入院舍，揭发内里的非人道生活，寻找日光之下的残酷真相。&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;value&quot;: 1
+                },
+                &quot;nation&quot;: &quot;中国香港&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1712880000,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 106,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;type&quot;: 1
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6816,
+                &quot;name&quot;: &quot;黄雀在后！&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/adc91ba9d7505d7352260f9d4a6fcff2.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;徐伟&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/b8566f83d0af556ec66e67fde7e91f89.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;何文超&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/cafb44fa22a10eb809ace85b89291d3b.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;冯绍峰&quot;,
+                        &quot;role&quot;: &quot;演员&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/63cd6726f250c6788cc8d8f4caab1509.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;陶虹&quot;,
+                        &quot;role&quot;: &quot;演员&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/87e31cded6c44462755aa44eed9b0be2.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;黄觉&quot;,
+                        &quot;role&quot;: &quot;演员&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/793afc2b277346f51375d06f84d732ff.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;徐伟|何文超&quot;,
+                &quot;category&quot;: &quot;犯罪|悬疑|剧情&quot;,
+                &quot;synopsis&quot;: &quot;10年前的一个夏夜，警官袁文山（冯绍峰 饰）接到一起抢劫杀人案，在逐渐深入的调查过程中，当晚在场的嫌疑人们逐一浮出水面，然而案情的真相远非表面那般简单，三案并行，一场利益和正义的较量愈演愈烈，卷入其中的人们都是所图为何？究竟是情法之争，还是欲望驱使？在案件稍有眉目之时，袁文山却发现了一个被自己忽略的重要线索... ...&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;value&quot;: 1
+                },
+                &quot;nation&quot;: &quot;中国大陆&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1712102400,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 99,
+                &quot;grade&quot;: &quot;7.6&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;type&quot;: 1
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6795,
+                &quot;name&quot;: &quot;功夫熊猫4&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/89d7a3bbd98d0ffab74da50cd03641e2.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;迈克·米歇尔&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/9f40bb3aaf9ef967b67b4bc3123a03e8.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;杰克·布莱克&quot;,
+                        &quot;role&quot;: &quot;阿宝 Po&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/0e4b06db0fb7f08fd309cf872b994cce.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;黄渤&quot;,
+                        &quot;role&quot;: &quot;阿宝 Po（中文配音）&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/f2a4a18bf8cf420b09c0a19d20a4a0fc.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;奥卡菲娜&quot;,
+                        &quot;role&quot;: &quot;小真 Zhen&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/1b7f719c81114df25dc2688ea39f6e18.jpeg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;关继威&quot;,
+                        &quot;role&quot;: &quot;Han&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/b008f921bda277caae91823cffb4a4e6.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;迈克·米歇尔&quot;,
+                &quot;category&quot;: &quot;动画|动作|冒险&quot;,
+                &quot;synopsis&quot;: &quot;爷青回！《功夫熊猫》新作来袭！阿宝“升职”同时，新仇旧敌集结现身，大龙竟起死回生？狐狸小真身份神秘，到底有何心机？阿宝被师傅要求选出下一任神龙大侠，正苦恼如何应对时，阿宝昔日的手下败将们却纷纷重出江湖！身世神秘的狐狸小真告诉阿宝，这一切的幕后黑手正是邪恶女巫魅影妖后！阿宝能否打败魅影妖后，昔日敌人又为何再次现身？这次又会发生怎样的搞笑趣事？赶快带上亲朋好友，一起到影院寻找真相吧～&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;3D&quot;,
+                    &quot;value&quot;: 2
+                },
+                &quot;nation&quot;: &quot;美国&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1711065600,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 94,
+                &quot;grade&quot;: &quot;7.3&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;3D&quot;,
+                    &quot;type&quot;: 2
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6834,
+                &quot;name&quot;: &quot;来自汪星的你&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/4de0b4ddb98abe9fa45d6b31da07cb53.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;陆可&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/edf5c22c4394c5b2844d241ddb95378d.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;郭富城&quot;,
+                        &quot;role&quot;: &quot;江斯旺&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/bcb5b34461bff36771f7f7201090f057.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;蓝盈莹&quot;,
+                        &quot;role&quot;: &quot;江露&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/8fbfa4d3e0b988f796220f545dd0c683.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;黄龄&quot;,
+                        &quot;role&quot;: &quot;C姐&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/cab1fa62536f8bb52e38904f40a3bd74.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;王大陆&quot;,
+                        &quot;role&quot;: &quot;秦天&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/1d416e6ceb5529dc890c91236231e227.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;陆可&quot;,
+                &quot;category&quot;: &quot;奇幻|喜剧|家庭&quot;,
+                &quot;synopsis&quot;: &quot;糖厂工人江斯旺（郭富城 饰）独自抚养女儿江露（蓝盈莹 饰）成长，不料在阴差阳错中变成一条小狗。狗爸阿旺费尽力气找到女儿，发现此时江露已长大成人，并成为了一位创作歌手，但看似光鲜亮丽的背后却另有隐情。老爸决定以小狗阿旺的身份开启一段“守护之旅”……&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;value&quot;: 1
+                },
+                &quot;nation&quot;: &quot;中国大陆&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1712880000,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 105,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;type&quot;: 1
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6767,
+                &quot;name&quot;: &quot;我们一起摇太阳&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/a8ecf5fcbeeddb7488876f042bf7baa4.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;彭昱畅&quot;,
+                        &quot;role&quot;: &quot;吕途&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/91590c0fb4e9e895503796203ed14489.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;李庚希&quot;,
+                        &quot;role&quot;: &quot;凌敏&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/e0d8d70d6a267dc4563806bc4b522b7b.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;韩延&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/cfa40371868495071b1c97b72c55ab8f.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;徐帆&quot;,
+                        &quot;role&quot;: &quot;陶怡&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/4bc8d78d21b4e6c6eeeeedc143ca5b83.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;高亚麟&quot;,
+                        &quot;role&quot;: &quot;凌父&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/28c233165445e3079756d3c52f8cbb83.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;韩延&quot;,
+                &quot;category&quot;: &quot;爱情|剧情|家庭&quot;,
+                &quot;synopsis&quot;: &quot;春节档温暖现实主义题材电影，挥别旧年的阴霾，迎接新年的爱与阳光！韩延导演“生命三部曲”终章，当“没头脑”吕途遇上“不高兴”凌敏，两个身患重症却性格迥异的年轻人，因为“生命接力”的约定，阴差阳错地踏上了一段充满爱与力量的治愈之旅。&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;value&quot;: 1
+                },
+                &quot;nation&quot;: &quot;中国大陆&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1707523200,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 129,
+                &quot;grade&quot;: &quot;7.9&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;type&quot;: 1
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6786,
+                &quot;name&quot;: &quot;坠落的审判&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/a1cfca3e8ac6d12ac07cdbd9fc7a0697.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;茹斯汀·特里耶&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/69178dbbc98aee3ab2fa12a4f21952c1.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;桑德拉·惠勒&quot;,
+                        &quot;role&quot;: &quot; Sandra Voyter&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/38c134c4bdac10d2d8dcf10c059cfd1f.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;斯万·阿劳德&quot;,
+                        &quot;role&quot;: &quot; Maître Vincent Renzi&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/dbfdb35a687980af2e6591931e363f16.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;安托万·赖纳茨&quot;,
+                        &quot;role&quot;: &quot; L'avocat général&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/08405bf7416d13af4aeea42e01b94e4b.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;萨穆埃尔·泰斯&quot;,
+                        &quot;role&quot;: &quot; Samuel Maleski&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/644bd98b7a230279f393f2e3a8ed09cf.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;茹斯汀·特里耶&quot;,
+                &quot;category&quot;: &quot;剧情|家庭&quot;,
+                &quot;synopsis&quot;: &quot;2023戛纳金棕榈最佳影片！2024奥斯卡最佳原创剧本大奖！狂揽全球280＋项大奖及提名！继是枝裕和的《小偷家族》后，时隔六年，再度登陆内地大银幕的金棕榈最佳影片！国内外各大平台口碑爆棚，影片以女性视角细腻地呈现了夫妻关系中的隐痛，丈夫的死亡真相唤起观众对亲密关系的深入思考和共鸣，没有谁的生活经得起这样的审判！但人性中不肯投降的、微弱的美好和希望，最终将指引着每个人继续前行！3月29日，大银幕探寻家庭与婚姻的真相！&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;value&quot;: 1
+                },
+                &quot;nation&quot;: &quot;法国&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1711670400,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 152,
+                &quot;grade&quot;: &quot;7.5&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;2D&quot;,
+                    &quot;type&quot;: 1
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            },
+            {
+                &quot;filmId&quot;: 6756,
+                &quot;name&quot;: &quot;沙丘2&quot;,
+                &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/ed94ed416641c374e55e16162692019c.jpg&quot;,
+                &quot;actors&quot;: [
+                    {
+                        &quot;name&quot;: &quot;丹尼斯·维伦纽瓦&quot;,
+                        &quot;role&quot;: &quot;导演&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/967cff2206d0325dfaa865fb613224a5.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;提莫西·查拉梅&quot;,
+                        &quot;role&quot;: &quot;保罗&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/5697b464e40ed22bec1a9e1952d3adb9.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;赞达亚·科尔曼&quot;,
+                        &quot;role&quot;: &quot;契妮&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/0599bb29ab6f328cce7a0ff7d6cb4f1b.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;丽贝卡·弗格森&quot;,
+                        &quot;role&quot;: &quot;杰西卡夫人&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/d5fa927d7101db694815d4b60fad0926.jpg&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;乔什·布洛林&quot;,
+                        &quot;role&quot;: &quot;哥尼&quot;,
+                        &quot;avatarAddress&quot;: &quot;https://pic.maizuo.com/usr/movie/1d90154f6fb5ad98a6c5497184e50526.jpg&quot;
+                    }
+                ],
+                &quot;director&quot;: &quot;丹尼斯·维伦纽瓦&quot;,
+                &quot;category&quot;: &quot;科幻|动作|冒险|剧情&quot;,
+                &quot;synopsis&quot;: &quot;《沙丘2》将会探索保罗·厄崔迪的传奇之旅，他与契妮和弗雷曼人联手，踏上对致其家毁人亡的阴谋者的复仇之路。当面对一生挚爱和已知宇宙命运之间的抉择时，他必须努力阻止只有他能预见的可怕的未来。&quot;,
+                &quot;filmType&quot;: {
+                    &quot;name&quot;: &quot;4D&quot;,
+                    &quot;value&quot;: 13
+                },
+                &quot;nation&quot;: &quot;美国,加拿大&quot;,
+                &quot;language&quot;: &quot;&quot;,
+                &quot;videoId&quot;: &quot;&quot;,
+                &quot;premiereAt&quot;: 1709856000,
+                &quot;timeType&quot;: 3,
+                &quot;runtime&quot;: 166,
+                &quot;grade&quot;: &quot;7.2&quot;,
+                &quot;item&quot;: {
+                    &quot;name&quot;: &quot;4D&quot;,
+                    &quot;type&quot;: 13
+                },
+                &quot;isPresale&quot;: true,
+                &quot;isSale&quot;: false
+            }
+        ]
+
+}
+</code></pre>
+<h3 id="6">(6)  配置显示网络图片</h3>
+<pre><code class="language-python">implementation 'com.github.bumptech.glide:glide:4.11.0'
+</code></pre>
+<h2 id="xml">五、xml持久化</h2>
+<h3 id="1_3"><strong>(1) 说明：</strong></h3>
+<p>登录案例--》后端返给前端一个唯一标识（token）--》以后访问需要登录后才能访问的接口，必须携带这个token--》后端就可以区分出，是谁来访问的</p>
+<p><strong>app端</strong>：需要在登录后，把token，保存到某个位置</p>
+<ul>
+<li>app端有sqlite，可以用来存储数据</li>
+<li>把登录信息，存到手机端的xml中--》惯用方案</li>
+</ul>
+<p><strong>目的：</strong></p>
+<p>学习保存的目的--》后期咱们会有app，把数据保存到手机端的xml中--》如果我们想用这个数据--》发送请求----》我们可以去手机端某个位置找到它，放到请求中，模拟发送请求</p>
+<h3 id="2-xml_1">(2) 操作xml</h3>
+<ul>
+<li>新增</li>
+</ul>
+<p>登录成后，把token的值，存储到手机端的xml中---开始</p>
+<p><code>java
+  SharedPreferences sp= getSharedPreferences("sp_token",MODE_PRIVATE);
+  SharedPreferences.Editor edit=sp.edit();
+  edit.putString("token",r.token);
+  edit.commit();</code></p>
+<ul>
+<li>删除xml中的值</li>
+</ul>
+<p><code>SharedPreferences sp1=getSharedPreferences("sp_token",MODE_PRIVATE);
+  SharedPreferences.Editor edit=sp1.edit();
+  edit.remove("token");
+  edit.commit();</code></p>
+<ul>
+<li>获取</li>
+</ul>
+<p><code>SharedPreferences sp=getSharedPreferences("sp_token",MODE_PRIVATE);
+  String token=sp.getString("token","");
+  Log.e("xxxxx",token);</code></p>
+<h3 id="3-xml">(3) 查看手机端xml值</h3>
+<pre><code class="language-python"># 保存到手机上：`/data/data/包名`
+adb shell
+su
+cd /data/data
+cd 包名         # cd com.justin.s11day10
+
+cd shared_prefs # 保存过才有
+ls
+cat sp_token.xml  # 打印出xml中的值
+</code></pre>
+<p><img alt="image-20240412202309335" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412202309335.png" /></p>
+<h3 id="4_2">(4) 我们学习的目的</h3>
+<pre><code class="language-python"># 后续反编译出来，只要看到getSharedPreferences 我们就知道，app在操作xml
+    -后续会看到的，某些值，在app启动生成---》存到xml
+    -以后发送请求，从xml中拿出来，携带发请求
+    -从xml 手动扣出来，发送请求
+</code></pre>
+<h2 id="okhttp">六、okhttp拦截器</h2>
+<h3 id="1_4">(1) 说明</h3>
+<ul>
+<li>问题</li>
+</ul>
+<p>我们app端发送请求，每次都携带固定的数据（请求头中），以后每次发送请求，不用每次都手动添加，只需要写一个，以后所有请求都会携带</p>
+<ul>
+<li>解决</li>
+</ul>
+<p>使用拦截器</p>
+<ul>
+<li>
+<p>使用拦截器</p>
+</li>
+<li>
+<p>方式一：写个类，实现Interceptor接口，重写intercept方法</p>
+</li>
+<li>方式二：直接实例化得到拦截对象(发送请求时，添加拦截器)</li>
+</ul>
+<h3 id="2_2">(2) 使用拦截器方式一</h3>
+<ul>
+<li>编写拦截器CommonInterceptor.class</li>
+</ul>
+<p>```java
+  package com.justin.s11day10.interceptor;</p>
+<p>import androidx.annotation.NonNull;</p>
+<p>import com.justin.s11day10.Utils;</p>
+<p>import java.io.IOException;</p>
+<p>import okhttp3.Interceptor;
+  import okhttp3.Request;
+  import okhttp3.Response;</p>
+<p>public class CommonInterceptor implements Interceptor {
+      public Response intercept(Chain chain) throws IOException {
+          // 1 获取当前时间
+          String ctime = String.valueOf(System.currentTimeMillis() / 1000);
+          // 2 把ctime使用md5加密
+          String sign = Utils.Md5(ctime);
+          // 3 把当前时间和当前时间加密的值，带在请求头中
+          // chain.request()---&gt;请求对象
+          Request request=chain.request().newBuilder().addHeader("ctime",ctime).addHeader("sign",sign).build();
+          // 4 继续执行后续拦截器
+          Response response=chain.proceed(request);
+          // 5 拿到response对象，也可以做些处理
+          // 比如响应体加密了---》对响应体整体解密----》把内容放回到响应体
+          // 如果我们抓包--》响应体是加密的--》对应app来讲--》写了拦截器--》到真正的页面中的java文件里，是已经解密的
+          return response;
+      }
+  }
+  ```</p>
+<ul>
+<li>发送请求时</li>
+</ul>
+<p><code>java
+  // 使用拦截器
+  CommonInterceptor interceptor=new CommonInterceptor();
+  OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();</code></p>
+<ul>
+<li>
+<p>抓包看到<img alt="image-20240412204306655" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412204306655.png" /></p>
+</li>
+<li>
+<p>正常后端需要校验</p>
+</li>
+</ul>
+<p>```python
+  # Django--&gt;中间件---》取出请求头中的这两个参数--》做校验--》如果校验不过--》直接返回错误</p>
+<p># flask 后端取出做校验--》如果校验不过，就报错
+  @app.before_request
+  def before():
+      ctime=request.headers.get('ctime')
+      sign=request.headers.get('sign')
+      print(ctime)
+      print(sign)
+  ```</p>
+<p><img alt="image-20240412204557552" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412204557552.png" /></p>
+<h3 id="3_2">(3) 使用拦截器方式二</h3>
+<ul>
+<li>说明</li>
+</ul>
+<p>不需要单独写个拦截器类，直接在发送请求时，new出来即可</p>
+<ul>
+<li>App代码</li>
+</ul>
+<p><code>java
+  OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+    public Response intercept(Chain chain) throws IOException {
+    String ctime = String.valueOf(System.currentTimeMillis() / 1000);
+    String sign = Utils.Md5(ctime);
+    Request request = chain.request().newBuilder().addHeader("ctime",ctime).addHeader("sign",sign).build();
+    Response response=chain.proceed(request);
+    return response;}
+  }).build();</code></p>
+<p><img alt="image-20240412204949846" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412204949846.png" /></p>
+<p><img alt="image-20240412205014283" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412205014283.png" /></p>
+<h3 id="4_3">(4) 安卓中常用方式</h3>
+<p>我们反编译回来，可能会看到这种
+把拦截器对象定义成常量，以后，直接在每次发请求的时候，拿着用</p>
+<pre><code class="language-python">public class Common {
+    // static--&gt;类直接调用
+    // final--&gt;常量，后期不会变
+    public static final CommonInterceptor interceptor=new CommonInterceptor();
+}
+</code></pre>
+<p><strong>以后用直接使用，不需要每次都实例化</strong></p>
+<pre><code class="language-java">OkHttpClient client = new OkHttpClient.Builder().addInterceptor(Common.interceptor).build();
+</code></pre>
+<h3 id="5_1">(5) 逆向重点</h3>
+<ul>
+<li>对咱们来讲，逆向app才是重点</li>
+</ul>
+<p>如果遇到某个app，所有请求头中都会有某几个参数---》猜想--》里面可能写了拦截器做了统一处理</p>
+<ul>
+<li>
+<p>以后逆向处理</p>
+</li>
+<li>
+<p>根据关键字搜索拦截器：Interceptor---&gt;搜出app中用了哪些拦截器--》逐个分析</p>
+</li>
+<li>
+<p>通过hook定位，使用了那些拦截器
+    hook--》Interceptor使用次数，打印了多次，说明使用了多个拦截器</p>
+</li>
+<li>
+<p>hook的通用脚本</p>
+</li>
+</ul>
+<p><code>javascript
+  scr = """
+  Java.perform(function () {
+    var Builder = Java.user("okhttp3.OkHttpClient.Builder");
+    Builder.addInterceptor.implementation = function(interceptor){
+        console.log(interceptor, JSON.stringify(interceptor))
+    }
+  });</code></p>
+<ul>
+<li>原理解释</li>
+</ul>
+<p>```java
+  OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+  # 在OkHttpClient内部有内部类，Builder，实例化得到对象后，调用Builder类对象的addInterceptor方法，最后调用Builder类对象的build方法，完成实例化OkHttpClient对象
+  # 所以我们要hook：okhttp3.OkHttpClient.Builder 类，的addInterceptor方法
+  class OkHttpClient{
+      class Builder{
+          fun addInterceptor(Interceptor)
+      }
+      fun build(): OkHttpClient = OkHttpClient(this)</p>
+<p>}
+  ```</p>
+<h2 id="retrofit">七、retrofit</h2>
+<h3 id="1-retrofit">(1) retrofit介绍</h3>
+<p>retrofit是对okhttp的封装，底层基于okhttp3，也是一个发送网络请求的库，更简单一些。后续，有的app发送网络请求，使用okhttp3，有的app会使用retrofit</p>
+<p>所以我们需要学习一下retrofit 特点，后期更好逆向</p>
+<h3 id="2_3">(2) 使用步骤</h3>
+<ul>
+<li>build.gradle中引入retrofit  </li>
+</ul>
+<p><code>implementation "com.squareup.retrofit2:retrofit:2.9.0"</code></p>
+<ul>
+<li>编写接口，声明网络请求</li>
+</ul>
+<p>```java
+  public interface HttpReq {
+          #  向/api/v1/post 发送POST请求,编码是UrlEncoded，传入userName和password，但被组装成 name=xx&amp;pwd=xx
+          @POST("/api/v1/post")
+          @FormUrlEncoded
+          Call<ResponseBody> postLogin(@Field("name") String userName, @Field("pwd") String password);</p>
+<pre><code>      #  向/api/v2/xxx发送get请求，传入age，拼接成 /api/v2/xxx?age=19
+      @GET("/api/v2/xxx")
+      Call&lt;ResponseBody&gt; getInfo(@Query("age") String age);
+
+      # 向/post/users 发送POST请求,编码是json格式 {name:xxxx,age:123}
+      @POST("/post/users")
+      Call&lt;ResponseBody&gt; postLoginJson(@Body RequestBody body);
+</code></pre>
+<p>}
+  ```</p>
+<ul>
+<li>发送请求</li>
+</ul>
+<p>```java
+  new Thread() {
+      @Override
+      public void run() {
+          Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.12:8080/").build();
+          HttpReq req = retrofit.create(HttpReq.class);
+          Call<ResponseBody> call = req.postLogin("justin","123");
+          try {
+              ResponseBody responseBody = call.execute().body();
+              String responseString = responseBody.string();
+              Log.e("Retrofit返回的结果", responseString);</p>
+<pre><code>      } catch (Exception e) {
+          e.printStackTrace();
+      }
+}
+</code></pre>
+<p>}.start();
+  ```</p>
+<ul>
+<li>简写</li>
+</ul>
+<p><code>java
+  Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.12:8080/").build();
+  try {
+    ResponseBody responseBody = retrofit.create(HttpReq.class).postLogin("justin","123").execute().body();
+    String responseString = responseBody.string();
+    Log.e("Retrofit返回的结果", responseString);
+  } catch (Exception e) {
+    e.printStackTrace();
+  }</code></p>
+<h3 id="3-retrofit">(3) 登录接口改造成retrofit发送请求</h3>
+<ul>
+<li>MainActivity 发送请求改造</li>
+</ul>
+<p><code>java
+  Call&lt;ResponseBody&gt; call = new Retrofit.Builder().baseUrl("http://192.168.71.100:8080").build().create(httpReq.class).postLogin(username, password);
+  try {
+      ResponseBody responseBody = call.execute().body();
+      String dataString = responseBody.string();
+      //把后端返回的字符串  反序列化成java的对象--》LoginResponse的对象
+      LoginResponse r = new Gson().fromJson(dataString, LoginResponse.class);
+      if (r.code == 100) {
+        SharedPreferences sp = getSharedPreferences("sp_token", MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString("token", r.token);
+        edit.commit();
+        t.show();
+        Intent intent = new Intent(MainActivity.this, IndexActivity.class);
+        // 启动新的 Activity
+        startActivity(intent);
+      } else {
+        Log.e("MainActivity", "网络请求异常");
+      }
+  } catch (Exception e) {
+        e.printStackTrace();
+  }</code></p>
+<h3 id="4_4">(4) 后端</h3>
+<pre><code class="language-python"># 安装 pip install flask
+import json
+import uuid, hashlib
+
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+
+@app.before_request
+def before():
+    ctime=request.headers.get('ctime')
+    sign=request.headers.get('sign')
+    print(ctime)
+    print(sign)
+
+def get_md5(s):
+    md5 = hashlib.md5()
+    md5.update(s.encode('utf-8'))
+    return md5.hexdigest()
+
+
+# @app.route('/login', methods=['POST'])
+# def login():
+#     # 0 取出 请求发送时间t1，sign，校验
+#     t1 = request.form.get('t1')
+#     sign = request.form.get('sign')
+#
+#     # 1 取出前端 app 传过来的用户名和密码
+#     username = request.form.get('username')
+#     password = request.form.get('password')
+#
+#     # 校验sign是否正确
+#     new_sign = get_md5(t1 + username)
+#     if new_sign == sign:
+#         # 2 校验用户名密码--》正常应该去数据库查，只是为了演示，就写死了
+#         if username == 'justin' and password == get_md5('justin'):
+#             token = str(uuid.uuid4())
+#             return jsonify({'code': 100, 'msg': '登录成功', 'token': token})
+#         else:
+#             return jsonify({'code': 101, 'msg': '用户名或密码错误'})
+#     else:
+#         return jsonify({'code': 102, 'msg': '您的签名错误，不要恶意访问，您的ip已经被监控'})
+
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    # 1 取出前端 app 传过来的用户名和密码
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if username == 'justin' and password == 'justin':
+        token = str(uuid.uuid4())
+        return jsonify({'code': 100, 'msg': '登录成功', 'token': token})
+    else:
+        return jsonify({'code': 101, 'msg': '用户名或密码错误'})
+
+# 返回前端电影数据
+@app.route('/film', methods=['GET'])
+def film():
+    with open('./film.json', 'r', encoding='utf-8') as f:
+        dic = json.load(f)
+    return jsonify(dic)
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 8080)
+
+</code></pre>
+<h3 id="5-indexactivityjava">(5) 查询电影IndexActivity.java</h3>
+<pre><code class="language-java">Call&lt;ResponseBody&gt; call = new Retrofit.Builder().baseUrl(&quot;http://192.168.71.100:8080&quot;).build().create(httpReq.class).getFilms();
+ResponseBody responseBody = call.execute().body();
+String dataString = responseBody.string();
+Films films = new Gson().fromJson(dataString, Films.class);
+</code></pre>
+<h3 id="6-retrofit-httpreqclass">(6) Retrofit接口--》httpReq.class</h3>
+<pre><code class="language-java">package com.justin.s11day10.http;
+
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
+public interface httpReq {
+    // 咱们项目俩接口--》使用retrofit 重写登录和查询电影
+
+    //1 接口只声明方法，没有具体实现--》会向 /login 地址发送post请求，请求体中携带 username和password
+    @POST(&quot;/login&quot;)
+    @FormUrlEncoded
+    Call&lt;ResponseBody&gt; postLogin(@Field(&quot;username&quot;) String username, @Field(&quot;password&quot;) String password);
+
+    //2 只是看一下了解  --》向/api/v2/xxx地址发送get请求--》请求地址中带age=19 --&gt;/api/v2/xxx?age=19
+    @GET(&quot;/api/v2/xxx&quot;)
+    Call&lt;ResponseBody&gt; getInfo(@Query(&quot;age&quot;) String age);
+
+    // 3 只是看--》向/api/v1/users 发送POST请求,编码是json格式 {name:xxxx,age:123}
+    @POST(&quot;/api/v1/users&quot;)
+    Call&lt;ResponseBody&gt; postLoginJson(@Body RequestBody body);
+
+    // 4 咱们用的，查询电影  --》/film 地址发送get请求，没有参数
+    @GET(&quot;/film&quot;)
+    Call&lt;ResponseBody&gt; getFilms();
+}
+</code></pre>
+<h3 id="7-retrofit">(7) 逆向中retrofit的使用</h3>
+<pre><code class="language-python">-1 定位代码：搜索URL，可以定位到接口的位置（除去域名和端口）  /login
+    例如：合伙人app，搜索： /v1/partnerLogin/login
+</code></pre>
+<p><img alt="image-20240412214157911" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412214157911.png" /></p>
+<p><img alt="image-20240412214230040" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412214230040.png" /></p>
+<p><img alt="image-20240412214325165" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412214325165.png" /></p>
+<p><strong>通过查找this.networkApi发现实际是retrofit</strong></p>
+<p><img alt="image-20241218163258683" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20241218163258683.png" /></p>
+<h3 id="8-app">(8) 逆向自己的app</h3>
+<ul>
+<li>步骤</li>
+</ul>
+<p>编译app</p>
+<p>装到自己手机上</p>
+<p>抓包</p>
+<p>jadx打开反编译</p>
+<p>模拟使用python登录，获取数据</p>
+<ul>
+<li>图片说明</li>
+</ul>
+<p><img alt="image-20240412214455932" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412214455932.png" /></p>
+<p><img alt="image-20240412214605838" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412214605838.png" /></p>
+<p><img alt="image-20240412214906939" src="../imgs/day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.assets/image-20240412214906939.png" /></p>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../js/main.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/gitbook.min.js"></script>
+<script src="../js/theme.min.js"></script>
+</body>
+</html>

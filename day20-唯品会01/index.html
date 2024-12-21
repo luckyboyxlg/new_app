@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>二十、唯品会01 - My Docs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href=".." target="_blank" class="custom-link">My Docs</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="..">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD/">
+<a href="../day01-%E5%BC%80%E7%8F%AD/">一、前期准备</a>
+<li class="chapter" data-path="day02-adb/">
+<a href="../day02-adb/">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">
+<a href="../day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">
+<a href="../day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">
+<a href="../day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001/">
+<a href="../day06-java%E5%9F%BA%E7%A1%8001/">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002/">
+<a href="../day07-java%E5%9F%BA%E7%A1%8002/">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003/">
+<a href="../day08-java%E5%9F%BA%E7%A1%8003/">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">
+<a href="../day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">
+<a href="../day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">
+<a href="../day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">
+<a href="../day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">
+<a href="../day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91/">
+<a href="../day13-JNI%E5%BC%80%E5%8F%91/">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">
+<a href="../day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app/">
+<a href="../day15-%E8%AF%86%E8%B4%A7app/">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app/">
+<a href="../day16-%E5%BE%97%E7%89%A9app/">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">
+<a href="../day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902/">
+<a href="../day18-B%E7%AB%9902/">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903/">
+<a href="../day19-B%E7%AB%9903/">十九、B站02</a>
+<li class="chapter active" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">
+<a href="./">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">
+<a href="../day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM/">
+<a href="../day22-DYM/">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91/">
+<a href="../day23-%E9%85%92%E4%BB%99%E7%BD%91/">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">
+<a href="../day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A/">
+<a href="../day25-unidbg-%E4%B8%8A/">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87/">
+<a href="../day26-unidbg-%E4%B8%AD%E7%AF%87/">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B/">
+<a href="../day27-unidbg-%E4%B8%8B/">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A/">
+<a href="../day28-xhs-%E4%B8%8A/">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B/">
+<a href="../day29-xhs-%E4%B8%8B/">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">
+<a href="../day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="01">二十、唯品会01</h1>
+<h1 id="1">1 今日目标</h1>
+<pre><code class="language-python"># 1 实现唯品会app，按关键字搜索商品功能  两次课（4个接口）
+
+# 2 版本：v7.83.3 
+
+# 3 知识点：
+    1 so延迟加载
+    2 java的反射
+</code></pre>
+<h1 id="2">2 抓包分析</h1>
+<pre><code class="language-python"># 1 把apk 安装到手机上
+    adb install  唯品会v7.83.3.apk
+
+# 2 打开软件，使用charles抓包---》只需要配置代理
+
+# 3 如果不是第一次安装---》要清理缓存
+
+# 4 开始抓包：
+# 5 找到接口
+    -请求地址：
+        https://mapi.appvipshop.com/vips-mobile/rest/shopping/search/product/list/v1
+    -请求方式：
+        POST
+    -请求头：
+        authorization：OAuth api_sign=41729751cf45a7a935524983da6c9b359589805a
+    -请求体：
+    api_key：23e7f28019e8407b98b84cd05b5aef2c # 需要破解  猜 md5，sha1加密
+    app_name    shop_android  # 固定的
+    app_version 7.83.3    #版本号
+    bigSaleTagIds   
+    brandIds    
+    brandStoreSns   
+    categoryId  
+    channelId   1
+    channel_flag    0_1
+    client  android
+    client_type android
+    darkmode    0
+    deeplink_cps    
+    device_model    Google Pixel 2 XL # 手机型号
+    did 0.0.5202d48b962cdf462fa581a2726a8c3b.09ec2e # 需要破
+    elder   0
+    extParams   {&quot;priceVer&quot;:&quot;2&quot;,&quot;mclabel&quot;:&quot;1&quot;,&quot;cmpStyle&quot;:&quot;1&quot;,&quot;statusVer&quot;:&quot;2&quot;,&quot;ic2label&quot;:&quot;1&quot;,&quot;video&quot;:&quot;2&quot;,&quot;uiVer&quot;:&quot;2&quot;,&quot;preheatTipsVer&quot;:&quot;4&quot;,&quot;floatwin&quot;:&quot;1&quot;,&quot;superHot&quot;:&quot;1&quot;,&quot;exclusivePrice&quot;:&quot;1&quot;,&quot;router&quot;:&quot;1&quot;,&quot;coupons&quot;:&quot;1&quot;,&quot;needVideoExplain&quot;:&quot;1&quot;,&quot;rank&quot;:&quot;2&quot;,&quot;needVideoGive&quot;:&quot;1&quot;,&quot;bigBrand&quot;:&quot;1&quot;,&quot;couponVer&quot;:&quot;v2&quot;,&quot;videoExplainUrl&quot;:&quot;1&quot;,&quot;live&quot;:&quot;1&quot;,&quot;sellpoint&quot;:&quot;1&quot;,&quot;reco&quot;:&quot;1&quot;,&quot;vreimg&quot;:&quot;1&quot;,&quot;search_tag&quot;:&quot;2&quot;,&quot;tpl&quot;:&quot;1&quot;,&quot;stdSizeVids&quot;:&quot;&quot;,&quot;labelVer&quot;:&quot;2&quot;}
+    fdc_area_id 103101101109
+    functions   RTRecomm,flagshipInfo,feedback,otdAds,zoneCode,slotOp,survey,hasTabs,floaterParams
+    harmony_app 0
+    harmony_os  0
+    headTabType all
+    height  2712
+    isMultiTab  0
+    keyword 外套女    # 搜索条件
+    lastPageProperty    {&quot;isBgToFront&quot;:&quot;0&quot;,&quot;suggest_text&quot;:&quot;外套女&quot;,&quot;scene_entry_id&quot;:&quot;-99&quot;,&quot;refer_page_id&quot;:&quot;page_te_globle_classify_search_1705406858417&quot;,&quot;text&quot;:&quot;外套女&quot;,&quot;tag&quot;:&quot;1&quot;,&quot;module_name&quot;:&quot;com.achievo.vipshop.search&quot;,&quot;type&quot;:&quot;all&quot;,&quot;typename&quot;:&quot;全部&quot;,&quot;is_back_page&quot;:&quot;0&quot;}
+    maker   GOOGLE
+    mars_cid    8f6c35ee-24b5-3e28-be93-7b0ac7b14331  # 需要破解--》像uuid
+    mobile_channel  oziq7dxw:::
+    mobile_platform 3
+    net WIFI
+    operator    
+    os  Android
+    osv 11
+    otddid  
+    other_cps   
+    page_id page_te_commodity_search_1705406863729
+    phone_model pixel 2 xl
+    priceMax    
+    priceMin    
+    props   
+    province_id 103101
+    referer com.achievo.vipshop.search.activity.TabSearchProductListActivity
+    rom Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1)
+    sd_tuijian  0
+    service_provider    
+    session_id  8f6c35ee-24b5-3e28-be93-7b0ac7b14331_shop_android_1705407189986 # 需要破
+    skey    6692c461c3810ab150c9a980d0c275ec  # 需要破
+    sort    0
+    source  app
+    source_app  android
+    standby_id  oziq7dxw:::
+    sys_version 30      
+    timestamp   1705406863  # 时间戳
+    union_mark  blank&amp;_&amp;blank&amp;_&amp;oziq7dxw:::&amp;_&amp;blank&amp;_&amp;blank
+    vipService  
+    warehouse   VIP_SH # 区域
+    width   1440  #手机宽度
+
+# 6 上述分析完后，我们要破的
+    -请求头中：
+    authorization：OAuth api_sign=41729751cf45a7a935524983da6c9b359589805a
+    -请求体中：
+    api_key
+    did
+    mars_cid
+    session_id
+    skey
+ # 7 尝试改包，去掉几个试试是否可以---》请求头不能去，请求体去掉任意一个都不行
+    -大胆猜测：把请求体内容整体加密，加密后放到请求头的authorization中
+    -Invalid API signature 41729751cf45a7a935524983da6c9b359589805a&quot;
+
+ # 8 多次发送请求尝试：查看要破解的参数是否有固定的--》先去内存中拿--》内存中没有xml中--》生成
+    api_key # 每次都一样
+    did     # 多次请求也是一样的
+    mars_cid # 多次是一样的
+    session_id #  mars_cid_shop_android_1705407189986
+    skey    # 多次发送都是一样的
+
+ # 9 反编译app---》搜请求体中要破解的东西
+    api_key   mars_cid    session_id  skey 都能搜到
+    唯独：did 搜不到，分析did如何产生？
+        1 使用java，so生成的---》使用java生成一定能搜到，使用so生成可能搜不到
+        2 某个请求返回的---》这个请求使用
+
+ # 10 针对于第二种情况，某个请求返回---》从所有的请求中搜一个
+     -https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+     -返回了did
+
+ # 11 分析generate_token
+    -请求地址：https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+    -请求方式：post
+    -请求头：authorization  OAuth api_sign=f8ce12a88a50049b01c6b98b63da511adbc129c6
+    -请求参数：
+    api_key 23e7f28019e8407b98b84cd05b5aef2c # 之前见过，跟之前一样
+    did # 空的，因为它返回了
+    edata# 有非常大，像base64
+    eversion    0 # 固定的
+    skey    6692c461c3810ab150c9a980d0c275ec  # 见过，跟之前一样
+    timestamp   1705407190 # 时间戳
+
+
+ # 12 唯独不知道edata怎么来的
+    -是不是某个接口返回的？ 搜不到
+    -是不是代码生成的？ 反编译搜索edata--》搜到了---》发现通过某个接口返回的数据+java代码生成的
+    -先告诉你：某个接口返回 vcsptoken +java代码----》生成了edata
+
+ # 13 找哪个接口返回了vcsptoken---》从generate_token网上找---》getTokenByFP
+    -请求地址：
+    https://vcsp-api.vip.com/token/getTokenByFP?vcspKey=4d9e524ad536c03ff203787cf0dfcd29
+    -请求方式：get
+    -请求头：vcspauthorization  vcspSign=05a68135d2bfd322e3a22f95bbc25a24c777f387
+    -请求参数：vcspKey=4d9e524ad536c03ff203787cf0dfcd29
+    -返回值中的：vcspToken 通过运算得到 edata
+
+
+ # 14 app第一次运行，注册设备，才能进行后续操作
+    -请求地址：
+    https://mp.appvipshop.com/apns/device_reg
+    -请求方式：get
+    -请求头：authorization  OAuth api_sign=aff75fa5e8a49f1ee8c3eef35eac1bab77b1011d
+    -请求参数：
+        app_name    achievo_ad
+        app_version 7.83.3
+        device_token    8f6c35ee-24b5-3e28-be93-7b0ac7b14331 # 需要破
+        status  1
+        warehouse   null
+        manufacturer    Google
+        device  Pixel 2 XL
+        os_version  30
+        channel oziq7dxw:::
+        vipruid 
+        regPlat 0
+        regid   null
+        rom Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1)
+        skey    6692c461c3810ab150c9a980d0c275ec # 需要破
+
+
+ # 15 为了破解搜索商品---》找到了4个接口
+    注册设备：https://mp.appvipshop.com/apns/device_reg
+    getTokenByFP:https://vcsp-api.vip.com/token/getTokenByFP
+    generate_token:https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+    搜索商品：https://mapi.appvipshop.com/vips-mobile/rest/shopping/search/product/list/v1
+</code></pre>
+<p><img alt="image-20230817152835415" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817152835415.png" /></p>
+<p>接下来，可以在charles中修改请求包，再次发送，将不必要的参数移除，测试发现不能删除，删除后就会提示相关错误，所以，上述参数都需要携带。</p>
+<h2 id="21">2.1 调整顺序</h2>
+<p>请求之前的关系：</p>
+<pre><code class="language-python"># 注册设备
+APP第一次打开，设备注册
+    - 向后端发送请求，后端返回token，保存，其他请求携带。
+    - 向后端发送请求+生成token，发送后端，授权，后续其他请求。
+    注意：有些app卸载
+https://mp.appvipshop.com/apns/device_reg
+
+# getTokenByFP
+https://vcsp-api.vip.com/token/getTokenByFP
+
+# generate_token
+https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+- 请求头：authorization: OAuth api_sign=2cc09d0c582a601d57548dadea3a87878fd4e176
+- 请求体：
+    api_key
+    edata（会用到getTokenByFP返回的vcspToken 和 请求传递的vcspKey）
+    skey
+- 响应：
+    &quot;did&quot;: &quot;0.0.f5bb01a00a0871e0c5d670abbacda7d9.c75f2a&quot;,
+
+# 搜索
+https://mapi.appvipshop.com/vips-mobile/rest/shopping/search/product/list/v1    
+
+</code></pre>
+<pre><code class="language-python"># 1 请求头中不能删
+authorization   OAuth api_sign=bf46ad824c4e372c310a5fd5091e1319de413049
+# 2 一旦删除请求体中任意一个东西，验证就不通过了
+    -猜测，有个秘钥是对整个请求头加了密做了一个签名
+    -api_key 固定
+    -skey 固定
+    -mars_cid uuid
+    -session_id uuid+时间
+    -对请求体整体加密后做成了authorization的值
+
+
+# 3 did:找不到
+    -did的生成：
+        -有可能代码生成
+        -发送某个请求，返回的：https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+# 4 authorization：加密得到的
+
+
+
+# 破解请求顺序
+
+# 1 https://mp.appvipshop.com/apns/device_reg 
+    -注册设备
+    -一般app都会有这个接口，第一次运行，注册设备接口
+
+#2 https://vcsp-api.vip.com/token/getTokenByFP?vcspKey=4d9e524ad536c03ff203787cf0dfcd29
+    -生成edata，必须先调用 
+    -该请求返回了一个vcspToken，生成的edata
+#3   generate_token 返回did，给搜索接口用
+https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+ # 请求体：
+    api_key 23e7f28019e8407b98b84cd05b5aef2c # 固定
+    did 
+    edata 很多很多东西---》可能是返回的，可能是代码生成的---》一个接口返回的数据+代码生成
+    eversion    0
+    skey    6692c461c3810ab150c9a980d0c275ec# 固定
+    timestamp   1692706244 # 时间戳
+#4  搜索接口
+https://mapi.appvipshop.com/vips-mobile/rest/shopping/search/product/list/v1
+</code></pre>
+<h2 id="21_1">2.1 分析过程详细</h2>
+<pre><code class="language-python"># 1 charles---&gt;手机端配置代理
+
+# 2 搜索---》抓包
+    -抓到包---》这个包需要携带很多数据(请求头，请求体)---》有一部分是之前别的请求返回的数据
+    -找之前请求--》app装好后第一次打开，这几个请求才会有(清空缓存)
+
+
+# 3 搜索商品的请求：
+    地址：https://mapi.appvipshop.com/vips-mobile/rest/shopping/search/product/list/v1
+    请求方式：post
+    请求头：（一个）
+        authorization   OAuth api_sign=e571d25abbd4a1bb8cbd60beddab6c081b14a862
+    请求体：
+    api_key 23e7f28019e8407b98b84cd05b5aef2c  # 需要破
+    app_name    shop_android # 固定
+    app_version 7.83.3  # 固定的
+    bigSaleTagIds   
+    brandIds    
+    brandStoreSns   
+    categoryId  
+    channelId   1
+    channel_flag    0_1
+    client  android
+    client_type android
+    darkmode    0
+    deeplink_cps    
+    device_model    Google Pixel 2 XL # 手机型号
+    elder   0
+    extParams   {&quot;priceVer&quot;:&quot;2&quot;,&quot;mclabel&quot;:&quot;1&quot;,&quot;cmpStyle&quot;:&quot;1&quot;,&quot;statusVer&quot;:&quot;2&quot;,&quot;ic2label&quot;:&quot;1&quot;,&quot;video&quot;:&quot;2&quot;,&quot;uiVer&quot;:&quot;2&quot;,&quot;preheatTipsVer&quot;:&quot;4&quot;,&quot;floatwin&quot;:&quot;1&quot;,&quot;superHot&quot;:&quot;1&quot;,&quot;exclusivePrice&quot;:&quot;1&quot;,&quot;router&quot;:&quot;1&quot;,&quot;coupons&quot;:&quot;1&quot;,&quot;needVideoExplain&quot;:&quot;1&quot;,&quot;rank&quot;:&quot;2&quot;,&quot;needVideoGive&quot;:&quot;1&quot;,&quot;bigBrand&quot;:&quot;1&quot;,&quot;couponVer&quot;:&quot;v2&quot;,&quot;videoExplainUrl&quot;:&quot;1&quot;,&quot;live&quot;:&quot;1&quot;,&quot;sellpoint&quot;:&quot;1&quot;,&quot;reco&quot;:&quot;1&quot;,&quot;vreimg&quot;:&quot;1&quot;,&quot;search_tag&quot;:&quot;2&quot;,&quot;tpl&quot;:&quot;1&quot;,&quot;stdSizeVids&quot;:&quot;&quot;,&quot;labelVer&quot;:&quot;2&quot;}
+    fdc_area_id 103101101113
+    functions   RTRecomm,flagshipInfo,feedback,otdAds,zoneCode,slotOp,survey,hasTabs,floaterParams
+    harmony_app 0
+    harmony_os  0
+    headTabType all
+    height  2712
+    isMultiTab  0
+    keyword 长袖套衫  # 搜索条件
+    lastPageProperty    {&quot;isBgToFront&quot;:&quot;0&quot;,&quot;suggest_text&quot;:&quot;长袖套衫&quot;,&quot;scene_entry_id&quot;:&quot;-99&quot;,&quot;refer_page_id&quot;:&quot;page_te_globle_classify_search_1698840606324&quot;,&quot;text&quot;:&quot;长袖套衫&quot;,&quot;tag&quot;:&quot;1&quot;,&quot;module_name&quot;:&quot;com.achievo.vipshop.search&quot;,&quot;type&quot;:&quot;all&quot;,&quot;typename&quot;:&quot;全部&quot;,&quot;is_back_page&quot;:&quot;0&quot;}
+    maker   GOOGLE
+    mars_cid    a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d  # 需要破
+    mobile_channel  oziq7dxw:::
+    mobile_platform 3
+    net WIFI
+    operator    
+    os  Android
+    osv 11
+    otddid  
+    other_cps   
+    page_id page_te_commodity_search_1698840618728
+    phone_model pixel 2 xl
+    priceMax    
+    priceMin    
+    props   
+    province_id 103101  # 省份数字
+    referer com.achievo.vipshop.search.activity.TabSearchProductListActivity
+    rom Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1)
+    sd_tuijian  0
+    service_provider    
+    session_id  a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d_shop_android_1698834176657 # 需要破
+    skey    6692c461c3810ab150c9a980d0c275ec # 需要破
+    sort    0
+    source  app
+    source_app  android
+    standby_id  oziq7dxw:::
+    sys_version 30
+    timestamp   1698840618 # 时间戳
+    union_mark  blank&amp;_&amp;blank&amp;_&amp;oziq7dxw:::&amp;_&amp;blank&amp;_&amp;blank
+    vipService  
+    warehouse   VIP_SH   
+    width   1440 
+
+
+   -----------需要破的-------------
+    api_key：23e7f28019e8407b98b84cd05b5aef2c # 看上去像sha1，md5摘要
+    mars_cid：a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d  # uuid
+    session_id：a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d _shop_android_1698834176657 # mars_cid+时间戳
+    skey：6692c461c3810ab150c9a980d0c275ec # 摘要算法
+
+
+
+
+# 4 改包测试
+    -去掉请求头中的（authorization）--》API signature must not be empty  必须要传
+    -请求体中：随便去一个，都报错
+    Invalid API signature 962b50c5714a4eb35590a265462877510e34aac2
+
+
+
+# 5 猜测：
+    -把请求体的所有内容---》通过某种加密方式得到摘要
+    -把摘要放到了请求头中
+    -只要请求体中去掉任意一个参数，都会校验失败
+
+# 6 多次请求：
+    api_key：23e7f28019e8407b98b84cd05b5aef2c  # 多次请求是一样的
+    mars_cid：a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d # 多次请求是一样的
+    session_id：a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d _shop_android_1698834176657 # 多次请求是一样的
+    skey：6692c461c3810ab150c9a980d0c275ec # 多次请求是一样的
+
+
+# 7 最核心就是 authorization 的破解
+# 8 第一次发送请求搜索的时候---》did
+    did：0.0.f5bb01a00a0871e0c5d670abbacda7d9.c75f2a
+
+# 9 反编译app---》搜索发现
+    api_key mars_cid session_id skey 都搜到，代码生成的
+    唯独：did搜不到 
+    did可能如何产生的？
+        1 使用代码产生---》如果使用代码生成，一定能搜到
+        2 某个请求返回的数据----》下次请求携带它
+
+# 10 如果要破搜索---》必须先要破--》https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+
+
+# 11 generate_token接口---返回了did
+    -请求地址：https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+    -请求方式：post
+    -请求头：authorization  OAuth api_sign=ff7c3d6bcfd91c91e6afdcc387e78db082037b05
+    -请求体：
+        api_key 23e7f28019e8407b98b84cd05b5aef2c  # 看到过
+        did     # 空的
+        edata    # 非常多
+        eversion    0 # 固定的
+        skey    6692c461c3810ab150c9a980d0c275ec # 看到过
+        timestamp   1698842071 # 时间戳
+# 12 edata不知道怎么来的
+    -搜：某个接口返回的（vcsptoken）用代码 最终生成的---》edata
+
+
+# 13 edata是那个接口返回的呢？
+    https://vcsp-api.vip.com/token/getTokenByFP?vcspKey=4d9e524ad536c03ff203787cf0dfcd29
+# 14 注册设备接口
+https://mp.appvipshop.com/apns/device_reg?app_name=achievo_ad&amp;app_version=7.83.3&amp;device_token=a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d&amp;status=1&amp;warehouse=null&amp;manufacturer=Google&amp;device=Pixel+2+XL&amp;os_version=30&amp;channel=oziq7dxw%3A%3A%3A&amp;vipruid=&amp;regPlat=0&amp;regid=null&amp;rom=Dalvik%2F2.1.0+%28Linux%3B+U%3B+Android+11%3B+Pixel+2+XL+Build%2FRP1A.201005.004.A1%29&amp;skey=6692c461c3810ab150c9a980d0c275ec
+
+
+# 15 最终：破解四个接口
+    1 https://mp.appvipshop.com/apns/device_reg
+    2 https://vcsp-api.vip.com/token/getTokenByFP
+    3 https://mapi.appvipshop.com/vips-mobile/rest/device/generate_token
+    4 https://mapi.appvipshop.com/vips-mobile/rest/shopping/search/product/list/v1
+</code></pre>
+<h1 id="device_reg">三 注册设备device_reg</h1>
+<p><img alt="image-20230817155545098" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817155545098.png" /></p>
+<pre><code class="language-python"># 请求地址
+https://mp.appvipshop.com/apns/device_reg
+# 请求方式
+get
+# 请求参数
+device_token：a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d
+skey：6692c461c3810ab150c9a980d0c275ec
+# 请求头：
+authorization：OAuth api_sign=bd16242e8738370e6ea310dad1ff92d49c181040
+
+
+## 注意：
+请求头的authorization删除再发送包，也可以成功，但是后续会有用，我们要继续逆向
+请求体的：skey也可以不携带
+</code></pre>
+<h2 id="31-device_token">3.1 逆向 device_token</h2>
+<pre><code class="language-python"># 1 反编译apk---搜索：device_token
+# 2 搜到很多：随便点开一个看，最后都是到了一个位置
+# 3 找到位置：
+ sb2.append(&quot;&amp;device_token=&quot;);
+ sb2.append(c.Q().m());
+
+# 4 查看 c.Q().m()
+public String m() {
+    if (TextUtils.isEmpty(this.f73030x)) {
+        MyLog.debug(c.class, &quot;mid isEmpty!!!!!!&quot;);
+    }
+    return this.f73030x; # 从内存中拿的，看谁赋值的
+}
+
+# 5 查看谁赋值了this.f73030x
+# 找到了赋值位置---》1 打印调用栈  2 查找用例
+public c u0(String str) {
+    this.f73030x = str;
+    CommonsConfig.getInstance().setMid(str);
+    ApiConfig.getInstance().setMid(str);
+    LogConfig.self().setMid(str);
+    return Q();
+}
+# 6 查找用例找到很多，随便看一个---》其他的最终也是到了一个位置
+  public Object call() throws Exception {
+            hk.c.Q().u0(Utils.i(BaseApplication.getContextObject()));
+            b1.j().f();
+            return null;
+        }
+# 7 查看：Utils.i
+public static String i(Context context) {
+    if (CommonsConfig.getInstance().isPreviewModel) {
+        return hk.c.Q().m();
+    }
+    if (p(f39524g)) {
+        String stringByKey = CommonPreferencesUtils.getStringByKey(context, CommonsConfig.VIP_MID_KEY);
+        f39524g = stringByKey;
+        if (p(stringByKey) || DeviceUuidFactory.ANDROIDID_000000000_MID.equals(f39524g)) {
+            String uuid = DeviceUuidFactory.getDeviceUuid(context).toString();
+            f39524g = uuid;
+            if (p(uuid)) {
+                f39524g = UUID.randomUUID().toString();# 使用uuid生成的
+                CommonPreferencesUtils.addConfigInfo(context, CommonsConfig.MID_TYPE_KEY, &quot;3&quot;);
+            }
+            CommonPreferencesUtils.addConfigInfo(context, CommonsConfig.VIP_MID_KEY, f39524g);
+        }
+    }
+    return f39524g;
+}
+# 8 多次抓包分析---》这个值不变--》生成方案
+    1 hk.c.Q().m()---》找过了已经，从内存中拿
+    2 String uuid = DeviceUuidFactory.getDeviceUuid(context).toString();
+        还可以用uuid
+    3 uuid  # 直接使用uuid即可
+# 9 最终确定：device_token 就是uuid
+    -一旦生成，以后都用这个uuid作为设备唯一id
+    -放在了内存和xml中，以后都是去内存和xml中取
+
+# 10 device_token就是uuid
+
+</code></pre>
+<p><img alt="image-20230817160804516" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817160804516.png" /></p>
+<p><img alt="image-20230817161136027" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817161136027.png" /></p>
+<p><img alt="image-20230817161256382" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817161256382.png" /></p>
+<p><img alt="image-20230817161342050" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817161342050.png" /></p>
+<p><img alt="image-20230817165639816" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817165639816.png" /></p>
+<p><img alt="image-20230817165858131" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817165858131.png" /></p>
+<h3 id="310">3.1.0 破解过程</h3>
+<pre><code class="language-python"># 1 反编译--搜索---》 device_token---》很多
+# 2 搜索出11个，不确定那个，随便看几个---》最终发现，殊途同归---》都是uuid
+# 3 看第一个
+   sb2.append(s.b.f83866a);
+    sb2.append(&quot;?ordersn=&quot;);
+    sb2.append(str);
+    sb2.append(&quot;&amp;device_token=&quot;);
+    sb2.append(c.Q().m());
+# 4 c.Q().m()--》查找声明
+   public String m() {
+        if (TextUtils.isEmpty(this.f73030x)) {
+            MyLog.debug(c.class, &quot;mid isEmpty!!!!!!&quot;);
+        }
+        return this.f73030x;
+    }
+# 5 找 this.f73030x 在哪赋值的
+    public c u0(String str) {
+        this.f73030x = str; # 在这里赋值
+        CommonsConfig.getInstance().setMid(str);
+        ApiConfig.getInstance().setMid(str);
+        LogConfig.self().setMid(str);
+        return Q();
+    }
+
+# 6 谁调用了u0： hook打印调用栈   查找用例
+# 7 查找用例：有很多，大致有两类---》随便看---》最终 都是一个位置
+    -一类是：uui
+    -一类是：Utils.i 生成的
+
+# 8 随便看第一个：
+hk.c.Q().u0(Utils.i(BaseApplication.getContextObject()));
+
+# 9 Utils.i：先去xml中找，找不到--》生成 安卓uuid---》还没生成就随机生成uuid
+    public static String i(Context context) {
+        if (CommonsConfig.getInstance().isPreviewModel) {
+            return hk.c.Q().m();
+        }
+        if (p(f39524g)) {
+            String stringByKey = CommonPreferencesUtils.getStringByKey(context, CommonsConfig.VIP_MID_KEY);
+            f39524g = stringByKey;
+            if (p(stringByKey) || DeviceUuidFactory.ANDROIDID_000000000_MID.equals(f39524g)) {
+                String uuid = DeviceUuidFactory.getDeviceUuid(context).toString();
+                f39524g = uuid;
+                if (p(uuid)) {
+                    f39524g = UUID.randomUUID().toString(); # 随机生成uuid
+                    CommonPreferencesUtils.addConfigInfo(context, CommonsConfig.MID_TYPE_KEY, &quot;3&quot;);
+                }
+                CommonPreferencesUtils.addConfigInfo(context, CommonsConfig.VIP_MID_KEY, f39524g);
+            }
+        }
+        return f39524g;
+    }
+# 9 使用随机生成的uuid测试---》发现可以
+
+# 10 代码模拟：uuid
+import uuid
+device_token = str(uuid.uuid4())
+</code></pre>
+<h3 id="311-python-device_token">3.1.1 python 还原device_token</h3>
+<pre><code class="language-python">import uuid
+device_token = str(uuid.uuid4())
+</code></pre>
+<h2 id="32-skey">3.2 逆向skey</h2>
+<pre><code class="language-python"># 1 搜索 skey---》图1 
+    -发现有很多
+    -有一个常量是SKEY--》编程通常的做法，定义一个常量，以后直接取该常量使用
+
+# 2 所以我们查找常量SKEY的用例---》
+    -找到很多，我们关注
+    -随便点进一个去看
+    -再看看其它的，其实最后定位到一个位置
+
+
+# 3 treeMap.put(ApiConfig.SKEY, f(context, new String[0]));---》查看f---》图4
+public static String f(Context context, String... strArr) {
+    if (TextUtils.isEmpty(f2017b)) {
+        String info = KeyInfoFetcher.getInfo(context, ApiConfig.SKEY);
+        f2017b = info;
+        if (TextUtils.isEmpty(info) || f2017b.startsWith(&quot;KI &quot;)) {
+            KeyInfoFetcher.loadKeyInfoSoWarp((strArr == null || strArr.length &lt;= 0) ? &quot;&quot; : strArr[0]);
+            f2017b = KeyInfoFetcher.getInfo(context, ApiConfig.SKEY);
+        }
+    }
+    return f2017b;
+}
+
+# 4 查看String info = KeyInfoFetcher.getInfo(context, ApiConfig.SKEY);--》图6
+public static String getInfo(Context context, String str) {
+    try {
+        if (clazz == null || object == null || method == null) {
+            int i10 = KeyInfo.f69594a;
+            clazz = KeyInfo.class;
+            object = KeyInfo.class.newInstance();
+            method = clazz.getMethod(&quot;getInfo&quot;, Context.class, String.class);
+        }
+        return (String) method.invoke(object, context, str);
+    } catch (Exception e10) {
+        VCSPMyLog.error(KeyInfoFetcher.class, e10);
+        return &quot;&quot;;
+    }
+}
+
+# 5 上述核心代码---java的反射机制
+clazz = KeyInfo.class; # 找到类
+object = KeyInfo.class.newInstance(); # 得到类的对象
+method = clazz.getMethod(&quot;getInfo&quot;, Context.class, String.class) # 找到对象中的方法，传入方法名，参数
+return (String) method.invoke(object, context, str);# 找到方法后真正调用对象的方法，传入参数，str就是 'skey' 字符串
+
+# 6 正常代码
+KeyInfo info=new KeyInfo()
+String res=info.getInfo(context,str)
+return res
+
+# 7 我们需要去KeyInfo类中找 getInfo方法--》最终掉用了jni的getNavInfo方法，传入'skey' 字符串
+public class KeyInfo {
+    private static final String LibName = &quot;keyinfo&quot;;
+    static {
+        try {
+            System.loadLibrary(LibName);
+        } catch (Throwable th2) {
+            th2.printStackTrace();
+        }
+    }
+    public static String getInfo(Context context, String str) {
+        try {
+            try {
+                return getNavInfo(context, str);
+            } catch (Throwable th2) {
+                return &quot;KI gi: &quot; + th2.getMessage();
+            }
+        } catch (Throwable unused) {
+            SoLoader.load(context, LibName);
+            return getNavInfo(context, str);
+        }
+    }
+    private static native String getNavInfo(Context context, String str);
+}
+
+# 8 正常应该去so文件中逆向
+    -但是我们可以hook几次看看，返回值是否是固定的
+    -如果是固定的就不用逆向了，直接拿着用
+    -换多个设备hook发现，只要传入的是'skey' 字符串
+    -返回值就是固定的
+
+
+ # 9 hook代码如下
+</code></pre>
+<pre><code class="language-python"># 1 搜索 skey ---》有很多
+
+# 2 先看常量：发现很多见过的
+    public static final String API_KEY = &quot;api_key&quot;;
+    public static final String DID = &quot;did&quot;;
+    public static final String EDATA = &quot;edata&quot;;
+    public static final String SESSION_ID = &quot;session_id&quot;;
+    public static final String SKEY = &quot;skey&quot;;
+
+# 3 继续分析---》查找用例---》找到很多--》随便看--》最终定位到同样的位置
+    treeMap.put(ApiConfig.SKEY, f(context, new String[0]));
+
+# 4 分析f--》返回值是skey
+public static String f(Context context, String... strArr) {
+    if (TextUtils.isEmpty(f2017b)) {
+        String info = KeyInfoFetcher.getInfo(context, ApiConfig.SKEY);
+        f2017b = info;
+        if (TextUtils.isEmpty(info) || f2017b.startsWith(&quot;KI &quot;)) {
+            KeyInfoFetcher.loadKeyInfoSoWarp((strArr == null || strArr.length &lt;= 0) ? &quot;&quot; : strArr[0]);
+            f2017b = KeyInfoFetcher.getInfo(context, ApiConfig.SKEY);
+        }
+    }
+    return f2017b;
+}
+# 5 返回值是： String info = KeyInfoFetcher.getInfo(context, ApiConfig.SKEY);得到的
+public static String getInfo(Context context, String str) {
+    try {
+        # 反射
+        if (clazz == null || object == null || method == null) {
+            int i10 = KeyInfo.f69594a;
+            clazz = KeyInfo.class;
+            object = KeyInfo.class.newInstance();
+            method = clazz.getMethod(&quot;getInfo&quot;, Context.class, String.class);
+        }
+        return (String) method.invoke(object, context, str); # 返回的就是skey的值
+    } catch (Exception e10) {
+        VCSPMyLog.error(KeyInfoFetcher.class, e10);
+        return &quot;&quot;;
+    }
+}
+
+# 6 上述核心代码如下
+clazz = KeyInfo.class; # 找到类
+object = KeyInfo.class.newInstance(); # 类实例化得到对象
+method = clazz.getMethod(&quot;getInfo&quot;, Context.class, String.class); # 通过类找到类中的方法
+method.invoke(object, context, str) # 调用找的的方法
+----就是典型的--java的反射机制---通过字符串取类中找某个方法或属性--》如果是方法执行方法--
+# 7 上述转换成正常代码：
+KeyInfo KeyInfo =new KeyInfo()
+String skey=KeyInfo.getInfo(context,str) # skey 就是执行 KeyInfo类中getInfo得到的
+
+# 8 KeyInfo类中找getInfo
+public static String getInfo(Context context, String str) {
+    try {
+        try {
+            return getNavInfo(context, str); # 这里是 
+        } catch (Throwable th2) {
+            return &quot;KI gi: &quot; + th2.getMessage();
+        }
+    } catch (Throwable unused) {
+        SoLoader.load(context, LibName);
+        return getNavInfo(context, str);
+    }
+}
+
+# 9 getNavInfo 是一个JNI的方法
+private static native String getNavInfo(Context context, String str);
+
+# 10 确定了：skey是通过jni方法返回的  getNavInfo 方法返回的
+    -正常应该去读 so 如何实现的
+    -之前看到过，skey 不变--》多次hook，换设备hook--》看看值有没有变---》即便换设备，值固定的
+</code></pre>
+<p><img alt="image-20230817171952809" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817171952809.png" /></p>
+<p><img alt="image-20230817172437069" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817172437069.png" /></p>
+<p><img alt="image-20230817172501734" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817172501734.png" /></p>
+<p><img alt="image-20230817172558162" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817172558162.png" /></p>
+<p><img alt="image-20230817172709066" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817172709066.png" /></p>
+<h3 id="321-hook-getnavinfo">3.2.1 hook--getNavInfo查看返回值</h3>
+<h4 id="321-frida">3.2.1 绕过frida调试</h4>
+<pre><code class="language-python">import frida
+
+# 获取设备信息
+rdev = frida.get_remote_device()
+
+# 枚举所有的进程
+processes = rdev.enumerate_processes()
+for process in processes:
+    print(process)
+
+# 获取在前台运行的APP
+front_app = rdev.get_frontmost_application()
+print(front_app)
+# Application(identifier=&quot;com.achievo.vipshop&quot;, name=&quot;唯品会&quot;, pid=22907, parameters={})
+
+
+### hook运行了那些so
+import frida
+import sys
+
+rdev = frida.get_remote_device()
+pid = rdev.spawn([&quot;com.achievo.vipshop&quot;])
+session = rdev.attach(pid)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+
+    var dlopen = Module.findExportByName(null, &quot;dlopen&quot;);
+    var android_dlopen_ext = Module.findExportByName(null, &quot;android_dlopen_ext&quot;);
+
+    Interceptor.attach(dlopen, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            console.log(&quot;[dlopen:]&quot;, path);
+        },
+        onLeave: function (retval) {
+
+        }
+    });
+
+    Interceptor.attach(android_dlopen_ext, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            console.log(&quot;[dlopen_ext:]&quot;, path);
+        },
+        onLeave: function (retval) {
+
+        }
+    });
+
+
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+rdev.resume(pid)
+sys.stdin.read()
+
+
+# /data/app/~~PYR1rBhukSZcT4B2KQ_VDw==/com.achievo.vipshop-LBTKI1qDnOWh1s-aZDbLIA==/lib/arm/libmsaoaidsec.so
+</code></pre>
+<h4 id="322-getnavinfo">3.2.2 多次测试getNavInfo查看返回值</h4>
+<pre><code class="language-python"># 现象：hook就闪退（反调试） 删除 `libmsaoaidsec.so`
+import frida
+import sys
+
+rdev = frida.get_remote_device()
+pid = rdev.spawn([&quot;com.achievo.vipshop&quot;])
+session = rdev.attach(pid)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var KeyInfo = Java.use(&quot;com.vip.vcsp.KeyInfo&quot;);
+
+    KeyInfo.getNavInfo.implementation = function (ctx, str) {
+        console.log(&quot;-----------------&quot;);
+        console.log(&quot;参数==&gt;&quot;, str);
+        var res = this.getNavInfo(ctx, str);
+        console.log(&quot;返回的值==&gt;&quot;, res);
+        return res;
+    }
+});
+&quot;&quot;&quot;
+
+
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+rdev.resume(pid)
+sys.stdin.read()
+</code></pre>
+<pre><code class="language-python">设备1：
+        -----------------
+        参数==&gt; app_name
+        返回的值==&gt; shop_android
+        -----------------
+        参数==&gt; vcsp_key
+        返回的值==&gt; 4d9e524ad536c03ff203787cf0dfcd29
+        -----------------
+        参数==&gt; api_key
+        返回的值==&gt; 23e7f28019e8407b98b84cd05b5aef2c
+
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+
+设备2：
+        -----------------
+        参数==&gt; app_name
+        返回的值==&gt; shop_android
+        -----------------
+        参数==&gt; vcsp_key
+        返回的值==&gt; 4d9e524ad536c03ff203787cf0dfcd29
+        -----------------
+        参数==&gt; api_key
+        返回的值==&gt; 23e7f28019e8407b98b84cd05b5aef2c
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+</code></pre>
+<p>skey可以不传，传了也是个固定的值。</p>
+<pre><code>skey = 6692c461c3810ab150c9a980d0c275ec
+</code></pre>
+<h2 id="33-authorization">3.3 逆向authorization</h2>
+<p>```python</p>
+<h1 id="1-authorization">1  authorization</h1>
+<p>authorization：OAuth api_sign=bd16242e8738370e6ea310dad1ff92d49c181040</p>
+<h1 id="2-1">2 我们可以搜索---》图 1</h1>
+<p>authorization # 很多
+api_sign # 少一些</p>
+<h1 id="3-addheader-2">3 找到 addHeader的位置---》图2</h1>
+<pre><code>-发现api_sign=str
+-我们查找str的位置
+str = b.b(context, treeMap2, apiProccessModel2.tokenSecret, apiProccessModel2.url)
+</code></pre>
+<h1 id="4-str-bb-3">4 str都是调用了 b.b---》图3</h1>
+<p>public static String b(Context context, TreeMap<String, String> treeMap, String str, String str2) {
+    if (treeMap != null &amp;&amp; TextUtils.isEmpty(treeMap.get(ApiConfig.SKEY))) {
+        treeMap.put(ApiConfig.SKEY, f(context, new String[0]));
+    }
+    return a(context, treeMap, str);
+}</p>
+<h1 id="5-a-a-4">5 返回值是a 函数---》查看a---》图4</h1>
+<p>private static String a(Context context, TreeMap<String, String> treeMap, String str) {
+    try {
+        if (VCSPCommonsConfig.getContext() == null) {
+            VCSPCommonsConfig.setContext(context);
+        }
+        String apiSign = VCSPSecurityBasicService.apiSign(context, treeMap, str);
+        if (TextUtils.isEmpty(apiSign)) {
+            String a10 = com.achievo.vipshop.commons.c.a();
+            return "p: " + a10 + ", vcsp return empty sign :" + apiSign;
+        }
+        return apiSign;
+    } catch (Exception e10) {
+        e10.printStackTrace();
+        String a11 = com.achievo.vipshop.commons.c.a();
+        return "p: " + a11 + ", Exception:" + e10.getMessage();
+    } catch (Throwable th2) {
+        th2.printStackTrace();
+        String a12 = com.achievo.vipshop.commons.c.a();
+        return "p: " + a12 + ", Throwable:" + th2.getMessage();
+    }
+}</p>
+<h1 id="6-vcspsecuritybasicserviceapisign-5">6 查看 VCSPSecurityBasicService.apiSign---》图5</h1>
+<p>public static String apiSign(Context context, TreeMap<String, String> treeMap, String str) throws Exception {
+    if (context == null) {
+        context = VCSPCommonsConfig.getContext();
+    }
+    return VCSPSecurityConfig.getMapParamsSign(context, treeMap, str, false);
+}</p>
+<h1 id="7-vcspsecurityconfiggetmapparamssign-6">7 继续看 VCSPSecurityConfig.getMapParamsSign---》图 6</h1>
+<p>public static String getMapParamsSign(Context context, TreeMap<String, String> treeMap, String str, boolean z10) {
+    String str2 = null;
+    if (treeMap != null) {
+        boolean z11 = false;
+        Set<Map.Entry\<String, String>> entrySet = treeMap.entrySet();
+        if (entrySet != null) {
+            Iterator<Map.Entry\<String, String>> it = entrySet.iterator();
+            while (true) {
+                if (it == null || !it.hasNext()) {
+                    break;
+                }
+                Map.Entry<String, String> next = it.next();
+                if (next != null &amp;&amp; next.getKey() != null &amp;&amp; ApiConfig.USER_TOKEN.equals(next.getKey()) &amp;&amp; !TextUtils.isEmpty(next.getValue())) {
+                    z11 = true;
+                    break;
+                }
+            }
+        }
+        if (z11) {
+            if (TextUtils.isEmpty(str)) {
+                str = VCSPCommonsConfig.getTokenSecret();
+            }
+            str2 = str;
+        }
+        return getSignHash(context, treeMap, str2, z10);
+    }
+    return null;
+}</p>
+<h1 id="8-getsignhash-7">8 继续看 getSignHash---》图 7</h1>
+<p>public static String getSignHash(Context context, Map<String, String> map, String str, boolean z10) {
+    try {
+        return gs(context.getApplicationContext(), map, str, z10);
+    } catch (Throwable th2) {
+        VCSPMyLog.error(clazz, th2);
+        return "error! params invalid";
+    }
+}</p>
+<h1 id="9-gscontextgetapplicationcontext-map-str-z10-8">9 继续看gs(context.getApplicationContext(), map, str, z10)--》熟悉的反射--》图8</h1>
+<p>private static String gs(Context context, Map<String, String> map, String str, boolean z10) {
+    try {
+        if (clazz == null || object == null) {
+            synchronized (lock) {
+                initInstance();
+            }
+        }
+        if (gsMethod == null) {
+            gsMethod = clazz.getMethod("gs", Context.class, Map.class, String.class, Boolean.TYPE);
+        }
+        return (String) gsMethod.invoke(object, context, map, str, Boolean.valueOf(z10));
+    } catch (Exception e10) {
+        e10.printStackTrace();
+        return "Exception gs: " + e10.getMessage();
+    } catch (Throwable th2) {
+        th2.printStackTrace();
+        return "Throwable gs: " + th2.getMessage();
+    }
+}</p>
+<h1 id="10-keyinfo-gs-gsjnigsnav-9">10 我们需要从 KeyInfo 类中找 gs 方法---》gs调用jni的gsNav方法---》图9</h1>
+<p>public class KeyInfo {
+    private static final String LibName = "keyinfo";
+    static {
+        try {
+            System.loadLibrary(LibName);
+        } catch (Throwable th2) {
+            th2.printStackTrace();
+        }
+    }
+    private static native String gsNav(Context context, Map<String, String> map, String str, boolean z10);</p>
+<pre><code>public static String gs(Context context, Map&lt;String, String&gt; map, String str, boolean z10) {
+    try {
+        try {
+            return gsNav(context, map, str, z10);
+        } catch (Throwable th2) {
+            return "KI gs: " + th2.getMessage();
+        }
+    } catch (Throwable unused) {
+        SoLoader.load(context, LibName);
+        return gsNav(context, map, str, z10);
+    }
+}
+</code></pre>
+<p>}</p>
+<h1 id="11-hookgsnav">11 我们hook看一下gsNav，先看看它的参数和返回值</h1>
+<p>```</p>
+<h3 id="330">3.3.0 破解过程</h3>
+<pre><code class="language-python"># 1 反编译搜索：
+authorization   #多一些
+api_sign        # 少一些
+# 2 搜索 api_sign 发现6个位置---》第一个意思是向请求头中加数据，直接看第一个
+builder.addHeader(&quot;Authorization&quot;, &quot;OAuth api_sign=&quot; + str);
+
+# 3 看str是在哪里赋值的
+    str = b.b(context, treeMap2, apiProccessModel2.tokenSecret, apiProccessModel2.url);
+# 4 查看b.b()
+public static String b(Context context, TreeMap&lt;String, String&gt; treeMap, String str, String str2) {
+    if (treeMap != null &amp;&amp; TextUtils.isEmpty(treeMap.get(ApiConfig.SKEY))) {
+        treeMap.put(ApiConfig.SKEY, f(context, new String[0]));
+    }
+    return a(context, treeMap, str);  # 返回结果是api_sign对应的值
+}
+
+# 5 查看 a函数
+private static String a(Context context, TreeMap&lt;String, String&gt; treeMap, String str) {
+    try {
+        if (VCSPCommonsConfig.getContext() == null) {
+            VCSPCommonsConfig.setContext(context);
+        }
+        String apiSign = VCSPSecurityBasicService.apiSign(context, treeMap, str);
+        if (TextUtils.isEmpty(apiSign)) {
+            String a10 = com.achievo.vipshop.commons.c.a();
+            return &quot;p: &quot; + a10 + &quot;, vcsp return empty sign :&quot; + apiSign;
+        }
+        return apiSign;
+    } catch (Exception e10) {
+        e10.printStackTrace();
+        String a11 = com.achievo.vipshop.commons.c.a();
+        return &quot;p: &quot; + a11 + &quot;, Exception:&quot; + e10.getMessage();
+    } catch (Throwable th2) {
+        th2.printStackTrace();
+        String a12 = com.achievo.vipshop.commons.c.a();
+        return &quot;p: &quot; + a12 + &quot;, Throwable:&quot; + th2.getMessage();
+    }
+}
+# 6 继续看：String apiSign = VCSPSecurityBasicService.apiSign(context, treeMap, str);
+public static String apiSign(Context context, TreeMap&lt;String, String&gt; treeMap, String str) throws Exception {
+    if (context == null) {
+        context = VCSPCommonsConfig.getContext();
+    }
+    return VCSPSecurityConfig.getMapParamsSign(context, treeMap, str, false);
+}
+
+# 7 继续看：VCSPSecurityConfig.getMapParamsSign(context, treeMap, str, false);
+public static String getMapParamsSign(Context context, TreeMap&lt;String, String&gt; treeMap, String str, boolean z10) {
+    String str2 = null;
+    if (treeMap != null) {
+        boolean z11 = false;
+        Set&lt;Map.Entry&lt;String, String&gt;&gt; entrySet = treeMap.entrySet();
+        if (entrySet != null) {
+            Iterator&lt;Map.Entry&lt;String, String&gt;&gt; it = entrySet.iterator();
+            while (true) {
+                if (it == null || !it.hasNext()) {
+                    break;
+                }
+                Map.Entry&lt;String, String&gt; next = it.next();
+                if (next != null &amp;&amp; next.getKey() != null &amp;&amp; ApiConfig.USER_TOKEN.equals(next.getKey()) &amp;&amp; !TextUtils.isEmpty(next.getValue())) {
+                    z11 = true;
+                    break;
+                }
+            }
+        }
+        if (z11) {
+            if (TextUtils.isEmpty(str)) {
+                str = VCSPCommonsConfig.getTokenSecret();
+            }
+            str2 = str;
+        }
+        return getSignHash(context, treeMap, str2, z10);
+    }
+    return null;
+}
+
+
+# 8 继续查看getSignHash
+public static String getSignHash(Context context, Map&lt;String, String&gt; map, String str, boolean z10) {
+    try {
+        return gs(context.getApplicationContext(), map, str, z10);
+    } catch (Throwable th2) {
+        VCSPMyLog.error(clazz, th2);
+        return &quot;error! params invalid&quot;;
+    }
+}
+
+# 9 继续看gs(context.getApplicationContext(), map, str, z10);
+private static String gs(Context context, Map&lt;String, String&gt; map, String str, boolean z10) {
+    try {
+        if (clazz == null || object == null) {
+            synchronized (lock) {
+                initInstance(); # KeyInfo类
+            }
+        }
+        if (gsMethod == null) {
+            # 去KeyInfo类中通过gs反射--》找到方法后执行gs
+            gsMethod = clazz.getMethod(&quot;gs&quot;, Context.class, Map.class, String.class, Boolean.TYPE);
+        }
+        return (String) gsMethod.invoke(object, context, map, str, Boolean.valueOf(z10));
+    } catch (Exception e10) {
+        e10.printStackTrace();
+        return &quot;Exception gs: &quot; + e10.getMessage();
+    } catch (Throwable th2) {
+        th2.printStackTrace();
+        return &quot;Throwable gs: &quot; + th2.getMessage();
+    }
+}
+
+# 10 去KeyInfo类中找gs方法--》查看返回值
+public static String gs(Context context, Map&lt;String, String&gt; map, String str, boolean z10) {
+    try {
+        try {
+            return gsNav(context, map, str, z10);
+        } catch (Throwable th2) {
+            return &quot;KI gs: &quot; + th2.getMessage();
+        }
+    } catch (Throwable unused) {
+        SoLoader.load(context, LibName);
+        return gsNav(context, map, str, z10);
+    }
+}
+# 11 gsNav(context, map, str, z10) 是JNI方法--》传了一堆参数，返回了字符串
+private static native String gsNav(Context context, Map&lt;String, String&gt; map, String str, boolean z10);
+
+# 12 api_sign=a7307e22370bb8bdcf47a3bcb492945f640c24c9 ---》gsNav返回的是字符串
+
+# 13 hook一下 gsNav 查看参数和返回值
+    参数：map  str  z10
+        map就是请求参数：
+    返回值：就是api_sign
+# 14 通过hook确定了：
+    api_sign 本质就是对请求参数的所有数据，进行加密--》得到字符串
+    a7307e22370bb8bdcf47a3bcb492945f640c24c9 ：md5，sha1摘要算法
+</code></pre>
+<p><img alt="image-20230817175852035" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817175852035.png" /></p>
+<p><img alt="image-20230817180037000" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817180037000.png" /></p>
+<p><img alt="image-20230817184255836" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817184255836.png" /></p>
+<p><img alt="image-20230817184502981" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817184502981.png" /></p>
+<p><img alt="image-20230817184621127" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817184621127.png" /></p>
+<p><img alt="image-20230817184740255" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817184740255.png" /></p>
+<p><img alt="image-20230817184933457" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817184933457.png" /></p>
+<p><img alt="image-20230817185124006" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817185124006.png" /></p>
+<p><img alt="image-20230817185406503" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230817185406503.png" /></p>
+<h3 id="331-hook-gsnav-">3.3.1 hook--gsNav-看入参和返回值</h3>
+<pre><code class="language-python"># 清除一下数据
+import frida
+import sys
+
+rdev = frida.get_remote_device()
+
+session = rdev.attach(&quot;唯品会&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var KeyInfo = Java.use(&quot;com.vip.vcsp.KeyInfo&quot;);
+    var TreeMap = Java.use('java.util.TreeMap');
+
+
+    KeyInfo.gsNav.implementation = function (ctx, map,str,z10) {
+        console.log(&quot;-----------------gsNav-----------------&quot;);
+        console.log(&quot;参数==&gt;&quot;, Java.cast(map,TreeMap).toString());
+        console.log(&quot;参数==&gt;&quot;, str);
+        console.log(&quot;参数==&gt;&quot;, z10);
+        var res = this.gsNav(ctx, map,str,z10);
+        console.log(&quot;返回的值==&gt;&quot;, res);
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+sys.stdin.read()
+
+'''
+1 根据抓包抓到的 OAuth api_sign=bd16242e8738370e6ea310dad1ff92d49c181040 搜索
+2 如下
+###这些参数就是device_reg这个请求拼出来一些参数，基本都是固定的
+参数==&gt; {app_name=achievo_ad, app_version=7.83.3, channel=oziq7dxw:::, device=Pixel 2 XL, device_token=a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d, manufacturer=Google, os_version=30, regPlat=0, regid=null, rom=Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1), skey=6692c461c3810ab150c9a980d0c275ec, status=1, vipruid=, warehouse=null}
+参数==&gt; null
+参数==&gt; false
+返回的值==&gt; bd16242e8738370e6ea310dad1ff92d49c181040
+
+'''
+</code></pre>
+<h3 id="332-libkeyinfoso-">3.3.2 libkeyinfo.so--》静态注册</h3>
+<pre><code class="language-python"># 1 我们去so文件中找 libkeyinfo.so
+public class KeyInfo {
+    private static final String LibName = &quot;keyinfo&quot;;
+    static {
+            System.loadLibrary(LibName);
+    }
+# 2 打开32为的IDA，将so文件拖入
+
+# 3 搜索java_xxx_gsNav
+
+# 4 load 头文件，代码如下，返回了v9，所以我们看v9怎么来的
+int __fastcall Java_com_vip_vcsp_KeyInfo_gsNav(JNIEnv_ *a1, int a2, int a3, int a4, int a5, int a6)
+{
+  int v9; // r5
+
+  if ( j_Utils_ima(a1, a2, a3) )
+    v9 = j_Functions_gs(a1, a2, a4, a5, a6);
+  else
+    v9 = 0;
+  j_Utils_checkJniException(a1);
+  return v9;
+}
+
+ # 5 j_Functions_gs(a1, a2, a4, a5, a6)得到v9，双击查看
+int __fastcall j_Functions_gs(int a1, int a2, int a3, int a4, int a5)
+{
+  return Functions_gs(a1, a2, a3, a4, a5);
+}
+
+# 6 继续双击查看---倒着看
+jstring __fastcall Functions_gs(JNIEnv_ *a1, int a2, int a3, int a4, int a5){
+    #。。。很多代码。。。
+  v55 = j_getByteHash(a1, a2, v30, v16, v80, 256);
+  if ( v55
+    &amp;&amp; (v56 = (const char *)v55,
+        v57 = strcpy(v79, dest),
+        strcat(v57, v56),
+        memset(v80, 0, sizeof(v80)),
+        v58 = strlen(v79), #v58是一个长度，所以v79是个字符串
+        (v59 = (const char *)j_getByteHash(a1, a2, v79, v58, v80, 256)) != 0) )# 3 v59在此处生成
+  {
+    v53 = a1-&gt;functions-&gt;NewStringUTF(a1, v59); # 2 通过v59字符串生成的
+  }
+  else
+  {
+    v53 = 0;
+  }
+  free(v30);
+  return v53; # 1 返回了v53
+}
+
+}
+
+
+# 7 继续查看j_getByteHash
+int __fastcall j_getByteHash(int a1, int a2, int a3, int a4, int a5, int a6)
+{
+  return getByteHash(a1, a2, a3, a4, a5);
+}
+
+# 8 继续查看 getByteHash(a1, a2, a3, a4, a5)---》猜测可能用了sha1加密
+char *__fastcall getByteHash(JNIEnv_ *a1, int a2, int a3, int a4, char *a5)
+{
+  j_SHA1Reset(v12);
+  j_SHA1Input(v12, a3, a4);
+  if ( j_SHA1Result(v12) )
+  return v7;
+}
+
+#9 我们hook--getByteHash--查看参数和返回值--》第二个位置的参数是v79
+</code></pre>
+<p><img alt="image-20230404191544847" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230404191544847.png" /></p>
+<p><img alt="image-20230404191604765" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230404191604765.png" /></p>
+<p><img alt="image-20230404191618637" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230404191618637.png" /></p>
+<p><img alt="image-20230404191658372" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230404191658372.png" /></p>
+<p><img alt="image-20230404191805721" src="../../爬虫逆向9期/day19/imgs/day19-唯品会-参考笔记.assets/image-20230404191805721.png" /></p>
+<p><img alt="image-20230404191842368" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230404191842368.png" /></p>
+<h4 id="3321-hook-getbytehash">3.3.2.1 Hook getByteHash的参数和返回值</h4>
+<pre><code class="language-js">// 去内存中中 libkeyinfo.so  getByteHash
+var addr = Module.findExportByName(&quot;libkeyinfo.so&quot;, &quot;getByteHash&quot;);
+console.log(addr); //0xb696387d
+
+
+
+Interceptor.attach(addr,{
+    onEnter:function (args){
+        this.x1 = args[2];
+    },
+    onLeave:function(retval) {
+        console.log(&quot;--------------------&quot;)
+        console.log(Memory.readCString(this.x1));
+        console.log(Memory.readCString(retval));
+    }
+
+})
+
+// frida -U -f com.achievo.vipshop -l hook04.js    重启app+hook（出问题）
+// frida -UF -l hook04.js                          手动启动+hook
+</code></pre>
+<p><img alt="image-20231101191418140" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20231101191418140.png" /></p>
+<p><img alt="image-20231101222121854" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20231101222121854.png" /></p>
+<h4 id="1hook">1.手动Hook</h4>
+<pre><code class="language-python"># 1 hook 脚本写好了--》app清数据
+    1 如果在app运行之前运行---attach方案--》由于app没运行--》脚本运行就报错
+    2 如果运行起app---》如果脚本起慢了---》注册设备执行完了，就hook不到
+    3 如果脚本起快了---》app还没运行---》脚本会报错
+    4 脚本运行时机非常重要
+
+
+# 2 这个hook脚本，必须要用attach方法--》等待so加载到内存再执行，太早太晚都不行
+</code></pre>
+<p><img alt="image-20230404193347293" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230404193347293.png" /></p>
+<p>点击同意时，立即开始Hook。</p>
+<pre><code class="language-javascript">// 删除数据，重启，点了同意，里面启动脚本，把握时机，如果太早，so文件没加载，如果太晚，代码执行完了，不好控制
+// 去内存中中 libkeyinfo.so  getByteHash
+var addr = Module.findExportByName(&quot;libkeyinfo.so&quot;, &quot;getByteHash&quot;);
+console.log(addr);
+
+
+
+Interceptor.attach(addr,{
+    onEnter:function (args){
+        this.x1 = args[2];
+    },
+    onLeave:function(retval) {
+        console.log(&quot;--------------------&quot;)
+        console.log(Memory.readCString(this.x1));
+        console.log(Memory.readCString(retval));
+    }
+
+})
+
+// frida -UF -l hook04.js                          手动启动+hook
+
+// 通过抓包抓到的返回值去搜索
+
+/*
+--------------------
+aee4c425dbb2288b80c71347cc37d04bapp_name=achievo_ad&amp;app_version=7.83.3&amp;channel=oziq7dxw:::&amp;device=Pixel 2 XL&amp;device_token=a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d&amp;manufacturer=Google&amp;os_version=30&amp;regPlat=0&amp;regid=null&amp;rom=Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1)&amp;skey=6692c461c3810ab150c9a980d0c275ec&amp;status=1&amp;vipruid=&amp;warehouse=VIP_SH
+f5fb31c0c3081d18c3f15c193e6f0c3868ae8d14
+--------------------
+aee4c425dbb2288b80c71347cc37d04b   f5fb31c0c3081d18c3f15c193e6f0c3868ae8d14
+f4f002d40e112a06ecdc04e54d5bf9c92c0477aa
+--------------------
+
+###我们发现aee4c425dbb2288b80c71347cc37d04b是一样的，可以猜测，这就是sha1算法的盐
+
+*/
+</code></pre>
+<h4 id="2hook">2.延迟Hook</h4>
+<pre><code class="language-javascript">function do_hook() {
+    setTimeout(function(){
+        var addr = Module.findExportByName(&quot;libkeyinfo.so&quot;, &quot;getByteHash&quot;);
+        console.log(addr); //0xb696387d
+
+
+        Interceptor.attach(addr, {
+            onEnter: function (args) {
+                this.x1 = args[2];
+            },
+            onLeave: function (retval) {
+                console.log(&quot;--------------------&quot;)
+                console.log(Memory.readCString(this.x1));
+                console.log(Memory.readCString(retval));
+            }
+        })
+     },10);
+
+}
+
+function load_so_and_hook() {
+    var dlopen = Module.findExportByName(null, &quot;dlopen&quot;);
+    var android_dlopen_ext = Module.findExportByName(null, &quot;android_dlopen_ext&quot;);
+
+    Interceptor.attach(dlopen, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            // console.log(&quot;[dlopen:]&quot;, path);
+            this.path = path;
+        }, onLeave: function (retval) {
+            if (this.path.indexOf(&quot;libkeyinfo.so&quot;) !== -1) {
+                console.log(&quot;[dlopen:]&quot;, this.path);
+                do_hook();
+
+            }
+        }
+    });
+
+    Interceptor.attach(android_dlopen_ext, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+
+            this.path = path;
+        }, onLeave: function (retval) {
+            if (this.path.indexOf(&quot;libkeyinfo.so&quot;) !== -1) {
+                console.log(&quot;\nandroid_dlopen_ext加载：&quot;, this.path);
+                do_hook();
+
+            }
+        }
+    });
+}
+
+load_so_and_hook();
+
+// frida -U -f com.achievo.vipshop -l hook05.js
+</code></pre>
+<h3 id="333-ok">3.3.3 测试OK</h3>
+<pre><code class="language-python">import hashlib
+
+data_string =&quot;aee4c425dbb2288b80c71347cc37d04bapp_name=achievo_ad&amp;app_version=7.83.3&amp;channel=oziq7dxw:::&amp;device=Pixel 2 XL&amp;device_token=a9d1a2b9-2a79-36fd-a8ca-cbe24c03979d&amp;manufacturer=Google&amp;os_version=30&amp;regPlat=0&amp;regid=null&amp;rom=Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1)&amp;skey=6692c461c3810ab150c9a980d0c275ec&amp;status=1&amp;vipruid=&amp;warehouse=VIP_SH&quot;
+
+# sha1加密
+hash_object = hashlib.sha1()
+hash_object.update(data_string.encode('utf-8'))
+arg7 = hash_object.hexdigest()
+print(arg7) # f5fb31c0c3081d18c3f15c193e6f0c3868ae8d14
+
+x = &quot;aee4c425dbb2288b80c71347cc37d04b&quot;+arg7
+# sha1加密
+hash_object = hashlib.sha1()
+hash_object.update(x.encode('utf-8'))
+arg7 = hash_object.hexdigest()
+print(arg7) # f4f002d40e112a06ecdc04e54d5bf9c92c0477aa 跟hook出来的一样
+</code></pre>
+<h2 id="34-authorization">3.4 代码整合(不带authorization)</h2>
+<pre><code class="language-python">import requests
+import uuid
+
+import hashlib
+
+
+def sha1(data_string):
+    # sha1加密
+    hash_object = hashlib.sha1()
+    hash_object.update(data_string.encode('utf-8'))
+    arg7 = hash_object.hexdigest()
+    return arg7
+
+
+device_token = str(uuid.uuid4())
+param_dict = {
+    'app_name': 'achievo_ad',
+    'app_version': '7.83.3',
+    'device_token': device_token,
+    'status': 1,
+    'warehouse': 'null',
+    'manufacturer': 'Google',
+    'device': 'Pixel 2 XL',
+    'os_version': '30',
+    'channel': 'oziq7dxw:::',
+    'vipruid': '',
+    'regPlat': '0',
+    'regid': '',
+    'rom': 'Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1)',
+    'skey': '6692c461c3810ab150c9a980d0c275ec',
+
+}
+
+ordered_string = &quot;&amp;&quot;.join([&quot;{}={}&quot;.format(key, param_dict[key]) for key in sorted(param_dict.keys())])
+
+salt = &quot;aee4c425dbb2288b80c71347cc37d04b&quot;
+tmp = sha1(f&quot;{salt}{ordered_string}&quot;)
+api_sign = sha1(f&quot;{salt}{tmp}&quot;)
+
+res = requests.get(
+    url=&quot;https://mp.appvipshop.com/apns/device_reg&quot;,
+    params=param_dict,
+    headers={
+        # &quot;Authorization&quot;: &quot;OAuth api_sign={}&quot;.format(api_sign)
+    },
+    verify=False
+)
+print(res.text)
+
+</code></pre>
+<h2 id="35-authorization">3.5 代码整合(带authorization)</h2>
+<pre><code class="language-python">import requests
+import uuid
+
+import hashlib
+
+
+def sha1(data_string):
+    # sha1加密
+    hash_object = hashlib.sha1()
+    hash_object.update(data_string.encode('utf-8'))
+    arg7 = hash_object.hexdigest()
+    return arg7
+
+
+device_token = str(uuid.uuid4())
+param_dict = {
+    'app_name': 'achievo_ad',
+    'app_version': '7.83.3',
+    'device_token': device_token,
+    'status': 1,
+    'warehouse': 'null',
+    'manufacturer': 'Google',
+    'device': 'Pixel 2 XL',
+    'os_version': '30',
+    'channel': 'oziq7dxw:::',
+    'vipruid': '',
+    'regPlat': '0',
+    'regid': '',
+    'rom': 'Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1)',
+    'skey': '6692c461c3810ab150c9a980d0c275ec',
+
+}
+
+ordered_string = &quot;&amp;&quot;.join([&quot;{}={}&quot;.format(key, param_dict[key]) for key in sorted(param_dict.keys())])
+
+salt = &quot;aee4c425dbb2288b80c71347cc37d04b&quot;
+tmp = sha1(f&quot;{salt}{ordered_string}&quot;)
+api_sign = sha1(f&quot;{salt}{tmp}&quot;)
+
+res = requests.get(
+    url=&quot;https://mp.appvipshop.com/apns/device_reg&quot;,
+    params=param_dict,
+    headers={
+        &quot;Authorization&quot;: &quot;OAuth api_sign={}&quot;.format(api_sign)
+    },
+    verify=False
+)
+print(res.text)
+</code></pre>
+<h1 id="gettokenbyfp">四 getTokenByFP</h1>
+<p><img alt="image-20230822181523394" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230822181523394.png" /></p>
+<h2 id="41-vcspkey">4.1 vcspKey破解</h2>
+<p>在之前搞skey的Hook时，其实也获取到vcspKey，其实就是一个固定值。</p>
+<pre><code>设备1：
+        -----------------
+        参数==&gt; app_name
+        返回的值==&gt; shop_android
+        -----------------
+        参数==&gt; vcsp_key
+        返回的值==&gt; 4d9e524ad536c03ff203787cf0dfcd29
+        -----------------
+        参数==&gt; api_key
+        返回的值==&gt; 23e7f28019e8407b98b84cd05b5aef2c
+
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+
+    设备2：
+        -----------------
+        参数==&gt; app_name
+        返回的值==&gt; shop_android
+        -----------------
+        参数==&gt; vcsp_key
+        返回的值==&gt; 4d9e524ad536c03ff203787cf0dfcd29
+        -----------------
+        参数==&gt; api_key
+        返回的值==&gt; 23e7f28019e8407b98b84cd05b5aef2c
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+        -----------------
+        参数==&gt; skey
+        返回的值==&gt; 6692c461c3810ab150c9a980d0c275ec
+</code></pre>
+<h2 id="42-vcspauthorization">4.2 vcspauthorization</h2>
+<p>这个其实固定就好。</p>
+<p>因为：多次请求发现是固定 + 在请求中参数中只有固定的vcspKey（固定），所以，得到的结果理应固定。</p>
+<h2 id="43">4.3 代码</h2>
+<pre><code class="language-python">import requests
+
+res = requests.get(
+    url=&quot;https://vcsp-api.vip.com/token/getTokenByFP?vcspKey=4d9e524ad536c03ff203787cf0dfcd29&quot;,
+    headers={
+        &quot;vcspauthorization&quot;: &quot;vcspSign=05a68135d2bfd322e3a22f95bbc25a24c777f387&quot;
+    }
+)
+
+print(res.text)
+</code></pre>
+<h2 id="44">4.4 逆向【可选】</h2>
+<p>搜索：vcspauthorization</p>
+<p><img alt="image-20230822181742579" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230822181742579.png" /></p>
+<p><img alt="image-20230822181824959" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230822181824959.png" /></p>
+<p><img alt="image-20230822181943434" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230822181943434.png" /></p>
+<p><img alt="image-20230822182036769" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230822182036769.png" /></p>
+<p><img alt="image-20230822182108885" src="../imgs/day20-%E5%94%AF%E5%93%81%E4%BC%9A01.assets/image-20230822182108885.png" /></p>
+<p>后续执行过程与注册设备相同（参数不同而已）。</p>
+<h3 id="1hook_1">1.hook</h3>
+<pre><code class="language-javascript">function do_hook() {
+
+        var addr = Module.findExportByName(&quot;libkeyinfo.so&quot;, &quot;getByteHash&quot;);
+        console.log(addr); //0xb696387d
+
+
+        Interceptor.attach(addr, {
+            onEnter: function (args) {
+                this.x1 = args[2];
+            },
+            onLeave: function (retval) {
+                console.log(&quot;--------------------&quot;)
+                console.log(Memory.readCString(this.x1));
+                console.log(Memory.readCString(retval));
+            }
+
+        })
+
+}
+
+function load_so_and_hook() {
+    var dlopen = Module.findExportByName(null, &quot;dlopen&quot;);
+    var android_dlopen_ext = Module.findExportByName(null, &quot;android_dlopen_ext&quot;);
+
+    Interceptor.attach(dlopen, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            // console.log(&quot;[dlopen:]&quot;, path);
+            this.path = path;
+        }, onLeave: function (retval) {
+            if (this.path.indexOf(&quot;libkeyinfo.so&quot;) !== -1) {
+                console.log(&quot;[dlopen:]&quot;, this.path);
+                do_hook();
+
+            }
+        }
+    });
+
+    Interceptor.attach(android_dlopen_ext, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+
+            this.path = path;
+        }, onLeave: function (retval) {
+            if (this.path.indexOf(&quot;libkeyinfo.so&quot;) !== -1) {
+                console.log(&quot;\nandroid_dlopen_ext加载：&quot;, this.path);
+                do_hook();
+
+            }
+        }
+    });
+}
+
+load_so_and_hook();
+
+// frida -U -f com.achievo.vipshop -l delay_hook.js
+
+// 根据抓包抓到的数据，去搜索
+</code></pre>
+<h3 id="2_1">2.验证</h3>
+<pre><code>--------------------
+da19a1b93059ff3609fc1ed2e04b0141vcspKey=4d9e524ad536c03ff203787cf0dfcd29
+5a7c831821536f5a9d5244b99af681226dc8a277
+--------------------
+da19a1b93059ff3609fc1ed2e04b01415a7c831821536f5a9d5244b99af681226dc8a277
+05a68135d2bfd322e3a22f95bbc25a24c777f387
+--------------------
+
+</code></pre>
+<pre><code class="language-python">import hashlib
+
+data_string =&quot;da19a1b93059ff3609fc1ed2e04b0141vcspKey=4d9e524ad536c03ff203787cf0dfcd29&quot;
+
+# sha1加密
+hash_object = hashlib.sha1()
+hash_object.update(data_string.encode('utf-8'))
+arg7 = hash_object.hexdigest()
+print(arg7) # 5a7c831821536f5a9d5244b99af681226dc8a277
+
+x = &quot;da19a1b93059ff3609fc1ed2e04b0141&quot;+arg7
+# sha1加密
+hash_object = hashlib.sha1()
+hash_object.update(x.encode('utf-8'))
+arg7 = hash_object.hexdigest()
+print(arg7)#05a68135d2bfd322e3a22f95bbc25a24c777f387
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../js/main.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/gitbook.min.js"></script>
+<script src="../js/theme.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>十三、JNI开发 - My Docs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href=".." target="_blank" class="custom-link">My Docs</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="..">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD/">
+<a href="../day01-%E5%BC%80%E7%8F%AD/">一、前期准备</a>
+<li class="chapter" data-path="day02-adb/">
+<a href="../day02-adb/">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">
+<a href="../day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">
+<a href="../day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">
+<a href="../day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001/">
+<a href="../day06-java%E5%9F%BA%E7%A1%8001/">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002/">
+<a href="../day07-java%E5%9F%BA%E7%A1%8002/">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003/">
+<a href="../day08-java%E5%9F%BA%E7%A1%8003/">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">
+<a href="../day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">
+<a href="../day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">
+<a href="../day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">
+<a href="../day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">
+<a href="../day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">十二、C语言和JNI开发</a>
+<li class="chapter active" data-path="day13-JNI%E5%BC%80%E5%8F%91/">
+<a href="./">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">
+<a href="../day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app/">
+<a href="../day15-%E8%AF%86%E8%B4%A7app/">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app/">
+<a href="../day16-%E5%BE%97%E7%89%A9app/">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">
+<a href="../day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902/">
+<a href="../day18-B%E7%AB%9902/">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903/">
+<a href="../day19-B%E7%AB%9903/">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">
+<a href="../day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">
+<a href="../day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM/">
+<a href="../day22-DYM/">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91/">
+<a href="../day23-%E9%85%92%E4%BB%99%E7%BD%91/">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">
+<a href="../day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A/">
+<a href="../day25-unidbg-%E4%B8%8A/">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87/">
+<a href="../day26-unidbg-%E4%B8%AD%E7%AF%87/">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B/">
+<a href="../day27-unidbg-%E4%B8%8B/">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A/">
+<a href="../day28-xhs-%E4%B8%8A/">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B/">
+<a href="../day29-xhs-%E4%B8%8B/">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">
+<a href="../day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="jni">十三、JNI开发</h1>
+<h2 id="jni_1">一 、JNI介绍和安装</h2>
+<h3 id="11-jni">1.1 JNI介绍</h3>
+<p>JNI，java native interface ，Java本地开发接口，实现在安卓中JAVA和C语言之间的相互调用。</p>
+<p><img alt="image-20221102195853136" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20221102195853136.png" /></p>
+<h3 id="12-ndk">1.2 NDK安装</h3>
+<p>NDK是JNI开发的工具包</p>
+<p>NDK，Native Develop Kits，本地开发工具（在Android Studio中下载即可）</p>
+<p><img alt="image-20230720163703400" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720163703400.png" /></p>
+<h2 id="jni_2">二、创建JNI项目</h2>
+<pre><code class="language-python"># 普通项目：Empty Activity（Java） 
+
+# jni项目：Native C++（Java + C）
+创建的项目多了一些内容和配置（基于C++实现了一个算法，并在Java中进行了调用）。
+    - 有了默认配置后，我们就不需要自己的手动配置了。
+    - 会生成一些我们用不到的默认文件，等我们学会自己再回来删除他默认的这些文件。
+</code></pre>
+<h3 id="21">2.1 创建项目</h3>
+<p><img alt="image-20230720172138907" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720172138907.png" /></p>
+<p><img alt="image-20230720172208770" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720172208770.png" /></p>
+<p><img alt="image-20230720172243372" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720172243372.png" /></p>
+<p><img alt="image-20230720172408086" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720172408086.png" /></p>
+<h3 id="22">2.2 快速开发</h3>
+<pre><code class="language-python"># 1 第一步：在cpp目录下，新建c文件[注意选择c结尾]
+#include &lt;jni.h&gt;
+JNIEXPORT jint
+JNICALL Java_com_justin_s8day12_Utils_v1(JNIEnv *env, jclass clazz,jint v1,jint v2) {
+    return v1+v2;
+}
+
+# 2 第二步：编写Java，新建一个Java类，编写静态方法
+package com.justin.s8day12;
+public class Utils {
+    public static native int v1(int a1,int a2);
+}
+
+# 3 第三步：在java类中，引入静态文件
+    static {
+        System.loadLibrary(&quot;utils&quot;);
+    }
+
+# 4 第四步：在CMakeLists.txt中加入编写的c文件
+    add_library(
+        utils # 起个名字，我们叫utils
+        SHARED
+        # 指定我们新建的c文件
+        utils.c)
+
+
+    target_link_libraries(
+        utils# 加入我们自己写的utils，空格分割，写多个
+        ${log-lib})
+
+ # 5 在java代码中调用
+tv.setText(String.valueOf(Utils.v1(33,44)));
+</code></pre>
+<p><img alt="image-20230720172711781" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720172711781.png" /></p>
+<p><img alt="image-20230720172754442" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720172754442.png" /></p>
+<p><img alt="image-20230720172845570" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720172845570.png" /></p>
+<p><img alt="image-20230720173042633" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720173042633.png" /></p>
+<p><img alt="image-20230720173630289" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720173630289.png" /></p>
+<p><img alt="image-20230720173742332" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720173742332.png" /></p>
+<p><img alt="image-20230720173804264" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720173804264.png" /></p>
+<h2 id="jni_3">三 、JNI案例</h2>
+<h3 id="31">3.1 类型</h3>
+<p><img alt="image-20230720180029952" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720180029952.png" /></p>
+<p><strong>类型对应关系</strong></p>
+<p><img alt="image-20220804153306910" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220804153306910.png" /></p>
+<h3 id="32-javac">3.2 Java调用C案例</h3>
+<h4 id="321">3.2.1数字处理</h4>
+<pre><code class="language-java">public static native int v1(int a1,int a2);
+</code></pre>
+<pre><code class="language-c">#include &lt;jni.h&gt;
+
+JNIEXPORT jint
+JNICALL Java_com_justin_s8day12_Utils_v1(JNIEnv *env, jclass clazz,jint v1,jint v2) {
+    return v1+v2;
+}
+</code></pre>
+<h4 id="322">3.2.2 通过指针修改字符串</h4>
+<pre><code class="language-java">public static native String v2(String s);
+</code></pre>
+<pre><code class="language-c">JNIEXPORT jstring JNICALL
+Java_com_justin_s8day12_Utils_v2(JNIEnv *env, jclass clazz, jstring s) {
+    // char info[]  = {'j','u','s','t','i','n'};
+    // 通过env指针，取到GetStringUTFChars结构体，初始化得到char指针
+    char *info = (*env)-&gt;GetStringUTFChars(env, s, 0);
+    syslog(LOG_ERR, &quot;%s&quot;, info);
+
+    info += 1;
+    *info = 'j'; // 修改第一个位置字符为j
+
+    info += 3;
+    *info = 'j';// 修改第三个位置字符为j
+
+    info -= 4; //指针回退
+
+    syslog(LOG_ERR, &quot;%s&quot;, info);
+
+    return (*env)-&gt;NewStringUTF(env, info); // 把char类型指针，再转成字符串类型返回
+}
+</code></pre>
+<h4 id="323">3.2.3 通过数组修改字符串</h4>
+<pre><code class="language-java">public static native String v3(String s);
+</code></pre>
+<pre><code class="language-c">JNIEXPORT jstring JNICALL
+Java_com_justin_s8day12_Utils_v3(JNIEnv *env, jclass clazz, jstring s) {
+    // 字符串数组
+    char *info = (*env)-&gt;GetStringUTFChars(env, s, 0);
+    info[0] = 'j';   // 指针直接可以变成数组取值赋值
+    info[1] = 'j';
+
+    return (*env)-&gt;NewStringUTF(env, info);
+}
+</code></pre>
+<h4 id="324">3.2.4 字符串拼接</h4>
+<pre><code class="language-java">public static native String v4(String name, String role);
+</code></pre>
+<pre><code class="language-c">#include &lt;jni.h&gt;
+#include &lt;syslog.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;string.h&gt;
+
+// 定义一个获取字符数组长度的函数
+int GetStringLen(char *dataString) {
+    int count = 0;
+    for (int i = 0; dataString[i] != '\0'; i++) {
+        count += 1;
+    }
+    return count;
+}
+
+JNIEXPORT jstring JNICALL
+Java_com_justin_s8day12_Utils_v4(JNIEnv *env, jclass clazz, jstring name, jstring role) {
+    // 字符数组=指针
+    char *nameString = (*env)-&gt;GetStringUTFChars(env, name, 0); // 先取到名字
+    char *roleString = (*env)-&gt;GetStringUTFChars(env, role, 0); // 再取到角色
+
+    // 定义指针，分配内容
+    char *result = malloc(GetStringLen(nameString) + GetStringLen(roleString) + 1);
+//    char *result = malloc(strlen(nameString) + strlen(roleString) + 1);
+    // 把名字copy到新定义的指针中
+    strcpy(result, nameString);
+    // 把角色拼接到后面
+    strcat(result, roleString);
+
+    syslog(LOG_ERR, &quot;%s&quot;, result);
+
+    return (*env)-&gt;NewStringUTF(env, result);
+}
+</code></pre>
+<h4 id="325">3.2.5 字符处理</h4>
+<pre><code class="language-java">String n5 = EncryptUtils.v5(&quot;name=justin&amp;age=19&quot;);
+</code></pre>
+<pre><code class="language-java">public static native String v5(String data);
+</code></pre>
+<pre><code class="language-c">#include &lt;jni.h&gt;
+#include &lt;string.h&gt;
+#include &lt;syslog.h&gt;
+#include&lt;stdlib.h&gt;
+
+int GetStringLen(char *dataString) {
+    int count = 0;
+    for (int i = 0; dataString[i] != '\0'; i++) {
+        count += 1;
+    }
+    return count;
+}
+
+
+JNIEXPORT jstring
+
+JNICALL
+Java_com_nb_s4luffy_EncryptUtils_v5(JNIEnv *env, jclass clazz, jstring data) {
+
+    // &quot;name=justin&amp;age=19&quot;
+    char *urlParams = (*env)-&gt;GetStringUTFChars(env, data, 0);
+    int size = GetStringLen(urlParams);
+
+    // v34 = {1,2,,,,,,,,,,,}
+    char v34[size * 2];
+
+    char *v28 = v34;
+
+    for (int i = 0; urlParams[i] != '\0'; i++) {
+        //syslog(LOG_ERR, &quot;%02x&quot;, urlParams[i]); 转成16进制，不足2位的0填补
+        sprintf(v28, &quot;%02x&quot;, urlParams[i]);
+        v28 += 2;
+    }
+
+    return (*env)-&gt;NewStringUTF(env, v34);
+}
+</code></pre>
+<pre><code class="language-c">sprintf
+%% 印出百分比符号，不转换。
+%c 整数转成对应的 ASCII 字元。
+%d 整数转成十进位。
+%f 倍精确度数字转成浮点数。
+%o 整数转成八进位。
+%s 整数转成字符串。
+%x 整数转成小写十六进位。
+%X 整数转成大写十六进位
+</code></pre>
+<h4 id="326">3.2.6 字节处理</h4>
+<pre><code class="language-java">tv.setText(String.valueOf(Utils.v6(&quot;name=justin&amp;age=19&quot;.getBytes())));
+</code></pre>
+<pre><code class="language-java">public static native String v6(byte[] data);
+</code></pre>
+<pre><code class="language-c">JNIEXPORT jstring JNICALL
+Java_com_justin_s8day12_Utils_v6(JNIEnv *env, jclass clazz, jbyteArray data) {
+    //    jbyte *byteArray = (*env)-&gt;GetByteArrayElements(env, data, 0);
+    char *byteArray = (*env)-&gt;GetByteArrayElements(env, data, 0);
+    int size = (*env)-&gt;GetArrayLength(env, data);
+
+    char v34[size * 2];
+    char *v28 = v34;
+
+    for (int i = 0; byteArray[i] != '\0'; i++) {
+        syslog(LOG_ERR, &quot;%02x&quot;, byteArray[i]);
+        sprintf(v28, &quot;%02x&quot;, byteArray[i]);
+        v28 += 2;
+    }
+
+    return (*env)-&gt;NewStringUTF(env, v34);
+}
+</code></pre>
+<h4 id="327-">3.2.7 字节处理-案例</h4>
+<pre><code class="language-java">public static native String v7(byte[] data);
+</code></pre>
+<pre><code class="language-c">JNIEXPORT jstring JNICALL
+Java_com_justin_s8day12_Utils_v7(JNIEnv *env, jclass clazz, jbyteArray data) {
+    char *byteArray = (*env)-&gt;GetByteArrayElements(env, data, 0);
+    int size = (*env)-&gt;GetArrayLength(env, data);
+
+    char v34[size * 2];
+    char *v28 = v34;
+
+    int v29 = 0;
+    do {
+        sprintf(v28, &quot;%02x&quot;, byteArray[v29++]);
+        v28 += 2;
+    } while (v29 != size);
+
+    return (*env)-&gt;NewStringUTF(env, v34);
+}
+</code></pre>
+<h3 id="33-cjava">3.3 C调Java案例</h3>
+<h4 id="331">3.3.1 静态方法</h4>
+<pre><code class="language-java">public static native String v8();
+</code></pre>
+<pre><code class="language-java">tv.setText(String.valueOf(Utils.v8()));
+</code></pre>
+<pre><code class="language-c">JNIEXPORT jstring JNICALL
+Java_com_justin_s8day12_Utils_v8(JNIEnv *env, jclass clazz) {
+    // 找到类
+    jclass cls = (*env)-&gt;FindClass(env, &quot;com/justin/s8day12/Foo&quot;);
+    // 找到静态方法---&gt;没有参数的方法
+    jmethodID method1 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;, &quot;()Ljava/lang/String;&quot;);
+    // 如果有重载( 有两个int参数) ,括号里是参数，后面是返回值，参数详见[类型]
+    jmethodID method2 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;, &quot;(II)Ljava/lang/String;&quot;);
+
+    jmethodID method3 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;,
+                                                  &quot;(Ljava/lang/String;)Ljava/lang/String;&quot;);
+
+    jmethodID method4 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;, &quot;(Ljava/lang/String;I)I&quot;);
+
+    // 执行方法(method1)
+    jstring res1 = (*env)-&gt;CallStaticObjectMethod(env, cls, method1);
+    // 执行方法(method2 传参数)
+    jstring res2 = (*env)-&gt;CallStaticObjectMethod(env, cls, method2, 22, 33);
+
+    //执行方法(method3 传参数,把c的字符串转成jstring类型)
+    jstring res3 = (*env)-&gt;CallStaticObjectMethod(env, cls, method3,(*env)-&gt;NewStringUTF(env, &quot;justin&quot;));
+
+    //执行方法(method4 传参数,把c的字符串转成jstring类型)
+    jint res4 = (*env)-&gt;CallStaticIntMethod(env, cls, method4, (*env)-&gt;NewStringUTF(env, &quot;justin&quot;),18);
+
+
+    // 可以做其他操作，把jstring转成c的字符串，处理完，再转成jstring类型
+    char *p1 = (*env)-&gt;GetStringUTFChars(env, res1, 0);
+    char *p2 = (*env)-&gt;GetStringUTFChars(env, res2, 0);
+    char *p3 = (*env)-&gt;GetStringUTFChars(env, res3, 0);
+
+    char *result = malloc(50);
+    strcat(result,p1);
+    strcat(result,p2);
+    strcat(result,p3);
+
+//    return (*env)-&gt;NewStringUTF(env, result);
+
+    return res1;
+
+
+}
+</code></pre>
+<pre><code class="language-java">package com.justin.s8day12;
+
+public class Foo {
+
+    public static String getSign(){
+        return &quot;sign001&quot;;
+    }
+    public static String getSign(int a,int b){
+        return &quot;sign002&quot;;
+    }
+    public static String getSign(String s){
+        return &quot;sign003&quot;;
+    }
+    public static int getSign(String prev, int v1) {
+        return 100;
+    }
+}
+
+</code></pre>
+<h4 id="332">3.3.2 成员方法</h4>
+<pre><code class="language-java">tv.setText(String.valueOf(Utils.v9()));
+</code></pre>
+<pre><code class="language-java"> public static native String v9();
+</code></pre>
+<pre><code class="language-c">JNIEXPORT jstring JNICALL
+Java_com_justin_s8day12_Utils_v9(JNIEnv *env, jclass clazz) {
+    // 找到类
+    jclass cls = (*env)-&gt;FindClass(env, &quot;com/justin/s8day12/Foo&quot;);
+
+    // 找到构造方法
+    jmethodID init = (*env)-&gt;GetMethodID(env, cls, &quot;&lt;init&gt;&quot;, &quot;(Ljava/lang/String;)V&quot;);
+
+    // 实例化对象 new SignQuery2(...)
+    jobject cls_obj = (*env)-&gt;NewObject(env, cls, init, (*env)-&gt;NewStringUTF(env, &quot;justin&quot;));
+
+    // 找到方法
+    jmethodID method1 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;, &quot;()Ljava/lang/String;&quot;);
+//    jmethodID method2 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;, &quot;(I)Ljava/lang/String;&quot;);
+//    jmethodID method3 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;,&quot;(Ljava/lang/String;)Ljava/lang/String;&quot;);
+//    jmethodID method4 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;, &quot;(Ljava/lang/String;I)I&quot;);
+
+
+    // 执行方法
+    jstring res1 = (*env)-&gt;CallObjectMethod(env, cls_obj, method1);
+//    jstring res2 = (*env)-&gt;CallObjectMethod(env, cls_obj, method2, 100);
+//    jstring res3 = (*env)-&gt;CallObjectMethod(env,cls_obj,method3,(*env)-&gt;NewStringUTF(env, &quot;hahahahh&quot;));
+//    jint res4 = (*env)-&gt;CallIntMethod(env,cls_obj,method4,(*env)-&gt;NewStringUTF(env, &quot;hahahahh&quot;),18);
+
+
+//    char *p1 = (*env)-&gt;GetStringUTFChars(env, res1, 0);
+//    return (*env)-&gt;NewStringUTF(env, p1);
+    return res1;
+
+}
+</code></pre>
+<pre><code class="language-java">package com.justin.s8day12;
+
+public class Foo {
+    public String name;
+    public static String getSign(){
+        return &quot;sign001&quot;;
+    }
+    public static String getSign(int a,int b){
+        return &quot;sign002&quot;;
+    }
+    public static String getSign(String s){
+        return &quot;sign003&quot;;
+    }
+    public static int getSign(String prev, int v1) {
+        return 100;
+    }
+
+
+    public Foo(String name){
+        this.name=name;
+
+    }
+    // 成员方法
+    public String ShowName(){
+        return this.name;
+    }
+}
+
+</code></pre>
+<h3 id="34">3.4 静态注册和动态注册</h3>
+<h4 id="341">3.4.1 静态注册</h4>
+<p>上述编写的C语言的函数和Java的对应关系，在函数名上就可以体现，例如：</p>
+<pre><code>Java_com_justin_s8day12_Utils_v9
+Java_com_justin_s8day12_Utils_v8
+</code></pre>
+<p>这种称为静态注册，如果是静态注册，那么在逆向时，是比较方便的，直接可以找到函数在C中的实现。例如：车智赢。</p>
+<p><img alt="image-20220519193907236" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193907236.png" /></p>
+<p><img alt="image-20220519193832337" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193832337.png" /></p>
+<p><img alt="image-20220519193843997" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193843997.png" /></p>
+<p><img alt="image-20220519193944611" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193944611.png" /></p>
+<h4 id="342">3.4.2 动态注册</h4>
+<pre><code class="language-java">package com.justin.s8day12;
+
+public class Dynamic {
+    static {
+        System.loadLibrary(&quot;dynamic&quot;);
+    }
+    public static native int vv1(int a1, int a2);
+
+    public static native int vv2(String s);
+}
+
+
+</code></pre>
+<p><img alt="image-20230725191400885" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725191400885.png" /></p>
+<pre><code class="language-c">#include &lt;jni.h&gt;
+
+
+jint plus1(JNIEnv *env, jobject obj, jint v1, jint v2) {
+    return v1 + v2;
+}
+
+
+jint plus2(JNIEnv *env, jobject obj, jstring s1) {
+    return 100;
+}
+
+static JNINativeMethod gMethods[] = {
+        {&quot;vv1&quot;, &quot;(II)I&quot;, (void *) plus1},
+        {&quot;vv2&quot;, &quot;(Ljava/lang/String;)I&quot;, (void *) plus2},
+};
+
+JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+
+    JNIEnv *env = NULL;
+    // 在java虚拟机中获取env
+    if ((*vm)-&gt;GetEnv(vm, (void **) &amp;env, JNI_VERSION_1_6) != JNI_OK) {
+        return JNI_ERR;
+    }
+    // ----上面都是固定的----
+    // 找到Java中的类
+    jclass clazz = (*env)-&gt;FindClass(env, &quot;com/justin/s8day12/Dynamic&quot;);
+    // 将类中的方法注册到JNI中 (RegisterNatives)
+    int res = (*env)-&gt;RegisterNatives(env, clazz, gMethods, 1);
+
+    // ----下面都是固定的----
+    if (res &lt; 0) {
+        return JNI_ERR;
+    }
+
+    return JNI_VERSION_1_6;
+}
+
+</code></pre>
+<p><img alt="image-20230725191438096" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725191438096.png" /></p>
+<p><img alt="image-20230725191510063" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725191510063.png" /></p>
+<p>这种情况下，在逆向时，就不能直接找对应关系了，就需要去找jni_onload</p>
+<p><img alt="image-20230725193557060" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725193557060.png" /></p>
+<p><img alt="image-20230725193627067" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725193627067.png" /></p>
+<p><img alt="image-20230725193659403" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725193659403.png" /></p>
+<h2 id="app">四、反编译自己的app</h2>
+<pre><code class="language-python"># 1 反编译 apk
+    -把咱们自己写的apk，拖动到jadx中即可
+
+# 2 反编译so文件
+    -使用压缩工具把 apk解压
+    -进入lib的arm64-v8a目录，看到so文件
+    -把so文件拖动到IDA中
+    -选择exports导出
+    -双击函数名，看到汇编
+    -按F5，把混编进行反编译
+
+# 3 静态注册---》 反编译自己app----》找到了jni调用位置---》通过System.loadLibrary(&quot;utils&quot;)---》确定是哪个so文件---》去so文件中，通过 静态注册方案找  v9 对应的c中的函数---》很容易找到
+
+# 4 动态注册
+    -反编译so后，找JNI_OnLoad
+    -找到对应关系，双击进入，按F5，查看源代码
+
+</code></pre>
+<p><img alt="image-20230720174022712" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720174022712.png" /></p>
+<p><img alt="image-20230720174311141" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720174311141.png" /></p>
+<p><img alt="image-20230720174357174" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720174357174.png" /></p>
+<p><img alt="image-20230720175152179" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720175152179-16898470694181.png" /></p>
+<p><img alt="image-20230720175227702" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720175227702.png" /></p>
+<p><img alt="image-20230720175314859" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720175314859.png" /></p>
+<p><img alt="image-20230720175338540" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720175338540.png" /></p>
+<h1 id="_1"></h1>
+<p><img alt="image-20230922224532443" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230922224532443.png" /></p>
+<p><img alt="image-20230922224642735" src="../imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230922224642735.png" /></p>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../js/main.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/gitbook.min.js"></script>
+<script src="../js/theme.min.js"></script>
+</body>
+</html>

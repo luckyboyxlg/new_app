@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>七、java基础02 - My Docs</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="../css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href=".." target="_blank" class="custom-link">My Docs</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="">
+<a href="..">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD/">
+<a href="../day01-%E5%BC%80%E7%8F%AD/">一、前期准备</a>
+<li class="chapter" data-path="day02-adb/">
+<a href="../day02-adb/">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">
+<a href="../day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91/">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">
+<a href="../day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app/">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">
+<a href="../day05-%E9%80%86x%E6%A1%88%E4%BE%8B/">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001/">
+<a href="../day06-java%E5%9F%BA%E7%A1%8001/">六、java基础-01</a>
+<li class="chapter active" data-path="day07-java%E5%9F%BA%E7%A1%8002/">
+<a href="./">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003/">
+<a href="../day08-java%E5%9F%BA%E7%A1%8003/">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">
+<a href="../day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101/">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">
+<a href="../day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002/">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">
+<a href="../day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8/">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">
+<a href="../day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85/">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">
+<a href="../day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91/">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91/">
+<a href="../day13-JNI%E5%BC%80%E5%8F%91/">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">
+<a href="../day14-%E8%BD%A6%E6%99%BA%E8%B5%A2/">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app/">
+<a href="../day15-%E8%AF%86%E8%B4%A7app/">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app/">
+<a href="../day16-%E5%BE%97%E7%89%A9app/">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">
+<a href="../day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01/">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902/">
+<a href="../day18-B%E7%AB%9902/">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903/">
+<a href="../day19-B%E7%AB%9903/">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">
+<a href="../day20-%E5%94%AF%E5%93%81%E4%BC%9A01/">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">
+<a href="../day21-%E5%94%AF%E5%93%81%E4%BC%9A02/">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM/">
+<a href="../day22-DYM/">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91/">
+<a href="../day23-%E9%85%92%E4%BB%99%E7%BD%91/">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">
+<a href="../day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D/">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A/">
+<a href="../day25-unidbg-%E4%B8%8A/">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87/">
+<a href="../day26-unidbg-%E4%B8%AD%E7%AF%87/">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B/">
+<a href="../day27-unidbg-%E4%B8%8B/">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A/">
+<a href="../day28-xhs-%E4%B8%8A/">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B/">
+<a href="../day29-xhs-%E4%B8%8B/">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day30-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">
+<a href="../day31-%E6%97%A0%E9%9A%9C%E7%A2%8D/">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">
+<a href="../day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2/">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="java02">七、java基础02</h1>
+<h2 id="pythonjava">一、python和java字节，字符，字符串比较</h2>
+<h3 id="1">1、补充</h3>
+<p>字节：一个字节是8个比特位，一个英文字符 a 永远占一个字节，
+    一个中文字符，占多少字节，取决于编码方式
+        GBK编码：一个中文字符， 占2字节
+        utf8编码：一个中文字符，占3个字节</p>
+<p>字符： 一个符号 比如：  中   国  ? ？ ！ a </p>
+<p><img alt="image-20240322201318949" src="../imgs/day07-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240322201318949.png" /></p>
+<h3 id="2java">2、java字符串常用方法</h3>
+<p><strong>字符串的常用方法</strong></p>
+<p>取出指定位置字符</p>
+<pre><code class="language-java">String v1=&quot;hello world 中国&quot;;
+String v1=&quot;hello world 中国    &quot;;
+System.out.println(v1.charAt(12));
+</code></pre>
+<p>循环打印每个字符</p>
+<pre><code class="language-java">for (int i = 0; i &lt; v1.length() ; i++) {
+    System.out.println(v1.charAt(i));
+ }
+</code></pre>
+<p>去除字符串前后空白</p>
+<pre><code class="language-java">System.out.println(v1.trim());
+</code></pre>
+<p>转大写</p>
+<pre><code class="language-java">System.out.println(v1.toUpperCase());
+</code></pre>
+<p>转小写</p>
+<pre><code class="language-java">System.out.println(v1.toUpperCase());
+</code></pre>
+<p>字符分割</p>
+<pre><code class="language-java">String[] v5=v1.split(&quot; &quot;);
+System.out.println(v5);
+System.out.println(Arrays.toString(v5));
+</code></pre>
+<p>字符串替换</p>
+<pre><code class="language-java">String v2=v1.replace(&quot;中&quot;,&quot;爱&quot;);
+System.out.println(v2);
+</code></pre>
+<p>字符串切片--&gt;x大夫 （见过了）</p>
+<pre><code class="language-java">String v1=&quot;hello world 中国&quot;;
+String v2=v1.substring(5,8);
+System.out.println(v2);
+</code></pre>
+<p>比较字符串是否相等(会用)</p>
+<pre><code class="language-java">boolean b=v1.equals(&quot;hello world 中国0&quot;);
+System.out.println(b);
+</code></pre>
+<p>字符串是否包含</p>
+<pre><code class="language-java">boolean b=v1.contains(&quot;中国0&quot;);
+System.out.println(b);
+</code></pre>
+<p>以xx开头</p>
+<pre><code class="language-java">System.out.println(v1.startsWith(&quot;he&quot;));;
+</code></pre>
+<p>以xx结尾</p>
+<pre><code class="language-java">System.out.println(v1.endsWith(&quot;国&quot;));
+</code></pre>
+<h3 id="3java">3、java字符串拼接</h3>
+<p>字符串拼接</p>
+<p>多个字符串  +   这种方式基本看不到，很low</p>
+<pre><code class="language-java">String v1=&quot;中&quot;;
+String s =&quot;hello&quot;+&quot; world &quot;+&quot;中国&quot;;
+python:没有隐士类型转换  s=&quot;中&quot;+9 报错
+System.*out*.println(s);
+</code></pre>
+<p>以后看到下面两种方案StringBuilder  --&gt;线程不安全的</p>
+<pre><code class="language-java">StringBuilder sb=new StringBuilder();
+sb.append(&quot;hello&quot;);
+sb.append(&quot;world&quot;);
+sb.append(&quot;中&quot;);
+sb.append(&quot;国&quot;);
+String v=sb.toString();
+System.*out*.println(v);
+</code></pre>
+<p>StringBuffer  --&gt;线程安全的</p>
+<pre><code class="language-java">StringBuffer sb=new StringBuffer();
+sb.append(&quot;hello&quot;);
+sb.append(&quot;world&quot;);
+sb.append(name) 
+  sb.append(&quot;中&quot;);
+sb.append(&quot;国&quot;);
+String v=sb.toString();
+System.out.println(v);
+
+</code></pre>
+<p><img alt="image-20230627190653011" src="../imgs/day07-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230627190653011.png" /></p>
+<h3 id="4java">4、java字节数组和字符串转换</h3>
+<p>1 个字节是  8个比特位</p>
+<pre><code class="language-java">String v = &quot;hello world 中国&quot;;
+try{
+  // 转码可能会报错，需要异常捕获
+  byte[] b = v.getBytes(&quot;utf-8&quot;);  // 等同于 python  'hello world 中国'.encode('utf-8')
+  System.out.println(Arrays.toString(b)); // [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 32, -28, -72, -83, -27, -101, -67]
+  byte[] b1 = v.getBytes(&quot;GBK&quot;);  // 等同于 python  'hello world 中国'.encode('GBK')
+  System.out.println(Arrays.toString(b1)); // [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 32, -42, -48, -71, -6]
+
+  b[0] = 99;
+  // 字节数组转回字符串
+  String v1 = new String(b);
+  System.out.println(v1);
+  // 如果要改变字符串中某个位置的值，需要转成 字节数组，字符数组，，按位置改完，再转回字符串
+}catch(Exception e){
+
+}
+</code></pre>
+<p><strong>总结</strong></p>
+<ul>
+<li>字符串转字节数组</li>
+</ul>
+<p><code>java
+   String v="hello world 中国";  
+  v.getBytes("utf-8");  // 以后会经常看到这个东西</code></p>
+<ul>
+<li>把字节数组转回字符串</li>
+</ul>
+<p><code>java
+  byte[] b =new byte[]{99,98,97}
+  String v1=new String(b,"utf-8");</code></p>
+<h3 id="5java">5、java字符数组和字符串转换</h3>
+<p>一个符号，就是一个字符       中    ？</p>
+<pre><code class="language-java">String v=&quot;hello 中国&quot;;
+char[] c1=v.toCharArray();
+System.out.println(c1);
+System.out.println(c1[2]);
+
+char[] c=new char[]{'h','e','l','l','o','中','国'};
+String v=new String(c);
+System.out.println(v);
+System.out.println(v instanceof String); //判断这个变量的类型
+</code></pre>
+<p><strong>总结</strong></p>
+<pre><code class="language-java">// 字符串转字符数组
+  String v=&quot;hello world 中国&quot;;  
+  char[] c1=v.toCharArray(); 
+
+// 把字符数组转回字符串
+   char[] c=new char[]{'h','e','l','l','o','中','国'};
+   String v=new String(c);
+</code></pre>
+<h3 id="6python">6、Python字节和字符串</h3>
+<p><strong>实例</strong></p>
+<pre><code class="language-python">v1 = '彭于晏'
+# 转成字节
+v2 = v1.encode('utf-8')
+print(v2)  # 16进制展示 ，java的字符串转成字节数组后是用十进制展示
+
+v3 = v1.encode('GBK')
+print(v3)  # 16进制展示 ，java的字符串转成字节数组后是用十进制展示
+
+# 10 进制展示
+v4 = [item for item in v2]
+print(v4)  #[229, 189, 173, 228, 186, 142, 230, 153, 143]
+
+# 11 二进制展示
+v5 = [bin(item) for item in v2]
+print(v5)
+
+# 16进制展示
+v6=[hex(item) for item in v2]
+print(v6)
+
+v7=[hex(item)[2:] for item in v2]
+print(v7)
+
+
+
+# 字符
+v1 = '彭于晏'
+print(list(v1))
+
+
+# java 中  字符串，  字节数组  字符数组
+
+# python中 字符串    字节列表(16进制，2进制，10进制)  字符列表
+</code></pre>
+<h3 id="7javapython">7、java字节数组和python字符串转换(用)</h3>
+<p><strong>实例</strong></p>
+<p>使用python，把它转成字符串</p>
+<pre><code class="language-python"># 抓包和hook某app---》拿到 字节数组--》java的字节数组
+# 使用python把它转成字符串
+
+java:[-27, -67, -83, -28, -70, -114, -26, -103, -113]
+
+
+# 补充：字节有无符号
+   Python字节无符号（不含负数）： 0 ~ 255
+       0 1 2 3 4 5 ... 127  128  129  130 ... 255
+
+   Java字节是有符号（含有负数）：-128 ~ 127
+       0 1 2  3 4 5 ...127  -128 -127 - 126 -125 .... -2  -1
+
+
+ # 彭于晏字符串--》字节数组
+python：[229, 189, 173, 228, 186, 142, 230, 153, 143]
+java：  [-27, -67, -83, -28, -70, -114, -26, -103, -113]
+
+# 写一个java中字节数组--》转python字符串的代码
+    逻辑是：数字大于0，不操作，小于0，加256
+</code></pre>
+<p><strong>java的字节数组转python字符串</strong></p>
+<pre><code class="language-python">bb1 = [-27, -67, -83, -28, -70, -114, -26, -103, -113]
+def java_arr_to_python_str(b):
+    num_list = bytearray()
+    for i in b:
+        if i &lt; 0:
+            i = i + 256
+        num_list.append(i)
+    return num_list.decode('utf-8')
+
+if __name__ == '__main__':
+    print(java_arr_to_python_str(bb1))
+</code></pre>
+<h3 id="8python">8、使用python将字符串与十进制数互转</h3>
+<pre><code class="language-python"># 原始中文字符串
+original_str = &quot;中国&quot;
+
+# 步骤 1：将字符串编码为字节序列
+byte_sequence = original_str.encode('utf-8')
+print(f&quot;Byte sequence: {byte_sequence}&quot;)  # 输出: b'\xe4\xb8\xad\xe5\x9b\xbd'
+
+# 步骤 2：将字节序列转换为十进制整数列表
+decimal_list = list(byte_sequence)
+print(f&quot;Decimal list: {decimal_list}&quot;)  # 输出: [228, 184, 173, 229, 155, 189]
+
+# 步骤 3：从十进制整数列表恢复原始字符串
+byte_sequence_from_list = bytes(decimal_list)
+print(byte_sequence_from_list)
+recovered_str = byte_sequence_from_list.decode('utf-8')
+print(f&quot;Recovered string: {recovered_str}&quot;)  # 输出: 中国
+</code></pre>
+<h3 id="9pythonjava">9、使用python将Java十进制数转换为字符串</h3>
+<p>java中字符串转换为十进制数组</p>
+<p>python进行转换</p>
+<p>逻辑是：数字大于0，不操作，小于0，加256</p>
+<pre><code class="language-python"># java的字节数组转python字符串
+decimal_list = [-27, -67, -83, -28, -70, -114, -26, -103, -113]  # java字符串转换为十进制的值
+# 因为
+decimal_list = [i+256 for i in decimal_list if i&lt;=0]
+
+# 从十进制整数列表恢复原始字符串
+byte_sequence_from_list = bytes(decimal_list)
+print(byte_sequence_from_list)
+recovered_str = byte_sequence_from_list.decode('utf-8')
+print(f&quot;Recovered string: {recovered_str}&quot;)  # 输出: 彭于晏
+</code></pre>
+<h1 id="javaobject">二、 Java的Object类（用）</h1>
+<p>Object 类是所有类的父类</p>
+<pre><code class="language-python">
+# 只要是父类的对象，子类的对象都可以赋值给它
+Object obj=new Object()
+# 假设有Person类
+Person person = new Person()
+
+obj=person
+
+Object person = new Person()
+
+# Object 类的对象，可以接收任意类的对象
+
+# 泛指
+Object类
+    Animal类
+        -Person--》人
+        -Dog---》狗
+
+人是动物
+狗是动物
+
+Object a =new Person()
+Object d=new Dog()
+
+也是为了让你的函数参数可以接受更多的类型
+
+</code></pre>
+<h3 id="2object">2、Object类可以接收任意对象</h3>
+<pre><code class="language-java">public class Demo02 {
+    // 1 Object 类，是所有类的父类
+    // Object类可以接收任意对象
+    Person person = new Person();
+    // Object obj=person;
+    // Object obj=&quot;xxoo&quot;;
+    // Object obj=11;
+    Object obj = new String[]{&quot;你好&quot;, &quot;我们&quot;};
+
+
+}
+
+// 定义一个Person类
+class Person {
+
+}
+</code></pre>
+<h3 id="3object">3、Object类的方法</h3>
+<p><img alt="image-20240322214906980" src="../imgs/day07-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240322214906980.png" /></p>
+<pre><code class="language-python"># Object 类中的方法
+    -equals ：判断两个对象是否相等
+    -getClass：获取这个对象的具体类
+    -toString  把对象转成字符串
+# Object类是所有类的父类---》所有类对象都会有这三个方法
+
+# 后期咱们会有：
+    -getClass  ：不知道对象具体类型，可以通过这个查看到具体的类型
+    Object obj= 对象;
+    obj.getClass()
+
+    -toString
+    Object obj= 对象;
+    System.out.println(obj.toString());
+    System.out.println(obj); # 内部调用obj.toString() 转成字符串，显示在控制台上了
+</code></pre>
+<h3 id="4object">4、获取Object对象的具体类型</h3>
+<pre><code class="language-java"> // 3 获取Object对象的具体类型,虽然大家都是Object的对象，但是大家有具体类型
+        Object obj=11;
+        System.out.println(obj.getClass());  // class java.lang.Integer  当成是int即可
+
+        Object obj2=&quot;asdfasdf&quot;;
+        System.out.println(obj2.getClass()); // class java.lang.String
+
+        Object obj3=new Person();
+        System.out.println(obj3.getClass()); // class Person
+
+        // 4 通过 instanceof 判断类型
+        System.out.println(&quot;&quot; instanceof String);
+
+        // Object obj4=99;  // 表面上的类型是Object ，但它具体是Integer，但是我们不能把obj4当Integer，必须做强制类型转换才能用
+        // Object obj4=&quot;ssss&quot;;
+        Object obj4=new Person();
+        if (obj4 instanceof Integer){
+            System.out.println(&quot;obj4是Integer类型&quot;);
+            Integer i =(Integer) obj4;  // 强制类型转换
+            System.out.println(i);
+        } else if (obj4 instanceof Person) {
+            System.out.println(&quot;obj4是Person类型&quot;);
+            Person p =(Person)obj4;
+            System.out.println(p);
+
+        }else if (obj4 instanceof String) {
+            System.out.println(&quot;obj4是String类型&quot;);
+            String s =(String)obj4;
+            System.out.println(s);
+
+        }
+</code></pre>
+<p><img alt="image-20240322220146856" src="../imgs/day07-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240322220146856.png" /></p>
+<h2 id="-list">三、容器类型-List</h2>
+<blockquote>
+<p>List是一个接口，接口下面有两个常见的类型（目的是可以存放动态的多个数据）</p>
+<ul>
+<li>ArrayList，连续的内存地址的存储（底层基于数组，内部自动扩容） -&gt; Python列表的特点</li>
+<li>LinkedList，底层基于链表实现（底层基于链表）                                  -&gt; Python列表的特点</li>
+</ul>
+</blockquote>
+<p><img alt="image-20240322221123120" src="../imgs/day07-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240322221123120.png" /></p>
+<h3 id="1-arraylist">1、 ArrayList 用法</h3>
+<pre><code class="language-java"> // ArrayList ll =new ArrayList();
+        // ArrayList &lt;Object&gt;ll =new ArrayList&lt;Object&gt;();  // 不写默认是 Object类型
+        ArrayList &lt;String&gt;ll =new ArrayList&lt;String&gt;();
+        // ArrayList &lt;Integer&gt;ll =new ArrayList&lt;Integer&gt;();
+        // ArrayList 的常用操作
+        // 1 添加元素
+        ll.add(&quot;lqz&quot;);
+        ll.add(&quot;刘亦菲&quot;);
+        ll.add(&quot;迪丽热巴&quot;);
+
+        // 2 根据索引取值
+        String name=ll.get(1);
+        System.out.println(name);
+
+        // 3 修改某个位置元素
+        ll.set(0,&quot;小红&quot;);
+
+
+        // 4 删除某个位置
+        ll.remove(0);
+        System.out.println(ll);
+
+        // 5 ll 的长度
+        System.out.println(ll.size());
+
+        // 6 是否包含
+        boolean b=ll.contains(&quot;小红&quot;);
+        System.out.println(b);
+
+        // 7 循环 两种方式
+        // 方式一
+        for (int i = 0; i &lt;ll.size() ; i++) {
+            System.out.println(ll.get(i));
+        }
+
+        // 方式二：
+        for (String item:ll) {
+            System.out.println(item);
+        }
+
+</code></pre>
+<h3 id="2linkedlist">2、LinkedList</h3>
+<pre><code class="language-python">        // 1.2 LinkedList 使用
+        LinkedList&lt;String&gt; ll =new LinkedList&lt;String&gt;();
+        // LinkedList 的常用操作
+        // 1 添加元素
+        ll.add(&quot;lqz&quot;);
+        ll.add(&quot;刘亦菲&quot;);
+        ll.add(&quot;迪丽热巴&quot;);
+
+        // 2 根据索引取值
+        String name=ll.get(1);
+        System.out.println(name);
+
+        // 3 修改某个位置元素
+        ll.set(0,&quot;小红&quot;);
+
+
+        // 4 删除某个位置
+        ll.remove(0);
+        System.out.println(ll);
+
+        // 5 ll 的长度
+        System.out.println(ll.size());
+
+        // 6 是否包含
+        boolean b=ll.contains(&quot;小红&quot;);
+        System.out.println(b);
+
+        // 7 循环 两种方式
+        // 方式一
+        for (int i = 0; i &lt;ll.size() ; i++) {
+            System.out.println(ll.get(i));
+        }
+
+        // 方式二：
+        for (String item:ll) {
+            System.out.println(item);
+        }
+
+        // 多的，在头部和尾部插入元素  --》ArrayList不能
+        ll.addLast(&quot;尾部&quot;);
+        ll.addFirst(&quot;头部&quot;);
+
+        System.out.println(ll);
+</code></pre>
+<h2 id="-set">四、容器类型-Set</h2>
+<pre><code class="language-python"># 反编译回来的代码几乎看不到
+Set是一个**接口**，常见实现这个接口的有两个类，用于实现不重复的多元素集合。
+    - HashSet，去重，无序。
+    - TreeSet，去重，内部默认排序（ascii、unicode）【不同的数据类型，无法进行比较】。
+</code></pre>
+<p><strong>代码实例</strong></p>
+<pre><code class="language-python">import java.util.HashSet;
+import java.util.TreeSet;
+
+public class Demo04 {
+    public static void main(String[] args) {
+        // 集合
+        // HashSet h =new HashSet();
+        // HashSet&lt;String&gt; h =new HashSet&lt;String&gt;();
+        TreeSet&lt;String&gt; h =new TreeSet&lt;String&gt;();
+        h.add(&quot;xxx&quot;);
+        h.add(&quot;xxx&quot;);
+        h.add(&quot;yyy&quot;);
+        System.out.println(h); //会去重
+
+        //判断元素是否存在
+        System.out.println(h.contains(&quot;xxx&quot;));
+
+        // 删除元素
+        h.remove(&quot;xxx&quot;);
+
+        //长度
+        System.out.println(h.size());
+
+    }
+}
+</code></pre>
+<h2 id="-map">五、容器类型-Map(后面会用)</h2>
+<p>Map是一个接口，常见实现这个接口的有两个类，用于存储键值对。</p>
+<ul>
+<li>HashMap，无序。</li>
+<li>TreeMap，默认根据key排序。（常用）</li>
+</ul>
+<pre><code class="language-java">import java.util.*;
+
+public class Demo05 {
+    public static void main(String[] args) {
+        // 1 定义HashMap
+        // HashMap hm=new HashMap();  //用的很少
+        // HashMap&lt;String, String&gt; hm = new HashMap&lt;String, String&gt;();
+        TreeMap&lt;String, String&gt; hm = new TreeMap&lt;String, String&gt;();
+
+        // 1.1 增加元素
+        hm.put(&quot;name&quot;, &quot;justin&quot;);
+        hm.put(&quot;age&quot;, &quot;19&quot;);
+        System.out.println(hm);
+        // 1.2 获取元素
+        System.out.println(hm.get(&quot;name&quot;));
+        // 1.3 移除元素
+        // hm.remove(&quot;name&quot;);
+        System.out.println(hm);
+
+        // 1.4 大小
+        System.out.println(hm.size());
+
+        // 1.5 包含key  value
+        System.out.println(hm.containsKey(&quot;name&quot;));
+        System.out.println(hm.containsValue(&quot;19&quot;));
+
+        // 1.6 替换
+        hm.replace(&quot;age&quot;, &quot;88&quot;);  // hm[&quot;age&quot;]=88
+        System.out.println(hm);
+
+        System.out.println(&quot;-------------------&quot;);
+        // 1.7 循环，三种循环方式
+        // 简单--》后面见不到
+        for (String key : hm.keySet()) { // 循环得到key，根据key拿到value值
+            System.out.println(hm.get(key));
+        }
+        System.out.println(&quot;-------------------&quot;);
+        // 方式二：
+        for (Map.Entry&lt;String, String&gt; item : hm.entrySet()) {
+            System.out.println(item.getKey());
+            System.out.println(item.getValue());
+        }
+
+        // 方式三：以后不会写--》后面讲到会带你回来回顾  这个方式可以循环map
+        Set s2 = hm.entrySet();
+        Iterator it2 = s2.iterator();
+        while (it2.hasNext()) {
+            Map.Entry&lt;String, String&gt; item = (Map.Entry) it2.next();
+            String key = item.getKey();
+            String value = item.getValue();
+            System.out.println(key);
+            System.out.println(value);
+        }
+    }
+}
+</code></pre>
+<h2 id="_1">七、面向的对象</h2>
+<h3 id="1_1">1、类与的对象</h3>
+<pre><code class="language-python"># 现实生活中：
+    先有对象，再有类
+    张三这个人，李四这个人---》人类
+    小奶狗，小母狗---》狗类
+
+
+# 程序中
+    先有类，再有对象
+    先定义人类--》实例化得到 张三，李四
+    先定义狗类--》实例化得到小奶狗，小母狗
+
+
+
+# 如何定义类，如何实例化得到对象
+##定义
+// 1 定义类
+class Person{
+
+}
+
+## 实例化得到对象
+Person zhangsan=new Person();
+Person lisi=new Person();
+</code></pre>
+<h3 id="2">2、构造方法</h3>
+<pre><code class="language-java">public class Demo06 {
+    public static void main(String[] args) {
+        // 2 实例化得到对象
+        // Person zhangsan=new Person();
+        // Person lisi=new Person();
+
+        Person zhangsan=new Person(&quot;张三&quot;,19);
+        Person lisi=new Person(&quot;李四&quot;,99);
+        System.out.println(zhangsan.name);
+        System.out.println(lisi.name);
+
+        // 有参构造，无参构造
+        Person p=new Person();  // 触发无参构造
+        System.out.println(p.name);
+        Person p1=new Person(&quot;justin&quot;,19);
+        System.out.println(p1.name);
+
+        // 多个构造函数
+        Person p2=new Person(&quot;justin&quot;);
+        System.out.println(p2.name);
+        System.out.println(p2.age);
+
+
+    }
+
+}
+
+
+
+// 1 定义类
+class Person{
+    // 构造方法---》类实例化的时候，会自动触发---》为对象传入属性
+    String name;
+    int age;
+    public Person(String name,int age){  //使用public修饰，没有返回值，跟类同名的 方法，称之为构造方法，类实例化的时候自动触发
+        // 放到对象中   python 的  __init__   self.name=name
+        //this.name=name     this 就是python中的self
+        this.name=name;
+        this.age=age;
+
+    }
+
+    // 构造方法可以写多个
+    public Person(){ // 无参构造方法
+        this.name=&quot;默认名字&quot;;
+        this.age=0;
+
+    }
+
+    public Person(String name){ // 有参构造
+        this.name=name;
+
+    }
+
+
+}
+</code></pre>
+<h3 id="3">3、静态方法和成员方法</h3>
+<pre><code class="language-python"># 静态方法（static）  属于类的，类直接来调用
+
+# 成员方法 属于对象的，对象来调用
+
+public class Demo07 {
+    public static void main(String[] args) {
+
+        Dog dog = new Dog(&quot;小野狗&quot;);
+        String name = dog.showName();
+        System.out.println(name);
+
+        dog.run();
+
+
+        Dog.showDog();
+
+
+    }
+}
+
+class Dog {
+    String name;
+
+    public Dog(String name) {
+        this.name = name;
+
+    }
+
+
+    // 定义方法--》成员方法，属于对象，是对象来 调用的
+    // 返回狗名字+傻狗方法
+    public String showName() {
+        return this.name + &quot;--傻狗&quot;;
+    }
+
+    // 狗走路方法，没有返回值
+    public void run() {
+        // 能不能拿到狗名字
+        System.out.print(this.name);
+        System.out.println(&quot;狗走路&quot;);
+    }
+
+
+
+    // 静态方法---&gt;给类来用的
+    public static void showDog(){
+        // 拿不到this,类用，没有对象
+        System.out.println(&quot;测试测色&quot;);
+        // System.out.println(this.name);
+
+    }
+
+}
+
+</code></pre>
+<h3 id="4-">4、继承--重载和重写</h3>
+<pre><code class="language-java"># java 只允许单继承
+
+public class Demo08 {
+    public static void main(String[] args) {
+
+        Cat cat = new Cat();
+        // cat.run(); //cat 调用父类的方法，子类中没有，会调用父类
+        // cat.run(); // cat 会调用自己的run方法
+
+        cat.run(); //没传参数，会触发没有参数的run方法
+
+        cat.run(&quot;xxx&quot;); //传参数，会触发有参数的run方法
+
+
+    }
+}
+
+class Animal {
+    public void run() { // 成员方法run
+        System.out.println(&quot;动物走路&quot;);
+    }
+}
+
+// 定义猫，继承Animal
+class Cat extends Animal {
+    // 重写run方法----》重写
+    @Override  // 写不写都行，自动生成
+    public void run() {    // 在继承关系下，把父类方法写一遍，这个叫重写方法
+        super.run();  // 调用父类中的run方法
+        System.out.println(&quot;猫走路&quot;);
+    }
+
+
+    public void run(String name) {  // 类中，只要函数名一样，但是参数和返回值不一样，这个叫重载方法
+        System.out.print(name);
+        System.out.println(&quot;重载方法&quot;);
+    }
+
+
+}
+
+
+// 重载和重写的区别？
+//在继承关系下，把父类方法写一遍，这个叫重写方法，参数和返回值必须跟父类的一模一样
+// 类中，只要函数名一样，但是参数和返回值不一样，这个叫重载方法 (无论是否有继承关系)
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="../js/main.js"></script>
+<script src="../search/main.js"></script>
+<script src="../js/gitbook.min.js"></script>
+<script src="../js/theme.min.js"></script>
+</body>
+</html>
