@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>三十二、无障碍项目部署 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
+<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001.html">
+<a href="day06-java%E5%9F%BA%E7%A1%8001.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002.html">
+<a href="day07-java%E5%9F%BA%E7%A1%8002.html">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003.html">
+<a href="day08-java%E5%9F%BA%E7%A1%8003.html">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day13-JNI%E5%BC%80%E5%8F%91.html">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app.html">
+<a href="day15-%E8%AF%86%E8%B4%A7app.html">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app.html">
+<a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902.html">
+<a href="day18-B%E7%AB%9902.html">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903.html">
+<a href="day19-B%E7%AB%9903.html">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM.html">
+<a href="day22-DYM.html">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A.html">
+<a href="day25-unidbg-%E4%B8%8A.html">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87.html">
+<a href="day26-unidbg-%E4%B8%AD%E7%AF%87.html">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B.html">
+<a href="day27-unidbg-%E4%B8%8B.html">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A.html">
+<a href="day28-xhs-%E4%B8%8A.html">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B.html">
+<a href="day29-xhs-%E4%B8%8B.html">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
+<li class="chapter active" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="_1">三十二、无障碍项目部署</h1>
+<p><img alt="image-20240703160514985" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240703160514985.png" /></p>
+<p><img alt="image-20240712200011739" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712200011739.png" /></p>
+<p><img alt="image-20221027180410499" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20221027180410499.png" /></p>
+<p>本质四个步骤：</p>
+<ul>
+<li>
+<p>租个服务器（含公网ip）</p>
+</li>
+<li>
+<p>代码上传到服务器</p>
+</li>
+<li>安装环境以来</li>
+<li>启动程序</li>
+</ul>
+<h1 id="1">1.云服务器</h1>
+<h2 id="11">1.1 购买</h2>
+<p>在阿里云、腾讯云或其他平台 购买一台云服务器（选便宜的）。</p>
+<p>以下是以 腾讯云 + centos 7.5 操作系统来进行操作。</p>
+<p><img alt="image-20221025183430996" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20221025183430996.png" /></p>
+<p>请记住自己的公网IP，后续用户访问和我们远程登录时，均使用这个IP：</p>
+<pre><code>82.156.54.134
+-账号：root
+-密码：root!2345
+
+-[我们]自己电脑远程登录上服务器，在服务器安装各种服务+代码+启动
+-[用户]访问程序
+</code></pre>
+<p><img alt="image-20221025184139805" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20221025184139805.png" /></p>
+<p>当购买成功且安装好操作系统之后，请先配置安全组：</p>
+<p><img alt="image-20220827180810077" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20220827180810077.png" /></p>
+<p><img alt="image-20221025184005070" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20221025184005070.png" /></p>
+<h2 id="12">1.2 连接操作</h2>
+<p>后续部署时，需要对服务器进行操作，哪我们必须能登录上服务器才行。</p>
+<p>推荐：Tabby（支持win、mac）</p>
+<p>https://github.com/Eugeny/tabby</p>
+<p>https://github.com/Eugeny/tabby/releases</p>
+<p><img alt="image-20240712180425865" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712180425865.png" /></p>
+<p><img alt="image-20240712181519405" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712181519405.png" /></p>
+<p><img alt="image-20240712181653890" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712181653890.png" /></p>
+<p><img alt="image-20240712181844304" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712181844304.png" /></p>
+<p><img alt="image-20240712181901733" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712181901733.png" /></p>
+<h1 id="2">2.代码同步</h1>
+<p>上传代码的方式有很多种，例如：FTP工具、scp命令、rsync服务、svn等，不过目前公司主流的都是使用git+代码托管平台。</p>
+<p><img alt="image-20221025191827452" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20221025191827452.png" /></p>
+<ul>
+<li>本地电脑，安装git并使用git命令上传代码。</li>
+<li>代码仓库，创建仓库。</li>
+<li>服务器，安装git并使用git命令获取最新代码。</li>
+</ul>
+<h2 id="21">2.1 代码托管</h2>
+<p>https://gitee.com/signup</p>
+<p><img alt="image-20240712182409696" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712182409696.png" /></p>
+<p>注册成功后，就可以在里面创建代码仓库：</p>
+<p><img alt="image-20240712182454967" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712182454967.png" /></p>
+<h2 id="22">2.2 本地上传</h2>
+<p>https://git-scm.com/downloads</p>
+<p><img alt="image-20221025191742251" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20221025191742251.png" /></p>
+<p>在本地电脑上本质上需要执行如下步骤：</p>
+<ul>
+<li>全局配置</li>
+</ul>
+<p><code>git config --global user.name "武沛齐"
+  git config --global user.email "wupeiqi@live.com"</code></p>
+<ul>
+<li>
+<p>进入项目目录</p>
+</li>
+<li>
+<p>初始化</p>
+<p><code>git init</code></p>
+</li>
+<li>
+<p>配置远程地址</p>
+<p><code>git remote add origin https://gitee.com/wupeiqi/xxxxx.git</code></p>
+</li>
+<li>
+<p>本地版本提交</p>
+<p><code>git add .
+git commit -m '提交说明...'</code></p>
+</li>
+<li>
+<p>提交到远程仓库</p>
+<p><code>git push origin master</code></p>
+</li>
+</ul>
+<h2 id="23">2.3 服务器同步</h2>
+<p>登录线上服务器并获取代码，本质上需要以下三个步骤：</p>
+<ul>
+<li>登录服务器</li>
+</ul>
+<p>```
+  - 云平台网页版：支持登录并进行命令交互（不便捷，不推荐）。
+  - SSH工具，连接比较方便（推荐）
+    - win：xshell、SecureCRT
+    - mac：iTerm2</p>
+<p>注意：如果使用SSH工具连接远程服务器的话，需要在云平台的的安全组开启22端口权限。
+  ```</p>
+<ul>
+<li>安装git</li>
+</ul>
+<p><code>yum install git -y</code></p>
+<p><img alt="image-20221025192515118" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20221025192515118.png" /></p>
+<ul>
+<li>进入项目克隆或拉取代码</li>
+</ul>
+<p>```
+  基于用户名和密码，需要输入用户和密码
+    git clone https://gitee.com/wupeiqi/xxxxx.git</p>
+<p>基于用户名和密码，直接集成用户和密码
+    git clone https://用户名:密码@gitee.com/wupeiqi/xxxxx.git</p>
+<p>基于秘钥：
+    &gt;&gt;&gt;ssh-keygen -t rsa
+    &gt;&gt;&gt;cat ~/.ssh/id_rsa.pub
+    &gt;&gt;&gt;拷贝公钥到代码仓库
+    &gt;&gt;&gt;git clone git@gitee.com:wupeiqi/xxxxx.git
+  ```</p>
+<h2 id="gitignore">gitignore</h2>
+<p>在项目中创建一个 <code>.gitignore</code>的文件，在里面写上文件名或文件夹，可以git忽略一些文件，不要进行版本控制。</p>
+<pre><code>https://github.com/github/gitignore/blob/main/Python.gitignore
+</code></pre>
+<p><img alt="image-20220827162115118" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20220827162115118.png" /></p>
+<p>将Python的ignore文件内存拷贝并保存至项目目录下。</p>
+<p><img alt="image-20220827162918021" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20220827162918021.png" /></p>
+<p>这样，就可以控制git忽略某些文件。</p>
+<p>学会这个知识点之后，接下来再来讲一个关于配置文件的常见操作，即：local_settings.py</p>
+<p><img alt="image-20220827163230562" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20220827163230562.png" /></p>
+<p>如果本次开发和线上开发一些配置不同，就可以放在这个文件。</p>
+<ul>
+<li>本地：local_settings.py 编写本地特有配置。</li>
+<li>线上：local_settings.py 编写线上特有配置。</li>
+</ul>
+<p>而在settings.py中编写所有环境都有的配置。</p>
+<pre><code class="language-python"># Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+.venv/
+.idea/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Django stuff:
+local_settings.py
+
+# database migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+db.sqlite3
+</code></pre>
+<h1 id="3">3.配置和部署</h1>
+<h2 id="31-python39">3.1 Python3.9</h2>
+<ul>
+<li>安装gcc，用于后续安装Python时编译源码。</li>
+</ul>
+<p><code>python
+  yum install gcc -y</code></p>
+<ul>
+<li>安装Python3相关依赖</li>
+</ul>
+<p><code>yum install zlib zlib-devel -y
+  yum install bzip2 bzip2-devel  -y
+  yum install ncurses ncurses-devel  -y
+  yum install readline readline-devel  -y
+  yum install openssl openssl-devel  -y
+  yum install xz lzma xz-devel  -y
+  yum install sqlite sqlite-devel  -y
+  yum install gdbm gdbm-devel  -y
+  yum install tk tk-devel  -y
+  yum install mysql-devel -y
+  yum install python-devel -y
+  yum install libffi-devel -y</code></p>
+<ul>
+<li>下载Python源码，https://www.python.org/ftp/python/</li>
+</ul>
+<p><code>cd /data/
+  wget https://www.python.org/ftp/python/3.9.5/Python-3.9.5.tgz</code></p>
+<p>注意：如果没有wget，则先安装 <code>yum install wget -y</code></p>
+<ul>
+<li>
+<p>编译安装</p>
+</li>
+<li>
+<p>解压</p>
+<p><code>tar -xvf Python-3.9.5.tgz</code></p>
+</li>
+<li>
+<p>进入目录并编译安装</p>
+<p><code>cd Python-3.9.5
+./configure
+make all
+make install</code></p>
+</li>
+<li>
+<p>测试</p>
+<p>```
+python3.9 --version
+pip3.9 --version</p>
+<p>/usr/local/bin/pip3.9 --version
+```</p>
+</li>
+<li>
+<p>配置豆瓣源（腾讯云服务器，默认腾讯源）</p>
+<p><code>pip3.9 config set global.index-url https://mirrors.cloud.tencent.com/pypi/simple</code></p>
+</li>
+</ul>
+<h2 id="32">3.2 虚拟环境</h2>
+<ul>
+<li>安装虚拟环境</li>
+</ul>
+<p><code>pip3.9 install virtualenv</code></p>
+<ul>
+<li>创建虚拟环境目录并创建虚拟环境</li>
+</ul>
+<p><code>mkdir /envs
+  virtualenv /envs/nb --python=python3.9</code></p>
+<ul>
+<li>安装项目依赖的pip包</li>
+</ul>
+<p>```
+  # 激活虚拟环境
+  source /envs/nb/bin/activate</p>
+<p># 安装django
+  pip install django
+  ```</p>
+<p><code>cd /data/项目目录/
+  pip install -r requirements.txt</code></p>
+<h2 id="33">3.3 拉取代码和配置</h2>
+<p>当上述环境准备好之后，接下来需要在线上服务器上做以下步骤：</p>
+<ul>
+<li>
+<p>获取最新代码</p>
+</li>
+<li>
+<p>安装第三方包</p>
+</li>
+</ul>
+<p><code>source /envs/nb/bin/activate
+  pip install -r requirements.txt</code></p>
+<ul>
+<li>local_settings.py设置线上配置</li>
+</ul>
+<p>```python
+  import os
+  from pathlib import Path</p>
+<p>BASE_DIR = Path(<strong>file</strong>).resolve().parent.parent.parent</p>
+<p>DEBUG = False</p>
+<p>ALLOWED_HOSTS = ['*']</p>
+<p>STATIC_ROOT = os.path.join(BASE_DIR,"allstatic")
+  ```</p>
+<ul>
+<li>收集静态文件</li>
+</ul>
+<p><code>python manage.py  collectstatic</code></p>
+<h2 id="34-uwsgi">3.4 uwsgi</h2>
+<p>激活虚拟环境并安装uwsgi</p>
+<pre><code>source /envs/nb/bin/activate
+pip install uwsgi
+</code></pre>
+<p>基于uwsgi运行项目</p>
+<ul>
+<li>
+<p>文件参数</p>
+</li>
+<li>
+<p>创建 auto_luffy_web_uwsgi.ini</p>
+<p><code>ini
+[uwsgi]
+socket = 0.0.0.0:8001
+chdir = /data/auto_luffy_web/
+wsgi-file = auto_luffy_web/wsgi.py
+processes = 4
+static-map = /static=/data/allstatic
+virtualenv = /envs/nb/</code></p>
+</li>
+<li>
+<p>执行命令</p>
+<p><code>uwsgi --ini  day06_uwsgi.ini</code></p>
+</li>
+</ul>
+<h2 id="35-nginx">3.5 nginx</h2>
+<p>利用nginx做反向代理和处理静态文件。</p>
+<pre><code>yum install nginx -y
+</code></pre>
+<p>修改nginx.conf配置文件：</p>
+<pre><code>user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+                      '$status $body_bytes_sent &quot;$http_referer&quot; '
+                      '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 4096;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+
+    upstream django {
+        server 127.0.0.1:8001;
+    }
+
+    server {
+        listen       80;
+        listen       [::]:80;
+        server_name localhost;
+
+        location /static {
+            alias  /data/allstatic/;
+        }
+
+        location / {
+            uwsgi_pass  django;
+            include     uwsgi_params;
+        }
+
+    }
+}
+</code></pre>
+<p>修改uwsgi配置（auto_luffy_web_uwsgi）：</p>
+<pre><code class="language-ini">[uwsgi]
+socket = 0.0.0.0:8001
+chdir = /data/auto_luffy_web/
+wsgi-file = auto_luffy_web/wsgi.py
+processes = 4
+static-map = /static=/data/allstatic
+virtualenv = /envs/nb/
+</code></pre>
+<p>接下来就需要启动uwsgi和nginx：</p>
+<ul>
+<li>nginx</li>
+</ul>
+<p>```
+  # 启动
+  systemctl start nginx</p>
+<p># 开机启动
+  systemctl enable nginx
+  ```</p>
+<ul>
+<li>uwsgi</li>
+</ul>
+<p><code>uwsgi --ini  day06_uwsgi.ini</code></p>
+<p>每次启动都比较麻烦，怎么办？</p>
+<h2 id="36-shell">3.6 shell脚本</h2>
+<h3 id="rebootsh">reboot.sh</h3>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+echo -e &quot;\033[34m--------------------wsgi process--------------------\033[0m&quot;
+
+ps -ef|grep auto_luffy_web_uwsgi.ini | grep -v grep
+
+sleep 0.5
+
+echo -e '\n--------------------going to close--------------------'
+
+ps -ef |grep auto_luffy_web_uwsgi.ini | grep -v grep | awk '{print $2}' | xargs kill -9
+
+sleep 0.5
+
+echo -e '\n----------check if the kill action is correct----------'
+
+/envs/nb/bin/uwsgi  --ini auto_luffy_web_uwsgi.ini &amp;  &gt;/dev/null
+
+echo -e '\n\033[42;1m----------------------started...----------------------\033[0m'
+sleep 1
+
+ps -ef |grep auto_luffy_web_uwsgi.ini | grep -v grep
+</code></pre>
+<pre><code>sh reboot.sh
+</code></pre>
+<h3 id="stopsh">stop.sh</h3>
+<pre><code class="language-bash">#!/usr/bin/env bash
+
+echo -e &quot;\033[34m--------------------wsgi process--------------------\033[0m&quot;
+
+ps -ef|grep auto_luffy_web_uwsgi.ini | grep -v grep
+
+sleep 0.5
+
+echo -e '\n--------------------going to close--------------------'
+
+ps -ef |grep auto_luffy_web_uwsgi.ini | grep -v grep | awk '{print $2}' | xargs kill -9
+
+sleep 0.5
+</code></pre>
+<h1 id="4">4.报错</h1>
+<p><img alt="image-20240712185437576" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712185437576.png" /></p>
+<pre><code>pip install pysqlite3
+pip install pysqlite3-binary
+</code></pre>
+<p>修改<code>/envs/nb/lib/python3.9/site-packages/django/db/backends/sqlite3/base.py</code>文件：</p>
+<pre><code>#from sqlite3 import dbapi2 as Database  #注释它
+from pysqlite3 import dbapi2 as Database #新加这段代码
+</code></pre>
+<p><img alt="image-20240712185651469" src="imgs/day33-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.assets/image-20240712185651469.png" /></p>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>

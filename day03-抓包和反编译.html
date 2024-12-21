@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>三、抓包和反编译 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
+<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter active" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001.html">
+<a href="day06-java%E5%9F%BA%E7%A1%8001.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002.html">
+<a href="day07-java%E5%9F%BA%E7%A1%8002.html">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003.html">
+<a href="day08-java%E5%9F%BA%E7%A1%8003.html">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day13-JNI%E5%BC%80%E5%8F%91.html">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app.html">
+<a href="day15-%E8%AF%86%E8%B4%A7app.html">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app.html">
+<a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902.html">
+<a href="day18-B%E7%AB%9902.html">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903.html">
+<a href="day19-B%E7%AB%9903.html">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM.html">
+<a href="day22-DYM.html">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A.html">
+<a href="day25-unidbg-%E4%B8%8A.html">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87.html">
+<a href="day26-unidbg-%E4%B8%AD%E7%AF%87.html">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B.html">
+<a href="day27-unidbg-%E4%B8%8B.html">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A.html">
+<a href="day28-xhs-%E4%B8%8A.html">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B.html">
+<a href="day29-xhs-%E4%B8%8B.html">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="_1">三、抓包和反编译</h1>
+<h1 id="1">1、数据包抓取</h1>
+<h2 id="11">1.1 抓包工具选择</h2>
+<pre><code class="language-python">#1 什么是抓包工具？
+    -之前在学习js逆向时---》抓取数据包---》浏览器调试模式--》发送请求包，就可以看到---》只能抓取web的数据包
+
+    -app爬虫---》需要一款专门的抓包工具---》有很多--》装在电脑上（抓手机包）--》推荐使用charles
+
+
+# 2 有哪些专业的抓包工具？
+
+# Wireshark：Wireshark 是一个开源的网络抓包工具，可以在多个平台上运行，支持多种协议的抓取和分析。
+
+# Fiddler：Fiddler 是一个跨平台的抓包工具，可以用于捕获和分析 HTTP 和 HTTPS 流量。它提供了强大的调试和排查功能
+
+# Charles Proxy：Charles Proxy 是一款跨平台的代理服务器工具，可以捕获并分析 HTTP 和 HTTPS 流量。它具有图形化界面和丰富的功能，适用于移动设备和桌面应用程序的抓包。--》咱们选择它
+
+
+# Tcpdump：Tcpdump 是一个命令行抓包工具，适用于 Linux 和 Unix 系统。它可以捕获和分析网络流量，并提供灵活的过滤和输出选项
+
+
+# 抓包工具工作原理？
+</code></pre>
+<p><img alt="image-20230613164819832" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230613164819832.png" /></p>
+<p><img alt="image-20240308201330082" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308201330082.png" /></p>
+<h2 id="12-charles">1.2 charles的安装和配置</h2>
+<pre><code class="language-python"># 直接从资料包中获取：
+    4.5.6 版本：mac和win
+    建议大家用这个版本
+</code></pre>
+<h3 id="121-win">1.2.1 win安装和配置</h3>
+<pre><code class="language-python"># 1 拿到资料包中的软件：charles-proxy-4.5.6-win64.msi
+# 2 双击，一路下一步--》安装位置[尽量不要装在c盘]
+# 3 装完，桌面上出现 charles的图标 【青花瓷】
+</code></pre>
+<h3 id="122-mac">1.2.2 mac安装和配置</h3>
+<pre><code class="language-python"># 1 拿到资料包中的软件：Charles_4.5.6.dmg
+# 2 双击，一路下一步--》无法选择安装位置
+# 3 装完，应用程序中出现 charles的图标 【青花瓷】
+</code></pre>
+<h3 id="123-sn">1.2.3 sn账号</h3>
+<pre><code class="language-python">
+Name: Just For Testing
+Serial: 230ADA2020DFBD108E
+
+
+Name: TEAM MESMERiZE
+Serial: FC91D362FB19D6E6CF
+
+
+Name: MSJ
+Serial: 1101CAF6A1989C62AC
+</code></pre>
+<h3 id="124">1.2.4 版本问题</h3>
+<pre><code class="language-python"># 如果同学之前装了不同版本的
+    -建议换成一样的--》按钮位置可能不一样--》英文
+    -学习能力比较强，不想卸载--》如果遇到问题，自行搜索解决
+</code></pre>
+<h2 id="13-http">1.3 抓取手机的http包</h2>
+<pre><code class="language-python">###### 重要 ####
+# 前提---必须保证，手机和电脑处于同一个路由器 ######
+    电脑使用有线连接
+    手机使用无线连接
+# 尽量让电脑和手机处于同一个网段
+    -手机ip  192.168.1.11
+    -电脑ip  192.168.1.20
+
+# 电脑防火墙关掉 
+
+
+
+# 配置步骤
+    【电脑端】打开charles
+    【手机端】配置手机代理
+</code></pre>
+<h3 id="131">1.3.1 配置手机代理</h3>
+<pre><code class="language-python"># 1 打开charles---》点击：proxy--》proxy Settings---》如下图
+# 2 打开charles--》help---&gt;local ip address---&gt;如下图--》电脑本机的ip
+    -有的同学可能有多个
+        1 电脑有多个网卡 （跟手机在同一个网段）
+        2 装了虚拟机，有虚拟网卡（肯定不用）
+    -其他方式查看ip地址
+        win：命令窗口中：ipconfig
+        mac：命令窗口中：ifconfig
+
+# 3 打开手机--设置--wlan---》链接跟电脑同样的无线网后---》点齿轮--》点击右上角小笔---》
+</code></pre>
+<p><img alt="image-20240308203338250" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308203338250.png" /></p>
+<p><img alt="image-20240308203439630" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308203439630.png" /></p>
+<p><img alt="image-20240308203719167" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308203719167.png" /></p>
+<p><img alt="image-20240308204153632" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308204153632.png" /></p>
+<h3 id="132">1.3.2 配置模拟器代理</h3>
+<pre><code class="language-python"># 1 打开charles---》点击：proxy--》proxy Settings---》如下图
+# 2 打开charles--》help---&gt;local ip address---&gt;如下图--》电脑本机的ip
+    -有的同学可能有多个
+        1 电脑有多个网卡 （跟手机在同一个网段）
+        2 装了虚拟机，有虚拟网卡（肯定不用）
+    -其他方式查看ip地址
+        win：命令窗口中：ipconfig
+        mac：命令窗口中：ifconfig
+
+# 3 打开模拟器--》设置--》wlan---》选中已经连接的网络长按--》如下图
+</code></pre>
+<p><img alt="image-20240308204455781" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308204455781.png" /></p>
+<h3 id="133-http">1.3.3 手机-抓取http包</h3>
+<pre><code class="language-python">##### https抓不到#####
+
+# app端--》http包不多见
+
+#1  爱学生app---》资料包中--》安装到手机上
+
+#2  打开app，打开charles
+#3 点击登录，就能抓到包了
+
+#4 charles的常规操作，如下图
+
+
+
+# 5 改包--》重新发送--》经常用
+    改了--》点击excute 会重新发送
+    改包重新发送的目的是？
+        后期我们抓包后，要破解一些字段--》有些字段我们可以直接删除，发送看看能不能用，如果能用，说明这些字段不重要，我们就不需要破解了
+
+
+
+# 6 不用charlse抓取电脑的包
+    -电脑和手机都装--》乱起八遭很多，不好过滤--》直接屏蔽掉电脑上的包
+     proxy---》window proxy 对钩去掉即可
+</code></pre>
+<p><img alt="image-20240308205037555" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308205037555.png" /></p>
+<p><img alt="image-20240308205228902" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308205228902.png" /></p>
+<p><img alt="image-20240308205445415" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308205445415.png" /></p>
+<p><img alt="image-20240308205653401" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308205653401.png" /></p>
+<p><img alt="image-20240308205818071" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308205818071.png" /></p>
+<p><img alt="image-20240308205944658" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308205944658.png" /></p>
+<p><img alt="image-20240308210055428" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308210055428.png" /></p>
+<p><img alt="image-20240308210336203" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308210336203.png" /></p>
+<h3 id="134-http">1.3.4 模拟器抓http包</h3>
+<pre><code class="language-python">跟真机一样
+</code></pre>
+<h3 id="135">1.3.5 模拟登录</h3>
+<pre><code class="language-python">import requests
+
+headers = {
+    'AppVersion': '4.0.7.2',
+    'Content-Type': 'application/json; charset=utf-8',
+    'Content-Length': '66',
+    'Host': 'parentsystem.aixuesheng.net',
+    'User-Agent': 'okhttp/3.14.4',
+}
+data = {
+    &quot;code&quot;: &quot;&quot;,
+    &quot;password&quot;: &quot;&quot;,
+    &quot;username&quot;: &quot;18953675221&quot;,
+    &quot;uuid&quot;: &quot;&quot;
+}
+res = requests.post('http://parentsystem.aixuesheng.net/app/v1/patriarchLogin/1',json=data)
+print(res.text)
+
+</code></pre>
+<h2 id="14-https">1.4  抓取手机https包</h2>
+<pre><code class="language-python"># 目前，我们可以顺利抓取http的数据包，但是抓不了https的数据包
+    -https=http+ssl
+    -需要在客户端安装证书
+    -如果要抓https包---》需要在手机端--》安装charlse的证书
+
+
+# 注意1 ：
+    1 安卓 7 以下的设备[真机不多见了]，安装完证书，就可以使用，可以抓https的包了
+    2 安卓7 以上设备，安装完证书---》只是用户证书----》需要把证书做成系统证书--》借助于 magisk+模块move cert---》手机必须root
+    3 总结：现在市面上见到的手机---》基本都是8及以上的版本---》必须root 才能抓 https的包
+
+# 注意点2：
+    如果后期配置了代理---》能顺利抓http的包---》但是不能抓https的包
+        1 证书没装，没装好，没移动。。
+        2 proxy---》ssl proxying setting---》如下图
+</code></pre>
+<p><img alt="image-20240308214204581" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308214204581.png" /></p>
+<h3 id="141-https601">1.4.1 模拟器配置抓取https的包（6.0.1）</h3>
+<pre><code class="language-python">### 模拟器--》不需要移动证书--》不需要root
+
+# 步骤如下：
+1 打开charles--》help---》SSLProxying---》InstallCharles Root Certificate on a Mobile...
+2 访问网址  chls.pro/ssl
+3 手机设置完代理，才能访问
+4 下载安装证书，输入名字
+
+5 就可以抓取https的包了---》跟之前抓http一样
+</code></pre>
+<p><img alt="image-20230613174851004" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230613174851004.png" /></p>
+<p><img alt="image-20230613175000594" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230613175000594.png" /></p>
+<p><img alt="image-20240308214655955" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308214655955.png" /></p>
+<p><img alt="image-20240308215036291" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308215036291.png" /></p>
+<h3 id="142-https11">1.4.2 真机配置抓https包(11)</h3>
+<pre><code class="language-python"># 1 真机配置好代理后
+# 2 浏览器访问：chls.pro/ssl
+# 3 下载后，手机打开：安全---》加密与凭据---》安装证书---》CA证书--》仍然安装---》选中下载的--》安装完成
+
+# 4 手机打开：设置--》安全--》加密与凭据---》信任的凭据--》在用户证书下，目前不能用
+    -此时可以看到用户证书和系统证书
+
+
+# 5 把用户证书转移到系统证书下
+</code></pre>
+<p><img alt="image-20240308215211835" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308215211835.png" /></p>
+<p><img alt="image-20240308215244472" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308215244472.png" /></p>
+<p><img alt="image-20240308215354205" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308215354205.png" /></p>
+<p><img alt="image-20240308215540614" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308215540614.png" /></p>
+<p><img alt="image-20240308220832916" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308220832916.png" /></p>
+<h4 id="1421">1.4.2.1 系统证书和用户证书解释</h4>
+<pre><code class="language-python">在 Android 系统中，有两种类型的证书：用户证书（User Certificates）和系统证书（System Certificates）。
+
+用户证书（User Certificates）：用户证书是由特定用户生成或颁发的数字证书。这些证书通常用于用户身份验证和安全通信。用户证书可以用于加密和解密数据，数字签名以及建立安全连接。用户证书通常由用户自己创建，例如，用于加密电子邮件、VPN连接或身份验证。
+
+系统证书（System Certificates）：系统证书是由 Android 系统或设备制造商预装的证书。这些证书通常用于系统级别的安全功能，如应用程序签名验证、SSL/TLS 连接等。系统证书通常用于验证应用程序的真实性和完整性，以确保它们没有被篡改或恶意修改。这些证书由 Android 操作系统或设备制造商管理和维护。
+
+系统证书包括以下几种类型：
+
+代码签名证书：用于验证应用程序的签名，以确保应用程序的真实性和完整性。
+安全通信证书：用于建立 SSL/TLS 连接，保护设备和服务器之间的通信安全。
+根证书：根证书用于验证其他证书的真实性。Android 系统预装了一组根证书，用于验证 SSL/TLS 通信中的服务器证书。
+用户证书和系统证书在安全和身份验证方面扮演不同的角色。用户证书由用户自己管理，用于个人身份验证和加密通信。而系统证书由操作系统或设备制造商管理，用于验证应用程序和保护系统级别的通信安全。
+</code></pre>
+<h3 id="1422">1.4.2.2 把用户证书做成系统证书</h3>
+<pre><code class="language-python"># 1 将move cert压缩包传到手机【movecert-1.9-4.zip】（任意好找的一个目录 `/sdcard/Download/`）
+adb push /Users/lqz/soft/movecert-1.9-4.zip  /sdcard/movecert-1.9-4.zip
+
+# 2 使用面具，刷入
+    按照下图步骤
+
+# 3 重启手机
+
+# 4 手机打开：安全--》加密与凭据---》信任的凭据
+    -此时可以看到用户级别证书移动到系统级别了
+
+# 5 此时可以愉快抓https包了
+</code></pre>
+<p><img src="imgs/day03-课堂笔记.assets/image-20230613182733476.png" alt="image-20230613182733476" style="zoom:50%;" /></p>
+<p><img src="imgs/day03-课堂笔记.assets/image-20230613182527697.png" alt="image-20230613182527697" style="zoom:50%;" /></p>
+<p><img src="imgs/day03-课堂笔记.assets/image-20230613182815594.png" alt="image-20230613182815594" style="zoom:50%;" /></p>
+<p><img src="imgs/day03-课堂笔记.assets/image-20230613182834375.png" alt="image-20230613182834375" style="zoom:50%;" /></p>
+<h3 id="143-https">1.4.3 真机抓取https包</h3>
+<pre><code class="language-python">#1  抓取今日南川，首先安装
+adb install  app名字
+
+# 2 打开charles，打开手机app（配置好代理了）
+
+# 3 抓包如下
+    -如果抓不到，就两个原因
+
+</code></pre>
+<p><img alt="image-20240308221133751" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308221133751.png" /></p>
+<pre><code class="language-python">import requests
+
+headers = {
+    'appid': '32',
+    'sessionid': '',
+    'token': '',
+    't': '1709907713598',
+    'sign': '763e6ea8e8ee4cca80b325f1399c14dd',
+    'cqlivingappclienttype': '1',
+    'cqlivingappclientversion': '2029',
+    'content-type': 'application/x-www-form-urlencoded',
+    'content-length': '213',
+    'accept-encoding': 'gzip',
+    'user-agent': 'okhttp/4.10.0'
+
+}
+data = {
+    'appId': '32',
+    'hashSign': '4f3b0bbf36224526b64092e4607f0053',
+    'imgUrl': '',
+    'lat': '29.568295',
+    'lng': '106.559123',
+    'loginName': '18953675221',
+    'nickName': '',
+    'openId': '',
+    'place': '重庆',
+    'pwd': '7fa8282ad93047a4d6fe6111c93b308a',
+    'sessionId': '',
+    'token': '',
+    'type': '',
+}
+res = requests.post('https://api.cqliving.com/login.html', data=data, headers=headers)
+print(res.text)
+
+</code></pre>
+<h1 id="2">2 反编译工具</h1>
+<h2 id="21">2.1 常见的反编译工具</h2>
+<pre><code class="language-python"># 1 只是抓包--》不知道app如何加密的
+# 2 必须反编译回来--》读逻辑--》读懂加密方案
+# 3 需要反编译工具：
+    jadx（推荐）、jeb、GDA
+
+# 4 jadx需要依赖java环境
+
+</code></pre>
+<h2 id="22-jdk">2.2 JDK环境安装</h2>
+<pre><code class="language-python"># 1 jdk8--&gt;最新的是24
+# 2 把老师给的软件：
+    jdk-8u371-windows-x64.exe
+</code></pre>
+<h3 id="221-win">2.2.1 win平台安装</h3>
+<pre><code class="language-python"># 1 下载jdk-8u371-windows-x64.exe
+# 2 双击安装（选择位置）：D:\Program Files\Java
+# 3 不用配置环境变量--》后续会聊--》装完自动加环境变量了
+    -java home：目前不用，后面会聊
+</code></pre>
+<h3 id="222-mac">2.2.2 mac平台安装</h3>
+<pre><code class="language-python"># 1 下载jdk-8u371-macosx-x64.dmg
+# 2 双击安装（默认）
+</code></pre>
+<h3 id="223">2.2.3 验证是否装成功</h3>
+<pre><code class="language-PYTHON">java -version  # 看到打印安装成功
+'''
+java version &quot;1.8.0_371&quot;
+Java(TM) SE Runtime Environment (build 1.8.0_371-b11)
+'''
+</code></pre>
+<h2 id="23-jadx">2.3 安装 JADX反编译工具</h2>
+<pre><code class="language-python"># 1 官网
+https://github.com/skylot/jadx/releases
+
+# 2 最新版本
+    1.4.7 ：以后大部分都会用它，后面有款app需要用一下老版本，反编译的更全
+    老师给大家几个版本：jadx-1.2.0.zip 这个咱们也用
+
+# 3 装：jadx-1.2.0.zip
+    -解压zip
+    -移动到：d:soft/jadx-1.2.0
+    -bin 下有：
+        jadx-gui.bat # win下的运行
+        jadx-gui # mac下的运行
+    -把jadx-gui.bat发送到桌面快捷方式--》双击启动，把apk拖入即可
+# 4 可以任意多版本共存 
+
+# 5 最新版本：
+    -下载：jadx-gui-1.4.7-with-jre-win.zip
+    -解压：jadx-gui-1.4.7.exe 双击运行它即可
+
+</code></pre>
+<p><img alt="image-20240308223228049" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308223228049.png" /></p>
+<h1 id="3-app">3 抓包反编译某app</h1>
+<h2 id="31">3.1 抓包</h2>
+<pre><code class="language-python">#1  车智赢--》资料包中
+# adb install xx.apk
+# 2 抓包分析
+    -请求地址：
+        https://dealercloudapi.che168.com/tradercloud/sealed/login/login.ashx
+    -请求方式：
+        post
+    -请求头：无特殊
+    -请求体：
+        pwd:7fa8282ad93047a4d6fe6111c93b308a
+        username：18953675221
+
+ # 3 密码加密了，加密逻辑不知道--》反编译，搜索--》破解加密方案
+</code></pre>
+<p><img alt="image-20240308223739283" src="imgs/day03-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240308223739283.png" /></p>
+<h2 id="32">3.2 反编译定位代码</h2>
+<pre><code class="language-python">#1 反编译：根据关键字搜索
+    - pwd
+    - pwd&quot;
+    - &quot;pwd&quot;
+    - put(&quot;pwd
+
+    - login/login.ashx
+
+ # 2 根据地址搜索：登录地址只有一个
+ # 3 搜到：public static final String LOGIN_URL = &quot;/tradercloud/sealed/login/login.ashx&quot;;
+
+# 4  在变量上点右键--》查找用例(谁用了它）
+# 5 param(&quot;pwd&quot;, SecurityUtil.encodeMD5(str3))
+
+# 6 encodeMD5 右键---》跳到声明
+
+          public static final String encodeMD5(String str) {
+              char[] cArr = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+              try {
+                  byte[] bytes = str.getBytes();
+                  MessageDigest messageDigest = MessageDigest.getInstance(&quot;MD5&quot;);
+                  messageDigest.update(bytes);
+                  byte[] digest = messageDigest.digest();
+                  char[] cArr2 = new char[digest.length * 2];
+                  int i = 0;
+                  for (byte b : digest) {
+                      int i2 = i + 1;
+                      cArr2[i] = cArr[(b &gt;&gt;&gt; 4) &amp; 15];
+                      i = i2 + 1;
+                      cArr2[i2] = cArr[b &amp; bx.m];
+                  }
+                  return new String(cArr2).toLowerCase();
+              } catch (Exception e) {
+                  e.printStackTrace();
+                  return null;
+              }
+          }
+# 7 因为咱们不懂java--》大部分同学读不懂--》但是这就是java的md5加密
+# 8 我们可以验证
+
+# 明文 1111111   密文：7fa8282ad93047a4d6fe6111c93b308a
+import hashlib
+md5=hashlib.md5()
+md5.update(b'1111111')
+print(md5.hexdigest()) #  7fa8282ad93047a4d6fe6111c93b308a
+
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>

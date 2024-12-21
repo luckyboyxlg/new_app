@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>十、安卓开发02 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
+<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001.html">
+<a href="day06-java%E5%9F%BA%E7%A1%8001.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002.html">
+<a href="day07-java%E5%9F%BA%E7%A1%8002.html">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003.html">
+<a href="day08-java%E5%9F%BA%E7%A1%8003.html">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day09 安卓开发01</a>
+<li class="chapter active" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day13-JNI%E5%BC%80%E5%8F%91.html">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app.html">
+<a href="day15-%E8%AF%86%E8%B4%A7app.html">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app.html">
+<a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902.html">
+<a href="day18-B%E7%AB%9902.html">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903.html">
+<a href="day19-B%E7%AB%9903.html">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM.html">
+<a href="day22-DYM.html">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A.html">
+<a href="day25-unidbg-%E4%B8%8A.html">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87.html">
+<a href="day26-unidbg-%E4%B8%AD%E7%AF%87.html">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B.html">
+<a href="day27-unidbg-%E4%B8%8B.html">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A.html">
+<a href="day28-xhs-%E4%B8%8A.html">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B.html">
+<a href="day29-xhs-%E4%B8%8B.html">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="02">十、安卓开发02</h1>
+<h2 id="app">一、开发一个登录案例app</h2>
+<p><img alt="image-20230711145637658" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20230711145637658.png" /></p>
+<pre><code class="language-python"># 咱们要学的
+    1 页面布局(逆向不需要关注布局，不重要)
+    2 java操作xml标签（不重要）
+    3 java发送http请求到后端(重要，逆向)
+    4 python编写后端：flask（后期会学习flask）
+</code></pre>
+<h3 id="1xml">1、安卓端xml编写</h3>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;216dp&quot;
+        android:layout_marginTop=&quot;150dp&quot;
+        android:background=&quot;#dddddd&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;TextView
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_marginTop=&quot;10dp&quot;
+            android:text=&quot;用户登录&quot;
+            android:textAlignment=&quot;center&quot;
+            android:textSize=&quot;25dp&quot;&gt;&lt;/TextView&gt;
+
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:paddingLeft=&quot;15dp&quot;
+            android:paddingRight=&quot;15dp&quot;&gt;
+
+            &lt;TextView
+                android:layout_width=&quot;60dp&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:gravity=&quot;center&quot;
+                android:text=&quot;用户名&quot;
+                &gt;&lt;/TextView&gt;
+
+            &lt;EditText
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:id=&quot;@+id/txt_user&quot;&gt;
+
+            &lt;/EditText&gt;
+
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:paddingLeft=&quot;15dp&quot;
+            android:paddingRight=&quot;15dp&quot;&gt;
+
+            &lt;TextView
+                android:layout_width=&quot;60dp&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:gravity=&quot;center&quot;
+                android:text=&quot;密码&quot;&gt;&lt;/TextView&gt;
+
+            &lt;EditText
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:inputType=&quot;textPassword&quot;
+                android:id=&quot;@+id/txt_pwd&quot;&gt;
+
+            &lt;/EditText&gt;
+
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;60dp&quot;
+            android:gravity=&quot;center&quot;&gt;
+
+            &lt;Button
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:layout_marginRight=&quot;5dp&quot;
+                android:id=&quot;@+id/btn_login&quot;
+                android:text=&quot;登录&quot;&gt;
+
+            &lt;/Button&gt;
+
+            &lt;Button
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:layout_marginLeft=&quot;5dp&quot;
+                android:id=&quot;@+id/btn_reset&quot;
+                android:text=&quot;重置&quot;&gt;
+
+            &lt;/Button&gt;
+
+        &lt;/LinearLayout&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+<h3 id="2java">2、安卓端java编写</h3>
+<pre><code class="language-java">package com.justin.justinapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.os.Looper;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+public class MainActivity extends AppCompatActivity {
+
+    private TextView txtUser, txtPwd;
+    private Button btnLogin, btnReset;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        initView();
+        initListener();
+    }
+
+    private void initView() {
+        // 先找到所有的有用的标签
+        txtUser = findViewById(R.id.txt_user);
+        txtPwd = findViewById(R.id.txt_pwd);
+        btnLogin = findViewById(R.id.btn_login);
+        btnReset = findViewById(R.id.btn_reset);
+    }
+
+    private void initListener() {
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 点击btn_reset签，执行方法
+                txtUser.setText(&quot;&quot;);
+                txtPwd.setText(&quot;&quot;);
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginForm();
+            }
+        });
+    }
+
+    private void loginForm() {
+        String username = String.valueOf(txtUser.getText());
+        String password = String.valueOf(txtPwd.getText());
+        Toast t= Toast.makeText(MainActivity.this, &quot;登录成功&quot;, Toast.LENGTH_SHORT);
+        new Thread() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient.Builder().build();
+                FormBody form = new FormBody.Builder().add(&quot;user&quot;, username).add(&quot;pwd&quot;, password).build();
+                Request req = new Request.Builder().url(&quot;http://192.168.1.12:8080/login&quot;).post(form).build();
+                Call call = client.newCall(req);
+                try {
+                    Response res = call.execute();
+                    ResponseBody body = res.body();
+                    String dataString = body.string();
+
+                    t.show();
+
+                    Log.e(&quot;请求发送成功&quot;, dataString);
+                } catch (IOException ex) {
+                    Log.e(&quot;Main&quot;, &quot;网络请求异常&quot;);
+                }
+            }
+        }.start();
+    }
+}
+</code></pre>
+<h3 id="3http">3、配置安卓发送http请求</h3>
+<h4 id="1">(1) 引入</h4>
+<p>在build.gradle中 <code>implementation "com.squareup.okhttp3:okhttp:4.9.1"</code>
+等同于：<code>pip install requests</code></p>
+<h4 id="2">(2) 配置</h4>
+<p>运行手机发送网络请求：</p>
+<p>在AndroidManifest.xml中 </p>
+<p><code>&lt;uses-permission android:name="android.permission.INTERNET"/&gt;</code></p>
+<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;
+    &lt;application
+        ...
+    &lt;/application&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+&lt;/manifest&gt;
+</code></pre>
+<h4 id="3-http">(3) 支持http（仅测试使用）</h4>
+<p>目前咱们没法上线--》使用okhttp发送http请求---》额外配置--》按如下步骤</p>
+<p>在res/xml下新建security.xml，写入</p>
+<pre><code class="language-java">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        &lt;network-security-config&gt;
+            &lt;base-config cleartextTrafficPermitted=&quot;true&quot; /&gt;
+        &lt;/network-security-config&gt;
+</code></pre>
+<p>在AndroidManifest.xml加入</p>
+<pre><code class="language-java">&lt;application
+    ...
+    android:networkSecurityConfig=&quot;@xml/security&quot;
+    ...&gt;
+</code></pre>
+<p><strong>说明：</strong>安卓是java代码，python学过requests模块可以发送http请求，借助于第三方模块</p>
+<p>-okhttp：在安卓中使用非常广泛</p>
+<h4 id="5">(5) 说明</h4>
+<p>使用okhttp发送http请求---》默认okhttp发送的都是https的请求</p>
+<ul>
+<li>https=http+ssl  安全传输</li>
+</ul>
+<p>目前使用python写的项目，不能监听https请求，后期项目上线，使用nginx代理，集成证书才能使用https请求</p>
+<h3 id="4pythonflask">4、Python后端Flask编写</h3>
+<pre><code class="language-python">import uuid
+
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if username == 'justin' and password == '123':
+        token = str(uuid.uuid4())
+        return jsonify({'code': 100, 'msg': &quot;登录成功&quot;, 'token': token})
+    else:
+        return jsonify({'code': 100, 'msg': &quot;用户名或密码错误&quot;})
+
+if __name__ == '__main__':
+    app.run('0.0.0.0',8080)
+</code></pre>
+<h2 id="_1">二、请求加密</h2>
+<pre><code class="language-python"># 一般移动端为了防止被用户抓包，模拟发送请求，一般都会携带一些加密参数，我们模拟这个过程
+
+
+# 我们使用md5加密来模拟
+
+</code></pre>
+<h3 id="1_1">1、移动端</h3>
+<pre><code class="language-java">private void loginForm() {
+        String username = String.valueOf(txtUser.getText());
+        String password = String.valueOf(txtPwd.getText());
+        Utils utils = new Utils();
+
+        String t1 = String.valueOf(System.currentTimeMillis() / 1000);
+        String sign = utils.md5(username+&quot;justin&quot;);
+        Toast t = Toast.makeText(MainActivity.this, &quot;登录成功&quot;, Toast.LENGTH_SHORT);
+        new Thread() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient.Builder().build();
+
+                FormBody form = new FormBody.Builder().add(&quot;username&quot;, username).add(&quot;password&quot;, utils.md5(password)).add(&quot;sign&quot;, sign).build();
+                Request req = new Request.Builder().url(&quot;http://192.168.1.12:8080/login&quot;).post(form).addHeader(&quot;ctime&quot;, t1).build();
+                Call call = client.newCall(req);
+                try {
+                    Response res = call.execute();
+                    ResponseBody body = res.body();
+                    String dataString = body.string();
+
+                    t.show();
+
+                    Log.e(&quot;main&quot;, dataString);
+                } catch (IOException ex) {
+
+                    Log.e(&quot;Main&quot;, &quot;网络请求异常&quot;);
+                    Log.e(&quot;Main&quot;, ex.toString());
+                }
+            }
+        }.start();
+    }
+</code></pre>
+<p><strong>Utils.java</strong></p>
+<pre><code class="language-java">package com.justin.justinapp01;
+
+import java.security.MessageDigest;
+
+public class Utils {
+
+    public String md5(String dataString) {
+        try {
+            MessageDigest instance = MessageDigest.getInstance(&quot;MD5&quot;);
+            byte[] nameBytes = instance.digest(dataString.getBytes());
+
+            // 十六进制展示
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i &lt; nameBytes.length; i++) {
+                int val = nameBytes[i] &amp; 255;
+                if (val &lt; 16) {
+                    sb.append(&quot;0&quot;);
+                }
+                sb.append(Integer.toHexString(val));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+}
+
+</code></pre>
+<h3 id="2_1">2、后端</h3>
+<pre><code class="language-python">import uuid
+
+from flask import Flask, request, jsonify
+import time
+import hashlib
+
+app = Flask(__name__)
+
+
+def get_md5(s):
+    md5 = hashlib.md5()
+    md5.update(s.encode('utf-8'))
+    return md5.hexdigest()
+
+
+@app.before_request
+def before():
+    ctime = time.time()
+    in_ctime = int(request.headers.get('ctime'))
+    if ctime - in_ctime &gt; 1000:
+        return jsonify({'code': 888, 'msg': &quot;请求超时&quot;})
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    sign = request.form.get('sign')
+    real_sign = get_md5(username + 'justin')
+    if not sign == real_sign:
+        return jsonify({'code': 105, 'msg': &quot;签名错误&quot;})
+    if username == 'justin' and password == '202cb962ac59075b964b07152d234b70':
+        token = str(uuid.uuid4())
+        return jsonify({'code': 100, 'msg': &quot;登录成功&quot;, 'token': token})
+    else:
+        return jsonify({'code': 101, 'msg': &quot;用户名或密码错误&quot;})
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 8080)
+
+</code></pre>
+<h2 id="_2">三 、序列化</h2>
+<ol>
+<li>前端(app) 和 后端(python-flask) 交互---》通过json格式字符串通信的--》字符串</li>
+<li>app端：把后端返回给我们的json格式字符串--》转成java的对象来使用---》反序列化</li>
+<li>
+<p>app端，把java的对象，转成json格式字符串--》序列化</p>
+</li>
+<li>
+<p>前端 add("username", username).add("password", md5Password)--》最终 转成字符串放到了请求体中
+  ----之间交互--》都是josn格式字符串-----</p>
+</li>
+<li>
+<p>后端 取前端传入的数据</p>
+</li>
+<li>
+<p>username = request.form.get('username')</p>
+</li>
+<li>
+<p>password = request.form.get('password')</p>
+</li>
+<li>
+<p>python的flask--》返回的数据{'code': 100, 'msg': '登录成功', 'token': token}</p>
+</li>
+<li>
+<p>到了app端--》是json格式字符串</p>
+</li>
+<li>
+<p>现在咱们需要学习一个在安卓中，可以把json格式 字符串，转成java对象的包</p>
+</li>
+<li>
+<p>python：josn模块</p>
+</li>
+<li>js中：JSON.parser  JSON.stringify</li>
+<li>
+<p>安卓中：</p>
+<ul>
+<li>Google提供的Gson--》安卓上用这个多</li>
+<li>fastjson第三库</li>
+</ul>
+</li>
+<li>
+<p>如何使用Gson</p>
+</li>
+<li>
+<p>在build.gradle中注册---》自动下载模块</p>
+<p><code>implementation 'com.google.code.gson:gson:2.8.6'</code></p>
+</li>
+<li>
+<p>新建类</p>
+<ul>
+<li>{'code': 100, 'msg': '登录成功', 'token': token}</li>
+<li>LoginResponse的对象</li>
+<li>r.code</li>
+<li>r.msg</li>
+<li>r.token</li>
+<li>序列化</li>
+<li>反序列化</li>
+</ul>
+</li>
+<li>
+<p>总结：</p>
+</li>
+<li>
+<p>使用 Gson做反序列化</p>
+<p><code>LoginResponse r=new Gson().fromJson(dataString,LoginResponse.class);</code></p>
+</li>
+<li>
+<p>使用Gson做序列化</p>
+<p><code>LoginResponse login= new LoginResponse(101,"失败了","asdfasd-asdfads-ss");
+String s=new Gson().toJson(login);</code></p>
+</li>
+</ol>
+<h3 id="1_2">1、前端代码</h3>
+<p>登录成功后跳转到显示电影页面</p>
+<p><img alt="image-20230711184712505" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20230711184712505.png" /></p>
+<p><strong>思路</strong></p>
+<pre><code>1 登录成功后跳转
+2 新建 IndexActivity.java
+3 新建ListView适配器  layout/list_item.xml
+# 登录成功：
+ if(r.code==100){
+     // 登录成功--》跳转到另一个页面
+     t.show();
+     Intent intent = new Intent(MainActivity.this,IndexActivity.class);
+     // 启动新的 Activity
+     startActivity(intent);
+ }else {
+     Log.e(&quot;MainActivity&quot;, &quot;网络请求异常&quot;);
+ }
+</code></pre>
+<p><strong>MainActivity</strong></p>
+<pre><code class="language-java">package com.justin.justinapp01;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.justin.justinapp01.entity.CommonResponse;
+import com.justin.justinapp01.entity.LoginResponse;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+public class MainActivity extends AppCompatActivity {
+    private TextView txtUser, txtPwd;
+    private Button btnLogin, btnReset;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // 当页面创建时，就好执行这个代码
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main); // 关联了layout下那个xml文件
+        initView();
+        initListener();
+
+
+    }
+
+    private void initView() {
+        // 先找到所有的有用的标签
+        txtUser = findViewById(R.id.txt_user);
+        txtPwd = findViewById(R.id.txt_pwd);
+        btnLogin = findViewById(R.id.btn_login);
+        btnReset = findViewById(R.id.btn_reset);
+    }
+
+    private void initListener() {
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 点击btn_reset标签，执行方法
+                txtUser.setText(&quot;&quot;);
+                txtPwd.setText(&quot;&quot;);
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginForm();
+            }
+        });
+    }
+
+    private void loginForm() {
+        String username = String.valueOf(txtUser.getText());
+        String password = String.valueOf(txtPwd.getText());
+        Utils utils = new Utils();
+
+        String t1 = String.valueOf(System.currentTimeMillis() / 1000);
+        String sign = utils.md5(username+&quot;justin&quot;);
+        new Thread() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient.Builder().build();
+
+                FormBody form = new FormBody.Builder().add(&quot;username&quot;, username).add(&quot;password&quot;, utils.md5(password)).add(&quot;sign&quot;, sign).build();
+                Request req = new Request.Builder().url(&quot;http://192.168.1.12:8080/login&quot;).post(form).addHeader(&quot;ctime&quot;, t1).build();
+                Call call = client.newCall(req);
+                try {
+                    Response res = call.execute();
+                    ResponseBody body = res.body();
+                    String dataString = body.string();
+                    LoginResponse obj = new Gson().fromJson(dataString,LoginResponse.class);
+                    if(obj.code==100){
+                        showToast(&quot;登录成功&quot;);
+                        Intent intent = new Intent(MainActivity.this,IndexActivity.class);
+                        // 启动新的 Activity
+                        startActivity(intent);
+                    }else {
+                        showToast(obj.msg);
+                    }
+
+                    CommonResponse testRes=new CommonResponse(100,&quot;成功&quot;);
+                    String testString = new Gson().toJson(testRes);
+                    Log.e(&quot;justin-main&quot;,testString);
+
+
+                    Log.e(&quot;main&quot;, dataString);
+                } catch (IOException ex) {
+
+                    Log.e(&quot;Main&quot;, &quot;网络请求异常&quot;);
+                    Log.e(&quot;Main&quot;, ex.toString());
+                }
+            }
+        }.start();
+    }
+
+    private void showToast(final String message) {
+        // 在 UI 线程中显示 Toast
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+}
+</code></pre>
+<p><strong>IndexActivity.java</strong></p>
+<pre><code class="language-java">package com.justin.justinapp01;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.justin.justinapp01.entity.Films;
+
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+public class IndexActivity extends AppCompatActivity {
+    ListView listView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_index);
+        listView = findViewById(R.id.listview);
+        new Thread() {
+            @Override
+            public void run() {
+
+                OkHttpClient client = new OkHttpClient();
+                FormBody form = new FormBody.Builder().build();
+                Request request = new Request.Builder().url(&quot;http://192.168.1.12:8080/film&quot;).get().build();//get请求
+                Call call = client.newCall(request);
+                try {
+                    Response res = call.execute();
+                    ResponseBody body = res.body();
+                    String dataString = body.string();
+                    Films obj = new Gson().fromJson(dataString, Films.class);
+                    if (obj.code == 100) {
+                        showToast(obj.msg);
+                        // 创建自定义适配器并设置给 ListView
+                        MyAdapter adapter = new MyAdapter(IndexActivity.this, obj);
+                        listView.setAdapter(adapter);
+
+
+                    } else {
+                        showToast(obj.msg);
+                    }
+
+                } catch (IOException e) {
+                    Log.e(&quot;tttt&quot;, e.toString());
+
+                }
+
+            }
+        }.start();
+
+
+    }
+
+
+    private void showToast(final String message) {
+        // 在 UI 线程中显示 Toast
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(IndexActivity.this, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+
+class MyAdapter extends BaseAdapter {
+
+    private Context context;
+    private Films dataList;
+    public MyAdapter(Context context, Films dataList) {
+        this.context = context;
+        this.dataList = dataList;
+    }
+
+    @Override
+    public int getCount() {
+        return dataList.films.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        convertView = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
+        //  根据布局文件实例化view
+        TextView tv = (TextView)convertView.findViewById(R.id.name);
+        tv.setText(this.dataList.films.get(position).name);
+
+        TextView synopsis = (TextView)convertView.findViewById(R.id.synopsis);
+        synopsis.setText(this.dataList.films.get(position).synopsis);
+
+
+        ImageView img = (ImageView)convertView.findViewById(R.id.pic);
+        //使用Glide加载图片
+        Glide.with(context)
+                //加载地址
+                .load(this.dataList.films.get(position).poster)
+                //加载失败时，设置默认的图片
+                .placeholder(R.mipmap.ic_launcher)
+                //显示的位置
+                .into(img);
+        return convertView;
+    }
+
+}
+</code></pre>
+<p><strong>layout/list_item.xml</strong></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:padding=&quot;5dp&quot;&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/pic&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+       /&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;TextView
+            android:id=&quot;@+id/name&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;demo&quot;
+            android:textColor=&quot;#000000&quot;
+            android:textSize=&quot;20dp&quot; /&gt;
+
+        &lt;TextView
+            android:id=&quot;@+id/synopsis&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:text=&quot;demo&quot;
+            android:textColor=&quot;#000000&quot;
+            android:textSize=&quot;15dp&quot; /&gt;
+    &lt;/LinearLayout&gt;
+&lt;/LinearLayout&gt;
+
+</code></pre>
+<p><strong>配置加载网络图片的模块build.gradle</strong></p>
+<pre><code class="language-java">dependencies {   
+    implementation &quot;com.squareup.okhttp3:okhttp:4.9.1&quot;
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+ }
+</code></pre>
+<p><strong>编写响应类</strong></p>
+<pre><code class="language-java">entity
+    CommonResponse
+    Films
+    FilmsReal
+    LoginResponse
+
+// CommonResponse
+    package com.justin.justinapp01.entity;
+    public class CommonResponse {
+        public int code;
+        public String msg;
+        // 这个是给序列化用的
+        public CommonResponse(int code,String msg){
+            this.code=code;
+            this.msg=msg;
+
+        }
+        public CommonResponse(){
+
+        }
+
+    }
+// Films
+    package com.justin.justinapp01.entity;
+
+    import java.util.ArrayList;
+
+    public class Films{
+        public int code;
+        public String msg;
+        public ArrayList&lt;FilmsReal&gt; films;
+    }
+
+// FilmsReal
+    package com.justin.justinapp01.entity;
+
+    public class FilmsReal {
+        public String name;
+        public String poster;
+        public String synopsis;
+    }
+
+// LoginResponse
+
+    public class LoginResponse extends CommonResponse {
+        public String token;
+
+        public LoginResponse() {
+        }
+
+        // 这个是给序列化用的
+        public LoginResponse(int code, String msg, String token) {
+            this.code = code;
+            this.msg = msg;
+            this.token = token;
+        }
+    }
+</code></pre>
+<p><strong>AndroidManifest.xml  会自动添加</strong></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;&gt;
+
+
+
+    &lt;application
+        android:allowBackup=&quot;true&quot;
+        android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot;
+        android:fullBackupContent=&quot;@xml/backup_rules&quot;
+        android:icon=&quot;@mipmap/ic_launcher&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:networkSecurityConfig=&quot;@xml/security&quot;
+        android:roundIcon=&quot;@mipmap/ic_launcher_round&quot;
+        android:supportsRtl=&quot;true&quot;
+        android:theme=&quot;@style/Theme.JustinApp01&quot;
+        tools:targetApi=&quot;31&quot;&gt;
+        &lt;activity
+            android:name=&quot;.IndexActivity&quot;
+            android:exported=&quot;false&quot; /&gt;
+        &lt;activity
+            android:name=&quot;.MainActivity&quot;
+            android:exported=&quot;true&quot;&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+
+&lt;/manifest&gt;
+</code></pre>
+<h3 id="2flask">2、后端flask</h3>
+<pre><code class="language-python">import uuid
+import json
+from flask import Flask, request, jsonify
+import time
+import hashlib
+
+app = Flask(__name__)
+
+
+def get_md5(s):
+    md5 = hashlib.md5()
+    md5.update(s.encode('utf-8'))
+    return md5.hexdigest()
+
+
+@app.before_request
+def before():
+    ctime = time.time()
+    in_ctime = request.headers.get('ctime')
+    if in_ctime:
+        in_ctime = int(in_ctime)
+        if ctime - in_ctime &gt; 1000:
+            return jsonify({'code': 888, 'msg': &quot;请求超时&quot;})
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    sign = request.form.get('sign')
+    real_sign = get_md5(username + 'justin')
+    if not sign == real_sign:
+        return jsonify({'code': 105, 'msg': &quot;签名错误&quot;})
+    if username == 'justin' and password == '202cb962ac59075b964b07152d234b70':
+        token = str(uuid.uuid4())
+        return jsonify({'code': 100, 'msg': &quot;登录成功&quot;, 'token': token})
+    else:
+        return jsonify({'code': 101, 'msg': &quot;用户名或密码错误&quot;})
+
+
+@app.route('/film', methods=['POST','GET'])
+def film():
+    print('请求来了')
+    with open('./film.json', mode='rt', encoding='utf-8') as f:
+        dic = json.load(f)
+    return jsonify(dic)
+
+
+if __name__ == '__main__':
+    app.run('0.0.0.0', 8080)
+
+</code></pre>
+<h3 id="3filmjson">3、数据film.json</h3>
+<pre><code class="language-json">{
+  &quot;code&quot;: 100,
+  &quot;films&quot;: [
+    {
+      &quot;name&quot;: &quot;八角笼中&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/b6be063ea8bb7d4ecd09299b800fe510.jpg&quot;,
+      &quot;synopsis&quot;: &quot;暑期劲燃现实题材佳作！根据真实事件改编，王宝强六年打磨，动情演绎震撼人心！电影讲述了向腾辉（王宝强 饰）倾注心血想把当地无人照料的孩子培养成才，这让生活本没有出路的孩子们看到了一丝通向未来的曙光。然而，随着往日的表演视频被爆出，这些“残忍、血腥”的画面刺激了不明真相的人们的神经。一夜之间，舆论开始发酵。向腾辉的生活、孩子们的前途都陷入到人们以善良为名编织的大网中，让他们难以挣脱，重回泥沼，关于未来，他们的“出路”又将在哪……&quot;
+    },
+    {
+      &quot;name&quot;: &quot;消失的她&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/149ddb9a7f64e06ed474d963cfc6c405.jpg&quot;,
+      &quot;synopsis&quot;: &quot;何非的妻子李木子在去往东南亚度假岛巴兰迪亚的结婚周年旅行中离奇消失。在何非苦寻无果之时，妻子再次现身，何非却坚持眼前的陌生女人并非妻子。女人拿出了身份证明进行自证，夫妻二人似乎都有不可告人的秘密，随着金牌律师陈麦以及当地警察郑成介入到这起离奇案件中，更多的谜团慢慢浮现……&quot;
+    },
+    {
+      &quot;name&quot;: &quot;碟中谍7：致命清算（上）&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/825cd3106925b127e6027b300fb01026.jpg&quot;,
+      &quot;synopsis&quot;: &quot;刷新极限的传奇特工系列火线回归，感受今夏最真实震撼的银幕冒险！特工伊森·亨特（汤姆·克鲁斯饰）和他的IMF小组将开启迄今为止最危险的一次任务：追踪一种会危及全人类性命的新型武器，并阻止其落入坏人之手。与此同时，伊森曾对抗过的黑暗势力也正在卷土重来，整个世界的命运岌岌可危。面对神秘而强大的敌人，他不得不面对选择使命还是至爱的终极抉择。&quot;
+    },
+    {
+      &quot;name&quot;: &quot;扫毒3：人在天涯&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/19c503c9c7df7f75dd3713039b4880e0.jpg&quot;,
+      &quot;synopsis&quot;: &quot;邱礼涛继《扫毒2》《拆弹专家2》后携《扫毒3：人在天涯》强势回归，古天乐郭富城刘青云三大影帝首次同台飙戏荡平金三角！毒枭康素差（刘青云 饰）和手下张建行（郭富城 饰）、欧志远（古天乐 饰）因一次意外有了过命交情，三人情同手足。康素差被香港警方通缉后带领团队逃到金三角发展，却意外发现身边藏有卧底。曾经的生死兄弟如今分崩离析，敌友难辨，何去何从……&quot;
+    },
+    {
+      &quot;name&quot;: &quot;封神第一部：朝歌风云&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/f57040d1983ab2923e53aedb36a00cd4.jpg&quot;,
+      &quot;synopsis&quot;: &quot;中国国民神话史诗大片，震撼视效燃炸暑期！《封神第一部》讲述商王殷寿勾结狐妖妲己，暴虐无道，引发天谴。昆仑仙人姜子牙携“封神榜”下山，寻找天下共主，以救苍生。西伯侯之子姬发逐渐发现殷寿的本来面目，反出朝歌。各方势力暗流涌动，风云变幻端倪初显……三千年想象成真，恢弘史诗再创新，见证中国神话崛起！&quot;
+    },
+    {
+      &quot;name&quot;: &quot;超能一家人&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/0ec798637174c1ba4eac7a2438019230.png&quot;,
+      &quot;synopsis&quot;: &quot;开心麻花首部春节档喜剧电影。主人公郑前（艾伦 饰）离家出走漂泊多年，开发了一款“理财神器”APP，不料却被家乡喀西契克市邪恶狡猾的市长乞乞科夫（沈腾 饰）盯上。而此时郑前一家人竟遇到天降陨石获得了超能力，但只要有人离开，超能力便会消失。郑前被迫和不靠谱的家人团结起来，共同抵抗乞乞科夫，上演一场超能力VS钞能力的爆笑故事……&quot;
+    },
+    {
+      &quot;name&quot;: &quot;茶啊二中&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/9f21bcf792f7b12087c8052be3adea6e.jpg&quot;,
+      &quot;synopsis&quot;: &quot;在“茶啊二中”，有最懂“我们”的中国式青春！当“学渣”王强与“暴力班主任”石妙娜意外灵魂互换，会是怎样“翻身解气”的体验？暑假解压包式强喜剧，7月14日，一起回到笑得最大声的日子！&quot;
+    },
+    {
+      &quot;name&quot;: &quot;超级飞侠：乐迪加速&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/aa0bd00e9e739e66887dd20fb296a580.jpg&quot;,
+      &quot;synopsis&quot;: &quot;超级飞侠乐迪接到一项新任务！一个神秘的包裹，一次跨越大洲的派送，乐迪却因此偶然介入了一场将世界陷于危机的恶作剧中。面对危机，乐迪和其他超级飞侠将发挥各自的救援能力，争分夺秒合力拯救世界！&quot;
+    },
+    {
+      &quot;name&quot;: &quot;我爱你！&quot;,
+      &quot;poster&quot;: &quot;https://pic.maizuo.com/usr/movie/19dbbdc52057e722a4c6d76a788fc417.jpg&quot;,
+      &quot;synopsis&quot;: &quot;你是否想过自己会如何老去？四个花甲老人，两段迟暮之恋，他们的爱善良而纯粹、浪漫又浓烈。在生命这段有限的旅程里，趁还来得及，我要对你说声“我爱你！”。&quot;
+    }
+  ],
+  &quot;msg&quot;: &quot;ok&quot;
+}
+</code></pre>
+<h2 id="xml">四、xml持久化</h2>
+<pre><code class="language-python"># 后端获取的数据（如：token等），保存到手机中，一般保存在xml中
+
+# 保存到手机上：`/data/data/包名`
+adb shell
+su
+cd /data/data
+cd 包名
+cd shared_prefs
+ls
+cat sp_token.xml
+
+
+
+# 保存
+SharedPreferences sp = getSharedPreferences(&quot;sp_token&quot;, MODE_PRIVATE);
+SharedPreferences.Editor editor = sp.edit();
+editor.putString(&quot;token&quot;,&quot;111111&quot;);
+editor.commit();
+
+
+# 删除
+SharedPreferences sp = getSharedPreferences(&quot;sp_token&quot;, MODE_PRIVATE);
+SharedPreferences.Editor editor = sp.edit();
+editor.remove(&quot;token&quot;);
+
+#读取
+SharedPreferences sp = getSharedPreferences(&quot;sp_token&quot;, MODE_PRIVATE);
+String token = sp.getString(&quot;token&quot;,&quot;&quot;);
+
+注意：后期逆向时经常使用，放在xml中的一般都是app刚启动时、刚登录时。
+
+
+</code></pre>
+<p><img alt="image-20241218100017177" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20241218100017177.png" /></p>
+<p><strong>所在位置</strong></p>
+<pre><code>/data/data/com.example.myfirstapp/shared_prefs
+com.example.myfirstapp 为你的App得名称
+</code></pre>
+<p><strong>学习的目的</strong></p>
+<pre><code class="language-python"># 后续反编译出来，只要看到getSharedPreferences 我们就知道，app在操作xml
+    -后续会看到的，某些值，在app启动生成---》存到xml
+    -以后发送请求，从xml中拿出来，携带发请求
+    -从xml 手动扣出来，发送请求
+</code></pre>
+<h3 id="1_3">1、拦截器</h3>
+<pre><code class="language-python"># 问题
+在安卓端发送请求时，每次都要携带固定的数据(请求头中携带)，以后不需要每次都手动添加，只需要写一次，以后只要发请求就会携带，
+
+# 解决
+使用拦截器
+
+# 使用步骤
+    1 定义拦截器--》可以定义多个--&gt;
+        -方式一：写一个类，继承Interceptor，重写intercept方法
+        -方式二：直接实例化并得到对象
+        Interceptor interceptor = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request().newBuilder().addHeader(&quot;ctime&quot;, &quot;&quot;).addHeader(&quot;sign&quot;, &quot;&quot;).build();
+                Response response = chain.proceed(request);
+                return response;
+            }
+    };
+
+    2 在发送请求时，使用拦截器
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+</code></pre>
+<h3 id="2_2">2、实战</h3>
+<p><strong>interceptor/CommonInterceptor.java</strong></p>
+<pre><code class="language-java">import java.io.IOException;
+
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class CommonInterceptor implements Interceptor {
+    @Override
+    public Response intercept(Chain chain) throws IOException {
+        // 1 获取当前时间，获取签名
+        String ctime=String.valueOf(System.currentTimeMillis() / 1000);
+        String sign= Utils.md5(ctime);
+        // 2 把当前时间和签名添加到请求头中
+        Request request = chain.request().newBuilder().addHeader(&quot;ctime&quot;, ctime).addHeader(&quot;sign&quot;, sign).build();
+        // 3 继续执行下面的拦截器
+        Response response = chain.proceed(request);
+        //4 把返回的响应对象返回回去
+        return response;
+    }
+}
+
+</code></pre>
+<p><strong>MainActivity.java</strong></p>
+<pre><code class="language-java">public void loginForm() {
+        // 获取输入框内容
+        String username = String.valueOf(txt_user.getText());
+        String password = String.valueOf(txt_pwd.getText());
+        String sign = Utils.md5(username + &quot;justin&quot;);
+        String ctime = String.valueOf(System.currentTimeMillis() / 1000);  // 字符串类型时间戳
+        Toast t = Toast.makeText(MainActivity.this, &quot;登录成功&quot;, Toast.LENGTH_LONG);
+        // 创建一个新线程,发送网络请求
+        new Thread() {
+            @Override
+            public void run() {
+                // 使用方式一
+                CommonInterceptor interceptor=new CommonInterceptor();
+                OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+                // 使用方式二：
+//                OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
+//                    @Override
+//                    public Response intercept(Chain chain) throws IOException {
+//                        // 1 获取当前时间，获取签名
+//                        String ctime=String.valueOf(System.currentTimeMillis() / 1000);
+//                        String sign= Utils.md5(ctime);
+//                        // 2 把当前时间和签名添加到请求头中
+//                        Request request = chain.request().newBuilder().addHeader(&quot;ctime&quot;, ctime).addHeader(&quot;sign&quot;, sign).build();
+//                        // 3 继续执行下面的拦截器
+//                        Response response = chain.proceed(request);
+//                        //4 把返回的响应对象返回回去
+//                        return response;
+//                    }
+//                }).build();
+                FormBody form = new FormBody.Builder().add(&quot;username&quot;, username).add(&quot;password&quot;, Utils.md5(password)).add(&quot;sign&quot;, sign).build();
+                Request req = new Request.Builder().url(&quot;http://192.168.1.12:8080/login&quot;).post(form).build();
+                Call call = client.newCall(req);
+                try {
+                    Response res = call.execute();
+                    ResponseBody body = res.body();// 响应体内容,不是字符串类型，ResponseBody类型
+                    String dataString = body.string();  // ResponseBody类型转成字符串类型
+                    CommonResponse obj = new Gson().fromJson(dataString, CommonResponse.class);
+                    t.show();  //
+                } catch (IOException e) {
+                    Log.e(&quot;MainActivity&quot;, e.toString());  // 如果出错，打印日志
+                }
+            }
+        }.start();
+
+
+    }
+</code></pre>
+<h3 id="3">3、安卓项目常用做法</h3>
+<p><strong>定义一个静态变量</strong></p>
+<pre><code class="language-java">import com.justin.demo.interceptor.CommonInterceptor;
+
+import okhttp3.Interceptor;
+
+public class Common {
+    public static Interceptor interceptor=new CommonInterceptor();
+}
+</code></pre>
+<p><strong>以后用直接使用，不需要每次都实例化</strong></p>
+<pre><code class="language-java">OkHttpClient client = new OkHttpClient.Builder().addInterceptor(Common.interceptor).build();
+</code></pre>
+<h3 id="4">4、逆向</h3>
+<pre><code class="language-python"># 逆向时，如何定位拦截器
+    1 根据关键字进行定位（Interceptor）：
+        参数不在业务逻辑而是在拦截器中
+        关键字搜索 Interceptor ，很可能就是算法生成的位置
+    2 通过hook定位有哪些拦截器，通过Hook addInterceptor 看执行多少次，就能确定有多少拦截器
+        hook的通用的脚本
+        scr = &quot;&quot;&quot;
+            Java.perform(function () {
+                var Builder = Java.user(&quot;okhttp3.OkHttpClient.Builder&quot;);
+                Builder.addInterceptor.implementation = function(interceptor){
+                     console.log(interceptor, JSON.stringify(interceptor))
+                 }
+            });
+            &quot;&quot;&quot;
+
+
+ # 原理解释
+OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+# 在OkHttpClient内部有内部类，Builder，实例化得到对象后，调用Builder类对象的addInterceptor方法，最后调用Builder类对象的build方法，完成实例化OkHttpClient对象
+# 所以我们要hook：okhttp3.OkHttpClient.Builder 类，的addInterceptor方法
+class OkHttpClient{
+    class Builder{
+        fun addInterceptor(Interceptor)
+    }
+    fun build(): OkHttpClient = OkHttpClient(this)
+
+}
+
+</code></pre>
+<h2 id="retrofit">五、retrofit</h2>
+<pre><code class="language-python">#  retrofit介绍
+retrofit是对okhttp的封装，底层使用了okhttp，让我们发送网络请求更简单
+
+# 使用步骤：
+    1 build.gradle中引入retrofit
+        implementation &quot;com.squareup.retrofit2:retrofit:2.9.0&quot;
+    2 编写接口，声明网络请求
+    public interface HttpReq {
+        #  向/api/v1/post 发送POST请求,编码是UrlEncoded，传入userName和password，但被组装成 name=xx&amp;pwd=xx
+        @POST(&quot;/api/v1/post&quot;)
+        @FormUrlEncoded
+        Call&lt;ResponseBody&gt; postLogin(@Field(&quot;name&quot;) String userName, @Field(&quot;pwd&quot;) String password);
+
+        #  向/api/v2/xxx发送get请求，传入age，拼接成 /api/v2/xxx?age=19
+        @GET(&quot;/api/v2/xxx&quot;)
+        Call&lt;ResponseBody&gt; getInfo(@Query(&quot;age&quot;) String age);
+
+        # 向/post/users 发送POST请求,编码是json格式 {name:xxxx,age:123}
+        @POST(&quot;/post/users&quot;)
+        Call&lt;ResponseBody&gt; postLoginJson(@Body RequestBody body);
+    }
+
+    3 发送请求
+    new Thread() {
+    @Override
+    public void run() {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;http://192.168.1.12:8080/&quot;).build();
+        HttpReq req = retrofit.create(HttpReq.class);
+        Call&lt;ResponseBody&gt; call = req.postLogin(&quot;justin&quot;,&quot;123&quot;);
+        try {
+            ResponseBody responseBody = call.execute().body();
+            String responseString = responseBody.string();
+            Log.e(&quot;Retrofit返回的结果&quot;, responseString);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+  }
+}.start();
+
+    4 简写成
+    Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;http://192.168.1.12:8080/&quot;).build();
+    try {
+       ResponseBody responseBody = retrofit.create(HttpReq.class).postLogin(&quot;justin&quot;,&quot;123&quot;).execute().body();
+       String responseString = responseBody.string();
+       Log.e(&quot;Retrofit返回的结果&quot;, responseString);
+
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+
+</code></pre>
+<h3 id="1_4">1、实践</h3>
+<p><strong>HttpReq</strong></p>
+<pre><code class="language-java">package com.justin.demo;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
+public interface HttpReq {
+    @POST(&quot;/login&quot;)
+    @FormUrlEncoded
+    Call&lt;ResponseBody&gt; postLogin(@Field(&quot;username&quot;) String userName, @Field(&quot;password&quot;) String password, @Field(&quot;sign&quot;) String sign);
+   //向/api/v2/xxx发送get请求，传入age，拼接成 /api/v2/xxx?age=19
+    @GET(&quot;/film&quot;)
+    Call&lt;ResponseBody&gt; getFilm(@Query(&quot;name&quot;) String name);
+}
+</code></pre>
+<p><strong>MainActivity</strong></p>
+<pre><code class="language-java">   public void loginForm() {
+        // 获取输入框内容
+        String username = String.valueOf(txt_user.getText());
+        String password = String.valueOf(txt_pwd.getText());
+        String sign = Utils.md5(username + &quot;justin&quot;);
+        Toast t = Toast.makeText(MainActivity.this, &quot;登录成功&quot;, Toast.LENGTH_LONG);
+        // 创建一个新线程,发送网络请求
+        new Thread() {
+            @Override
+            public void run() {
+                // 使用拦截器
+                //OkHttpClient client = new OkHttpClient.Builder().addInterceptor(Common.interceptor).build();
+                //Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;http://192.168.1.12:8080/&quot;).client(client).build();
+                // 不使用拦截器
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(&quot;http://192.168.1.12:8080/&quot;).build();
+                try {
+                    ResponseBody responseBody = retrofit.create(HttpReq.class).postLogin(username,password,sign).execute().body();
+                    String responseString = responseBody.string();
+                    Log.e(&quot;Retrofit返回的结果&quot;, responseString);
+                    t.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
+
+
+    }
+</code></pre>
+<h3 id="2_3">2、逆向</h3>
+<pre><code class="language-python">-1 定位代码：搜索URL，可以定位到接口的位置（除去域名和端口）  /login
+    例如：合伙人app，搜索： /v1/partnerLogin/login
+</code></pre>
+<p><img alt="image-20230713164603608" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20230713164603608.png" /></p>
+<p><img alt="image-20230713164806768" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20230713164806768.png" /></p>
+<p><img alt="image-20230713164837551" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20230713164837551.png" /></p>
+<h2 id="app_1">六、逆向自己的app</h2>
+<pre><code class="language-python"># 1 编译app
+# 2 使用charles抓包
+# 3 使用jadx打开
+</code></pre>
+<p><img alt="image-20230711190903672" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20230711190903672.png" /></p>
+<p><img alt="image-20230711191022105" src="imgs/day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80.assets/image-20230711191022105-17023806617821.png" /></p>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>

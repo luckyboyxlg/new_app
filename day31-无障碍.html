@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>三十一、无障碍image-20240703160302051 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
+<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001.html">
+<a href="day06-java%E5%9F%BA%E7%A1%8001.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002.html">
+<a href="day07-java%E5%9F%BA%E7%A1%8002.html">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003.html">
+<a href="day08-java%E5%9F%BA%E7%A1%8003.html">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day13-JNI%E5%BC%80%E5%8F%91.html">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app.html">
+<a href="day15-%E8%AF%86%E8%B4%A7app.html">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app.html">
+<a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902.html">
+<a href="day18-B%E7%AB%9902.html">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903.html">
+<a href="day19-B%E7%AB%9903.html">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM.html">
+<a href="day22-DYM.html">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A.html">
+<a href="day25-unidbg-%E4%B8%8A.html">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87.html">
+<a href="day26-unidbg-%E4%B8%AD%E7%AF%87.html">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B.html">
+<a href="day27-unidbg-%E4%B8%8B.html">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A.html">
+<a href="day28-xhs-%E4%B8%8A.html">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B.html">
+<a href="day29-xhs-%E4%B8%8B.html">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十、无障碍开发</a>
+<li class="chapter active" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="_1">三十一、无障碍<img alt="image-20240703160302051" src="imgs/day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703160302051.png" /></h1>
+<p>本节基于Django来开发API和管理平台，从而让管理员可以实现在页面上进行控制手机的执行。</p>
+<p><img alt="image-20240703160514985" src="imgs/day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703160514985.png" /></p>
+<h1 id="1django">1.django开发</h1>
+<h2 id="11">1.1 环境和启动</h2>
+<p><img alt="image-20240705210555545" src="imgs/day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240705210555545.png" /></p>
+<pre><code>pip install django
+</code></pre>
+<ul>
+<li>创建项目</li>
+</ul>
+<p><code>django-admin startproject mysite</code></p>
+<ul>
+<li>创建app</li>
+</ul>
+<p><code>cd mysite
+  python manage.py startapp app01</code></p>
+<ul>
+<li>启动程序</li>
+</ul>
+<p><code>python manage.py runserver 127.0.0.1:8001</code></p>
+<h2 id="12-orm">1.2 ORM</h2>
+<pre><code class="language-python">from django.db import models
+
+
+class Device(models.Model):
+    &quot;&quot;&quot; 设备表 &quot;&quot;&quot;
+    device_id = models.CharField(verbose_name=&quot;设备ID&quot;, max_length=32, db_index=True)
+    dy_account = models.CharField(verbose_name=&quot;抖音账号&quot;, max_length=64)
+    model = models.CharField(verbose_name=&quot;手机型号&quot;, max_length=64)
+
+    class Meta:
+        verbose_name_plural = &quot;设备表&quot;
+
+    def __str__(self):
+        return f&quot;{self.device_id} - {self.dy_account}&quot;
+
+
+class Task(models.Model):
+    &quot;&quot;&quot; 任务表 &quot;&quot;&quot;
+    device = models.ForeignKey(verbose_name=&quot;设备账号&quot;, to=&quot;Device&quot;, on_delete=models.CASCADE)
+    address = models.TextField(verbose_name=&quot;直播分享地址&quot;)
+    text = models.TextField(verbose_name=&quot;评论内容&quot;, help_text=&quot;回车换行，手机会按照顺序进行评论&quot;)
+    counter = models.IntegerField(verbose_name=&quot;循环次数&quot;, default=1)
+    success_count = models.IntegerField(verbose_name=&quot;已评论次数&quot;, default=0)
+    status = models.SmallIntegerField(verbose_name=&quot;状态&quot;, choices=((0, &quot;待执行&quot;), (1, &quot;执行中&quot;), (2, &quot;已完成&quot;)), default=0)
+
+    class Meta:
+        verbose_name_plural = &quot;任务&quot;
+</code></pre>
+<h2 id="13">1.3 接口开发</h2>
+<pre><code class="language-python">from django.contrib import admin
+from django.urls import path
+from api import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('fetch/task/&lt;str:device_id&gt;/', views.fetch_task),
+    path('running/task/&lt;str:task_id&gt;/', views.running_task),
+    path('complete/task/&lt;str:task_id&gt;/', views.complete_task),
+]
+</code></pre>
+<pre><code class="language-python">from django.http import JsonResponse
+from django.db.models import F
+from api import models
+
+
+def fetch_task(request, device_id):
+    instance = models.Task.objects.filter(device__device_id=device_id, status=0).order_by(&quot;id&quot;).first()
+    if not instance:
+        return JsonResponse({&quot;status&quot;: False})
+
+    context = {
+        &quot;status&quot;: True,
+        &quot;address&quot;: instance.address,
+        &quot;textList&quot;: instance.text.split(&quot;\n&quot;),
+        &quot;counter&quot;: instance.counter,
+        &quot;taskId&quot;: instance.id
+    }
+    instance.success_count = 0
+    instance.status = 1
+    instance.save()
+    return JsonResponse(context)
+
+
+def running_task(request, task_id):
+    models.Task.objects.filter(id=task_id, status=1).update(success_count=F(&quot;success_count&quot;) + 1)
+    return JsonResponse({&quot;status&quot;: True})
+
+
+def complete_task(request, task_id):
+    models.Task.objects.filter(id=task_id, status=1).update(status=2)
+    return JsonResponse({&quot;status&quot;: True})
+</code></pre>
+<h2 id="14-admin">1.4 Admin</h2>
+<p>django默认提供了一个后台管理，用于对数据库中的表进行快速的增删改查。</p>
+<pre><code class="language-python">import re
+
+from django.contrib import admin
+from django.utils.safestring import mark_safe
+from api import models
+from django import forms
+
+
+class DeviceAdmin(admin.ModelAdmin):
+    list_display = ('device_id', 'dy_account', &quot;model&quot;)
+
+
+admin.site.register(models.Device, DeviceAdmin)
+
+
+class TaskAdmin(admin.ModelAdmin):
+    class TaskModelForm(forms.ModelForm):
+        class Meta:
+            model = models.Task
+            # fields = &quot;__all__&quot;
+            exclude = [&quot;success_count&quot;]
+            widgets = {
+                &quot;address&quot;: forms.Textarea(attrs={&quot;rows&quot;: 4, &quot;cols&quot;: 40,&quot;class&quot;:&quot;vLargeTextField&quot;})
+            }
+
+    form = TaskModelForm
+
+    def address_display(self, obj):
+        return re.findall(&quot;.*?【(.+?)】.*&quot;, obj.address)
+
+    address_display.__name__ = &quot;直播间名称&quot;
+
+    def total_count(self, obj):
+        return len(obj.text.split(&quot;\n&quot;)) * obj.counter
+
+    total_count.__name__ = &quot;任务数量&quot;
+
+    def display_text(self, obj):
+        return mark_safe(f&quot;&lt;pre&gt;{obj.text}&lt;/pre&gt;&quot;)
+
+    display_text.__name__ = &quot;评论&quot;
+    list_display = (
+        &quot;id&quot;, 'device', 'address_display', &quot;display_text&quot;, &quot;counter&quot;,
+        'total_count', &quot;success_count&quot;, &quot;status&quot;
+    )
+    list_display_links = [&quot;device&quot;]
+    class DeviceFilter(admin.SimpleListFilter):
+        title = '设备'
+        parameter_name = 'device'
+
+        def lookups(self, request, model_admin):
+            return models.Device.objects.values_list('id', 'device_id')
+
+        def queryset(self, request, queryset):
+            device_value = self.value()
+            if not device_value:
+                return queryset
+            return queryset.filter(device=self.value())
+
+    list_filter = [&quot;status&quot;, DeviceFilter]
+
+
+admin.site.register(models.Task, TaskAdmin)
+</code></pre>
+<p>创建admin账号：</p>
+<pre><code>python manage.py createsuperuser
+</code></pre>
+<p><img alt="image-20240703161930407" src="imgs/day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703161930407.png" /></p>
+<h1 id="2">2.无障碍应用</h1>
+<h2 id="21">2.1 网络配置</h2>
+<p><img alt="image-20240703162419902" src="imgs/day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703162419902.png" /></p>
+<pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+</code></pre>
+<pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
+</code></pre>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;network-security-config&gt;
+    &lt;!--禁用掉明文流量请求的检查--&gt;
+    &lt;base-config cleartextTrafficPermitted=&quot;true&quot; /&gt;
+&lt;/network-security-config&gt;
+</code></pre>
+<pre><code class="language-xml">    implementation &quot;com.squareup.okhttp3:okhttp:4.9.1&quot;
+    implementation 'com.google.code.gson:gson:2.8.6'
+</code></pre>
+<p>注意：如果app还是无法发送请求，就卸载app重新安装。</p>
+<h2 id="22">2.2 设备和服务器</h2>
+<p><img alt="image-20240703163026174" src="imgs/day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703163026174.png" /></p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    tools:context=&quot;.MainActivity&quot;&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        android:orientation=&quot;vertical&quot;&gt;
+
+        &lt;!-- IP地址 --&gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;50dp&quot;
+            android:gravity=&quot;center&quot;&gt;
+
+            &lt;TextView
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:gravity=&quot;center&quot;
+                android:text=&quot;地址：&quot; /&gt;
+
+            &lt;EditText
+                android:id=&quot;@+id/txt_address&quot;
+                android:layout_width=&quot;180dp&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:singleLine=&quot;true&quot;
+                android:textSize=&quot;14dp&quot; /&gt;
+
+        &lt;/LinearLayout&gt;
+
+        &lt;!-- 设备 --&gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;50dp&quot;
+            android:gravity=&quot;center&quot;&gt;
+
+            &lt;TextView
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:gravity=&quot;center&quot;
+                android:text=&quot;设备名称：&quot; /&gt;
+
+            &lt;EditText
+                android:id=&quot;@+id/txt_device&quot;
+                android:layout_width=&quot;180dp&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:singleLine=&quot;true&quot;
+                android:textSize=&quot;14dp&quot; /&gt;
+
+        &lt;/LinearLayout&gt;
+
+        &lt;!-- 点击启动 --&gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;50dp&quot;
+            android:gravity=&quot;center&quot;&gt;
+
+            &lt;Button
+                android:id=&quot;@+id/btn_start&quot;
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:layout_marginRight=&quot;5dp&quot;
+                android:text=&quot;启动&quot; /&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;!-- 停止服务 --&gt;
+        &lt;LinearLayout
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;50dp&quot;
+            android:gravity=&quot;center&quot;&gt;
+
+            &lt;Button
+                android:id=&quot;@+id/btn_stop&quot;
+                android:layout_width=&quot;wrap_content&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:layout_marginRight=&quot;5dp&quot;
+                android:text=&quot;终止无障碍服务&quot; /&gt;
+        &lt;/LinearLayout&gt;
+
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre>
+<pre><code class="language-java">package com.nb.autodemo;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    private Button btnStart;
+    private Button btnStop;
+    private TextView txtDevice;
+    private TextView txtAddress;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        initView();
+        initListener();
+        // 引导用户开启无障碍
+        checkAccessibility();
+    }
+
+
+    private void initView() {
+        btnStart = findViewById(R.id.btn_start);
+
+        txtDevice = findViewById(R.id.txt_device);
+        String android_id = Settings.System.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        Log.e(&quot;设备ID&quot;,android_id);
+        txtDevice.setText(android_id);
+
+        txtAddress = findViewById(R.id.txt_address);
+        txtAddress.setText(new String(&quot;127.0.0.1:8000&quot;));
+
+    }
+
+    private void initListener() {
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start();
+            }
+        });
+
+        btnStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+            }
+        });
+    }
+    private void start() {
+        // LuckyAccessibilityService.allowStart = true;
+        LuckyAccessibilityService.startTask(
+                String.valueOf(txtDevice.getText()),
+                String.valueOf(txtAddress.getText())
+        );
+
+    }
+
+    /**
+     * 引导开启无障碍模式
+     */
+    private void checkAccessibility() {
+        if (!isAccessibilitySettingsOn(getApplicationContext())) {
+            Toast.makeText(this, &quot;请先打开无障碍服务&quot;, Toast.LENGTH_LONG).show();
+            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+        }
+    }
+
+    private boolean isAccessibilitySettingsOn(Context mContext) {
+        int accessibilityEnabled = 0;
+        final String service = getPackageName() + &quot;/&quot; + LuckyAccessibilityService.class.getCanonicalName();
+        try {
+            accessibilityEnabled = Settings.Secure.getInt(mContext.getApplicationContext().getContentResolver(), android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+
+        } catch (Settings.SettingNotFoundException e) {
+            Log.e(&quot;主界面&quot;, &quot;配置文件没找到: &quot; + e.getMessage());
+        }
+
+        TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
+        if (accessibilityEnabled == 1) {
+            String settingValue = Settings.Secure.getString(mContext.getApplicationContext().getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            if (settingValue != null) {
+                mStringColonSplitter.setString(settingValue);
+                while (mStringColonSplitter.hasNext()) {
+                    String accessibilityService = mStringColonSplitter.next();
+                    if (accessibilityService.equalsIgnoreCase(service)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class LuckyAccessibilityService extends AccessibilityService {
+
+    public static String deviceName;
+    public static String ipAddress;
+    public static boolean allowStart = false;
+
+    public static void startTask(String device, String address) {
+        deviceName = device;
+        ipAddress = address;
+        allowStart = true;
+    }
+}
+</code></pre>
+<h2 id="23">2.3 示例代码</h2>
+<pre><code class="language-java">package com.nb.autolive;
+
+
+import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.GestureDescription;
+import android.graphics.Path;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
+import android.graphics.Rect;
+
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+class NetTaskResponse {
+    public boolean status;
+    public String address;
+    public ArrayList&lt;String&gt; textList;
+    public int counter;
+    public int taskId;
+}
+
+public class LuckyAccessibilityService extends AccessibilityService {
+
+    public static String deviceName;
+    public static String ipAddress;
+    public static boolean allowStart = false;
+    public static boolean running = false;
+
+    public static Thread runThread = null;
+
+    @Override
+    public void onInterrupt() {
+
+    }
+
+
+    @Override
+    public void onAccessibilityEvent(AccessibilityEvent event) {
+        // 手机内部自动触发调用，手机有一些变动，自动执行（系统）
+        // Log.e(&quot;无障碍&quot;, &quot;来了&quot;);
+        // 开启无障碍模式后，方法会自动调用（寻找相关标签、点击、欢动）
+        if (!allowStart) {
+            return;
+        }
+
+        if (!running) {
+            running = true;
+            if (runThread != null &amp;&amp; runThread.isAlive()) {
+                return;
+            }
+            // Log.e(&quot;启动&quot;, &quot;创建线程&quot;);
+            // 创建线程去执行抖音薅羊毛任务（只有一个线程）
+            runThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    // 后续代码（新创建一个线程 + 防止创建很多线程）
+                    // Log.e(String.valueOf(runThread.getId()), &quot;开始&quot;);
+                    loopTask();
+                }
+            });
+            runThread.start();
+        }
+
+    }
+
+    public static void startTask(String device, String address) {
+        deviceName = device;
+        ipAddress = address;
+        allowStart = true;
+    }
+
+    public void loopTask() {
+        while (true) {
+            try {
+                // 1.领取任务，有任务再执行，无任务则不执行。
+                NetTaskResponse response = netFetchTask();
+                if (response == null || !response.status) {
+                    // Log.e(String.valueOf(runThread.getId()), &quot;无任务&quot;);
+                    Thread.sleep(10000);
+                    killAllProcess();
+                    continue;
+                }
+
+                // 2.执行任务
+                doTask(response);
+            } catch (Exception ex) {
+                // Log.e(&quot;异常&quot;, ex.toString());
+                ex.printStackTrace();
+            } finally {
+            }
+        }
+    }
+
+    public NetTaskResponse netFetchTask() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(&quot;http://&quot; + ipAddress + &quot;/fetch/task/&quot; + deviceName + &quot;/&quot;).build();
+        Call call = client.newCall(request);
+        try {
+            Response res = call.execute();
+            ResponseBody body = res.body();
+            String dataString = body.string();
+            NetTaskResponse response = new Gson().fromJson(dataString, NetTaskResponse.class);
+            return response;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void netRunningTask(int taskId) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(&quot;http://&quot; + ipAddress + &quot;/running/task/&quot; + taskId + &quot;/&quot;).build();
+        Call call = client.newCall(request);
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void netCompleteTask(int taskId) {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(&quot;http://&quot; + ipAddress + &quot;/complete/task/&quot; + taskId + &quot;/&quot;).build();
+        Call call = client.newCall(request);
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void doTask(NetTaskResponse response) throws InterruptedException {
+
+        // 1.回到首页 &amp; 杀死所有其他进程（记得开启无障碍应用保护）
+        Thread.sleep(randomInt(2, 5) * 1000L);
+        killAllProcess();
+
+        // 2.滑动屏幕，寻找抖音app，打开app
+        Thread.sleep(randomInt(2, 5) * 1000L);
+        if (!launchApplicationByName(&quot;抖音&quot;, 10)) {
+             Log.e(String.valueOf(runThread.getId()), &quot;无法启动抖音&quot;);
+            return;
+        }
+
+        // 3.点击搜索框
+        Thread.sleep(randomInt(5, 10) * 1000L);
+        AccessibilityNodeInfo searchNode = findSearchNode();
+        if (searchNode == null) {
+            return;
+        }
+        clickByNodeClickable(searchNode);
+
+        // 4.输入直播间分享地址
+        Thread.sleep(randomInt(5, 10) * 1000L);
+        AccessibilityNodeInfo searchTextNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/et_search_kw&quot;);
+        Bundle arguments = new Bundle();
+        arguments.putString(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, response.address);
+        searchTextNode.performAction(AccessibilityNodeInfoCompat.ACTION_SET_TEXT, arguments);
+
+        // 5.点击搜索，进入直播间
+        Thread.sleep(randomInt(5, 10) * 1000L);
+        AccessibilityNodeInfo doSearchNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/zy=&quot;);
+        clickByNodePosition(doSearchNode);
+
+        Thread.sleep(randomInt(10, 20) * 1000L);
+        for (int i = 0; i &lt; response.counter; i++) {
+            for (int j = 0; j &lt; response.textList.size(); j++) {
+                try {
+                    // 随机获取评论内容
+                    String text = response.textList.get(j);
+
+                    // 6.寻找评论位置，根据&quot;说点什么...&quot;
+                    Thread.sleep(randomInt(5, 10) * 1000L);
+                    AccessibilityNodeInfo commentNode = findNodeByText(&quot;说点什么...&quot;);
+                    if (commentNode == null) {
+                        commentNode = findNodeByText(&quot;聊一聊&quot;);
+                        if (commentNode == null) {
+                            return;
+                        }
+                    }
+                    clickByNodeClickable(commentNode);
+
+                    // 7.输入评论
+                    Thread.sleep(randomInt(5, 10) * 1000L);
+                    AccessibilityNodeInfo sayNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/f4f&quot;);
+                    AccessibilityNodeInfo child = sayNode.getChild(0);
+                    Bundle arguments1 = new Bundle();
+                    arguments1.putString(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, text);
+                    child.performAction(AccessibilityNodeInfoCompat.ACTION_SET_TEXT, arguments1);
+
+                    // 8.发送评论
+                    Thread.sleep(randomInt(2, 5) * 1000L);
+                    AccessibilityNodeInfo sendNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/z0c&quot;);
+                    clickByNodeClickable(sendNode);
+
+                    netRunningTask(response.taskId);
+
+                    // 9.间隔
+                    Thread.sleep(randomInt(30, 120) * 1000L);
+                } catch (Exception e) {
+
+                }
+            }
+        }
+
+        netCompleteTask(response.taskId);
+    }
+
+    private AccessibilityNodeInfo findSearchNode() {
+        try {
+            return findNodeById(&quot;com.ss.android.ugc.aweme:id/kq3&quot;);
+        } catch (Exception e) {
+            Log.e(&quot;进直播间&quot;, &quot;【异常】寻找搜索框失败&quot;);
+        }
+        return null;
+    }
+
+    /**
+     * 杀死所有进程（记得提前锁定无障碍应用）
+     */
+    public void killAllProcess() throws InterruptedException {
+        // 1.回到首页 Home
+        Thread.sleep(2000);
+        performGlobalAction(GLOBAL_ACTION_HOME);
+        Thread.sleep(2000);
+        performGlobalAction(GLOBAL_ACTION_HOME);
+        Thread.sleep(2000);
+
+        // 杀死其他应用
+        performGlobalAction(GLOBAL_ACTION_RECENTS);
+        Thread.sleep(2000);
+
+        String[] clearAppIdArray = new String[]{
+                &quot;com.huawei.android.launcher:id/clear_all_recents_image_button&quot;, // 华为v30 pro
+                &quot;com.hihonor.android.launcher:id/clear_all_recents_image_button&quot;, // 荣耀
+                &quot;com.android.systemui:id/clearAnimView&quot; // 小米8A
+        };
+        for (String id : clearAppIdArray) {
+            // 根据ID找到节点
+            AccessibilityNodeInfo clearIdNode = findNodeById(id);
+            if (clearIdNode != null) {
+                // 点击标签
+                clickByNodeClickable(clearIdNode);
+                break;
+            }
+        }
+    }
+
+    /**
+     * 根据ID找元素
+     */
+    private AccessibilityNodeInfo findNodeById(String id) {
+        AccessibilityNodeInfo root = getRootInActiveWindow();
+        if (root == null) {
+            return null;
+        }
+        List&lt;AccessibilityNodeInfo&gt; nodeList = root.findAccessibilityNodeInfosByViewId(id);
+        if (nodeList != null) {
+            for (int i = 0; i &lt; nodeList.size(); i++) {
+                AccessibilityNodeInfo node = nodeList.get(i);
+                if (node != null) {
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 根据文本找元素
+     */
+    private AccessibilityNodeInfo findNodeByText(String text) {
+        AccessibilityNodeInfo root = getRootInActiveWindow();
+        if (root == null) {
+            return null;
+        }
+        List&lt;AccessibilityNodeInfo&gt; nodeList = root.findAccessibilityNodeInfosByText(text);
+        if (nodeList != null) {
+            for (int i = 0; i &lt; nodeList.size(); i++) {
+                AccessibilityNodeInfo node = nodeList.get(i);
+                if (node != null) {
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
+
+
+    /**
+     * 点击节点 点击
+     */
+    private void clickByNodeClickable(AccessibilityNodeInfo node) {
+        if (node.isClickable()) {
+            node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+            node.recycle();
+        } else {
+            AccessibilityNodeInfo parent = node.getParent();
+            node.recycle();
+            clickByNodeClickable(parent);
+        }
+    }
+
+
+    /**
+     * 根据坐标 点击
+     */
+    private void clickByNodePosition(AccessibilityNodeInfo node) {
+
+        Rect rc = new Rect();
+        node.getBoundsInScreen(rc);
+        Path path = new Path();
+        path.moveTo(rc.centerX(), rc.centerY());
+        GestureDescription.Builder builder = new GestureDescription.Builder();
+        GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, 0, 200)).build();
+        dispatchGesture(description, null, null);
+    }
+
+    /**
+     * 在页面上寻找名字叫啥的app
+     */
+    public boolean launchApplicationByName(String name, int retry) throws InterruptedException {
+        for (int i = 0; i &lt; retry; i++) {
+            // 翻看右边的页面
+            slideScreen(540, 800, 100, 800, 500L, 200L);
+            Thread.sleep(3000);
+
+            // 找抖音APP
+            AccessibilityNodeInfo app = findNodeByText(name);
+            if (app != null) {
+                Thread.sleep(500);
+                clickByNodeClickable(app);
+                Thread.sleep(5000);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 滑动屏幕
+     */
+    private boolean slideScreen(int startX, int startY, int endX, int endY, Long startTime, Long duration) {
+        try {
+            Path path = new Path();
+            path.moveTo(startX, startY);
+            path.lineTo(endX, endY);
+            GestureDescription.Builder builder = new GestureDescription.Builder();
+            // GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, 500L, 37L)).build();
+            // GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, 1000L, 500L)).build();
+            GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, startTime, duration)).build();
+            dispatchGesture(description, null, null);
+            return true;
+        } catch (Exception e) {
+            // Log.e(TAG, &quot;滑动屏幕失败，详细：&quot; + e.toString());
+            Log.e(&quot;无障碍&quot;, &quot;滑动屏幕失败&quot;);
+        }
+        return false;
+    }
+
+    /**
+     * 生成随机值
+     */
+    private int randomInt(int minValue, int maxValue) {
+        Random rand = new Random();
+        return rand.nextInt(maxValue - minValue) + minValue;
+    }
+
+}
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>

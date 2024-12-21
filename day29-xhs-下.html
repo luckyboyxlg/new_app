@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>二十九、xhs-下 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
+<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001.html">
+<a href="day06-java%E5%9F%BA%E7%A1%8001.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002.html">
+<a href="day07-java%E5%9F%BA%E7%A1%8002.html">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003.html">
+<a href="day08-java%E5%9F%BA%E7%A1%8003.html">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day13-JNI%E5%BC%80%E5%8F%91.html">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app.html">
+<a href="day15-%E8%AF%86%E8%B4%A7app.html">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app.html">
+<a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902.html">
+<a href="day18-B%E7%AB%9902.html">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903.html">
+<a href="day19-B%E7%AB%9903.html">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM.html">
+<a href="day22-DYM.html">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A.html">
+<a href="day25-unidbg-%E4%B8%8A.html">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87.html">
+<a href="day26-unidbg-%E4%B8%AD%E7%AF%87.html">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B.html">
+<a href="day27-unidbg-%E4%B8%8B.html">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A.html">
+<a href="day28-xhs-%E4%B8%8A.html">二十八、xhs-上</a>
+<li class="chapter active" data-path="day29-xhs-%E4%B8%8B.html">
+<a href="day29-xhs-%E4%B8%8B.html">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="xhs-">二十九、xhs-下</h1>
+<h1 id="1">1 回顾</h1>
+<pre><code class="language-python"># 1 获取请求头中字段
+    #小红书 shield 字段
+    #版本：v6.73.0
+# 2 抓包：发送短信接口，短信验证码，验证码登录。。都有这个字段
+# 3 反编译搜索：
+    1 搜不到有价值的内容
+    2 猜想：so中生成的
+    3 hook--》NewStringUTF
+        -找到位置
+        -确认 so文件
+        -打印了调用栈信息
+    4 类：XhsHttpInterceptor：public native Response intercept(Interceptor.Chain chain, long j2) throws IOException;
+
+    5 通过hook--》XhsHttpInterceptor的拦截器中intercept--》shield加密和添加到请求头
+
+    6 hook一下这个方法intercept--》在执行之前，打印了请求头中的数据
+        X-B3-TraceId
+        xy-common-params
+        User-Agent
+     7 执行完拦截器变成了：
+        X-B3-TraceId
+        xy-common-params
+        User-Agent
+        shield
+        xy-platform-info:
+    8 public native Response intercept 内部对shield 加密，并放到了请求头中
+    9 使用unidbg 跑intercept---shield
+</code></pre>
+<h1 id="2-xhshttpinterceptor">2 分析 XhsHttpInterceptor</h1>
+<pre><code class="language-python"># 0 正常我们应该使用unidbg 运行intercept了，但是还得做如下分析
+
+# 1 正常使用拦截器流程
+    1 实例化得到拦截器对象
+    2 通过 addInterceptor(interceptor)
+
+# 2 所以我们要分析出 XhsHttpInterceptor，在实例化的时候做了什么操作
+public class XhsHttpInterceptor implements Interceptor {
+    public long cPtr;
+    public a&lt;Request&gt; predicate;
+    #0 这个代码比构造方法执行更早
+    static {
+        initializeNative();
+    }
+    public static native void initializeNative();
+
+    #1  构造方法
+    public XhsHttpInterceptor(String str, a&lt;Request&gt; aVar) {
+        this.cPtr = initialize(str);
+        this.predicate = aVar;
+    }
+    # 2 执行jni的 initialize 方法
+    public native long initialize(String str);
+
+    # 3 执行 intercept 方法
+    public native Response intercept(Interceptor.Chain chain, long j2) throws IOException;
+
+}、
+
+
+# 3 分析完后--》真正的执行顺序是：
+    -1 public static native void initializeNative();
+    -2 public native long initialize(String str);
+    -3 public native Response intercept(Interceptor.Chain chain, long j2) throws IOException;
+
+# 4 以后遇到这种情况，可以直接执行intercept得到结果--》如果得到的结果发送请求可以用，上面两个就不用执行了，如果不能用，要倒回来再处理上面两个
+
+
+</code></pre>
+<hr />
+<p><img alt="image-20240307172409567" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20240307172409567.png" /></p>
+<h1 id="3-unidbg">3 unidbg</h1>
+<h2 id="31">3.1 分析</h2>
+<pre><code class="language-python"># 0 so文件：libshield.so
+# 1  void initializeNative()
+    1.1 找到类：DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+    1.2 获取签名
+    String method = &quot;initializeNative()V&quot;;
+    1.3 执行
+    cls.callStaticJniMethodObject(emulator, method);
+
+# 2 long initialize(String str)
+    2.1 找到类：
+    DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+    2.2 获取签名
+    String method = &quot;initialize(Ljava/lang/String;)J&quot;;
+    2.3 执行
+    long cPtr = cls.callStaticJniMethodLong(emulator, method, new StringObject(vm, str));
+
+# 3 Response intercept(Interceptor.Chain chain, long j2)
+    3.1 找到类：
+    DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+    2.2 获取签名(两个参数)
+    String method = &quot;intercept(Lokhttp3/Interceptor$Chain;J)Lokhttp3/Response;&quot;;
+    2.3 执行
+    cls.callStaticJniMethodLong(
+                emulator,
+                method,
+                vm.resolveClass(&quot;okhttp3/Interceptor$Chain&quot;).newObject(null),
+                cPtr
+        );
+
+
+
+</code></pre>
+<h2 id="32-unidbginitializenative">3.2 unidbg运行(initializeNative)</h2>
+<pre><code class="language-java">package com.nb.demo;
+
+import com.github.unidbg.AndroidEmulator;
+import com.github.unidbg.Module;
+import com.github.unidbg.linux.android.AndroidEmulatorBuilder;
+import com.github.unidbg.linux.android.AndroidResolver;
+import com.github.unidbg.linux.android.dvm.*;
+import com.github.unidbg.memory.Memory;
+
+import java.io.File;
+
+public class XHS extends AbstractJni {
+    public static AndroidEmulator emulator;  // 静态属性，以后对象和类都可以直接使用
+    public static Memory memory;
+    public static VM vm;
+    public static Module module;
+
+    public XHS() {
+        // 1.创建设备（32位或64位模拟器）， 具体看so文件在哪个目录。 在armeabi-v7a就选择32位
+        // 传进设备时，如果是32位，后面so文件就要用32位，同理需要用64位的
+        // 这个名字可以随便写,一般写成app的包名    以后可能会动
+        emulator = AndroidEmulatorBuilder.for32Bit().setProcessName(&quot;com.xhs&quot;).build();
+
+        // 2 获取内存对象(可以操作内存)
+        memory = emulator.getMemory();
+
+        // 3.设置安卓sdk版本（只支持19、23）
+        memory.setLibraryResolver(new AndroidResolver(23));
+
+        // 4.创建虚拟机（运行安卓代码需要虚拟机，就想运行py代码需要python解释器一样）    以后会动
+        vm = emulator.createDalvikVM(new File(&quot;apks/xhs/v6.73.0.apk&quot;));
+        vm.setJni(this); // 后期补环境会用，把要补的环境，写在当前这个类中，执行这个代码即可，但是必须继承AbstractJni
+        //vm.setVerbose(true); //是否展示调用过程的细节
+
+        // 5.加载so文件
+        // 以后会动,只要懂so文件路径即可
+        DalvikModule dm = vm.loadLibrary(new File(&quot;apks/xhs/libshield.so&quot;), false);
+        dm.callJNI_OnLoad(emulator); // jni开发动态注册，会执行JNI_OnLoad，如果是动态注册，需要执行一下这个，如果静态注册，这个不需要执行，车智赢案例是静态注册
+
+        // 6.dm代表so文件，dm.getModule()得到module对象，基于module对象可以访问so中的成员。
+        module = dm.getModule(); // 把so文件加载到内存后，后期可以获取基地址，偏移量等，该变量代指so文件
+
+    }
+    public  void initializeNative(){
+        DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+        String method = &quot;initializeNative()V&quot;;
+        cls.callStaticJniMethodObject(emulator, method);
+
+    }
+
+    public static void main(String[] args) {
+        //1 new出一个对象，调用构造方法
+        XHS xhs = new XHS();
+        xhs.initializeNative();
+    }
+}
+
+</code></pre>
+<h3 id="321">3.2.1 补环境</h3>
+<pre><code class="language-python"># 1 java/nio/charset/Charset-&gt;defaultCharset()Ljava/nio/charset/Charset;
+if(signature.equals(&quot;java/nio/charset/Charset-&gt;defaultCharset()Ljava/nio/charset/Charset;&quot;)){
+    // java 层有的,直接补
+    Charset charset=Charset.defaultCharset();
+    return ProxyDvmObject.createObject(vm,charset);
+}
+
+# 2 com/xingin/shield/http/ContextHolder-&gt;sDeviceId:Ljava/lang/String;
+if(signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sDeviceId:Ljava/lang/String;&quot;)){
+    // com/xingin/shield/http/ContextHolder类对象的sDeviceId字段，返回字符串
+    //1  不能直接拿到，应该是app内部生成，赋值给这个字段，正常我们通过反编译，找到位置，查找加密算法
+    //2  直接hook得到具体值，放入：c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2
+    return ProxyDvmObject.createObject(vm,&quot;c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2&quot;);
+
+}
+
+# 3 com/xingin/shield/http/ContextHolder-&gt;sAppId:I
+if(signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sAppId:I&quot;)){
+    return -319115519;
+}
+
+# 4 com/xingin/shield/http/ContextHolder-&gt;sExperiment:Z
+if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sExperiment:Z&quot;)){
+    return true;
+}
+</code></pre>
+<p><img alt="image-20240307174848139" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20240307174848139.png" /></p>
+<p><img alt="image-20240307174905181" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20240307174905181.png" /></p>
+<h3 id="322-hooksdeviceid">3.2.2 hook得到sDeviceId</h3>
+<pre><code class="language-js">Java.perform(function () {
+    var ContextHolder = Java.use('com.xingin.shield.http.ContextHolder');
+
+    console.log('sAppId=',ContextHolder.sAppId.value);
+    console.log('sDeviceId=',ContextHolder.sDeviceId.value);
+    console.log('sExperiment=',ContextHolder.sExperiment.value);
+})
+
+// frida -UF -l  1-hook得到sDeviceld.js
+/*
+sAppId= -319115519
+sDeviceId= c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2
+sExperiment= true
+
+ */
+</code></pre>
+<h2 id="33-unidbginitialize">3.3  unidbg运行(initialize)</h2>
+<pre><code class="language-python"># 为什么需要延迟hook？
+    -要hook的东西是so生成的---》由于用 手点的速度是不确定的，有可能so还没加载，我就点了--》就hook不到
+
+    -通过延迟hook--》确保so已经加载到内存中了----》再执行hook--》就能hook到数据
+
+# 1 long initialize(String str) 有参数，我们需要hook得到这个值
+# 2 hook不到，需要延迟hook，晚一点hook
+    hook到str 是 main，多次hook都一样
+
+
+# 3 unidbg运行，返回的long 是给下一个方式使用的(通过hook知道的)，我们直接返回
+public long initialize(String str){
+    DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+    String method = &quot;initialize(Ljava/lang/String;)J&quot;;
+    long cPtr = cls.callStaticJniMethodLong(emulator, method, new StringObject(vm, str));
+    return cPtr;
+}
+</code></pre>
+<h3 id="331-hookinitialize">3.3.1 hook得到initialize的参数</h3>
+<pre><code class="language-js">function do_hook() {
+    setTimeout(function () {
+        Java.perform(function () {
+            var XhsHttpInterceptor = Java.use('com.xingin.shield.http.XhsHttpInterceptor');
+            XhsHttpInterceptor.initialize.implementation = function (str) {
+                console.log(&quot;str=&quot;, str);
+                return this.initialize(str);
+            };
+        })
+    }, 10);
+}
+
+function load_so_and_hook() {
+    // 加载某个so文件   dlopen(&quot;xxxx/xxxx.so&quot;) -&gt; 函数执行完毕 -&gt; Hook
+    var dlopen = Module.findExportByName(null, &quot;dlopen&quot;);
+    var android_dlopen_ext = Module.findExportByName(null, &quot;android_dlopen_ext&quot;);
+
+    //1 只要加载so文件，就会执行下面代码
+    Interceptor.attach(dlopen, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            // console.log(&quot;[dlopen:]&quot;, path);
+            this.path = path;
+        },
+        onLeave: function (retval) {
+            // 2 通过判断是否是加载的libshield，如果是，就执行hook
+            if (this.path.indexOf(&quot;libshield.so&quot;) !== -1) {
+                console.log(&quot;[dlopen:]&quot;, this.path);
+                do_hook();
+            }
+        }
+    });
+
+    Interceptor.attach(android_dlopen_ext, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+
+            this.path = path;
+        }, onLeave: function (retval) {
+            if (this.path.indexOf(&quot;libshield.so&quot;) !== -1) {
+                console.log(&quot;\nandroid_dlopen_ext加载：&quot;, this.path);
+                do_hook();
+
+            }
+        }
+    });
+}
+
+load_so_and_hook();
+
+// frida -U -f com.xingin.xhs  -l 2-hook得到initValue入参.js
+
+
+// frida -U -f com.xingin.xhs  -l 9.initValue.js
+/*
+android_dlopen_ext加载： /data/app/~~r7msU7NcBJL3NkJ57MaXUg==/com.xingin.xhs-mzAo1WQQwA8YM9pU8iKXXw==/lib/arm/libshield.so
+
+str= main
+
+*/
+</code></pre>
+<h3 id="332">3.3.2 补环境</h3>
+<pre><code class="language-python"># 1 android/content/Context-&gt;getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+if (signature.equals(&quot;android/content/Context-&gt;getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;&quot;)) {
+    // android的，day10学的
+    // 第一个参数是要读取的 xml文件名
+    String xmlName = (String) vaList.getObjectArg(0).getValue();
+    System.out.println(&quot;XML文件名：&quot; + xmlName); // 读s.xml
+    //return vm.resolveClass(&quot;android/content/SharedPreferences&quot;).newObject(vaList.getObjectArg(0));
+    return vm.resolveClass(&quot;android/content/SharedPreferences&quot;).newObject(null);
+}
+
+'''day10
+SharedPreferences sp = getSharedPreferences(&quot;sp_token&quot;, MODE_PRIVATE);
+String token = sp.getString(&quot;token&quot;,&quot;&quot;);
+'''
+
+
+# 2 android/content/SharedPreferences-&gt;getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+if (signature.equals(&quot;android/content/SharedPreferences-&gt;getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;&quot;)) {
+    // 去XML文件中读取内容并返回  String token = sp.getString(&quot;token&quot;,&quot;&quot;);
+    String key = (String) vaList.getObjectArg(0).getValue();
+    String defaultValue = (String) vaList.getObjectArg(1).getValue();
+    System.out.println(&quot;键：&quot; + key + &quot;  默认值：&quot; + defaultValue);
+    // 我们去对应的目录下找到 s.xml--&gt;拿出main 和 main_hmac 对应的值，直接补上
+    if (key.equals(&quot;main&quot;)) { // 读取main返回默认值
+                             return new StringObject(vm, defaultValue);
+                            }
+    if (key.equals(&quot;main_hmac&quot;)) { // 读取main_hmac 返回拿到的值
+                                  return new StringObject(vm, &quot;aUIfjHpYObXfXBYfXvjCQwwUbuORShG8BR/LCeecL8fwui6ZXoqVZFLMNx9nO2x/fn8Izev0xOINhYGMMMAvCVw5bkgPk7sqavtlPJYDW9O3IEmqHktC4JUzOjRgnjSs&quot;);
+                                 }
+}
+
+cd /data/data/com.xingin.xhs/shared_prefs
+
+# 3 com/xingin/shield/http/Base64Helper-&gt;decode(Ljava/lang/String;)[B
+
+if (signature.equals(&quot;com/xingin/shield/http/Base64Helper-&gt;decode(Ljava/lang/String;)[B&quot;)) {
+    // 小红书自己的--》可能是 Base64 魔改的--》我们需要反编译找到地方读代码，或者通过hook比较 看看是否魔改
+    // 最终验证，就是Base64
+    String input = (String) vaList.getObjectArg(0).getValue();
+    byte[] result = Base64.decodeBase64(input);
+    return new ByteArray(vm, result);
+}
+</code></pre>
+<p><img alt="image-20240307182824238" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20240307182824238.png" /></p>
+<h2 id="34-unidbgintercept">3.4  unidbg运行(intercept)</h2>
+<pre><code class="language-python"># ### Response intercept(Interceptor.Chain chain, long j2)
+    #找到类：
+    DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+    #获取签名(两个参数)
+    String method = &quot;intercept(Lokhttp3/Interceptor$Chain;J)Lokhttp3/Response;&quot;;
+    # 执行
+    cls.callStaticJniMethodLong(
+                emulator,
+                method,
+                vm.resolveClass(&quot;okhttp3/Interceptor$Chain&quot;).newObject(null),
+                cPtr
+        );
+
+
+### 有两个参数，第一个我们传空，第二个是 上个方法执行返回的值
+
+
+
+## unidbg运行
+public void intercept(long cPtr) {
+    DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+    String method = &quot;intercept(Lokhttp3/Interceptor$Chain;J)Lokhttp3/Response;&quot;;
+    cls.callStaticJniMethodLong(
+        emulator,
+        method,
+        vm.resolveClass(&quot;okhttp3/Interceptor$Chain&quot;).newObject(null),
+        cPtr
+    );
+}
+</code></pre>
+<h3 id="341">3.4.1 补环境</h3>
+<pre><code class="language-python"># 1 okhttp3/Interceptor$Chain-&gt;request()Lokhttp3/Request;
+# 我们直接定义出一个request对象返回，这个对象是okhttp3的，我们通过maven引入，就可以new出来
+# 定义成全局，在main中new出来
+private static Request request;
+request = new Request.Builder()
+.url(&quot;https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;phone=18630099999&amp;code=112233&quot;)
+.addHeader(&quot;xy-common-params&quot;, &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673279778&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673279684&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_sms_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;)
+.build();
+
+if (signature.equals(&quot;okhttp3/Interceptor$Chain-&gt;request()Lokhttp3/Request;&quot;)) {
+    // 执行 chain.request() 获取request请求相关的对象
+    return vm.resolveClass(&quot;okhttp3/Request&quot;).newObject(request);
+}
+
+
+# 2 okhttp3/Request-&gt;url()Lokhttp3/HttpUrl;
+if (signature.equals(&quot;okhttp3/Request-&gt;url()Lokhttp3/HttpUrl;&quot;)) {
+    Request request = (Request) dvmObject.getValue();
+    return vm.resolveClass(&quot;okhttp3/HttpUrl&quot;).newObject(request.url());
+}
+
+# 3 okhttp3/HttpUrl-&gt;encodedPath()Ljava/lang/String;
+if (signature.equals(&quot;okhttp3/HttpUrl-&gt;encodedPath()Ljava/lang/String;&quot;)) {
+    HttpUrl httpUrl = (HttpUrl) dvmObject.getValue();
+    return new StringObject(vm, httpUrl.encodedPath());
+}
+
+# 4 okhttp3/HttpUrl-&gt;encodedQuery()Ljava/lang/String;
+if (signature.equals(&quot;okhttp3/HttpUrl-&gt;encodedQuery()Ljava/lang/String;&quot;)) {
+    HttpUrl httpUrl = (HttpUrl) dvmObject.getValue();
+    if (httpUrl.encodedQuery() != null) {
+        return new StringObject(vm, httpUrl.encodedQuery());
+    }
+    return new StringObject(vm, &quot;&quot;);
+}
+
+# 5 okhttp3/Request-&gt;body()Lokhttp3/RequestBody;
+if (signature.equals(&quot;okhttp3/Request-&gt;body()Lokhttp3/RequestBody;&quot;)) {
+    Request request = (Request) dvmObject.getValue();
+    return vm.resolveClass(&quot;okhttp3/RequestBody&quot;).newObject(request.body());
+}
+
+# 6 okhttp3/Request-&gt;headers()Lokhttp3/Headers;
+if (signature.equals(&quot;okhttp3/Request-&gt;headers()Lokhttp3/Headers;&quot;)) {
+    Request request = (Request) dvmObject.getValue();
+    return vm.resolveClass(&quot;okhttp3/Headers&quot;).newObject(request.headers());
+}
+
+# 7okio/Buffer-&gt;&lt;init&gt;()V
+if (signature.equals(&quot;okio/Buffer-&gt;&lt;init&gt;()V&quot;)) {
+    return dvmClass.newObject(new Buffer());
+}
+
+#  8 okio/Buffer-&gt;writeString(Ljava/lang/String;Ljava/nio/charset/Charset;)Lokio/Buffer;
+if (signature.equals(&quot;okio/Buffer-&gt;writeString(Ljava/lang/String;Ljava/nio/charset/Charset;)Lokio/Buffer;&quot;)) {
+    Buffer buffer = (Buffer) dvmObject.getValue();
+    buffer.writeString(vaList.getObjectArg(0).getValue().toString(), (Charset) vaList.getObjectArg(1).getValue());
+    return dvmObject;
+}
+
+# 9 okhttp3/Headers-&gt;size()I
+@Override
+public int callIntMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+    if (signature.equals(&quot;okhttp3/Headers-&gt;size()I&quot;)) {
+        Headers headers = (Headers) dvmObject.getValue();
+        return headers.size();
+    }
+    return super.callIntMethodV(vm, dvmObject, signature, vaList);
+}
+
+# 10 okhttp3/Headers-&gt;name(I)Ljava/lang/String;
+if (signature.equals(&quot;okhttp3/Headers-&gt;name(I)Ljava/lang/String;&quot;)) {
+    Headers headers = (Headers) dvmObject.getValue();
+    return new StringObject(vm, headers.name(vaList.getIntArg(0)));
+}
+
+# 11 okhttp3/Headers-&gt;value(I)Ljava/lang/String;
+if (signature.equals(&quot;okhttp3/Headers-&gt;value(I)Ljava/lang/String;&quot;)) {
+    Headers headers = (Headers) dvmObject.getValue();
+    return new StringObject(vm, headers.value(vaList.getIntArg(0)));
+}
+
+# 12 okhttp3/RequestBody-&gt;writeTo(Lokio/BufferedSink;)V
+@Override
+public void callVoidMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+    if (signature.equals(&quot;okhttp3/RequestBody-&gt;writeTo(Lokio/BufferedSink;)V&quot;)) {
+        BufferedSink bufferedSink = (BufferedSink) vaList.getObjectArg(0).getValue();
+        RequestBody requestBody = (RequestBody) dvmObject.getValue();
+        if (requestBody != null) {
+            try {
+                requestBody.writeTo(bufferedSink);
+            } catch (IOException e) {
+                System.out.println(&quot;错误了&quot; + e);
+            }
+        }
+        return;
+    }
+
+    super.callVoidMethodV(vm, dvmObject, signature, vaList);
+}
+
+# 13 okio/Buffer-&gt;clone()Lokio/Buffer;
+if (signature.equals(&quot;okio/Buffer-&gt;clone()Lokio/Buffer;&quot;)) {
+    Buffer buffer = (Buffer) dvmObject.getValue();
+    return vm.resolveClass(&quot;okio/Buffer&quot;).newObject(buffer.clone());
+}
+
+#14 okio/Buffer-&gt;read([B)I
+if (signature.equals(&quot;okio/Buffer-&gt;read([B)I&quot;)) {
+    Buffer buffer = (Buffer) dvmObject.getValue();
+    return buffer.read((byte[]) vaList.getObjectArg(0).getValue());
+}
+
+# 15 okhttp3/Request-&gt;newBuilder()Lokhttp3/Request$Builder;
+if (signature.equals(&quot;okhttp3/Request-&gt;newBuilder()Lokhttp3/Request$Builder;&quot;)) {
+    Request request = (Request) dvmObject.getValue();
+    return vm.resolveClass(&quot;okhttp3/Request$Builder&quot;).newObject(request.newBuilder());
+}
+
+# 16 okhttp3/Request$Builder-&gt;header(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;（有shield）
+if (signature.equals(&quot;okhttp3/Request$Builder-&gt;header(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;&quot;)) {
+    Request.Builder builder = (Request.Builder) dvmObject.getValue();
+    builder.header(vaList.getObjectArg(0).getValue().toString(), vaList.getObjectArg(1).getValue().toString());
+    if (&quot;shield&quot;.equals(vaList.getObjectArg(0).getValue().toString())) {
+        String shield = vaList.getObjectArg(1).getValue().toString();
+        System.out.println(&quot;shield=&quot; + shield);
+    }
+    return dvmObject;
+}
+
+# 17 okhttp3/Request$Builder-&gt;build()Lokhttp3/Request;
+if (signature.equals(&quot;okhttp3/Request$Builder-&gt;build()Lokhttp3/Request;&quot;)) {
+    Request.Builder builder = (Request.Builder) dvmObject.getValue();
+    Request request = builder.build();
+    return vm.resolveClass(&quot;okhttp3/Request&quot;).newObject(request);
+}
+
+# 18 okhttp3/Interceptor$Chain-&gt;proceed(Lokhttp3/Request;)Lokhttp3/Response;
+if (signature.equals(&quot;okhttp3/Interceptor$Chain-&gt;proceed(Lokhttp3/Request;)Lokhttp3/Response;&quot;)) {
+    return vm.resolveClass(&quot;okhttp3/Response&quot;).newObject(null);
+}
+
+# 19 okhttp3/Response-&gt;code()I
+if (signature.equals(&quot;okhttp3/Response-&gt;code()I&quot;)) {
+    return 200;
+}
+
+</code></pre>
+<h3 id="342-okhttp3">3.4.2 okhttp3</h3>
+<p>由于我们要主动执行拦截器的方法，所以需要构造请求先关等对象，依赖okhttp3框架。</p>
+<p><img alt="image-20231024180004412" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20231024180004412.png" /></p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.squareup.okhttp3&lt;/groupId&gt;
+    &lt;artifactId&gt;okhttp&lt;/artifactId&gt;
+    &lt;version&gt;3.4.2&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="35">3.5 总体代码</h2>
+<pre><code class="language-java">package com.nb.demo;
+
+import com.github.unidbg.AndroidEmulator;
+import com.github.unidbg.Module;
+import com.github.unidbg.linux.android.AndroidEmulatorBuilder;
+import com.github.unidbg.linux.android.AndroidResolver;
+import com.github.unidbg.linux.android.dvm.*;
+import com.github.unidbg.linux.android.dvm.array.ByteArray;
+import com.github.unidbg.linux.android.dvm.jni.ProxyDvmObject;
+import com.github.unidbg.memory.Memory;
+import okhttp3.Headers;
+import okhttp3.HttpUrl;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okio.Buffer;
+import okio.BufferedSink;
+import org.apache.commons.codec.binary.Base64;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+
+public class XHS extends AbstractJni {
+    public static AndroidEmulator emulator;  // 静态属性，以后对象和类都可以直接使用
+    public static Memory memory;
+    public static VM vm;
+    public static Module module;
+    private static Request request;
+
+    public XHS() {
+        // 1.创建设备（32位或64位模拟器）， 具体看so文件在哪个目录。 在armeabi-v7a就选择32位
+        // 传进设备时，如果是32位，后面so文件就要用32位，同理需要用64位的
+        // 这个名字可以随便写,一般写成app的包名    以后可能会动
+        emulator = AndroidEmulatorBuilder.for32Bit().setProcessName(&quot;com.xhs&quot;).build();
+
+        // 2 获取内存对象(可以操作内存)
+        memory = emulator.getMemory();
+
+        // 3.设置安卓sdk版本（只支持19、23）
+        memory.setLibraryResolver(new AndroidResolver(23));
+
+        // 4.创建虚拟机（运行安卓代码需要虚拟机，就想运行py代码需要python解释器一样）    以后会动
+        vm = emulator.createDalvikVM(new File(&quot;apks/xhs/v6.73.0.apk&quot;));
+        vm.setJni(this); // 后期补环境会用，把要补的环境，写在当前这个类中，执行这个代码即可，但是必须继承AbstractJni
+        //vm.setVerbose(true); //是否展示调用过程的细节
+
+        // 5.加载so文件
+        // 以后会动,只要懂so文件路径即可
+        DalvikModule dm = vm.loadLibrary(new File(&quot;apks/xhs/libshield.so&quot;), false);
+        dm.callJNI_OnLoad(emulator); // jni开发动态注册，会执行JNI_OnLoad，如果是动态注册，需要执行一下这个，如果静态注册，这个不需要执行，车智赢案例是静态注册
+
+        // 6.dm代表so文件，dm.getModule()得到module对象，基于module对象可以访问so中的成员。
+        module = dm.getModule(); // 把so文件加载到内存后，后期可以获取基地址，偏移量等，该变量代指so文件
+
+    }
+
+    public void initializeNative() {
+        DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+        String method = &quot;initializeNative()V&quot;;
+        cls.callStaticJniMethodObject(emulator, method);
+    }
+
+    public long initialize(String str) {
+        DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+        String method = &quot;initialize(Ljava/lang/String;)J&quot;;
+        long cPtr = cls.callStaticJniMethodLong(emulator, method, new StringObject(vm, str));
+        System.out.println(cPtr);
+        return cPtr;
+    }
+
+    public void intercept(long cPtr) {
+        DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+        String method = &quot;intercept(Lokhttp3/Interceptor$Chain;J)Lokhttp3/Response;&quot;;
+        cls.callStaticJniMethodLong(
+                emulator,
+                method,
+                vm.resolveClass(&quot;okhttp3/Interceptor$Chain&quot;).newObject(null),
+                cPtr
+        );
+    }
+
+    public static void main(String[] args) {
+        //1 new出一个对象，调用构造方法
+        XHS xhs = new XHS();
+        xhs.initializeNative();
+        request = new Request.Builder()
+                .url(&quot;https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;phone=18630099999&amp;code=112233&quot;)
+                .addHeader(&quot;xy-common-params&quot;, &quot;fid=1709625890105b664aedccbcd10c2ad2eb632c9e2dca&amp;device_fingerprint=2024030515543183adcbaf57cfa94ffd875e79c8f077a4011d87121ee36228&amp;device_fingerprint1=2024030515543183adcbaf57cfa94ffd875e79c8f077a4011d87121ee36228&amp;launch_id=1709633113&amp;tz=Asia%2FShanghai&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2&amp;platform=android&amp;sid=session.1709632456270565876089&amp;identifier_flag=0&amp;t=1709632497&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=welcome_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;)
+                .build();
+        long l = xhs.initialize(&quot;main&quot;);
+        xhs.intercept(l);
+    }
+
+
+    // 补环境
+
+    @Override
+    public DvmObject&lt;?&gt; callStaticObjectMethodV(BaseVM vm, DvmClass dvmClass, String signature, VaList vaList) {
+        if (signature.equals(&quot;java/nio/charset/Charset-&gt;defaultCharset()Ljava/nio/charset/Charset;&quot;)) {
+            // java 层有的,直接补
+            Charset charset = Charset.defaultCharset();
+            return ProxyDvmObject.createObject(vm, charset);
+        }
+
+        if (signature.equals(&quot;com/xingin/shield/http/Base64Helper-&gt;decode(Ljava/lang/String;)[B&quot;)) {
+            // 小红书自己的--》可能是 Base64 魔改的--》我们需要反编译找到地方读代码，或者通过hook比较 看看是否魔改
+            // 最终验证，就是Base64
+            String input = (String) vaList.getObjectArg(0).getValue();
+            byte[] result = Base64.decodeBase64(input);
+            return new ByteArray(vm, result);
+        }
+        return super.callStaticObjectMethodV(vm, dvmClass, signature, vaList);
+    }
+
+    @Override
+    public DvmObject&lt;?&gt; getStaticObjectField(BaseVM vm, DvmClass dvmClass, String signature) {
+        if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sDeviceId:Ljava/lang/String;&quot;)) {
+            // com/xingin/shield/http/ContextHolder类对象的sDeviceId字段，返回字符串
+            //1  不能直接拿到，应该是app内部生成，赋值给这个字段，正常我们通过反编译，找到位置，查找加密算法
+            //2  直接hook得到具体值，放入：c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2
+            return ProxyDvmObject.createObject(vm, &quot;c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2&quot;);
+
+        }
+
+
+        return super.getStaticObjectField(vm, dvmClass, signature);
+    }
+
+    @Override
+    public int getStaticIntField(BaseVM vm, DvmClass dvmClass, String signature) {
+        if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sAppId:I&quot;)) {
+            return -319115519;
+        }
+        return super.getStaticIntField(vm, dvmClass, signature);
+    }
+
+    @Override
+    public boolean getStaticBooleanField(BaseVM vm, DvmClass dvmClass, String signature) {
+        if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sExperiment:Z&quot;)) {
+            return true;
+        }
+        return super.getStaticBooleanField(vm, dvmClass, signature);
+    }
+
+    @Override
+    public DvmObject&lt;?&gt; callObjectMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+        if (signature.equals(&quot;android/content/Context-&gt;getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;&quot;)) {
+            // android的，day10学的
+            // 第一个参数是要读取的 xml文件名
+            String xmlName = (String) vaList.getObjectArg(0).getValue();
+            System.out.println(&quot;XML文件名：&quot; + xmlName); // 读s.xml
+            //return vm.resolveClass(&quot;android/content/SharedPreferences&quot;).newObject(vaList.getObjectArg(0));
+            return vm.resolveClass(&quot;android/content/SharedPreferences&quot;).newObject(null);
+        }
+
+        if (signature.equals(&quot;android/content/SharedPreferences-&gt;getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;&quot;)) {
+            // 去XML文件中读取内容并返回  String token = sp.getString(&quot;token&quot;,&quot;&quot;);
+            String key = (String) vaList.getObjectArg(0).getValue();
+            String defaultValue = (String) vaList.getObjectArg(1).getValue();
+            System.out.println(&quot;键：&quot; + key + &quot;  默认值：&quot; + defaultValue);
+            // 我们去对应的目录下找到 s.xml--&gt;拿出main 和 main_hmac 对应的值，直接补上
+            if (key.equals(&quot;main&quot;)) { // 读取main返回默认值
+                return new StringObject(vm, defaultValue);
+            }
+            if (key.equals(&quot;main_hmac&quot;)) { // 读取main_hmac 返回拿到的值
+                return new StringObject(vm, &quot;aUIfjHpYObXfXBYfXvjCQwwUbuORShG8BR/LCeecL8fwui6ZXoqVZFLMNx9nO2x/fn8Izev0xOINhYGMMMAvCVw5bkgPk7sqavtlPJYDW9O3IEmqHktC4JUzOjRgnjSs&quot;);
+            }
+        }
+
+
+        if (signature.equals(&quot;okhttp3/Interceptor$Chain-&gt;request()Lokhttp3/Request;&quot;)) {
+            // 执行 chain.request() 获取request请求相关的对象
+            return vm.resolveClass(&quot;okhttp3/Request&quot;).newObject(request);
+        }
+        if (signature.equals(&quot;okhttp3/Request-&gt;url()Lokhttp3/HttpUrl;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/HttpUrl&quot;).newObject(request.url());
+        }
+        if (signature.equals(&quot;okhttp3/HttpUrl-&gt;encodedPath()Ljava/lang/String;&quot;)) {
+            HttpUrl httpUrl = (HttpUrl) dvmObject.getValue();
+            return new StringObject(vm, httpUrl.encodedPath());
+        }
+
+        if (signature.equals(&quot;okhttp3/HttpUrl-&gt;encodedQuery()Ljava/lang/String;&quot;)) {
+            HttpUrl httpUrl = (HttpUrl) dvmObject.getValue();
+            if (httpUrl.encodedQuery() != null) {
+                return new StringObject(vm, httpUrl.encodedQuery());
+            }
+            return new StringObject(vm, &quot;&quot;);
+        }
+
+        if (signature.equals(&quot;okhttp3/Request-&gt;body()Lokhttp3/RequestBody;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/RequestBody&quot;).newObject(request.body());
+        }
+        if (signature.equals(&quot;okhttp3/Request-&gt;headers()Lokhttp3/Headers;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/Headers&quot;).newObject(request.headers());
+        }
+        if (signature.equals(&quot;okio/Buffer-&gt;writeString(Ljava/lang/String;Ljava/nio/charset/Charset;)Lokio/Buffer;&quot;)) {
+            Buffer buffer = (Buffer) dvmObject.getValue();
+            buffer.writeString(vaList.getObjectArg(0).getValue().toString(), (Charset) vaList.getObjectArg(1).getValue());
+            return dvmObject;
+        }
+
+        if (signature.equals(&quot;okhttp3/Headers-&gt;name(I)Ljava/lang/String;&quot;)) {
+            Headers headers = (Headers) dvmObject.getValue();
+            return new StringObject(vm, headers.name(vaList.getIntArg(0)));
+        }
+        if (signature.equals(&quot;okhttp3/Headers-&gt;value(I)Ljava/lang/String;&quot;)) {
+            Headers headers = (Headers) dvmObject.getValue();
+            return new StringObject(vm, headers.value(vaList.getIntArg(0)));
+        }
+
+        if (signature.equals(&quot;okio/Buffer-&gt;clone()Lokio/Buffer;&quot;)) {
+            Buffer buffer = (Buffer) dvmObject.getValue();
+            return vm.resolveClass(&quot;okio/Buffer&quot;).newObject(buffer.clone());
+        }
+
+        if (signature.equals(&quot;okhttp3/Request-&gt;newBuilder()Lokhttp3/Request$Builder;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/Request$Builder&quot;).newObject(request.newBuilder());
+        }
+        if (signature.equals(&quot;okhttp3/Request$Builder-&gt;header(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;&quot;)) {
+            Request.Builder builder = (Request.Builder) dvmObject.getValue();
+            builder.header(vaList.getObjectArg(0).getValue().toString(), vaList.getObjectArg(1).getValue().toString());
+            if (&quot;shield&quot;.equals(vaList.getObjectArg(0).getValue().toString())) {
+                String shield = vaList.getObjectArg(1).getValue().toString();
+                System.out.println(&quot;shield=&quot; + shield);
+            }
+            return dvmObject;
+        }
+        if (signature.equals(&quot;okhttp3/Request$Builder-&gt;build()Lokhttp3/Request;&quot;)) {
+            Request.Builder builder = (Request.Builder) dvmObject.getValue();
+            Request request = builder.build();
+            return vm.resolveClass(&quot;okhttp3/Request&quot;).newObject(request);
+        }
+        if (signature.equals(&quot;okhttp3/Interceptor$Chain-&gt;proceed(Lokhttp3/Request;)Lokhttp3/Response;&quot;)) {
+            return vm.resolveClass(&quot;okhttp3/Response&quot;).newObject(null);
+        }
+        return super.callObjectMethodV(vm, dvmObject, signature, vaList);
+    }
+
+    @Override
+    public DvmObject&lt;?&gt; newObjectV(BaseVM vm, DvmClass dvmClass, String signature, VaList vaList) {
+        if (signature.equals(&quot;okio/Buffer-&gt;&lt;init&gt;()V&quot;)) {
+            return dvmClass.newObject(new Buffer());
+        }
+        return super.newObjectV(vm, dvmClass, signature, vaList);
+    }
+
+
+    @Override
+    public int callIntMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+        if (signature.equals(&quot;okhttp3/Headers-&gt;size()I&quot;)) {
+            Headers headers = (Headers) dvmObject.getValue();
+            return headers.size();
+        }
+        if (signature.equals(&quot;okio/Buffer-&gt;read([B)I&quot;)) {
+            Buffer buffer = (Buffer) dvmObject.getValue();
+            return buffer.read((byte[]) vaList.getObjectArg(0).getValue());
+        }
+        if (signature.equals(&quot;okhttp3/Response-&gt;code()I&quot;)) {
+            return 200;
+        }
+        return super.callIntMethodV(vm, dvmObject, signature, vaList);
+    }
+    @Override
+    public void callVoidMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+        if (signature.equals(&quot;okhttp3/RequestBody-&gt;writeTo(Lokio/BufferedSink;)V&quot;)) {
+            BufferedSink bufferedSink = (BufferedSink) vaList.getObjectArg(0).getValue();
+            RequestBody requestBody = (RequestBody) dvmObject.getValue();
+            if (requestBody != null) {
+                try {
+                    requestBody.writeTo(bufferedSink);
+                } catch (IOException e) {
+                    System.out.println(&quot;错误了&quot; + e);
+                }
+            }
+            return;
+        }
+
+        super.callVoidMethodV(vm, dvmObject, signature, vaList);
+    }
+}
+
+</code></pre>
+<h1 id="4">4 参数化和打包</h1>
+<h2 id="41">4.1 参数处理</h2>
+<p><img alt="image-20230111004622552" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111004622552.png" /></p>
+<pre><code class="language-java">package com.nb.demo;
+
+import com.github.unidbg.AndroidEmulator;
+import com.github.unidbg.Module;
+import com.github.unidbg.linux.android.AndroidEmulatorBuilder;
+import com.github.unidbg.linux.android.AndroidResolver;
+import com.github.unidbg.linux.android.dvm.*;
+import com.github.unidbg.linux.android.dvm.array.ByteArray;
+import com.github.unidbg.linux.android.dvm.jni.ProxyDvmObject;
+import com.github.unidbg.memory.Memory;
+import okhttp3.*;
+import okio.Buffer;
+import okio.BufferedSink;
+import org.apache.commons.codec.binary.Base64;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+
+public class XHS extends AbstractJni {
+    public static AndroidEmulator emulator;  // 静态属性，以后对象和类都可以直接使用
+    public static Memory memory;
+    public static VM vm;
+    public static Module module;
+    private static Request request;
+
+    public XHS() {
+        // 1.创建设备（32位或64位模拟器）， 具体看so文件在哪个目录。 在armeabi-v7a就选择32位
+        // 传进设备时，如果是32位，后面so文件就要用32位，同理需要用64位的
+        // 这个名字可以随便写,一般写成app的包名    以后可能会动
+        emulator = AndroidEmulatorBuilder.for32Bit().setProcessName(&quot;com.xhs&quot;).build();
+
+        // 2 获取内存对象(可以操作内存)
+        memory = emulator.getMemory();
+
+        // 3.设置安卓sdk版本（只支持19、23）
+        memory.setLibraryResolver(new AndroidResolver(23));
+
+        // 4.创建虚拟机（运行安卓代码需要虚拟机，就想运行py代码需要python解释器一样）    以后会动
+        vm = emulator.createDalvikVM(new File(&quot;apks/xhs/v6.73.0.apk&quot;));
+        vm.setJni(this); // 后期补环境会用，把要补的环境，写在当前这个类中，执行这个代码即可，但是必须继承AbstractJni
+        //vm.setVerbose(true); //是否展示调用过程的细节
+
+        // 5.加载so文件
+        // 以后会动,只要懂so文件路径即可
+        DalvikModule dm = vm.loadLibrary(new File(&quot;apks/xhs/libshield.so&quot;), false);
+        dm.callJNI_OnLoad(emulator); // jni开发动态注册，会执行JNI_OnLoad，如果是动态注册，需要执行一下这个，如果静态注册，这个不需要执行，车智赢案例是静态注册
+
+        // 6.dm代表so文件，dm.getModule()得到module对象，基于module对象可以访问so中的成员。
+        module = dm.getModule(); // 把so文件加载到内存后，后期可以获取基地址，偏移量等，该变量代指so文件
+
+    }
+
+    public void initializeNative() {
+        DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+        String method = &quot;initializeNative()V&quot;;
+        cls.callStaticJniMethodObject(emulator, method);
+    }
+
+    public long initialize(String str) {
+        DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+        String method = &quot;initialize(Ljava/lang/String;)J&quot;;
+        long cPtr = cls.callStaticJniMethodLong(emulator, method, new StringObject(vm, str));
+//        System.out.println(cPtr);
+        return cPtr;
+    }
+
+    public void intercept(long cPtr) {
+        DvmClass cls = vm.resolveClass(&quot;com/xingin/shield/http/XhsHttpInterceptor&quot;);
+        String method = &quot;intercept(Lokhttp3/Interceptor$Chain;J)Lokhttp3/Response;&quot;;
+        cls.callStaticJniMethodLong(
+                emulator,
+                method,
+                vm.resolveClass(&quot;okhttp3/Interceptor$Chain&quot;).newObject(null),
+                cPtr
+        );
+    }
+
+    public static void main(String[] args) {
+        String method = args[0];
+        String url = args[1];
+        String commonParams = args[2];
+        String content = args[3]; // 请求体
+
+        //1 new出一个对象，调用构造方法
+        XHS xhs = new XHS();
+        xhs.initializeNative();
+        long l = xhs.initialize(&quot;main&quot;);
+        if (method.equalsIgnoreCase(&quot;post&quot;)) {
+            MediaType TEXT = MediaType.parse(&quot;text/plan;charset=utf-8&quot;);
+            RequestBody body = RequestBody.create(TEXT, content);
+            request = new Request.Builder()
+                    .url(url)
+                    .addHeader(&quot;xy-common-params&quot;, commonParams)
+                    .addHeader(&quot;content-type&quot;, &quot;application/x-www-form-urlencoded&quot;)
+                    .method(&quot;post&quot;, body)
+                    .build();
+        } else {
+            request = new Request.Builder()
+                    .url(url)
+                    .addHeader(&quot;xy-common-params&quot;, commonParams)
+                    .build();
+        }
+
+
+        xhs.intercept(l);
+    }
+
+
+    // 补环境
+
+    @Override
+    public DvmObject&lt;?&gt; callStaticObjectMethodV(BaseVM vm, DvmClass dvmClass, String signature, VaList vaList) {
+        if (signature.equals(&quot;java/nio/charset/Charset-&gt;defaultCharset()Ljava/nio/charset/Charset;&quot;)) {
+            // java 层有的,直接补
+            Charset charset = Charset.defaultCharset();
+            return ProxyDvmObject.createObject(vm, charset);
+        }
+
+        if (signature.equals(&quot;com/xingin/shield/http/Base64Helper-&gt;decode(Ljava/lang/String;)[B&quot;)) {
+            // 小红书自己的--》可能是 Base64 魔改的--》我们需要反编译找到地方读代码，或者通过hook比较 看看是否魔改
+            // 最终验证，就是Base64
+            String input = (String) vaList.getObjectArg(0).getValue();
+            byte[] result = Base64.decodeBase64(input);
+            return new ByteArray(vm, result);
+        }
+        return super.callStaticObjectMethodV(vm, dvmClass, signature, vaList);
+    }
+
+    @Override
+    public DvmObject&lt;?&gt; getStaticObjectField(BaseVM vm, DvmClass dvmClass, String signature) {
+        if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sDeviceId:Ljava/lang/String;&quot;)) {
+            // com/xingin/shield/http/ContextHolder类对象的sDeviceId字段，返回字符串
+            //1  不能直接拿到，应该是app内部生成，赋值给这个字段，正常我们通过反编译，找到位置，查找加密算法
+            //2  直接hook得到具体值，放入：c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2
+            return ProxyDvmObject.createObject(vm, &quot;c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2&quot;);
+
+        }
+
+
+        return super.getStaticObjectField(vm, dvmClass, signature);
+    }
+
+    @Override
+    public int getStaticIntField(BaseVM vm, DvmClass dvmClass, String signature) {
+        if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sAppId:I&quot;)) {
+            return -319115519;
+        }
+        return super.getStaticIntField(vm, dvmClass, signature);
+    }
+
+    @Override
+    public boolean getStaticBooleanField(BaseVM vm, DvmClass dvmClass, String signature) {
+        if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sExperiment:Z&quot;)) {
+            return true;
+        }
+        return super.getStaticBooleanField(vm, dvmClass, signature);
+    }
+
+    @Override
+    public DvmObject&lt;?&gt; callObjectMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+        if (signature.equals(&quot;android/content/Context-&gt;getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;&quot;)) {
+            // android的，day10学的
+            // 第一个参数是要读取的 xml文件名
+            String xmlName = (String) vaList.getObjectArg(0).getValue();
+//            System.out.println(&quot;XML:&quot; + xmlName); // 读s.xml
+            //return vm.resolveClass(&quot;android/content/SharedPreferences&quot;).newObject(vaList.getObjectArg(0));
+            return vm.resolveClass(&quot;android/content/SharedPreferences&quot;).newObject(null);
+        }
+
+        if (signature.equals(&quot;android/content/SharedPreferences-&gt;getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;&quot;)) {
+            // 去XML文件中读取内容并返回  String token = sp.getString(&quot;token&quot;,&quot;&quot;);
+            String key = (String) vaList.getObjectArg(0).getValue();
+            String defaultValue = (String) vaList.getObjectArg(1).getValue();
+//            System.out.println(&quot;key:&quot; + key + &quot;  value:&quot; + defaultValue);
+            // 我们去对应的目录下找到 s.xml--&gt;拿出main 和 main_hmac 对应的值，直接补上
+            if (key.equals(&quot;main&quot;)) { // 读取main返回默认值
+                return new StringObject(vm, defaultValue);
+            }
+            if (key.equals(&quot;main_hmac&quot;)) { // 读取main_hmac 返回拿到的值
+                return new StringObject(vm, &quot;aUIfjHpYObXfXBYfXvjCQwwUbuORShG8BR/LCeecL8fwui6ZXoqVZFLMNx9nO2x/fn8Izev0xOINhYGMMMAvCVw5bkgPk7sqavtlPJYDW9O3IEmqHktC4JUzOjRgnjSs&quot;);
+            }
+        }
+
+
+        if (signature.equals(&quot;okhttp3/Interceptor$Chain-&gt;request()Lokhttp3/Request;&quot;)) {
+            // 执行 chain.request() 获取request请求相关的对象
+            return vm.resolveClass(&quot;okhttp3/Request&quot;).newObject(request);
+        }
+        if (signature.equals(&quot;okhttp3/Request-&gt;url()Lokhttp3/HttpUrl;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/HttpUrl&quot;).newObject(request.url());
+        }
+        if (signature.equals(&quot;okhttp3/HttpUrl-&gt;encodedPath()Ljava/lang/String;&quot;)) {
+            HttpUrl httpUrl = (HttpUrl) dvmObject.getValue();
+            return new StringObject(vm, httpUrl.encodedPath());
+        }
+
+        if (signature.equals(&quot;okhttp3/HttpUrl-&gt;encodedQuery()Ljava/lang/String;&quot;)) {
+            HttpUrl httpUrl = (HttpUrl) dvmObject.getValue();
+            if (httpUrl.encodedQuery() != null) {
+                return new StringObject(vm, httpUrl.encodedQuery());
+            }
+            return new StringObject(vm, &quot;&quot;);
+        }
+
+        if (signature.equals(&quot;okhttp3/Request-&gt;body()Lokhttp3/RequestBody;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/RequestBody&quot;).newObject(request.body());
+        }
+        if (signature.equals(&quot;okhttp3/Request-&gt;headers()Lokhttp3/Headers;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/Headers&quot;).newObject(request.headers());
+        }
+        if (signature.equals(&quot;okio/Buffer-&gt;writeString(Ljava/lang/String;Ljava/nio/charset/Charset;)Lokio/Buffer;&quot;)) {
+            Buffer buffer = (Buffer) dvmObject.getValue();
+            buffer.writeString(vaList.getObjectArg(0).getValue().toString(), (Charset) vaList.getObjectArg(1).getValue());
+            return dvmObject;
+        }
+
+        if (signature.equals(&quot;okhttp3/Headers-&gt;name(I)Ljava/lang/String;&quot;)) {
+            Headers headers = (Headers) dvmObject.getValue();
+            return new StringObject(vm, headers.name(vaList.getIntArg(0)));
+        }
+        if (signature.equals(&quot;okhttp3/Headers-&gt;value(I)Ljava/lang/String;&quot;)) {
+            Headers headers = (Headers) dvmObject.getValue();
+            return new StringObject(vm, headers.value(vaList.getIntArg(0)));
+        }
+
+        if (signature.equals(&quot;okio/Buffer-&gt;clone()Lokio/Buffer;&quot;)) {
+            Buffer buffer = (Buffer) dvmObject.getValue();
+            return vm.resolveClass(&quot;okio/Buffer&quot;).newObject(buffer.clone());
+        }
+
+        if (signature.equals(&quot;okhttp3/Request-&gt;newBuilder()Lokhttp3/Request$Builder;&quot;)) {
+            Request request = (Request) dvmObject.getValue();
+            return vm.resolveClass(&quot;okhttp3/Request$Builder&quot;).newObject(request.newBuilder());
+        }
+        if (signature.equals(&quot;okhttp3/Request$Builder-&gt;header(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;&quot;)) {
+            Request.Builder builder = (Request.Builder) dvmObject.getValue();
+            builder.header(vaList.getObjectArg(0).getValue().toString(), vaList.getObjectArg(1).getValue().toString());
+            if (&quot;shield&quot;.equals(vaList.getObjectArg(0).getValue().toString())) {
+                String shield = vaList.getObjectArg(1).getValue().toString();
+                System.out.println(&quot;shield=&quot; + shield);
+            }
+            return dvmObject;
+        }
+        if (signature.equals(&quot;okhttp3/Request$Builder-&gt;build()Lokhttp3/Request;&quot;)) {
+            Request.Builder builder = (Request.Builder) dvmObject.getValue();
+            Request request = builder.build();
+            return vm.resolveClass(&quot;okhttp3/Request&quot;).newObject(request);
+        }
+        if (signature.equals(&quot;okhttp3/Interceptor$Chain-&gt;proceed(Lokhttp3/Request;)Lokhttp3/Response;&quot;)) {
+            return vm.resolveClass(&quot;okhttp3/Response&quot;).newObject(null);
+        }
+        return super.callObjectMethodV(vm, dvmObject, signature, vaList);
+    }
+
+    @Override
+    public DvmObject&lt;?&gt; newObjectV(BaseVM vm, DvmClass dvmClass, String signature, VaList vaList) {
+        if (signature.equals(&quot;okio/Buffer-&gt;&lt;init&gt;()V&quot;)) {
+            return dvmClass.newObject(new Buffer());
+        }
+        return super.newObjectV(vm, dvmClass, signature, vaList);
+    }
+
+
+    @Override
+    public int callIntMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+        if (signature.equals(&quot;okhttp3/Headers-&gt;size()I&quot;)) {
+            Headers headers = (Headers) dvmObject.getValue();
+            return headers.size();
+        }
+        if (signature.equals(&quot;okio/Buffer-&gt;read([B)I&quot;)) {
+            Buffer buffer = (Buffer) dvmObject.getValue();
+            return buffer.read((byte[]) vaList.getObjectArg(0).getValue());
+        }
+        if (signature.equals(&quot;okhttp3/Response-&gt;code()I&quot;)) {
+            return 200;
+        }
+        return super.callIntMethodV(vm, dvmObject, signature, vaList);
+    }
+
+    @Override
+    public void callVoidMethodV(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VaList vaList) {
+        if (signature.equals(&quot;okhttp3/RequestBody-&gt;writeTo(Lokio/BufferedSink;)V&quot;)) {
+            BufferedSink bufferedSink = (BufferedSink) vaList.getObjectArg(0).getValue();
+            RequestBody requestBody = (RequestBody) dvmObject.getValue();
+            if (requestBody != null) {
+                try {
+                    requestBody.writeTo(bufferedSink);
+                } catch (IOException e) {
+//                    System.out.println(&quot;错误了&quot; + e);
+                }
+            }
+            return;
+        }
+
+        super.callVoidMethodV(vm, dvmObject, signature, vaList);
+    }
+}
+
+</code></pre>
+<h2 id="42">4.2 打包调用</h2>
+<p><img alt="image-20230111005444916" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111005444916.png" /></p>
+<pre><code>java -jar unidbg-0.9.6.jar get &quot;https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;phone=18630099999&amp;code=112233&quot; &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673279778&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673279684&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_sms_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;  null
+</code></pre>
+<h2 id="43-python">4.3 Python调用</h2>
+<h3 id="431-get">4.3.1 GET请求</h3>
+<p><img alt="image-20230111010241973" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111010241973.png" /></p>
+<pre><code class="language-python">import subprocess
+
+method = &quot;get&quot;
+url = &quot;https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;phone=18630099999&amp;code=112233&quot;
+common_params = &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673279778&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673279684&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_sms_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;
+body = &quot;null&quot;
+
+cmd = f'java -jar  unidbg-0.9.7.jar  {method} &quot;{url}&quot; &quot;{common_params}&quot; &quot;{body}&quot;'
+signature = subprocess.check_output(cmd, shell=True, cwd=&quot;unidbg_0_9_7_jar&quot;)
+data_string = signature.strip().decode('utf-8').split(&quot;\n&quot;)[-1]
+print(data_string)
+</code></pre>
+<h3 id="432-post">4.3.2 POST请求</h3>
+<p><img alt="image-20230111010158937" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111010158937.png" /></p>
+<pre><code class="language-python">import subprocess
+
+method = &quot;post&quot;
+url = &quot;https://www.xiaohongshu.com/api/sns/v4/user/login/password&quot;
+common_params = &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673282424&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673282339&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_pwd_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;
+body = &quot;vaid=efd721ebebc492d5&amp;password=3ea9d0b0ee7cd39d4de9f5d01c422d85&amp;zone=86&amp;phone=18631115555&amp;aaid=2373c739-b380-469e-bea5-fcc86cae658f&amp;imsi=unknow&amp;android_version=29&amp;type=phone&amp;android_id=145d7fb8645488c2&amp;mac=bc%3A6a%3Ad1%3A17%3A61%3A9a&quot;
+
+cmd = f'java -jar  unidbg-parent.jar {method} &quot;{url}&quot; &quot;{common_params}&quot; &quot;{body}&quot;'
+signature = subprocess.check_output(cmd, shell=True, cwd=&quot;unidbg_parent_jar&quot;)
+data_string = signature.strip().decode('utf-8').split(&quot;\n&quot;)[-1]
+data_string = signature.strip().decode('gbk').split(&quot;\n&quot;)[-1]
+print(data_string)
+</code></pre>
+<h1 id="5">5 测试</h1>
+<h2 id="51">5.1 发送短信</h2>
+<p><img alt="image-20230111011235827" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111011235827.png" /></p>
+<pre><code class="language-python">import requests
+import subprocess
+
+method = &quot;get&quot;
+url = &quot;https://www.xiaohongshu.com/api/sns/v1/system_service/vfc_code?zone=86&amp;phone=自己的手机号&amp;type=login&quot;
+common_params = &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673279778&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673279684&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_sms_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;
+body = &quot;null&quot;
+
+cmd = f'java -jar  unidbg-parent.jar {method} &quot;{url}&quot; &quot;{common_params}&quot; &quot;{body}&quot;'
+signature = subprocess.check_output(cmd, shell=True, cwd=&quot;unidbg_parent_jar&quot;)
+data_string = signature.strip().decode('utf-8').split(&quot;\n&quot;)[-1]
+shield_string = data_string.lstrip(&quot;shield=&quot;)
+
+print(shield_string)
+
+res = requests.get(
+    url=url,
+    headers={
+        &quot;xy-common-params&quot;: common_params,
+        &quot;xy-platform-info&quot;: &quot;platform=android&amp;build=6730157&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&quot;,
+        &quot;shield&quot;: shield_string
+    }
+)
+
+print(res.text)
+</code></pre>
+<h2 id="52">5.2 短信校验</h2>
+<p><img alt="image-20230111011621104" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111011621104.png" /></p>
+<pre><code class="language-python">import requests
+import subprocess
+
+method = &quot;get&quot;
+url = &quot;https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;phone=18953675223&amp;code=889988&quot;
+common_params = &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673279778&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673279684&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_sms_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;
+body = &quot;null&quot;
+
+cmd = f'java -jar  unidbg-0.9.7.jar {method} &quot;{url}&quot; &quot;{common_params}&quot; &quot;{body}&quot;'
+signature = subprocess.check_output(cmd, shell=True, cwd=&quot;unidbg_0_9_7_jar&quot;)
+data_string = signature.strip().decode('utf-8').split(&quot;\n&quot;)[-1]
+shield_string = data_string.lstrip(&quot;shield=&quot;)
+
+print(shield_string)
+
+res = requests.get(
+    url=url,
+    headers={
+        &quot;xy-common-params&quot;: common_params,
+        &quot;xy-platform-info&quot;: &quot;platform=android&amp;build=6730157&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&quot;,
+        &quot;shield&quot;: shield_string
+    }
+)
+
+print(res.text)
+</code></pre>
+<h2 id="53">5.3 账号密码登录（风控）</h2>
+<p>注意：小红书有滑动验证来进行风控监测，请手动过风控后，再发送请求测试。</p>
+<p><img alt="image-20230111013508132" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111013508132.png" /></p>
+<pre><code class="language-python">import requests
+import subprocess
+
+method = &quot;post&quot;
+url = &quot;https://www.xiaohongshu.com/api/sns/v4/user/login/password&quot;
+common_params = &quot;fid=167337148910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673371489&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1673371377666975539727&amp;identifier_flag=0&amp;t=1673371416&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_pwd_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;
+
+body = &quot;vaid=efd721ebebc492d5&amp;password=f813d8c91a894a68439058572dfd4750&amp;zone=86&amp;phone=15131555553&amp;aaid=2373c739-b380-469e-bea5-fcc86cae658f&amp;imsi=unknow&amp;android_version=29&amp;type=phone&amp;android_id=145d7fb8645488c2&amp;mac=bc%3A6a%3Ad1%3A17%3A61%3A9a&quot;
+
+cmd = f'java -jar  unidbg-parent.jar {method} &quot;{url}&quot; &quot;{common_params}&quot; &quot;{body}&quot;'
+signature = subprocess.check_output(cmd, shell=True, cwd=&quot;unidbg_parent_jar&quot;)
+data_string = signature.strip().decode('utf-8').split(&quot;\n&quot;)[-1]
+shield_string = data_string.lstrip(&quot;shield=&quot;)
+
+res = requests.post(
+    url=url,
+    data=body,
+    headers={
+        &quot;xy-common-params&quot;: common_params,
+        &quot;xy-platform-info&quot;: &quot;platform=android&amp;build=6730157&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&quot;,
+        &quot;shield&quot;: shield_string,
+        &quot;content-type&quot;: &quot;application/x-www-form-urlencoded&quot;
+    }
+)
+
+print(res.status_code, res.text)
+</code></pre>
+<h2 id="54">5.4 获取评论（风控）</h2>
+<blockquote>
+<p>风控监测到，强制账号下线。。。</p>
+</blockquote>
+<p><img alt="image-20230111014356522" src="imgs/day29-xhs-%E4%B8%8B.assets/image-20230111014356522.png" /></p>
+<pre><code class="language-python">import requests
+import subprocess
+
+method = &quot;get&quot;
+url = &quot;https://edith.xiaohongshu.com/api/sns/v1/note/feed?note_id=63b01b4d0000000022034d77&amp;page=1&amp;num=5&amp;fetch_mode=1&amp;source=explore&amp;ads_track_id=&quot;
+common_params = &quot;fid=167337148910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673372503&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1673372424638448802568&amp;identifier_flag=0&amp;t=1673372498&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=explore_feed&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;
+
+body = &quot;null&quot;
+
+cmd = f'java -jar  unidbg-parent.jar {method} &quot;{url}&quot; &quot;{common_params}&quot; &quot;{body}&quot;'
+signature = subprocess.check_output(cmd, shell=True, cwd=&quot;unidbg_parent_jar&quot;)
+data_string = signature.strip().decode('utf-8').split(&quot;\n&quot;)[-1]
+shield_string = data_string.lstrip(&quot;shield=&quot;)
+
+res = requests.get(
+    url=url,
+    headers={
+        &quot;xy-common-params&quot;: common_params,
+        &quot;xy-platform-info&quot;: &quot;platform=android&amp;build=6730157&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&quot;,
+        &quot;shield&quot;: shield_string
+    }
+)
+
+print(res.status_code, res.text)
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>

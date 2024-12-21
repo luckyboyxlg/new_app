@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>十六、得物app - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
+<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001.html">
+<a href="day06-java%E5%9F%BA%E7%A1%8001.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002.html">
+<a href="day07-java%E5%9F%BA%E7%A1%8002.html">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003.html">
+<a href="day08-java%E5%9F%BA%E7%A1%8003.html">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day13-JNI%E5%BC%80%E5%8F%91.html">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app.html">
+<a href="day15-%E8%AF%86%E8%B4%A7app.html">十五、识货app</a>
+<li class="chapter active" data-path="day16-%E5%BE%97%E7%89%A9app.html">
+<a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902.html">
+<a href="day18-B%E7%AB%9902.html">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903.html">
+<a href="day19-B%E7%AB%9903.html">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM.html">
+<a href="day22-DYM.html">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A.html">
+<a href="day25-unidbg-%E4%B8%8A.html">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87.html">
+<a href="day26-unidbg-%E4%B8%AD%E7%AF%87.html">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B.html">
+<a href="day27-unidbg-%E4%B8%8B.html">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A.html">
+<a href="day28-xhs-%E4%B8%8A.html">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B.html">
+<a href="day29-xhs-%E4%B8%8B.html">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="app">十六、得物app</h1>
+<h1 id="1">1 得物目标</h1>
+<pre><code class="language-python"># 采集推荐信息
+# 版本
+    -4.74.5
+</code></pre>
+<p><img alt="image-20231013200415647" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20231013200415647.png" /></p>
+<h1 id="2">2 绕过强制更新</h1>
+<pre><code class="language-python"># 先断网，打开app，再联网即可
+</code></pre>
+<p><img alt="image-20231013200531328" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20231013200531328.png" /></p>
+<h1 id="3">3 抓包</h1>
+<h3 id="31-socksdroid">3.1 使用SocksDroid</h3>
+<pre><code class="language-python"># 该app禁用了手机端代理，所以我们使用SocksDroid代理
+# 操作步骤
+    - 手机系统代理删除
+    - 基本配置
+
+切记：在使用前删除手机上设置的系统代理。
+
+
+# 根据抓包分析，我们发现/sns-rec/v1/recommend  地址为首页推荐接口
+# 地址如下：https://app.dewu.com/sns-rec/v1/recommend/all/feed
+    -地址：https://app.dewu.com/sns-rec/v1/recommend/all/feed
+    -请求方式：get
+    -请求头：
+        -X-Auth-Token：必须带
+    -请求参数：
+        -newSign：这个接口不需要带，学习破解它，后续别的接口需要带
+</code></pre>
+<p><img alt="image-20220928184546944" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20220928184546944.png" /></p>
+<p><img alt="image-20230801161344280" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801161344280.png" /></p>
+<h1 id="4-newsign">4 破解newSign</h1>
+<h2 id="41-newsign">4.1 反编译搜索newSign</h2>
+<pre><code class="language-python"># 1 把app拖入 jadx中，反编译，搜索     &quot;newSign
+# 2 搜出8个，但实际上只有5个有效，5个都在同一个类中---》随便点一个进去看--》hook验证
+# 3 发现它是写在拦截器中---》所有请求，都会带这个newSign
+# 4 最终调用了RequestUtils.c
+# 5 hook一下 RequestUtils.c， 确认有没有走
+</code></pre>
+<p><img alt="image-20230801162017994" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801162017994.png" /></p>
+<p><img alt="image-20230801162215134" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801162215134.png" /></p>
+<p><img alt="image-20230801162358102" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801162358102.png" /></p>
+<h2 id="42-hook-requestutilsc">4.2 Hook-RequestUtils.c</h2>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;得物(毒)&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var RequestUtils = Java.use(&quot;com.shizhuang.duapp.common.utils.RequestUtils&quot;);
+    RequestUtils.c.implementation = function(map,j){
+        console.log(&quot;----------------------------------------&quot;);
+        console.log('1.参数字典为：',map); // 此处直接打印map，发现打印的是对象，我们需要转换一下
+        console.log('1.参数字典为：',JSON.stringify(map));  // 查看一下类型 ：&lt;instance: java.util.Map, $className: java.util.HashMap&gt;，把HashMap值取出来，做个转换，如下
+        var Map = Java.use('java.util.HashMap');
+        var obj = Java.cast(map, Map);
+        console.log('1.参数字典为：',obj.toString());
+        var res = this.c(map,j);
+        console.log(&quot;4.newSign结果：&quot;, res);
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+
+script.load()
+sys.stdin.read()
+
+'''
+
+### 参数字典为： 
+{abValue=1, deliveryProjectId=0, abRectagFengge=0, abType=social_brand_strategy_v454, limit=20, lastId=, abRecReason=0, abVideoCover=2}
+
+### newSign结果： 
+16aa2e250ac6c28c3166cce3d0561be8
+
+
+### 拿到newSign和 抓包抓包的newSign比较发现是一样的，确定位置
+'''
+
+*/
+</code></pre>
+<p><img alt="image-20240102203740760" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20240102203740760.png" /></p>
+<p><img alt="image-20240102203958837" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20240102203958837.png" /></p>
+<h2 id="43-requestutilsc">4.3 分析RequestUtils.c核心逻辑</h2>
+<pre><code class="language-java">public static synchronized String c(Map&lt;String, String&gt; map, long j2) throws UnsupportedEncodingException {
+    synchronized (RequestUtils.class) {
+        PatchProxyResult proxy = PatchProxy.proxy(new Object[]{map, new Long(j2)}, null, changeQuickRedirect, true, 6612, new Class[]{Map.class, Long.TYPE}, String.class);
+        if (proxy.isSupported) {
+            return (String) proxy.result;
+        } else if (map == null) {
+            return &quot;&quot;;
+        } else {
+            // 1 参数拼接
+            // 把uuid，platform，v，loginToken，timestamp放入map中
+            map.put(&quot;uuid&quot;, DuHttpConfig.d.getUUID());
+            map.put(&quot;platform&quot;, &quot;android&quot;);
+            map.put(&quot;v&quot;, DuHttpConfig.d.getAppVersion());
+            map.put(&quot;loginToken&quot;, DuHttpConfig.d.getLoginToken());
+            map.put(&quot;timestamp&quot;, String.valueOf(j2));
+            ArrayList arrayList = new ArrayList(map.entrySet());
+            // 2 把map转成ArrayList，并进行排序
+            Collections.sort(arrayList, new Comparator&lt;Map.Entry&lt;String, String&gt;&gt;() { 
+                public static ChangeQuickRedirect changeQuickRedirect;
+                @Override 
+                public int compare(Map.Entry&lt;String, String&gt; entry, Map.Entry&lt;String, String&gt; entry2) {
+                    PatchProxyResult proxy2 = PatchProxy.proxy(new Object[]{entry, entry2}, this, changeQuickRedirect, false, 6618, new Class[]{Map.Entry.class, Map.Entry.class}, Integer.TYPE);
+                    return proxy2.isSupported ? ((Integer) proxy2.result).intValue() : entry.getKey().toString().compareTo(entry2.getKey());
+                }
+            });
+            // 3 构建字符串
+            StringBuilder sb = new StringBuilder();
+            for (int i2 = 0; i2 &lt; arrayList.size(); i2++) {
+                Map.Entry entry = (Map.Entry) arrayList.get(i2);
+                sb.append(((String) entry.getKey()) + ((String) entry.getValue()));
+            }
+            String sb2 = sb.toString();
+            DuHttpConfig.LogConfig logConfig = DuHttpConfig.f15800h;
+            String str = f16243a;
+            logConfig.d(str, &quot;StringToSign &quot; + sb2);
+            // 4 执行AESEncrypt.encode 加密
+            // 5 把返回结果当参数传入a中
+            return a(AESEncrypt.encode(DuHttpConfig.f15796c, sb2));
+        }
+    }
+}
+/*
+// 1 参数拼接
+// 把uuid，platform，v，loginToken，timestamp放入map中
+map.put(&quot;uuid&quot;, DuHttpConfig.d.getUUID());
+map.put(&quot;platform&quot;, &quot;android&quot;);
+map.put(&quot;v&quot;, DuHttpConfig.d.getAppVersion());
+map.put(&quot;loginToken&quot;, DuHttpConfig.d.getLoginToken());
+map.put(&quot;timestamp&quot;, String.valueOf(j2));
+
+//2 把map转成ArrayList，并进行排序
+ArrayList arrayList = new ArrayList(map.entrySet());
+Collections.sort(arrayList, new Comparator&lt;Map.Entry&lt;String, String&gt;&gt;()
+
+// 3 构建字符串
+StringBuilder sb = new StringBuilder();
+sb.append()
+
+// 4 执行AESEncrypt.encode 加密 
+AESEncrypt.encode(DuHttpConfig.f15796c, sb2)
+
+// 5 把返回结果当参数传入a中
+a(AESEncrypt.encode(DuHttpConfig.f15796c, sb2));
+
+*/
+
+
+</code></pre>
+<h3 id="431-a-md5">4.3.1 a 函数就是md5加密</h3>
+<pre><code class="language-java">public static String a(String str) {
+    PatchProxyResult proxy = PatchProxy.proxy(new Object[]{str}, null, changeQuickRedirect, true, 6616, new Class[]{String.class}, String.class);
+    if (proxy.isSupported) {
+        return (String) proxy.result;
+    }
+    try {
+        MessageDigest messageDigest = MessageDigest.getInstance(&quot;MD5&quot;);
+        messageDigest.update(str.getBytes());
+        byte[] digest = messageDigest.digest();
+        StringBuilder sb = new StringBuilder();
+        for (byte b2 : digest) {
+            String hexString = Integer.toHexString(b2 &amp; 255);
+            while (hexString.length() &lt; 2) {
+                hexString = &quot;0&quot; + hexString;
+            }
+            sb.append(hexString);
+        }
+        return sb.toString();
+    } catch (NoSuchAlgorithmException e2) {
+        e2.printStackTrace();
+        return &quot;&quot;;
+    }
+}
+}
+</code></pre>
+<h3 id="432-aesencryptencode">4.3.2 AESEncrypt.encode</h3>
+<h4 id="4321-hook-aesencryptencode">4.3.2.1 hook--&gt;AESEncrypt.encode</h4>
+<pre><code class="language-python"># 1 AESEncrypt.encode(DuHttpConfig.f15796c, sb2)
+# 2 双击点进去
+    public class AESEncrypt {
+        static {
+           System.loadLibrary(&quot;JNIEncrypt&quot;); # libJNIEncrypt.so
+        }
+     public static String encode(Object obj, String str) {
+        # 调用getByteValues 获得字符串
+        # byteValues=011001
+        String byteValues = getByteValues();
+        StringBuilder sb = new StringBuilder(byteValues.length());
+        # 定义了一个字符串，根据byteValues的值，拼接字符串，相对于对字符串取反
+        for (int i2 = 0; i2 &lt; byteValues.length(); i2++) {
+            if (byteValues.charAt(i2) == '0') {
+                sb.append('1');
+            } else {
+                sb.append('0');
+            }
+        }
+        # sb.toString=100110
+        # str.getBytes() 待加密的字符串
+        return encodeByte(str.getBytes(), sb.toString());
+    }
+    public static native String getByteValues(); # Native方法--》c实现的--》目前不知道
+    # 传入了 待加密的字符串转成byte数组，和 01010101字符串
+    # 用c写的
+    public static native String encodeByte(byte[] bArr, String str);# Native方法--》c实现的
+
+    }
+</code></pre>
+<p><img alt="image-20230801164721957" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801164721957.png" /></p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;得物(毒)&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var AESEncrypt = Java.use(&quot;com.duapp.aesjni.AESEncrypt&quot;);
+    AESEncrypt.encode.overload('java.lang.Object', 'java.lang.String').implementation = function(obj,str){
+        console.log('传入参数：',str);
+        var res = this.encode(obj,str);
+        console.log('返回值是：',res);
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+
+script.load()
+sys.stdin.read()
+
+
+'''
+传入参数： loginTokenplatformandroidtimestamp1690879969300type1uuidaa39fda5dfb88d79v4.74.5
+返回值是： knGGXR0bR7LQn4eRCvJsdZ4D96wrRcYi2zPWWxLMOs1KzCvPkzHFjqg5zSzBAq/kPrqncoUeLg4GM7WhIQc3UiduzaB/+e6vW/0+waWYbMQ=
+
+'''
+</code></pre>
+<h4 id="4322-aesencryptencode">4.3.2.2 分析源码AESEncrypt.encode</h4>
+<pre><code class="language-java">static {
+        try {
+            System.loadLibrary(&quot;JNIEncrypt&quot;);
+        } catch (UnsatisfiedLinkError e2) {
+            e2.fillInStackTrace();
+        }
+    }
+
+public static String encode(Object obj, String str) {
+    String byteValues = getByteValues();  //JNI开发的,hook发现返回一堆010101
+    StringBuilder sb = new StringBuilder(byteValues.length());
+    // 对返回的010101，进行取反
+    for (int i2 = 0; i2 &lt; byteValues.length(); i2++) {
+        if (byteValues.charAt(i2) == '0') {
+            sb.append('1');
+        } else {
+            sb.append('0');
+        }
+    }
+    // 调用了encodeByte
+    //str是上面分析到的字符串：loginTokenplatformandroidtimestamp1690879969300type1uuidaa39fda5dfb88d79v4.74.5
+    // sb 是一堆010101取反
+    return encodeByte(str.getBytes(), sb.toString());
+}
+
+public static native String getByteValues();
+
+
+// 去找libJNIEncrypt.so ,查看是动态注册还是静态注册
+// 去 libJNIEncrypt.so 中读两个位置
+    -getByteValues：// 没有参数，直接返回了字符串,这种情况下，大规律字符串是固定的，通过hook确认值是否是固定，如果是固定，不用读了，直接用即可，如果不固定，需要去读
+    -encodeByte
+</code></pre>
+<p><strong>hook-getByteValues</strong></p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;得物(毒)&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var AESEncrypt = Java.use(&quot;com.duapp.aesjni.AESEncrypt&quot;);
+    AESEncrypt.getByteValues.implementation = function(){
+        var res = this.getByteValues();
+        console.log('getByteValues返回值是：',res);
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+
+script.load()
+sys.stdin.read()
+</code></pre>
+<h3 id="433-aesencryptencodebyte">4.3.3 AESEncrypt.encodeByte</h3>
+<pre><code class="language-java">public static native String encodeByte(byte[] bArr, String str);
+// bArr是loginTokenplatformandroidtimestamp1690879969300type1uuidaa39fda5dfb88d79v4.74.5字节数组
+// str是一堆010100101，多hook几次，发现是固定的（其实后续代码没有使用）
+</code></pre>
+<h4 id="4331-solibjniencryptso-64">4.3.3.1 反编译so文件(libJNIEncrypt.so-64位)</h4>
+<pre><code class="language-python"># 1 使用IDA打开,点击exports
+# 2 发现没有java开发的方法，说明是【动态注册】
+# 3 所以我们要找JNI_OnLoad---》点击进入
+    # 动态注册---》固定要写一个JNI_OnLoad
+    JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
+        JNIEnv *env = NULL;
+        # 在java虚拟机中获取env
+        if ((*vm)-&gt;GetEnv(vm, (void **) &amp;env, JNI_VERSION_1_6) != JNI_OK) {
+            return JNI_ERR;
+        }
+        jclass clazz = (*env)-&gt;FindClass(env, &quot;com/justin/s8demo/Dynamic&quot;);
+        # 将类中的方法注册到JNI中 (RegisterNatives)
+        int res = (*env)-&gt;RegisterNatives(env, clazz, gMethods, 1);
+        if (res &lt; 0) {
+            return JNI_ERR;
+        }
+        return JNI_VERSION_1_6;
+    }
+# 4 看到代码如下--》RegisterNatives(&amp;v3-&gt;functions, v4, off_15010, 8LL);
+jint JNI_OnLoad(JavaVM *vm, void *reserved)
+    {
+      jint v2; // w19
+      JNIEnv_ *v3; // x20
+      __int64 v4; // x0
+      __int64 v6[2]; // [xsp+0h] [xbp-30h] BYREF
+
+      v6[1] = *(_ReadStatusReg(ARM64_SYSREG(3, 3, 13, 0, 2)) + 40);
+      v6[0] = 0LL;
+      v2 = 65540;
+      if ( (*vm)-&gt;GetEnv(vm, v6, 65540LL) )
+        return -1;
+      v3 = v6[0];
+      v4 = (*(*v6[0] + 48LL))(v6[0], &quot;com/duapp/aesjni/AESEncrypt&quot;);
+      if ( v4 )
+        v3-&gt;functions-&gt;RegisterNatives(&amp;v3-&gt;functions, v4, off_15010, 8LL);
+      __android_log_print(6, &quot;native-jni&quot;, &quot;jni onload2&quot;);
+      return v2;
+    }
+
+# 5 双击：off_15010 查看汇编
+# 6 看到java的encodeByte，对应c的encode，双击进入，按F5查看源码
+# 7 
+</code></pre>
+<p><img alt="image-20230801170830994" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801170830994.png" /></p>
+<p><img alt="image-20230801171446185" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801171446185.png" /></p>
+<p><img alt="image-20230801171706591" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801171706591.png" /></p>
+<h3 id="4332-soencode">4.3.3.2 反编译的so文件，encode源代码</h3>
+<pre><code class="language-c">// 把a1转换成 JNIEnv_
+jstring __fastcall encode(JNIEnv_ *a1, __int64 a2, __int64 a3, __int64 a4)
+{
+  const char *v7; // x22
+  __int64 v8; // x24
+  unsigned int v9; // w25
+  jbyte *v10; // x23
+  jbyte *v11; // x0
+  jbyte *v12; // x26
+  __int64 v13; // x9
+  jbyte *v14; // x10
+  jbyte *v15; // x11
+  __int64 v16; // x8
+  jbyte v17; // t1
+  const char *v18; // x24
+  __int128 *v20; // x10
+  _OWORD *v21; // x11
+  __int64 v22; // x12
+  __int128 v23; // q0
+  __int128 v24; // q1
+
+  v7 = a1-&gt;functions-&gt;GetStringUTFChars(a1, a4, 0LL);
+  v8 = getValue();
+  v9 = a1-&gt;functions-&gt;GetArrayLength(a1, a3);
+  v10 = a1-&gt;functions-&gt;GetByteArrayElements(a1, a3, 0LL);
+  v11 = malloc(v9 + 1);
+  v12 = v11;
+  if ( v9 &gt;= 1 )
+  {
+    if ( v9 &lt;= 0x1F || v11 &lt; &amp;v10[v9] &amp;&amp; v10 &lt; &amp;v11[v9] )
+    {
+      v13 = 0LL;
+LABEL_6:
+      v14 = &amp;v11[v13];
+      v15 = &amp;v10[v13];
+      v16 = v9 - v13;
+      do
+      {
+        v17 = *v15++;
+        --v16;
+        *v14++ = v17;
+      }
+      while ( v16 );
+      goto LABEL_8;
+    }
+    v13 = v9 &amp; 0xFFFFFFE0;
+    v20 = (v10 + 16);
+    v21 = v11 + 16;
+    v22 = v13;
+    do
+    {
+      v23 = *(v20 - 1);
+      v24 = *v20;
+      v20 += 2;
+      v22 -= 32LL;
+      *(v21 - 1) = v23;
+      *v21 = v24;
+      v21 += 2;
+    }
+    while ( v22 );
+    if ( v13 != v9 )
+      goto LABEL_6;
+  }
+LABEL_8:
+  v11[v9] = 0;
+  v18 = AES_128_ECB_PKCS5Padding_Encrypt(v11, v8); // 双击进入
+  free(v12);
+  a1-&gt;functions-&gt;ReleaseStringUTFChars(a1, a4, v7);
+  a1-&gt;functions-&gt;ReleaseByteArrayElements(a1, a3, v10, 0LL);
+  // 返回值为字符串，v18是调用了AES_128_ECB_PKCS5Padding_Encrypt(v11, v8);执行的
+  return a1-&gt;functions-&gt;NewStringUTF(a1, v18);
+}
+</code></pre>
+<p><img alt="image-20230801172522564" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801172522564.png" /></p>
+<p><img alt="image-20230801172608050" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801172608050.png" /></p>
+<pre><code class="language-python"># 我们猜想它内部就是用了aes加密，使用base64编码，我们hook一下验证--》AES_128_ECB_PKCS5Padding_Encrypt
+
+</code></pre>
+<h3 id="433-hook-libjniencryptso-aes_128_ecb_pkcs5padding_encrypt">4.3.3 hook--&gt;libJNIEncrypt.so--&gt;AES_128_ECB_PKCS5Padding_Encrypt</h3>
+<pre><code class="language-python"># com.shizhuang.duapp
+import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;得物(毒)&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var addr_func = Module.findExportByName(&quot;libJNIEncrypt.so&quot;, &quot;AES_128_ECB_PKCS5Padding_Encrypt&quot;);
+    Interceptor.attach(addr_func, {
+        onEnter: function(args){
+            console.log(&quot;--------------------------执行函数--------------------------&quot;);
+            console.log(&quot;参数1：&quot;, args[0].readUtf8String());
+            console.log(&quot;参数2：&quot;, args[1].readUtf8String());
+        },
+        onLeave: function(retValue){
+            console.log(&quot;返回值:&quot;, retValue.readUtf8String());
+        }
+
+    })
+
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+sys.stdin.read()
+
+
+'''
+参数1： loginTokenplatformandroidrouterVersion569timestamp1690882175032uuidaa39fda5dfb88d79v4.74.5  #我们之前的字符串
+参数2： d245a0ba8d678a61    # 固定的key值
+返回值: knGGXR0bR7LQn4eRCvJsdYgYdJOA87lB9pdSj5LyZPp5O1D7em+oNjsR/hxGs9U+qpTFl9wV3uwai4JQsrMnVtb6Kw/bXTHjZ7jViuThKQT+5aY2HvkoCjEoBzHTyfw1
+
+
+把返回值使用md5加密后，跟抓包一致
+'''
+</code></pre>
+<p><img alt="image-20240102215806518" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20240102215806518.png" /></p>
+<h3 id="434-pythoncaes">4.3.4 使用python重写c的aes加密</h3>
+<pre><code class="language-python">from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+import base64
+
+
+def aes_encrypt(data_string):
+    key = &quot;d245a0ba8d678a61&quot;
+    aes = AES.new(
+        key=key.encode('utf-8'),
+        mode=AES.MODE_ECB,
+    )
+    raw = pad(data_string.encode('utf-8'), 16)
+    return aes.encrypt(raw)
+
+
+data_string = &quot;loginTokenplatformandroidrouterVersion569timestamp1690882175032uuidaa39fda5dfb88d79v4.74.5&quot;
+res = aes_encrypt(data_string)
+value = base64.encodebytes(res)
+result = value.replace(b&quot;\n&quot;, b'')
+print(result)
+
+'''
+结果：knGGXR0bR7LQn4eRCvJsdYgYdJOA87lB9pdSj5LyZPp5O1D7em+oNjsR/hxGs9U+qpTFl9wV3uwai4JQsrMnVtb6Kw/bXTHjZ7jViuThKQT+5aY2HvkoCjEoBzHTyfw1
+原来：knGGXR0bR7LQn4eRCvJsdYgYdJOA87lB9pdSj5LyZPp5O1D7em+oNjsR/hxGs9U+qpTFl9wV3uwai4JQsrMnVtb6Kw/bXTHjZ7jViuThKQT+5aY2HvkoCjEoBzHTyfw1
+
+'''
+</code></pre>
+<h2 id="44-uuid">4.4 加密的明文分析uuid</h2>
+<pre><code class="language-python"># loginTokenplatformandroidrouterVersion569timestamp1690882175032uuidaa39fda5dfb88d79v4.74.5
+# 变成
+loginToken
+platform android
+router 569
+timestamp 1690882175032
+uuid aa39fda5dfb88d79  # 这个uuid我们要破解
+Version v4.74.5
+
+
+# 找到PatchProxy.proxy ，美团出的热修复代理框架，这里找不到，它不是直接调用的
+
+# 搜索 X-Auth-Token 或者 hashMap.put(&quot;uuid&quot;,
+# 最终确认，这个uuid就是获取设备id，我们代码自己生成即可
+</code></pre>
+<p><strong><img alt="image-20230801173554545" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801173554545.png" /></strong></p>
+<p><img alt="image-20230801173617683" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801173617683.png" /></p>
+<p><img alt="image-20230801174138000" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174138000.png" /></p>
+<p><img alt="image-20230801174424523" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174424523.png" /></p>
+<h2 id="45-newsign">4.5 代码整合newSign</h2>
+<pre><code class="language-python">import time
+import requests
+import hashlib
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from urllib.parse import quote_plus
+import base64
+import json
+import random
+import copy
+
+
+def create_android_id():
+    data_list = []
+    for i in range(1, 9):
+        part = &quot;&quot;.join(random.sample(&quot;0123456789ABCDEF&quot;, 2))
+        data_list.append(part)
+    return &quot;&quot;.join(data_list).lower()
+
+
+def md5(data_bytes):
+    hash_object = hashlib.md5()
+    hash_object.update(data_bytes)
+    return hash_object.hexdigest()
+
+
+def aes_encrypt(data_string):
+    key = &quot;d245a0ba8d678a61&quot;
+    aes = AES.new(
+        key=key.encode('utf-8'),
+        mode=AES.MODE_ECB,
+    )
+    raw = pad(data_string.encode('utf-8'), 16)
+    return aes.encrypt(raw)
+
+
+uid = create_android_id()
+ctime = str(int(time.time() * 1000))
+
+reply_param_dict = {
+    &quot;lastId&quot;: &quot;1&quot;,
+    &quot;limit&quot;: &quot;20&quot;,
+}
+
+new_dict = copy.deepcopy(reply_param_dict)
+new_dict.update(
+    {&quot;loginToken&quot;: &quot;&quot;, &quot;platform&quot;: &quot;android&quot;, &quot;timestamp&quot;: str(int(time.time() * 1000)), &quot;uuid&quot;: uid, &quot;v&quot;: &quot;4.74.5&quot;}
+)
+ordered_string = &quot;&quot;.join([&quot;{}{}&quot;.format(key, new_dict[key]) for key in sorted(new_dict.keys())])
+
+aes_string = aes_encrypt(ordered_string)
+aes_string = base64.encodebytes(aes_string)
+aes_string = aes_string.replace(b&quot;\n&quot;, b&quot;&quot;)
+sign_string = md5(aes_string)
+print(sign_string)
+
+</code></pre>
+<h1 id="5-x-auth-token">5 破解X-Auth-Token</h1>
+<pre><code class="language-python"># jwt 都是后端生成，返回给前端的，所以我们需要找之前的请求，看那个请求返回了jwt
+</code></pre>
+<p><img alt="image-20230801174646182" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174646182.png" /></p>
+<h2 id="51-token">5.1 查看token的值</h2>
+<pre><code class="language-python">t='eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2OTA4ODMzMzIsImV4cCI6MTcyMjQxOTMzMiwiaXNzIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInN1YiI6ImFhMzlmZGE1ZGZiODhkNzkiLCJ1dWlkIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInVzZXJJZCI6MTkyMjE2ODYzOCwidXNlck5hbWUiOiLlvpfniallci1DMUkzUDdMNyIsImlzR3Vlc3QiOnRydWV9.TSxYlcBPSA8V1iX22dIVESYSLyW37t3LmWL3E5rAMsTPi7RyDbaS4rQNbmhDZUt25OdzB2gmeAAyKu8jv_oQotSx-Sl5R_eU4Pa4trtHaAQyxaVEgJ06TM-UBOu58ZEOobS0yHRpQb9CogBmUYoQdyZkss7qhsm5WcdPiS3PK0WwSt0Vkdd_Pa6Ash_PvmRGhrczMFGtYYMkPBd5X-1TmoGWv139sMzJ3KbWpebIedmJprQI8SXqwQq9FEMTeSrHYokObnwonmScZkkAjSUjT8LXsfH6QKRforuy1CI0yhKu14K-ZBXdO1bZMTaTXEuMIOn_DxvRmg9RBvaypvi_pw'
+import base64
+res=base64.b64decode('eyJpYXQiOjE2OTA4ODMzMzIsImV4cCI6MTcyMjQxOTMzMiwiaXNzIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInN1YiI6ImFhMzlmZGE1ZGZiODhkNzkiLCJ1dWlkIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInVzZXJJZCI6MTkyMjE2ODYzOCwidXNlck5hbWUiOiLlvpfniallci1DMUkzUDdMNyIsImlzR3Vlc3QiOnRydWV9')
+print(res)
+
+b=b'\xe5\xbe\x97\xe7\x89\xa9er-C1I3P7L7'
+print(str(b,encoding='utf-8'))
+</code></pre>
+<h2 id="52-token">5.2 获取token</h2>
+<p><img alt="image-20230801180114385" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801180114385.png" /></p>
+<pre><code class="language-python">import time
+import requests
+import hashlib
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from urllib.parse import quote_plus
+import base64
+import json
+import random
+
+
+def create_android_id():
+    data_list = []
+    for i in range(1, 9):
+        part = &quot;&quot;.join(random.sample(&quot;0123456789ABCDEF&quot;, 2))
+        data_list.append(part)
+    return &quot;&quot;.join(data_list).lower()
+
+
+def md5(data_bytes):
+    hash_object = hashlib.md5()
+    hash_object.update(data_bytes)
+    return hash_object.hexdigest()
+
+
+def aes_encrypt(data_string):
+    key = &quot;d245a0ba8d678a61&quot;
+    aes = AES.new(
+        key=key.encode('utf-8'),
+        mode=AES.MODE_ECB,
+    )
+    raw = pad(data_string.encode('utf-8'), 16)
+    return aes.encrypt(raw)
+
+
+uid = create_android_id()
+ctime = str(int(time.time() * 1000))
+
+param_dict = {&quot;loginToken&quot;: &quot;&quot;, &quot;platform&quot;: &quot;android&quot;, &quot;timestamp&quot;: ctime, &quot;uuid&quot;: uid, &quot;v&quot;: &quot;4.74.5&quot;}
+
+ordered_string = &quot;&quot;.join([&quot;{}{}&quot;.format(key, param_dict[key]) for key in sorted(param_dict.keys())])
+aes_string = aes_encrypt(ordered_string)
+aes_string = base64.encodebytes(aes_string)
+aes_string = aes_string.replace(b&quot;\n&quot;, b&quot;&quot;)
+sign = md5(aes_string)
+param_dict['newSign'] = sign
+
+res = requests.post(
+    url=&quot;https://app.dewu.com/api/v1/app/user_core/users/getVisitorUserId&quot;,
+    headers={
+        &quot;duuuid&quot;: uid,
+        &quot;duimei&quot;: &quot;&quot;,
+        &quot;duplatform&quot;: &quot;android&quot;,
+        &quot;appId&quot;: &quot;duapp&quot;,
+        &quot;timestamp&quot;: ctime,
+        'duv': '4.74.5',
+        'duloginToken': '',
+        'dudeviceTrait': 'Pixel+2+XL',
+        'shumeiid': '202308011759568af1c8fc75c211e7f876664d9493202d0055aeeb3dd6e38c',
+        'User-Agent': 'duapp/4.74.5(android;11)'
+
+    },
+    json=param_dict,
+    verify=False
+)
+print(res.headers)
+x_auth_token = res.headers['X-Auth-Token']
+print(x_auth_token)
+
+</code></pre>
+<h1 id="6">6 代码整合</h1>
+<pre><code class="language-python">import time
+import requests
+import hashlib
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
+from urllib.parse import quote_plus
+import base64
+import json
+import random
+import urllib3
+urllib3.disable_warnings()
+
+
+def create_android_id():
+    data_list = []
+    for i in range(1, 9):
+        part = &quot;&quot;.join(random.sample(&quot;0123456789ABCDEF&quot;, 2))
+        data_list.append(part)
+    return &quot;&quot;.join(data_list).lower()
+
+
+def md5(data_bytes):
+    hash_object = hashlib.md5()
+    hash_object.update(data_bytes)
+    return hash_object.hexdigest()
+
+
+def aes_encrypt(data_string):
+    key = &quot;d245a0ba8d678a61&quot;
+    aes = AES.new(
+        key=key.encode('utf-8'),
+        mode=AES.MODE_ECB,
+    )
+    raw = pad(data_string.encode('utf-8'), 16)
+    return aes.encrypt(raw)
+
+
+uid = create_android_id()
+ctime = str(int(time.time() * 1000))
+
+# param_dict = {&quot;loginToken&quot;: &quot;&quot;, &quot;platform&quot;: &quot;android&quot;, &quot;timestamp&quot;: ctime, &quot;uuid&quot;: uid, &quot;v&quot;: &quot;4.84.0&quot;}
+param_dict = {&quot;loginToken&quot;: &quot;&quot;, &quot;platform&quot;: &quot;android&quot;, &quot;timestamp&quot;: ctime, &quot;uuid&quot;: uid, &quot;v&quot;: &quot;4.74.5&quot;}
+
+ordered_string = &quot;&quot;.join([&quot;{}{}&quot;.format(key, param_dict[key]) for key in sorted(param_dict.keys())])
+aes_string = aes_encrypt(ordered_string)
+aes_string = base64.encodebytes(aes_string)
+aes_string = aes_string.replace(b&quot;\n&quot;, b&quot;&quot;)
+sign = md5(aes_string)
+param_dict['newSign'] = sign
+
+res = requests.post(
+    url=&quot;https://app.dewu.com/api/v1/app/user_core/users/getVisitorUserId&quot;,
+    headers={
+        &quot;duuuid&quot;: uid,
+        &quot;duimei&quot;: &quot;&quot;,
+        &quot;duplatform&quot;: &quot;android&quot;,
+        &quot;appId&quot;: &quot;duapp&quot;,
+        &quot;timestamp&quot;: ctime,
+        'duv': '4.74.5',
+        'duloginToken': '',
+        'dudeviceTrait': 'Pixel+2+XL',
+        'shumeiid': '202308011759568af1c8fc75c211e7f876664d9493202d0055aeeb3dd6e38c',
+        'User-Agent': 'duapp/4.74.5(android;11)'
+
+    },
+    json=param_dict,
+    verify=False
+)
+x_auth_token = res.headers['X-Auth-Token']
+
+reply_param_dict = {
+    &quot;lastId&quot;: &quot;1&quot;,
+    &quot;limit&quot;: &quot;20&quot;,
+    # &quot;newSign&quot;: &quot;&quot;
+}
+import copy
+
+new_dict = copy.deepcopy(reply_param_dict)
+new_dict.update(
+    # {&quot;loginToken&quot;: &quot;&quot;, &quot;platform&quot;: &quot;android&quot;, &quot;timestamp&quot;: str(int(time.time() * 1000)), &quot;uuid&quot;: uid, &quot;v&quot;: &quot;4.84.0&quot;})
+    {&quot;loginToken&quot;: &quot;&quot;, &quot;platform&quot;: &quot;android&quot;, &quot;timestamp&quot;: str(int(time.time() * 1000)), &quot;uuid&quot;: uid, &quot;v&quot;: &quot;4.74.5&quot;})
+ordered_string = &quot;&quot;.join([&quot;{}{}&quot;.format(key, new_dict[key]) for key in sorted(new_dict.keys())])
+
+aes_string = aes_encrypt(ordered_string)
+aes_string = base64.encodebytes(aes_string)
+aes_string = aes_string.replace(b&quot;\n&quot;, b&quot;&quot;)
+sign_string = md5(aes_string)
+reply_param_dict['newSign'] = sign_string
+
+res = requests.get(
+    url=&quot;https://app.dewu.com/sns-rec/v1/recommend/all/feed/&quot;,
+    params=reply_param_dict,
+    headers={
+        &quot;X-Auth-Token&quot;: x_auth_token,
+        'User-Agent': 'duapp/4.74.5(android;11)'
+    },
+    verify=False
+)
+print(res.text)
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>
