@@ -167,7 +167,7 @@ Theme by GitBook
 
 # 注意点：一定要运行一次app，第一次运行app，一定会弹出一个框，再执行hook
 </code></pre>
-<h3 id="31-hookspawn">3.1 使用hook方式，让弹窗不执行(spawn方式)</h3>
+<h3 id="hookspawn">使用hook方式，让弹窗不执行(spawn方式)</h3>
 <ul>
 <li>思路</li>
 </ul>
@@ -184,7 +184,7 @@ Theme by GitBook
 <ul>
 <li>枚举手机上的所有进程 &amp; 前台进程,找到 识货的包名</li>
 </ul>
-<p>```python
+<p>```
   import frida</p>
 <p># 获取设备信息
   rdev = frida.get_remote_device()</p>
@@ -200,7 +200,7 @@ Theme by GitBook
 <ul>
 <li>端口转发</li>
 </ul>
-<p>```python
+<p>```
   import subprocess
   # 使用sbuprocess模块，执行命令，如果转发不了，就执行命令</p>
 <p>'''
@@ -213,7 +213,7 @@ Theme by GitBook
 <ul>
 <li>hook代码</li>
 </ul>
-<p>```python
+<p>```
   import frida
   import sys</p>
 <p>rdev = frida.get_remote_device()
