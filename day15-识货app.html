@@ -272,51 +272,50 @@ sys.stdin.read()
 <h4 id="_4"><strong>方法二</strong></h4>
 <p>断网执行app，发现能正常打开app后，在打开网络，刷新也可以</p>
 <h3 id="3-hook-appso">(3) hook app在启动过程中执行了那些so文件</h3>
-<ul>
-<li>代码</li>
-</ul>
-<p>```python
-  import frida
-  import sys</p>
-<p>rdev = frida.get_remote_device()
-  pid = rdev.spawn(["com.hupu.shihuo"])
-  session = rdev.attach(pid)</p>
-<p>scr = """
-  Java.perform(function () {</p>
-<pre><code>  var dlopen = Module.findExportByName(null, "dlopen");   // 老版本的App
-  var android_dlopen_ext = Module.findExportByName(null, "android_dlopen_ext");  // 新版本的App
+<p>代码</p>
+<pre><code class="language-python">import frida
+import sys
 
-  Interceptor.attach(dlopen, {
-      onEnter: function (args) {
-          var path_ptr = args[0];
-          var path = ptr(path_ptr).readCString();
-          console.log("[dlopen:]", path);
-      },
-      onLeave: function (retval) {
+rdev = frida.get_remote_device()
+pid = rdev.spawn([&quot;com.hupu.shihuo&quot;])
+session = rdev.attach(pid)
 
-      }
-  });
+scr = &quot;&quot;&quot;
+Java.perform(function () {
 
-  Interceptor.attach(android_dlopen_ext, {
-      onEnter: function (args) {
-          var path_ptr = args[0];
-          var path = ptr(path_ptr).readCString();
-          console.log("[dlopen_ext:]", path);
-      },
-      onLeave: function (retval) {
-      }
-  });
+    var dlopen = Module.findExportByName(null, &quot;dlopen&quot;);   // 老版本的App
+    var android_dlopen_ext = Module.findExportByName(null, &quot;android_dlopen_ext&quot;);  // 新版本的App
+
+    Interceptor.attach(dlopen, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            console.log(&quot;[dlopen:]&quot;, path);
+        },
+        onLeave: function (retval) {
+
+        }
+    });
+
+    Interceptor.attach(android_dlopen_ext, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            console.log(&quot;[dlopen_ext:]&quot;, path);
+        },
+        onLeave: function (retval) {
+        }
+    });
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+def on_message(message, data):
+    print(message, data)
+script.on(&quot;message&quot;, on_message)
+script.load()
+rdev.resume(pid)
+sys.stdin.read()
 </code></pre>
-<p>});
-  """
-  script = session.create_script(scr)
-  def on_message(message, data):
-      print(message, data)
-  script.on("message", on_message)
-  script.load()
-  rdev.resume(pid)
-  sys.stdin.read()
-  ```</p>
 <ul>
 <li>图例</li>
 </ul>
