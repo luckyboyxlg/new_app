@@ -181,10 +181,8 @@ Theme by GitBook
 </li>
 </ul>
 <p><img alt="image-20230727173533340" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727173533340.png" /></p>
-<ul>
-<li>枚举手机上的所有进程 &amp; 前台进程,找到 识货的包名</li>
-</ul>
-<pre><code>import frida
+<p>枚举手机上的所有进程 &amp; 前台进程,找到 识货的包名</p>
+<pre><code class="language-python">import frida
 
 # 获取设备信息
 rdev = frida.get_remote_device()
@@ -199,10 +197,8 @@ front_app = rdev.get_frontmost_application()
 print(front_app)
 # Application(identifier=&quot;com.hupu.shihuo&quot;, name=&quot;识货&quot;, pid=28602, parameters={})
 </code></pre>
-<ul>
-<li>端口转发</li>
-</ul>
-<pre><code>import subprocess
+<p>端口转发</p>
+<pre><code class="language-python">import subprocess
 # 使用sbuprocess模块，执行命令，如果转发不了，就执行命令
 
 '''
@@ -212,10 +208,8 @@ adb forward tcp:27043 tcp:27043
 subprocess.run('adb forward tcp:27042 tcp:27042')
 subprocess.run('adb forward tcp:27043 tcp:27043')
 </code></pre>
-<ul>
-<li>hook代码</li>
-</ul>
-<pre><code>import frida
+<p>hook代码</p>
+<pre><code class="language-python">import frida
 import sys
 
 rdev = frida.get_remote_device()
@@ -243,11 +237,9 @@ script.load()
 rdev.resume(pid)
 sys.stdin.read()
 </code></pre>
-<ul>
-<li>使用spawn的原因是  当程序启动就要进行hook，防止弹框</li>
-<li>一运行hook脚本，app闪退了</li>
-</ul>
-<pre><code>app做了frida检测
+<p>使用spawn的原因是  当程序启动就要进行hook，防止弹框</p>
+<p>一运行hook脚本，app闪退了</p>
+<pre><code class="language-python">app做了frida检测
     + 删某些so文件（今天学这种）
     + ptrace占坑
   + frida加强版
@@ -312,16 +304,15 @@ sys.stdin.read()
           console.log("[dlopen_ext:]", path);
       },
       onLeave: function (retval) {
-
       }
   });
 </code></pre>
 <p>});
   """
-  script = session.create_script(scr)</p>
-<p>def on_message(message, data):
-      print(message, data)</p>
-<p>script.on("message", on_message)
+  script = session.create_script(scr)
+  def on_message(message, data):
+      print(message, data)
+  script.on("message", on_message)
   script.load()
   rdev.resume(pid)
   sys.stdin.read()
