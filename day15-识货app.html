@@ -137,20 +137,20 @@ Theme by GitBook
 
 
 <h1 id="app">十五、识货app</h1>
-<h1 id="_1">一 逆向目标</h1>
+<h1 id="_1">一、逆向目标</h1>
 <pre><code class="language-python"># 1 搜索框搜索商品
 # 2 点击进入商品详情
 </code></pre>
 <p><img alt="image-20230727172656005" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727172656005.png" /></p>
 <p><img alt="image-20230727172711709" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727172711709.png" /></p>
-<h1 id="_2">二 版本选择</h1>
+<h1 id="_2">二、版本选择</h1>
 <pre><code class="language-python"># 我们使用最新版抓包：识货-7.73.0
 # 使用v7.20.1讲绕过强制更新
 
 </code></pre>
 <p><img alt="image-20230727172853016" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727172853016.png" /></p>
 <p><img alt="image-20230727173043858" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727173043858.png" /></p>
-<h1 id="app_1">三 绕过app强制更新</h1>
+<h1 id="app_1">三、绕过app强制更新</h1>
 <pre><code class="language-python"># 以后使用app，更新会遇到两种情况
     1 选择更新：只是弹出更新框，但是有 关闭，可以关闭，暂时不更新----》app中的所有接口肯定是能用的
     2 强制更新：弹出更新框，直接覆盖住app，无法关闭，必须更新---》可以绕过更新，看看接口是否还能用---》接口能用，接口不能用---》老版本的app，接口解密方式会比最新的简单一些---》识货，就是这种情况
@@ -168,161 +168,165 @@ Theme by GitBook
 # 注意点：一定要运行一次app，第一次运行app，一定会弹出一个框，再执行hook
 </code></pre>
 <h3 id="31-hookspawn">3.1 使用hook方式，让弹窗不执行(spawn方式)</h3>
-<pre><code class="language-python"># 搜索    最新版本 
-
-# 使用spawn方式hook
-</code></pre>
+<ul>
+<li>思路</li>
+</ul>
+<p>搜索    最新版本 </p>
+<ul>
+<li>
+<p>使用spawn方式hook</p>
+</li>
+<li>
+<p>图例</p>
+</li>
+</ul>
 <p><img alt="image-20230727173533340" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727173533340.png" /></p>
-<pre><code class="language-python"># 枚举手机上的所有进程 &amp; 前台进程,找到 识货的包名
-import frida
+<ul>
+<li>枚举手机上的所有进程 &amp; 前台进程,找到 识货的包名</li>
+</ul>
+<p>```python
+  import frida</p>
+<p># 获取设备信息
+  rdev = frida.get_remote_device()</p>
+<p># 枚举所有的进程
+  processes = rdev.enumerate_processes()
+  for process in processes:
+      print(process)</p>
+<p># 获取在前台运行的APP
+  front_app = rdev.get_frontmost_application()
+  print(front_app)
+  # Application(identifier="com.hupu.shihuo", name="识货", pid=28602, parameters={})
+  ```</p>
+<ul>
+<li>端口转发</li>
+</ul>
+<p>```python
+  import subprocess
+  # 使用sbuprocess模块，执行命令，如果转发不了，就执行命令</p>
+<p>'''
+  adb forward tcp:27042 tcp:27042
+  adb forward tcp:27043 tcp:27043
+  '''
+  subprocess.run('adb forward tcp:27042 tcp:27042')
+  subprocess.run('adb forward tcp:27043 tcp:27043')
+  ```</p>
+<ul>
+<li>hook代码</li>
+</ul>
+<p>```python
+  import frida
+  import sys</p>
+<p>rdev = frida.get_remote_device()
+  pid = rdev.spawn(["com.hupu.shihuo"])
+  session = rdev.attach(pid)</p>
+<p>scr = """
+  Java.perform(function () {
+      var UpdateDialog = Java.use('com.azhon.appupdate.dialog.UpdateDialog');
+      UpdateDialog.show.implementation = function(ctx){
+          console.log("执行了");
+          //this.show();
+      }
+  });
+  """
+  script = session.create_script(scr)</p>
+<p>def on_message(message, data):
+      print(message, data)</p>
+<p>script.on("message", on_message)
+  script.load()
+  rdev.resume(pid)
+  sys.stdin.read()
+  ```</p>
+<ul>
+<li>
+<p>使用spawn的原因是  当程序启动就要进行hook，防止弹框</p>
+</li>
+<li>
+<p>一运行hook脚本，app闪退了</p>
+<p>app做了frida检测
+    + 删某些so文件（今天学这种）
+    + ptrace占坑
+  + frida加强版</p>
+</li>
+</ul>
+<h1 id="frida">四、绕过frida反调试</h1>
+<h3 id="1-frida-hook">(1) <strong>不能frida   hook的原因</strong></h3>
+<p>识货这款app，做了frida的反调试，检测到只要frida脚本在运行，app就自动结束</p>
+<h3 id="2">(2) 对于强制更新的处理方式</h3>
+<h4 id="_3"><strong>方法一</strong></h4>
+<p>这种公司，一般情况下，公司的安全人员写了一个so文件，检测是否在运行frida的hook，如果检测到，就把app强制终止</p>
+<p>安全人员写的so，一般情况下跟app业务无关，只用来做hook的检测，这种情况下，我们可以尝试删除这个so文件尝试一下，如果删除了，app还能顺利运行，说明这个so跟业务是无关的，就可以删除
+像识货，得物这种app就是这样的、于是，我们要找到 是那个so文件，做了检测</p>
+<p>有的app，会检测frida调试，只要发现，就会不让app启动</p>
+<ul>
+<li>处理</li>
+</ul>
+<p>一般这种公司的安全人员会单独写so文件用来检测，所以我们可以hook-app启动时，执行了那些so文件，发现执行到最后一个程序闪退了，一般就是因为这个so文件导致的，我们可以尝试删除试试</p>
+<ul>
+<li>HOOK 安卓系统底层的函数：dlopen和android_dlopen_ext</li>
+</ul>
+<p><code>/data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/libmsaoaidsec.so</code></p>
+<p>发现最后执行libmsaoaidsec.so报错了这样可以把这个so文件删除</p>
+<ul>
+<li>步骤</li>
+</ul>
+<p><code>adb shell
+  su
+  cd /data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/
+  rm libmsaoaidsec.so</code></p>
+<h4 id="_4"><strong>方法二</strong></h4>
+<p>断网执行app，发现能正常打开app后，在打开网络，刷新也可以</p>
+<h3 id="3-hook-appso">(3) hook app在启动过程中执行了那些so文件</h3>
+<ul>
+<li>代码</li>
+</ul>
+<p>```python
+  import frida
+  import sys</p>
+<p>rdev = frida.get_remote_device()
+  pid = rdev.spawn(["com.hupu.shihuo"])
+  session = rdev.attach(pid)</p>
+<p>scr = """
+  Java.perform(function () {</p>
+<pre><code>  var dlopen = Module.findExportByName(null, "dlopen");   // 老版本的App
+  var android_dlopen_ext = Module.findExportByName(null, "android_dlopen_ext");  // 新版本的App
 
-# 获取设备信息
-rdev = frida.get_remote_device()
+  Interceptor.attach(dlopen, {
+      onEnter: function (args) {
+          var path_ptr = args[0];
+          var path = ptr(path_ptr).readCString();
+          console.log("[dlopen:]", path);
+      },
+      onLeave: function (retval) {
 
-# 枚举所有的进程
-processes = rdev.enumerate_processes()
-for process in processes:
-    print(process)
+      }
+  });
 
-# 获取在前台运行的APP
-front_app = rdev.get_frontmost_application()
-print(front_app)
-# Application(identifier=&quot;com.hupu.shihuo&quot;, name=&quot;识货&quot;, pid=28602, parameters={})
+  Interceptor.attach(android_dlopen_ext, {
+      onEnter: function (args) {
+          var path_ptr = args[0];
+          var path = ptr(path_ptr).readCString();
+          console.log("[dlopen_ext:]", path);
+      },
+      onLeave: function (retval) {
+
+      }
+  });
 </code></pre>
-<pre><code class="language-python">###### 端口转发
-import subprocess
-# 使用sbuprocess模块，执行命令，如果转发不了，就执行命令
-
-'''
-adb forward tcp:27042 tcp:27042
-adb forward tcp:27043 tcp:27043
-'''
-subprocess.run('adb forward tcp:27042 tcp:27042')
-subprocess.run('adb forward tcp:27043 tcp:27043')
-
-
-####### hook代码
-import frida
-import sys
-
-rdev = frida.get_remote_device()
-pid = rdev.spawn([&quot;com.hupu.shihuo&quot;])
-session = rdev.attach(pid)
-
-scr = &quot;&quot;&quot;
-Java.perform(function () {
-    var UpdateDialog = Java.use('com.azhon.appupdate.dialog.UpdateDialog');
-    UpdateDialog.show.implementation = function(ctx){
-        console.log(&quot;执行了&quot;);
-        //this.show();
-    }
-});
-&quot;&quot;&quot;
-script = session.create_script(scr)
-
-
-def on_message(message, data):
-    print(message, data)
-
-
-script.on(&quot;message&quot;, on_message)
-script.load()
-rdev.resume(pid)
-sys.stdin.read()
-</code></pre>
-<h1 id="frida">四 绕过frida反调试</h1>
-<pre><code class="language-python"># 写好了hook，运行时，发现，app一执行，里面就崩了，但是不执行hook，app顺利运行
-
-
-# 识货这款app，做了frida的反调试，检测到只要frida脚本在运行，app就自动结束
-
-# 绕过方式一：
-    # 这种公司，一般情况下，公司的安全人员写了一个so文件，检测是否在运行frida的hook，如果检测到，就把app强制终止
-    # 安全人员写的so，一般情况下跟app业务无关，只用来做hook的检测，这种情况下，我们可以尝试删除这个so文件尝试一下，如果删除了，app还能顺利运行，说明这个so跟业务是无关的，就可以删除
-    # 像识货，得物这种app就是这样的
-    # 于是，我们要找到 是那个so文件，做了检测
-
-
-# 通过hook安卓底层，依次打印这款app运行时，加载那些so文件---》这个hook脚本，以后拿着用即可
-    -依次打印出，这款app运行时，加载了那些so文件
-
-
-
-
-
-# 有的app，会检测frida调试，只要发现，就会不让app启动
-######### 方法一#################
-# 一般这种公司的安全人员会单独写so文件用来检测，所以我们可以hook-app启动时，执行了那些so文件，发现执行到最后一个程序闪退了，一般就是因为这个so文件导致的，我们可以尝试删除试试
-# HOOK 安卓系统底层的函数：dlopen和android_dlopen_ext
-/data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/libmsaoaidsec.so
-
-# 发现最后执行libmsaoaidsec.so报错了这样可以把这个so文件删除
-
-# 步骤：
-adb shell
-su
-cd /data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/
-rm libmsaoaidsec.so
-
-
-###########方法二###############
-# 断网执行app，发现能正常打开app后，在打开网络，刷新也可以
-
-
-</code></pre>
-<h2 id="41-hook-appso">4.1 hook app在启动过程中执行了那些so文件</h2>
-<pre><code class="language-python">import frida
-import sys
-
-rdev = frida.get_remote_device()
-pid = rdev.spawn([&quot;com.hupu.shihuo&quot;])
-session = rdev.attach(pid)
-
-scr = &quot;&quot;&quot;
-Java.perform(function () {
-
-    var dlopen = Module.findExportByName(null, &quot;dlopen&quot;);
-    var android_dlopen_ext = Module.findExportByName(null, &quot;android_dlopen_ext&quot;);
-
-    Interceptor.attach(dlopen, {
-        onEnter: function (args) {
-            var path_ptr = args[0];
-            var path = ptr(path_ptr).readCString();
-            console.log(&quot;[dlopen:]&quot;, path);
-        },
-        onLeave: function (retval) {
-
-        }
-    });
-
-    Interceptor.attach(android_dlopen_ext, {
-        onEnter: function (args) {
-            var path_ptr = args[0];
-            var path = ptr(path_ptr).readCString();
-            console.log(&quot;[dlopen_ext:]&quot;, path);
-        },
-        onLeave: function (retval) {
-
-        }
-    });
-
-
-});
-&quot;&quot;&quot;
-script = session.create_script(scr)
-
-
-def on_message(message, data):
-    print(message, data)
-
-
-script.on(&quot;message&quot;, on_message)
-script.load()
-rdev.resume(pid)
-sys.stdin.read()
-</code></pre>
+<p>});
+  """
+  script = session.create_script(scr)</p>
+<p>def on_message(message, data):
+      print(message, data)</p>
+<p>script.on("message", on_message)
+  script.load()
+  rdev.resume(pid)
+  sys.stdin.read()
+  ```</p>
+<ul>
+<li>图例</li>
+</ul>
 <p><img alt="image-20230727175234861" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727175234861.png" /></p>
-<h1 id="_3">五 抓包分析</h1>
+<h1 id="_5">五、抓包分析</h1>
 <pre><code class="language-python"># 使用charles抓包，发现只能抓到一些静态文件的包
 # 安卓开发时，OkHttp发送请求，设置 `Proxy.NO_PROXY`，基于系统代理都是抓不到包
 # 使用一款app，转发更底层的包，实现抓包：有很多，推荐使用： SocksDroid（推荐）
@@ -473,7 +477,7 @@ for item in data_dict['data']['lists']:
 # preload
 </code></pre>
 <p><img alt="image-20230727184224207" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727184224207.png" /></p>
-<h1 id="hook">六 Hook各种尝试</h1>
+<h1 id="hook">六、Hook各种尝试</h1>
 <h2 id="61-hook-map-">6.1 hook- Map - 失败</h2>
 <pre><code class="language-python"># 1 通过hook map操作，确认是不是走了这
     data:加密数据--》很有可能在app内部--》map.put('data',xx.sign(数据))
@@ -710,7 +714,7 @@ sys.stdin.read()
 </code></pre>
 <p><img alt="image-20230727193250609" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727193250609.png" /></p>
 <p><img alt="image-20231011192658293" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20231011192658293.png" /></p>
-<h1 id="7-python">7 python直接发送请求获取详情</h1>
+<h1 id="7python">7、python直接发送请求获取详情</h1>
 <pre><code class="language-python">import requests
 
 headers = {
@@ -728,7 +732,7 @@ res = requests.get(
 print(res.json())
 
 </code></pre>
-<h1 id="8">8 代码整合</h1>
+<h1 id="8">8、代码整合</h1>
 <h2 id="81-7201">8.1 7.20.1版本</h2>
 <pre><code class="language-python">import requests
 from utils import header_str_to_dict
@@ -894,7 +898,7 @@ res = requests.get(
 print(res.text)
 
 </code></pre>
-<h1 id="9">9 总结</h1>
+<h1 id="9">9、总结</h1>
 <pre><code class="language-python"># 破解识货 搜索  详情
 
 # 1 绕过app强制更新---》hook 弹窗

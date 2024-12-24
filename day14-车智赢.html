@@ -150,7 +150,7 @@ Theme by GitBook
 <pre><code class="language-python"># 破解车智赢登录
 </code></pre>
 <h2 id="12-apk">1.2 下载apk</h2>
-<pre><code class="language-python"># 官网：https://icloud.che168.com/login.html
+<pre><code class="language-python"># 官网： 
 # 下载地址：https://appdownload.che168.com/usedcar/csy/index.html?pvareaid=106101
         https://appdownload.che168.com/usedcar/csy/index.html?pvareaid=106101
 # 版本：3.37.0
@@ -586,6 +586,13 @@ public static final String REPORT_VAL_SEPARATOR = &quot;|&quot;;
 import random
 nano_time = random.randint(5136066335773,7136066335773)
 </code></pre>
+<p>python中使用perf_counter实现</p>
+<pre><code class="language-python">import time
+
+# udid中用于加密的
+# 用于返回当前值的高分辨率时间源，通常用于测量代码执行的时间。这个方法返回的是一个以纳秒为单位的时间值，但它并不是一个绝对的时间表示（例如，它不表示从某个特定日期开始的时间），而是一个相对的时间戳，适合用来计算两个时间点之间的时间差。
+nanoTime = int(time.perf_counter()*100000000)
+</code></pre>
 <h3 id="446-encode3des">4.4.6 encode3Des</h3>
 <pre><code class="language-python"># 最终组装成：
 SecurityUtil.encode3Des(UUID的值 + &quot;|&quot; + 开机时间 + &quot;|&quot; + 空)
@@ -670,7 +677,6 @@ cipher = DES3.new(key, DES3.MODE_CBC, iv)
 result = cipher.encrypt(plaintext)
 res = base64.b64encode(result)
 print(res)
-
 </code></pre>
 <h4 id="4462-hook-encode3desdes">4.4.6.2 hook-encode3Des确认咱们写的des加密是否正确</h4>
 <pre><code class="language-python">import frida

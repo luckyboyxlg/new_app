@@ -182,9 +182,9 @@ import uuid
 uid = str(uuid.uuid4())
 print(uid)
 </code></pre>
-<p><img alt="image-20230704190440417" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230704190440417-17117144140041.png" /></p>
+<p><img alt="image-20230704190440417" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230704190440417-17117144140041.png" /></p>
 <h3 id="3">3、随机值</h3>
-<p><img alt="image-20230704191120802" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230704191120802-17117144540092.png" /></p>
+<p><img alt="image-20230704191120802" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230704191120802-17117144540092.png" /></p>
 <pre><code class="language-python"># 随机生成80位,8位是一个字节，10个字节  
 BigInteger v4 = new BigInteger(80, new SecureRandom());
 #  让字节以16进制展示
@@ -208,7 +208,7 @@ data = &quot;&quot;.join([hex(item)[2:] for item in random.randbytes(10)])
 print(data)
 </code></pre>
 <h3 id="4">4、时间戳</h3>
-<p><img alt="image-20230704191747331" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230704191747331-17117147394943.png" /></p>
+<p><img alt="image-20230704191747331" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230704191747331-17117147394943.png" /></p>
 <pre><code class="language-python"># java 代码
 String t1 = String.valueOf(System.currentTimeMillis() / 1000); // 秒级别
 String t2 = String.valueOf(System.currentTimeMillis()); // 毫秒级别
@@ -225,7 +225,7 @@ print(v1)
 print(v2)
 </code></pre>
 <h3 id="5">5、十六进制字符串</h3>
-<p><img alt="image-20230704191932232" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230704191932232-17117148929974.png" /></p>
+<p><img alt="image-20230704191932232" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230704191932232-17117148929974.png" /></p>
 <pre><code class="language-python">s='pengyuyan'.encode('utf-8')
 l=[]
 for i in s:
@@ -233,7 +233,7 @@ for i in s:
 print(l)
 </code></pre>
 <h3 id="6md5">6、md5</h3>
-<p><img alt="image-20230704192929945" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230704192929945-17117150762215.png" /></p>
+<p><img alt="image-20230704192929945" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230704192929945-17117150762215.png" /></p>
 <pre><code class="language-python"># 123--&gt;固定的 字符串---》加固定的盐， 666---
 
 
@@ -248,7 +248,54 @@ print(v1) # d3c0aaaf596e3299f695591f00fd75cb
 v2 = obj.digest()
 print(v2) # b'\xd3\xc0\xaa\xafYn2\x99\xf6\x95Y\x1f\x00\xfdu\xcb'
 </code></pre>
-<h3 id="7base64">7、base64编码</h3>
+<h3 id="73des">7、3DES加密</h3>
+<p><img alt="image-20241224112608720" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20241224112608720.png" /></p>
+<ul>
+<li>java中</li>
+</ul>
+<p>```java
+  /<em> loaded from: classes.dex </em>/
+  public class SecurityUtil {
+      private static final String encoding = "UTF-8";
+      private static final String iv = "appapich";
+      private static final char[] legalChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();</p>
+<pre><code>  public static String encode3Des(Context context, String str) {
+      String desKey = AHAPIHelper.getDesKey(context);
+      byte[] bArr = null;
+      if (TextUtils.isEmpty(desKey)) {
+          return null;
+      }
+      try {
+          SecretKey generateSecret = SecretKeyFactory.getInstance("desede").generateSecret(new DESedeKeySpec(desKey.getBytes()));
+          Cipher cipher = Cipher.getInstance("desede/CBC/PKCS5Padding");
+          cipher.init(1, generateSecret, new IvParameterSpec(iv.getBytes()));
+          bArr = cipher.doFinal(str.getBytes("UTF-8"));
+      } catch (Exception unused) {
+      }
+      return encode(bArr).toString();
+  }
+</code></pre>
+<p>}
+  ```</p>
+<ul>
+<li>python实现</li>
+</ul>
+<p>```python
+  from Crypto.Util.Padding import pad
+  import base64
+  from hashlib import md5</p>
+<p># 3des加密 生成udid  并进行base64处理
+  def do_3des(data):
+      key = ''[:24]  # 生成一个24字节的密钥，即3DES的密钥
+      iv = "".encode('UTF-8')
+      data = pad(data.encode('UTF-8'), DES3.block_size)  # 需要加密的消息</p>
+<pre><code>  cipher = DES3.new(key, DES3.MODE_CBC, iv)
+  encrypted_data = cipher.encrypt(data)
+  return base64.b64encode(encrypted_data).decode()
+</code></pre>
+<p>```</p>
+<h3 id="8base64">8、base64编码</h3>
+<p><strong>java中</strong></p>
 <pre><code class="language-java">String name = &quot;彭于晏&quot;;
 // 编码
 Base64.Encoder encoder  = Base64.getEncoder();
@@ -261,6 +308,7 @@ byte[] origin = decoder.decode(res);
 String data = new String(origin);
 System.out.println(data); // 彭于晏
 </code></pre>
+<p><strong>python中</strong></p>
 <pre><code class="language-python">import base64
 
 name = &quot;彭于晏&quot;
@@ -321,21 +369,21 @@ Groovy是一种基于JVM（Java虚拟机）的敏捷开发语言，它结合了P
 
 # 创建好安卓项目后---》看到Gradle的配置文件---》Groovy写的
 </code></pre>
-<p><img alt="image-20240329204314122" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240329204314122.png" /></p>
-<p><img alt="image-20230706150436056" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706150436056.png" /></p>
-<p><img alt="image-20240329205546703" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240329205546703.png" /></p>
+<p><img alt="image-20240329204314122" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20240329204314122.png" /></p>
+<p><img alt="image-20230706150436056" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706150436056.png" /></p>
+<p><img alt="image-20240329205546703" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20240329205546703.png" /></p>
 <h3 id="3androidstudio">3、安装AndroidStudio</h3>
 <pre><code class="language-python"># 安装 Android步骤很简单，一路下一步即可
 # 注意中间需要选择是否安装安装虚拟机（可以选择安装也可以不安装,选择是，会下载，可能会很慢），如果使用真机调试，就不需要安卓虚拟机
 
 # 注意选择安装路径
 </code></pre>
-<p><img alt="image-20230706151357862" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706151357862.png" /></p>
-<p><img alt="image-20230706151446471" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706151446471-17117170994976.png" /></p>
-<p><img alt="image-20230706151512486" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706151512486-17117170994977.png" /></p>
-<p><img alt="image-20230706151523141" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706151523141-17117170994978.png" /></p>
-<p><img alt="image-20230706151546186" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706151546186-17117170994979.png" /></p>
-<p><img alt="image-20230706151625944" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706151625944-171171709949710.png" /></p>
+<p><img alt="image-20230706151357862" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706151357862.png" /></p>
+<p><img alt="image-20230706151446471" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706151446471-17117170994976.png" /></p>
+<p><img alt="image-20230706151512486" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706151512486-17117170994977.png" /></p>
+<p><img alt="image-20230706151523141" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706151523141-17117170994978.png" /></p>
+<p><img alt="image-20230706151546186" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706151546186-17117170994979.png" /></p>
+<p><img alt="image-20230706151625944" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706151625944-171171709949710.png" /></p>
 <h3 id="4androidstudio">4、配置AndroidStudio</h3>
 <pre><code class="language-python"># 1 IDE 开发工具
 # 2 SDK 
@@ -345,44 +393,44 @@ Groovy是一种基于JVM（Java虚拟机）的敏捷开发语言，它结合了P
     -scrcpy中的
     -AndroidStudio
 </code></pre>
-<p><img alt="image-20230706152722738" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706152722738-171171709949811.png" /></p>
-<p><img alt="image-20230706151737306" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706151737306-171171709949812.png" /></p>
-<p><img alt="image-20230706152835893" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706152835893-171171709949813.png" /></p>
-<p><img alt="image-20230706152906662" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706152906662-171171709949814.png" /></p>
-<p><img alt="image-20230706153115467" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153115467-171171709949815.png" /></p>
-<p><img alt="image-20230706153214237" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153214237-171171709949816.png" /></p>
-<p><img alt="image-20230706153515711" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153515711-171171709949817.png" /></p>
-<p><img alt="image-20230706153615187" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153615187-171171709949819.png" /></p>
-<p><img alt="image-20230706153642285" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153642285-171171709949818.png" /></p>
-<p><img alt="image-20230706153741722" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153741722-171171709949820.png" /></p>
-<p><img alt="image-20230706153848763" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153848763-171171709949821.png" /></p>
-<p><img alt="image-20230706153940310" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706153940310-171171709949822.png" /></p>
-<p><img alt="image-20230706154253434" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706154253434-171171709949823.png" /></p>
+<p><img alt="image-20230706152722738" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706152722738-171171709949811.png" /></p>
+<p><img alt="image-20230706151737306" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706151737306-171171709949812.png" /></p>
+<p><img alt="image-20230706152835893" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706152835893-171171709949813.png" /></p>
+<p><img alt="image-20230706152906662" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706152906662-171171709949814.png" /></p>
+<p><img alt="image-20230706153115467" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153115467-171171709949815.png" /></p>
+<p><img alt="image-20230706153214237" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153214237-171171709949816.png" /></p>
+<p><img alt="image-20230706153515711" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153515711-171171709949817.png" /></p>
+<p><img alt="image-20230706153615187" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153615187-171171709949819.png" /></p>
+<p><img alt="image-20230706153642285" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153642285-171171709949818.png" /></p>
+<p><img alt="image-20230706153741722" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153741722-171171709949820.png" /></p>
+<p><img alt="image-20230706153848763" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153848763-171171709949821.png" /></p>
+<p><img alt="image-20230706153940310" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706153940310-171171709949822.png" /></p>
+<p><img alt="image-20230706154253434" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706154253434-171171709949823.png" /></p>
 <h3 id="5android">5、创建android项目</h3>
-<p><img alt="image-20230706154451059" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706154451059-171171784303524.png" /></p>
-<p><img alt="image-20230706154544617" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706154544617-171171784303625.png" /></p>
-<p><img alt="image-20230706160605256" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706160605256-171171784303626.png" /></p>
+<p><img alt="image-20230706154451059" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706154451059-171171784303524.png" /></p>
+<p><img alt="image-20230706154544617" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706154544617-171171784303625.png" /></p>
+<p><img alt="image-20230706160605256" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706160605256-171171784303626.png" /></p>
 <pre><code class="language-python"># 安卓开发
     -java
     -Kotlin：谷歌公司后来出的一们语言--》用来开发安卓的
 </code></pre>
-<p><img alt="image-20240329211907545" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240329211907545.png" /></p>
-<p><img alt="image-20230706154734395" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706154734395-171171784303627.png" /></p>
-<p><img alt="image-20230706154846039" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706154846039-171171784303628.png" /></p>
+<p><img alt="image-20240329211907545" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20240329211907545.png" /></p>
+<p><img alt="image-20230706154734395" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706154734395-171171784303627.png" /></p>
+<p><img alt="image-20230706154846039" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706154846039-171171784303628.png" /></p>
 <h3 id="6">6、配置环境变量</h3>
 <pre><code class="language-python"># 在SDK的安装目录下，有很多文件夹，如下
 我们把emulator和paltform-tools目录加入到环境变量
 </code></pre>
-<p><img alt="image-20230706155337679" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706155337679-171171841837430.png" /></p>
-<p><img alt="image-20230706155521494" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706155521494-171171841837429.png" /></p>
+<p><img alt="image-20230706155337679" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706155337679-171171841837430.png" /></p>
+<p><img alt="image-20230706155521494" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706155521494-171171841837429.png" /></p>
 <h3 id="7-">7、创建虚拟机(后面不用--》假设没有真机)</h3>
 <pre><code class="language-python"># win系统在安装和操作之前，请提前开始电脑的vt-x，虚拟机开启方法如下：
 https://mumu.163.com/include/16v1/2016/06/27/21967_625825.html
 </code></pre>
-<p><img alt="image-20230706155717459" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706155717459-171171850930431.png" /></p>
-<p><img alt="image-20230706155758414" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706155758414-171171850930432.png" /></p>
-<p><img alt="image-20230706155932325" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706155932325-171171850930634.png" /></p>
-<p><img alt="image-20230706155950261" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706155950261-171171850930633.png" /></p>
+<p><img alt="image-20230706155717459" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706155717459-171171850930431.png" /></p>
+<p><img alt="image-20230706155758414" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706155758414-171171850930432.png" /></p>
+<p><img alt="image-20230706155932325" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706155932325-171171850930634.png" /></p>
+<p><img alt="image-20230706155950261" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706155950261-171171850930633.png" /></p>
 <h3 id="8">8、运行项目</h3>
 <h4 id="81">8.1 真机运行</h4>
 <pre><code class="language-python">手机开启开发者模式 &amp; USB调试，并且用数据线和电脑连接。
@@ -390,14 +438,14 @@ https://mumu.163.com/include/16v1/2016/06/27/21967_625825.html
 稍等片刻，此时在android studio中会读取到你的手机设备。
 如果没有读取到，请在手机上【撤销USB调试授权】，然后再重新插入USB，重新授权。
 </code></pre>
-<p><img alt="image-20230706160847016" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706160847016-171171877491235.png" /></p>
-<p><img alt="image-20230706160901870" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706160901870-171171877491336.png" /></p>
-<p><img alt="image-20240329212746205" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240329212746205.png" /></p>
+<p><img alt="image-20230706160847016" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706160847016-171171877491235.png" /></p>
+<p><img alt="image-20230706160901870" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706160901870-171171877491336.png" /></p>
+<p><img alt="image-20240329212746205" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20240329212746205.png" /></p>
 <h4 id="82">8.2虚拟机运行</h4>
 <p>创建虚拟机后，下拉就好看到当前链接到电脑的设备，直接选择某一个运行即可</p>
 <h2 id="_2">三、安卓项目目录结构(开发流程)</h2>
 <h3 id="1-android">1、安卓项目目录--文件 android视图</h3>
-<p><img alt="image-20230901211805035" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230901211805035.png" /></p>
+<p><img alt="image-20230901211805035" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230901211805035.png" /></p>
 <h3 id="2project">2、project视图</h3>
 <pre><code class="language-python">├── .gradle                            #AndroidStudio 自动生成的文件，会自动修改它的，项目打包时也会删除；
 ├── .idea                              # AndroidStudio自动生成的文件，会自动修改它的，项目打包时也会删除；
@@ -427,9 +475,9 @@ https://mumu.163.com/include/16v1/2016/06/27/21967_625825.html
 └── settings.gradle                               # gralde的项目级配置
 </code></pre>
 <h3 id="3_1">3、安卓开发流程</h3>
-<p><img alt="image-20230901205711216" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230901205711216-17019492858161.png" /></p>
+<p><img alt="image-20230901205711216" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230901205711216-17019492858161.png" /></p>
 <h2 id="appapp">四、第一个app(点击按钮切换图片app)</h2>
-<p><img alt="image-20230706180347615" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230706180347615-171172084576637.png" /></p>
+<p><img alt="image-20230706180347615" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20230706180347615-171172084576637.png" /></p>
 <h3 id="1activity_mainxml">1、activity_main.xml</h3>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
@@ -524,13 +572,13 @@ public class MainActivity extends AppCompatActivity {
 }
 </code></pre>
 <h3 id="3resdrawable">3、res/drawable 放入图片</h3>
-<p><img alt="image-20240329223257490" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240329223257490.png" /></p>
-<p><img alt="image-20240329223314664" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240329223314664.png" /></p>
+<p><img alt="image-20240329223257490" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20240329223257490.png" /></p>
+<p><img alt="image-20240329223314664" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20240329223314664.png" /></p>
 <h3 id="4_1">4、编译</h3>
 <pre><code class="language-python"># D:\project\s11demo01\app\build\outputs\apk\androidTest\debug
 # 把apk复制出来，改个名字，发送给别人，装到手机上即可
 </code></pre>
-<p><img alt="image-20240329223353427" src="imgs/day09-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240329223353427.png" /></p>
+<p><img alt="image-20240329223353427" src="imgs/day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.assets/image-20240329223353427.png" /></p>
 
 
 </section>

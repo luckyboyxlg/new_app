@@ -138,14 +138,20 @@ Theme by GitBook
 
 <h1 id="hook-app">四、hook-常用加密-抓包app</h1>
 <h1 id="1-hookfrida">1 hook框架frida</h1>
-<pre><code class="language-python">Hook 框架是一种技术，用于在运行时拦截和修改应用程序的行为
-通过 Hook，你可以劫持应用程序的方法调用、修改参数、篡改返回值等，以达到对应用程序的修改、增强或调试的目的
-
-# 常见的有：
-Xposed Framework：Xposed 是一个功能强大的开源 Hook 框架，可以在不修改应用程序源代码的情况下，对应用程序进行各种修改。它允许你编写模块来拦截和修改应用程序的方法调用，修改应用程序的行为和逻辑。
-
-Frida：Frida 是一个跨平台的动态 Hook 框架，支持安卓和其他操作系统。它提供了一个强大的 JavaScript API，可以在运行时对应用程序进行 Hook，包括方法拦截、参数修改、调用注入等。Frida 可以用于安全研究、逆向工程和应用程序调试等方面。
-</code></pre>
+<ul>
+<li>说明</li>
+</ul>
+<p>Hook 框架是一种技术，用于在运行时拦截和修改应用程序的行为
+  通过 Hook，你可以劫持应用程序的方法调用、修改参数、篡改返回值等，以达到对应用程序的修改、增强或调试的目的</p>
+<ul>
+<li>
+<p>常见的有</p>
+</li>
+<li>
+<p>Xposed Framework：Xposed 是一个功能强大的开源 Hook 框架，可以在不修改应用程序源代码的情况下，对应用程序进行各种修改。它允许你编写模块来拦截和修改应用程序的方法调用，修改应用程序的行为和逻辑。</p>
+</li>
+<li>Frida：Frida 是一个跨平台的动态 Hook 框架，支持安卓和其他操作系统。它提供了一个强大的 JavaScript API，可以在运行时对应用程序进行 Hook，包括方法拦截、参数修改、调用注入等。Frida 可以用于安全研究、逆向工程和应用程序调试等方面。</li>
+</ul>
 <h2 id="11">1.1 下载安装</h2>
 <pre><code class="language-python">##### 注意事项####
 手机端 装 frida-server端 ----》放手机上
@@ -153,90 +159,115 @@ Frida：Frida 是一个跨平台的动态 Hook 框架，支持安卓和其他操
 ##### 版本必须相同 #####
 </code></pre>
 <h3 id="111">1.1.1 电脑端安装</h3>
-<pre><code class="language-python"># 安装在python解释器上，两个模块---》建议装在虚拟环境中
-    pip3 install frida        # 最新的  16.2.1
-    pip3 install frida-tools  # 最新的  16.3.0 
-
-
-# 99.99% 都是可以正常安装，有极个别同学如果装不上
-    -1 把报错--》放到搜索引擎中搜---》基本上都能解决
-    -2 使用whl文件安装（可能没有最新，更新不及时）
-        -https://pypi.doubanio.com/simple/frida/
-        -找到对应你平台的whl文件
-        -pip install 把下载的文件拖到命令窗口
-</code></pre>
+<ul>
+<li>安装在python解释器上，两个模块---》建议装在虚拟环境中</li>
+</ul>
+<p>pip3 install frida        # 最新的  16.2.1
+   pip3 install frida-tools  # 最新的  16.3.0</p>
+<ul>
+<li>
+<p>问题解决</p>
+</li>
+<li>
+<p>把报错--》放到搜索引擎中搜---》基本上都能解决</p>
+</li>
+<li>使用whl文件安装（可能没有最新，更新不及时）
+        https://pypi.doubanio.com/simple/frida/
+        找到对应你平台的whl文件
+        pip install 把下载的文件拖到命令窗口</li>
+</ul>
 <p><img alt="image-20240313201611060" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313201611060.png" /></p>
 <h3 id="112-frida-server">1.1.2 手机端安装--frida-server</h3>
-<pre><code class="language-python"># 1 下载地址：https://github.com/frida/frida/releases
-# 2 下载的文件如下图
-    -查看手机平台：adb shell getprop ro.product.cpu.abi
-        -arm64-v8a
-# 3 我们下载：frida-server-16.2.1-android-arm64.xz
-    -解压（一定要解压，不要把 xz压缩包，放到手机上）
-
-# 4 上传到手机上
-     adb push ./frida-server-16.2.1-android-arm64 /data/local/tmp/
-# 5 进入到手机查看一下有没有
-    adb shell
-    su
-    cd /data/local/tmp
-    ls  # 查看，你们是空的，推送上去，你们就有了
-
-
-# 6 把这个软件加上执行权限
-    ls -al  # 查看当前目录下所有文件和文件夹的详细信息【包含文件的权限】
-    rwx rwx rwx
-    421 401 401
-    rw- rw- rw- # 属主(这个文件所属人)  属组(用户所在的组的其他人)  其他(除了上面的其他人)
-    r：read 读权限
-    w：write 写权限
-    x：执行权限
-    刚刚传上来这个文件：拥有者自己只有读写权限，没有执行权限，没有执行权限，不能执行
-    我们需要给他加执行权限 所有人都有读写和执行权限
-    chmod 777 frida-server-16.2.1-android-arm64
-    rw- rw- rw- # 原来文件权限
-    rwx rwx rwx # 文件权限变成这样了
-
-
-# 7 到此，手机端配置完成
-
-</code></pre>
+<ul>
+<li>下载地址</li>
+</ul>
+<p>https://github.com/frida/frida/releases</p>
+<ul>
+<li>下载的文件如下图</li>
+</ul>
+<p>查看手机平台：adb shell getprop ro.product.cpu.abi</p>
+<p>arm64-v8a</p>
+<ul>
+<li>我们下载：frida-server-16.2.1-android-arm64.xz</li>
+</ul>
+<p>解压（一定要解压，不要把 xz压缩包，放到手机上）</p>
+<ul>
+<li>上传到手机上</li>
+</ul>
+<p>adb push ./frida-server-16.2.1-android-arm64 /data/local/tmp/</p>
+<ul>
+<li>进入到手机查看一下有没有</li>
+</ul>
+<p><code>python
+  adb shell
+  su
+  cd /data/local/tmp
+  ls  # 查看，你们是空的，推送上去，你们就有了</code></p>
+<ul>
+<li>软件加上执行权限</li>
+</ul>
+<p><code>python
+  ls -al  # 查看当前目录下所有文件和文件夹的详细信息【包含文件的权限】
+      rwx rwx rwx
+      421 401 401
+      rw- rw- rw- # 属主(这个文件所属人)  属组(用户所在的组的其他人)  其他(除了上面的其他人)
+      r：read 读权限
+      w：write 写权限
+      x：执行权限
+      刚刚传上来这个文件：拥有者自己只有读写权限，没有执行权限，没有执行权限，不能执行
+      我们需要给他加执行权限 所有人都有读写和执行权限
+  chmod 777 frida-server-16.2.1-android-arm64
+      rw- rw- rw- # 原来文件权限
+      rwx rwx rwx # 文件权限变成这样了</code></p>
 <p><img alt="image-20240313202257406" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313202257406.png" /></p>
 <p><img alt="image-20240313202929621" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313202929621.png" /></p>
 <p><img alt="image-20240313203103404" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313203103404.png" /></p>
 <h2 id="12-hook-app">1.2 启动并hook-app</h2>
-<pre><code class="language-python">########### 手机端################
-# 1 在手机端 执行这个可执行文件：frida-server
-# 2 完整的步骤
-    -1 打开cmd
-    -2 输入 adb shell
-    -3 输入 su
-    -4 cd /data/local/tmp 
-    -5 ls  # 查看当前目录下的文件
-    -6 ./f   # 按 tab键自动补齐，敲回车
-    -7 卡在哪，就表示运行起来了
-
-    -8 ctrl -c 是关闭
-
-
-# 3 有可能报错
-    -1 重启手机 --》 解决90%
-    -2 运行 adb shell setenforce 0
-
-
-
-######电脑端#############
-# 1 配置端口转发
-    1.1 直接在命令行中敲
-    adb forward tcp:27042 tcp:27042
-        adb forward tcp:27043 tcp:27043
-    1.2 使用python运行（我都用这种，跟上面完全一样）
-    import subprocess
-    subprocess.getoutput(&quot;adb forward tcp:27042 tcp:27042&quot;)
-    subprocess.getoutput(&quot;adb forward tcp:27043 tcp:27043&quot;)
-
-# 2 写脚本
-</code></pre>
+<ul>
+<li>在手机端 执行这个可执行文件</li>
+</ul>
+<p>frida-server</p>
+<ul>
+<li>
+<p>完整的步骤</p>
+</li>
+<li>
+<p>打开cmd</p>
+</li>
+<li>输入 adb shell</li>
+<li>输入 su</li>
+<li>cd /data/local/tmp </li>
+<li>ls  # 查看当前目录下的文件</li>
+<li>./f   # 按 tab键自动补齐，敲回车卡在那，就表示运行起来了</li>
+<li>
+<p>ctrl -c 是关闭</p>
+</li>
+<li>
+<p>如果保措处理</p>
+</li>
+<li>
+<p>重启手机 --》 解决90%</p>
+</li>
+<li>
+<p>运行 adb shell setenforce 0</p>
+</li>
+<li>
+<p>配置端口转发</p>
+</li>
+<li>
+<p>方式一：直接在命令行中敲</p>
+<p><code>python
+adb forward tcp:27042 tcp:27042
+adb forward tcp:27043 tcp:27043</code></p>
+</li>
+<li>
+<p>方式二：使用python运行（我都用这种，跟上面完全一样）</p>
+<p><code>python
+import subprocess
+subprocess.getoutput("adb forward tcp:27042 tcp:27042")
+subprocess.getoutput("adb forward tcp:27043 tcp:27043")</code></p>
+</li>
+</ul>
 <p><img alt="image-20230615163240601" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230615163240601.png" /></p>
 <h3 id="121-python-">1.2.1 编写python代码-打印手机中进程</h3>
 <pre><code class="language-python"># 枚举手机上的所有进程 &amp; 前台进程
@@ -322,69 +353,93 @@ sys.stdin.read()
 # attach方案，在app运行后，再进行hook--》只能hook，某个操作对应的方法
 </code></pre>
 <h3 id="141-attach">1.4.1 attach方案</h3>
-<pre><code class="language-python">import frida
-import sys
-# 连接手机设备
-rdev = frida.get_remote_device()
-# 包名：com.che168.autotradercloud
-# 车智赢+
-session = rdev.attach(&quot;车智赢+&quot;)
-scr = &quot;&quot;&quot;
-Java.perform(function () {
-    //找到类 反编译的首行+类名：com.autohome.ahkit.utils下的
-    var SecurityUtil = Java.use(&quot;com.autohome.ahkit.utils.SecurityUtil&quot;);
-
-    //替换类中的方法
-    SecurityUtil.encodeMD5.implementation = function(str){
-        console.log(&quot;参数：&quot;,str);
-        var res = this.encodeMD5(str); //调用原来的函数
-        console.log(&quot;返回值：&quot;,res);
-        return res;
-    }
-});
-&quot;&quot;&quot;
-
-script = session.create_script(scr)
-
-def on_message(message, data):
-    print(message, data)
-
-script.on(&quot;message&quot;, on_message)
-script.load()
-sys.stdin.read()
-
+<ul>
+<li>代码</li>
+</ul>
+<p>```python
+  import frida
+  import sys
+  # 连接手机设备
+  rdev = frida.get_remote_device()
+  # 包名：com.che168.autotradercloud
+  # 车智赢+
+  session = rdev.attach("车智赢+")
+  scr = """
+  Java.perform(function () {
+      //找到类 反编译的首行+类名：com.autohome.ahkit.utils下的
+      var SecurityUtil = Java.use("com.autohome.ahkit.utils.SecurityUtil");</p>
+<pre><code>  //替换类中的方法
+  SecurityUtil.encodeMD5.implementation = function(str){
+      console.log("参数：",str);
+      var res = this.encodeMD5(str); //调用原来的函数
+      console.log("返回值：",res);
+      return res;
+  }
 </code></pre>
+<p>});
+  """</p>
+<p>script = session.create_script(scr)</p>
+<p>def on_message(message, data):
+      print(message, data)</p>
+<p>script.on("message", on_message)
+  script.load()
+  sys.stdin.read()</p>
+<p>```</p>
 <h3 id="142-spwan">1.4.2 spwan方案</h3>
-<pre><code class="language-python">import frida
-import sys
-
-rdev = frida.get_remote_device()
-# 不是放app名字了，放的是app的包名
-pid = rdev.spawn([&quot;com.che168.autotradercloud&quot;])
-session = rdev.attach(pid)
-## 上面是固定的，以后只要改app的包名即可
-scr = &quot;&quot;&quot;
-Java.perform(function () {
-    var SecurityUtil = Java.use(&quot;com.autohome.ahkit.utils.SecurityUtil&quot;);
-    SecurityUtil.encodeMD5.implementation = function(str){
-        console.log(&quot;明文：&quot;,str);
-        var res = this.encodeMD5(str);
-        console.log(&quot;md5加密结果=&quot;,res);
-        return res;
-    }
-});
-&quot;&quot;&quot;
-
-## 以下都是固定的
-script = session.create_script(scr)
-def on_message(message, data):
-    print(message, data)
-
-script.on(&quot;message&quot;, on_message)
-script.load()
-rdev.resume(pid)
-sys.stdin.read()
-</code></pre>
+<ul>
+<li>代码</li>
+</ul>
+<p>```python
+  import frida
+  import sys</p>
+<p>rdev = frida.get_remote_device()
+  # 不是放app名字了，放的是app的包名
+  pid = rdev.spawn(["com.che168.autotradercloud"])
+  session = rdev.attach(pid)
+  ## 上面是固定的，以后只要改app的包名即可
+  scr = """
+  Java.perform(function () {
+      var SecurityUtil = Java.use("com.autohome.ahkit.utils.SecurityUtil");
+      SecurityUtil.encodeMD5.implementation = function(str){
+          console.log("明文：",str);
+          var res = this.encodeMD5(str);
+          console.log("md5加密结果=",res);
+          return res;
+      }
+  });
+  """</p>
+<p>## 以下都是固定的
+  script = session.create_script(scr)
+  def on_message(message, data):
+      print(message, data)</p>
+<p>script.on("message", on_message)
+  script.load()
+  rdev.resume(pid)
+  sys.stdin.read()
+  ```</p>
+<h3 id="143">1.4.3 俩种区别</h3>
+<h5 id="fridaattach"><strong>frida.attach()</strong></h5>
+<ul>
+<li><strong>用途</strong>：用于连接到一个已经运行的应用程序进程。</li>
+<li><strong>行为</strong>：<code>attach()</code> 方法会尝试找到并附加到指定名称或PID的现有进程。如果找不到匹配的进程，则会抛出异常。</li>
+<li>优点</li>
+<li>不会中断应用的正常启动流程。</li>
+<li>对于那些启动时立即执行关键操作的应用非常有用，因为你可以确保在这些操作发生之前就已附加。</li>
+<li>缺点</li>
+<li>如果应用没有运行，则无法附加。</li>
+<li>不能控制应用启动时的行为。</li>
+</ul>
+<h5 id="fridaspawn"><strong>frida.spawn()</strong></h5>
+<ul>
+<li><strong>用途</strong>：用于启动一个应用程序，并在启动后立即附加到它。</li>
+<li><strong>行为</strong>：<code>spawn()</code> 方法会启动一个新的进程，并暂停它直到你调用 <code>resume(pid)</code> 来恢复其执行。这样可以在进程启动的早期阶段插入钩子（hook），从而确保所有后续的函数调用都可以被监控。</li>
+<li>优点</li>
+<li>可以完全控制应用的启动过程。</li>
+<li>确保在应用开始执行任何逻辑之前就已经附加了Frida脚本。</li>
+<li>缺点</li>
+<li>需要手动恢复进程（使用 <code>resume(pid)</code>），否则应用将保持暂停状态。</li>
+<li>某些应用可能有反调试机制，可能会检测到这种启动方式并采取措施。</li>
+</ul>
 <h2 id="15-js-hook">1.5 js hook方式</h2>
 <h3 id="151-js-attach-hook">1.5.1 js 的attach-hook方案</h3>
 <pre><code class="language-js">Java.perform(function () {

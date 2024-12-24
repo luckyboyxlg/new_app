@@ -204,6 +204,102 @@ tv.setText(String.valueOf(Utils.v1(33,44)));
 <p><img alt="image-20230720180029952" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230720180029952.png" /></p>
 <p><strong>类型对应关系</strong></p>
 <p><img alt="image-20220804153306910" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220804153306910.png" /></p>
+<table>
+<thead>
+<tr>
+<th>Java 类型</th>
+<th>Native 类型</th>
+<th>JNI 签名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>jboolean</td>
+<td>Z</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>jbyte</td>
+<td>B</td>
+</tr>
+<tr>
+<td>char</td>
+<td>jchar</td>
+<td>C</td>
+</tr>
+<tr>
+<td>short</td>
+<td>jshort</td>
+<td>S</td>
+</tr>
+<tr>
+<td>int</td>
+<td>jint</td>
+<td>I</td>
+</tr>
+<tr>
+<td>long</td>
+<td>jlong</td>
+<td>J</td>
+</tr>
+<tr>
+<td>float</td>
+<td>jfloat</td>
+<td>F</td>
+</tr>
+<tr>
+<td>double</td>
+<td>jdouble</td>
+<td>D</td>
+</tr>
+<tr>
+<td>byte[]</td>
+<td>jbyteArray</td>
+<td>[B</td>
+</tr>
+<tr>
+<td>char[]</td>
+<td>jcharArray</td>
+<td>[C</td>
+</tr>
+<tr>
+<td>short[]</td>
+<td>jshortArray</td>
+<td>[S</td>
+</tr>
+<tr>
+<td>int[]</td>
+<td>jintArray</td>
+<td>[I</td>
+</tr>
+<tr>
+<td>long[]</td>
+<td>jlongArray</td>
+<td>[L</td>
+</tr>
+<tr>
+<td>float[]</td>
+<td>jfloatArray</td>
+<td>[F</td>
+</tr>
+<tr>
+<td>double[]</td>
+<td>jdoubleArray</td>
+<td>[D</td>
+</tr>
+<tr>
+<td>Java 类 (例: String)</td>
+<td>jstring/jobject</td>
+<td>L 全类名; (例: Ljava/lang/String;</td>
+</tr>
+<tr>
+<td>Java 方法 (例: start(String path, long pos, long duration))</td>
+<td>Native 方法 (例: start(jstring path, jlong pos, jlong duration))</td>
+<td>(参数签名...) 返回值签名 (例: (Ljava/lang/String;JJ)V)</td>
+</tr>
+</tbody>
+</table>
 <h3 id="32-javac">3.2 Java调用C案例</h3>
 <h4 id="321">3.2.1数字处理</h4>
 <pre><code class="language-java">public static native int v1(int a1,int a2);
@@ -537,8 +633,6 @@ public class Dynamic {
 
     public static native int vv2(String s);
 }
-
-
 </code></pre>
 <p><img alt="image-20230725191400885" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725191400885.png" /></p>
 <pre><code class="language-c">#include &lt;jni.h&gt;
