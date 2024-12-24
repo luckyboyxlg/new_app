@@ -273,7 +273,7 @@ sys.stdin.read()
 <p>断网执行app，发现能正常打开app后，在打开网络，刷新也可以</p>
 <h3 id="3-hook-appso">(3) hook app在启动过程中执行了那些so文件</h3>
 <p>代码</p>
-<pre><code class="language-python">import frida
+<pre><code>import frida
 import sys
 
 rdev = frida.get_remote_device()
