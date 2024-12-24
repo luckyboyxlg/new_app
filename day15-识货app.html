@@ -184,70 +184,74 @@ Theme by GitBook
 <ul>
 <li>枚举手机上的所有进程 &amp; 前台进程,找到 识货的包名</li>
 </ul>
-<p>```
-  import frida</p>
-<p># 获取设备信息
-  rdev = frida.get_remote_device()</p>
-<p># 枚举所有的进程
-  processes = rdev.enumerate_processes()
-  for process in processes:
-      print(process)</p>
-<p># 获取在前台运行的APP
-  front_app = rdev.get_frontmost_application()
-  print(front_app)
-  # Application(identifier="com.hupu.shihuo", name="识货", pid=28602, parameters={})
-  ```</p>
+<pre><code>import frida
+
+# 获取设备信息
+rdev = frida.get_remote_device()
+
+# 枚举所有的进程
+processes = rdev.enumerate_processes()
+for process in processes:
+    print(process)
+
+# 获取在前台运行的APP
+front_app = rdev.get_frontmost_application()
+print(front_app)
+# Application(identifier=&quot;com.hupu.shihuo&quot;, name=&quot;识货&quot;, pid=28602, parameters={})
+</code></pre>
 <ul>
 <li>端口转发</li>
 </ul>
-<p>```
-  import subprocess
-  # 使用sbuprocess模块，执行命令，如果转发不了，就执行命令</p>
-<p>'''
-  adb forward tcp:27042 tcp:27042
-  adb forward tcp:27043 tcp:27043
-  '''
-  subprocess.run('adb forward tcp:27042 tcp:27042')
-  subprocess.run('adb forward tcp:27043 tcp:27043')
-  ```</p>
+<pre><code>import subprocess
+# 使用sbuprocess模块，执行命令，如果转发不了，就执行命令
+
+'''
+adb forward tcp:27042 tcp:27042
+adb forward tcp:27043 tcp:27043
+'''
+subprocess.run('adb forward tcp:27042 tcp:27042')
+subprocess.run('adb forward tcp:27043 tcp:27043')
+</code></pre>
 <ul>
 <li>hook代码</li>
 </ul>
-<p>```
-  import frida
-  import sys</p>
-<p>rdev = frida.get_remote_device()
-  pid = rdev.spawn(["com.hupu.shihuo"])
-  session = rdev.attach(pid)</p>
-<p>scr = """
-  Java.perform(function () {
-      var UpdateDialog = Java.use('com.azhon.appupdate.dialog.UpdateDialog');
-      UpdateDialog.show.implementation = function(ctx){
-          console.log("执行了");
-          //this.show();
-      }
-  });
-  """
-  script = session.create_script(scr)</p>
-<p>def on_message(message, data):
-      print(message, data)</p>
-<p>script.on("message", on_message)
-  script.load()
-  rdev.resume(pid)
-  sys.stdin.read()
-  ```</p>
+<pre><code>import frida
+import sys
+
+rdev = frida.get_remote_device()
+pid = rdev.spawn([&quot;com.hupu.shihuo&quot;])
+session = rdev.attach(pid)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var UpdateDialog = Java.use('com.azhon.appupdate.dialog.UpdateDialog');
+    UpdateDialog.show.implementation = function(ctx){
+        console.log(&quot;执行了&quot;);
+        //this.show();
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+rdev.resume(pid)
+sys.stdin.read()
+</code></pre>
 <ul>
-<li>
-<p>使用spawn的原因是  当程序启动就要进行hook，防止弹框</p>
-</li>
-<li>
-<p>一运行hook脚本，app闪退了</p>
-<p>app做了frida检测
+<li>使用spawn的原因是  当程序启动就要进行hook，防止弹框</li>
+<li>一运行hook脚本，app闪退了</li>
+</ul>
+<pre><code>app做了frida检测
     + 删某些so文件（今天学这种）
     + ptrace占坑
-  + frida加强版</p>
-</li>
-</ul>
+  + frida加强版
+</code></pre>
 <h1 id="frida">四、绕过frida反调试</h1>
 <h3 id="1-frida-hook">(1) <strong>不能frida   hook的原因</strong></h3>
 <p>识货这款app，做了frida的反调试，检测到只要frida脚本在运行，app就自动结束</p>
