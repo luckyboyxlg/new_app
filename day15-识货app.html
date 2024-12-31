@@ -320,6 +320,19 @@ sys.stdin.read()
 <li>图例</li>
 </ul>
 <p><img alt="image-20230727175234861" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727175234861.png" /></p>
+<ul>
+<li>当前使用mumu模拟器如果没发现这个so文件的话，可以直接在adb里搜索一下</li>
+</ul>
+<p>find -name libmsaoaidsec.so </p>
+<p>然后把当前地址中的libmsaoaidsec.so删除</p>
+<p><img alt="image-20241225134236475" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20241225134236475.png" /></p>
+<ul>
+<li>打开frida-server  </li>
+</ul>
+<p>/data/local/tmp/frida-server-16.4.10-android-arm64  </p>
+<ul>
+<li>接下来打开hook不展示更新的程序</li>
+</ul>
 <h1 id="_5">五、抓包分析</h1>
 <pre><code class="language-python"># 使用charles抓包，发现只能抓到一些静态文件的包
 # 安卓开发时，OkHttp发送请求，设置 `Proxy.NO_PROXY`，基于系统代理都是抓不到包
@@ -336,7 +349,7 @@ Request req = new Request.Builder().url(&quot;http://192.168.0.6:9999/login&quot
 Call call = client.newCall(req);
 ...
 </code></pre>
-<p>修改为:</p>
+<p>修改为:  当前Android使用了Proxy.NO_PROXY  不使用代理，所以我们设置的代理当前无法抓取到</p>
 <pre><code class="language-java">OkHttpClient client = new OkHttpClient.Builder().proxy(Proxy.NO_PROXY).build();
 FormBody form = new FormBody.Builder()
     .add(&quot;user&quot;, dataMap.get(&quot;username&quot;))
@@ -383,7 +396,7 @@ Request req = new Request.Builder().url(&quot;http://192.168.0.6:9999/login&quot
 </code></pre>
 <p><img alt="image-20230727181614083" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727181614083.png" /></p>
 <h2 id="53-python">5.3 直接通过python重写搜索商品接口</h2>
-<h3 id="532-1">5.3.2 接口1</h3>
+<h3 id="532">5.3.2 老接口</h3>
 <pre><code class="language-python">
 # 老接口，  搜索台球杆
 import requests
@@ -409,7 +422,7 @@ res = requests.post(
 
 print(res.text)
 </code></pre>
-<h3 id="531-2">5.3.1 接口2</h3>
+<h3 id="531">5.3.1 新接口</h3>
 <pre><code class="language-python">import requests
 from utils import header_str_to_dict
 head_str='''
@@ -467,9 +480,9 @@ for item in data_dict['data']['lists']:
 
 </code></pre>
 <h2 id="54">5.4 商品详情接口</h2>
-<pre><code class="language-python"># 抓包发现商品详情接口返回数据加密了
-# preload
-</code></pre>
+<p>url:</p>
+<p>https://sh-gateway.shihuo.cn/v4/services/sh-goodsapi/app_swoole_shoe/preload/single</p>
+<p>抓包发现商品详情接口返回数据加密了</p>
 <p><img alt="image-20230727184224207" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727184224207.png" /></p>
 <h1 id="hook">六、Hook各种尝试</h1>
 <h2 id="61-hook-map-">6.1 hook- Map - 失败</h2>
@@ -528,7 +541,7 @@ scr = &quot;&quot;&quot;
 Java.perform(function () {
     var StringBuilder = Java.use(&quot;java.lang.StringBuilder&quot;);
 
-    StringBuilder.toString.implementation = function () {
+    StringBuilder.toString.i mplementation = function () {
         var res = this.toString();
         console.log(res); 
         return res;
@@ -561,10 +574,11 @@ Java.perform(function () {
     }
 });
 
-// frida -UF  hook_stringbuilder.js -o string.txt
-
-// 发现并没有输出到string.txt中
 </code></pre>
+<ul>
+<li>使用frida命令运行当前hook的脚本 并将结果输入到 string.txt文件中</li>
+</ul>
+<p><code>frida -UF  -l hook_stringbuilder.js -o string.txt</code></p>
 <h2 id="63-hook-base64-">6.3 Hook-base64-成功</h2>
 <pre><code class="language-python">import frida
 import sys
@@ -595,16 +609,16 @@ script.load()
 sys.stdin.read()
 
 # 通过查看输出，那请求的数据搜索，发现hook到了
-
 </code></pre>
 <h2 id="64-hook">6.4 hook 拦截器</h2>
 <pre><code class="language-python"># 请求加密，返回的数据解密，很有可以能是在拦截器中完成处理
-
-
 </code></pre>
 <h3 id="641-jshookhook">6.4.1 js的hook拦截器,hook所有</h3>
-<pre><code class="language-js">// hook_Interceptor.js
-Java.perform(function () {
+<ul>
+<li>文件名称</li>
+</ul>
+<p>hook_Interceptor.js</p>
+<pre><code class="language-js">Java.perform(function () {
     var Builder = Java.use('okhttp3.OkHttpClient$Builder');
 
     Builder.addInterceptor.implementation = function (inter) {
@@ -613,11 +627,14 @@ Java.perform(function () {
         return this.addInterceptor(inter);
     };
 })
-
-//frida -Uf com.hupu.shihuo -l hook_Interceptor.js -o all_interceptor3.txt
 </code></pre>
-<pre><code class="language-txt">&quot;&lt;instance: okhttp3.Interceptor, $className: com.shizhi.shihuoapp.library.net.h.h&gt;&quot;
-&quot;&lt;instance: okhttp3.Interceptor, $className: com.shizhi.shihuoapp.library.imageview.loader.c.b$a&gt;&quot;
+<ul>
+<li>使用frida命令运行当前hook的脚本 并将结果输入到 string.txt文件中</li>
+</ul>
+<p><code>frida -Uf com.hupu.shihuo -l hook_Interceptor.js -o all_interceptor3.txt</code></p>
+<p>结果：</p>
+<pre><code>&quot;&lt;instance: okhttp3.Interceptor, $className: com.shizhi.shihuoapp.library.net.h.h&gt;&quot;
+&quot;&lt;instance: okhttp3.Intercep tor, $className: com.shizhi.shihuoapp.library.imageview.loader.c.b$a&gt;&quot;
 &quot;&lt;instance: okhttp3.Interceptor, $className: com.shizhi.shihuoapp.library.net.h.e&gt;&quot;
 &quot;&lt;instance: okhttp3.Interceptor, $className: com.shizhi.shihuoapp.library.net.h.d&gt;&quot;
 &quot;&lt;instance: okhttp3.Interceptor, $className: com.shizhi.shihuoapp.library.net.h.b&gt;&quot;
@@ -635,6 +652,9 @@ Java.perform(function () {
 &quot;&lt;instance: okhttp3.Interceptor, $className: cn.shihuo.modulelib.startup.core.c.a&gt;&quot;
 </code></pre>
 <h3 id="642-">6.4.2 一个个尝试拦截器--查找</h3>
+<ul>
+<li>this.intercept(chain); 执行自己的拦截器</li>
+</ul>
 <pre><code class="language-python">import frida
 import sys
 
@@ -669,6 +689,9 @@ script.on(&quot;message&quot;, on_message)
 script.load()
 sys.stdin.read()
 </code></pre>
+<ul>
+<li>response = chain.proceed(req);  跳过当前拦截器，执行后续拦截器</li>
+</ul>
 <pre><code class="language-python">import frida
 import sys
 
@@ -682,9 +705,11 @@ Java.perform(function () {
     a.intercept.implementation = function (chain) {
         var req = chain.request();
         var httpUrl = req.url().toString();
+        // 判断当前执行的是不是详情的URL，是的话输出
         if( httpUrl.indexOf(&quot;https://sh-gateway.shihuo.cn/v4/services/sh-goodsapi/app_swoole_shoe/preload/single&quot;) != -1 ){
             console.log('执行前',httpUrl);    
         }
+        // var response = this.intercept(chain); // 执行自己这个拦截器
         // 不走自己的拦截器了，跳过该拦截器执行，继续执行下面的拦截器
         var response = chain.proceed(req);
         return response;
@@ -702,10 +727,8 @@ def on_message(message, data):
 script.on(&quot;message&quot;, on_message)
 script.load()
 sys.stdin.read()
-
-
-// 这个拦截器找到了可以发送明文的地址
 </code></pre>
+<p>// 这个拦截器找到了可以发送明文的地址</p>
 <p><img alt="image-20230727193250609" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20230727193250609.png" /></p>
 <p><img alt="image-20231011192658293" src="imgs/day15-%E8%AF%86%E8%B4%A7app.assets/image-20231011192658293.png" /></p>
 <h1 id="7python">7、python直接发送请求获取详情</h1>

@@ -301,9 +301,16 @@ tv.setText(String.valueOf(Utils.v1(33,44)));
 </tbody>
 </table>
 <h3 id="32-javac">3.2 Java调用C案例</h3>
+<p><strong>目录结构</strong></p>
+<p><img alt="image-20241230144511353" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20241230144511353.png" /></p>
 <h4 id="321">3.2.1数字处理</h4>
+<p><strong>MainActivity.java</strong></p>
+<pre><code class="language-java">tv.setText(String.valueOf(Utils.v1(1, 2)));
+</code></pre>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native int v1(int a1,int a2);
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">#include &lt;jni.h&gt;
 
 JNIEXPORT jint
@@ -312,8 +319,13 @@ JNICALL Java_com_justin_s8day12_Utils_v1(JNIEnv *env, jclass clazz,jint v1,jint 
 }
 </code></pre>
 <h4 id="322">3.2.2 通过指针修改字符串</h4>
+<p><strong>MainActivity.java</strong></p>
+<pre><code class="language-java">tv.setText(String.valueOf(Utils.v2(&quot;abcdefg&quot;)));
+</code></pre>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native String v2(String s);
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">JNIEXPORT jstring JNICALL
 Java_com_justin_s8day12_Utils_v2(JNIEnv *env, jclass clazz, jstring s) {
     // char info[]  = {'j','u','s','t','i','n'};
@@ -335,8 +347,13 @@ Java_com_justin_s8day12_Utils_v2(JNIEnv *env, jclass clazz, jstring s) {
 }
 </code></pre>
 <h4 id="323">3.2.3 通过数组修改字符串</h4>
+<p><strong>MainActivity.java</strong></p>
+<pre><code class="language-java">tv.setText(String.valueOf(Utils.v3(&quot;abcdefg&quot;)));
+</code></pre>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native String v3(String s);
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">JNIEXPORT jstring JNICALL
 Java_com_justin_s8day12_Utils_v3(JNIEnv *env, jclass clazz, jstring s) {
     // 字符串数组
@@ -348,8 +365,13 @@ Java_com_justin_s8day12_Utils_v3(JNIEnv *env, jclass clazz, jstring s) {
 }
 </code></pre>
 <h4 id="324">3.2.4 字符串拼接</h4>
+<p><strong>MainActivity.java</strong></p>
+<pre><code class="language-java">tv.setText(String.valueOf(Utils.v4(&quot;a&quot;, &quot;b&quot;)));
+</code></pre>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native String v4(String name, String role);
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">#include &lt;jni.h&gt;
 #include &lt;syslog.h&gt;
 #include &lt;malloc.h&gt;
@@ -384,10 +406,13 @@ Java_com_justin_s8day12_Utils_v4(JNIEnv *env, jclass clazz, jstring name, jstrin
 }
 </code></pre>
 <h4 id="325">3.2.5 字符处理</h4>
-<pre><code class="language-java">String n5 = EncryptUtils.v5(&quot;name=justin&amp;age=19&quot;);
+<p><strong>MainActivity.java</strong></p>
+<pre><code class="language-java">String n5 = Utils.v5(&quot;name=justin&amp;age=19&quot;);
 </code></pre>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native String v5(String data);
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">#include &lt;jni.h&gt;
 #include &lt;string.h&gt;
 #include &lt;syslog.h&gt;
@@ -436,10 +461,13 @@ Java_com_nb_s4luffy_EncryptUtils_v5(JNIEnv *env, jclass clazz, jstring data) {
 %X 整数转成大写十六进位
 </code></pre>
 <h4 id="326">3.2.6 字节处理</h4>
+<p><strong>MainActivity.java</strong></p>
 <pre><code class="language-java">tv.setText(String.valueOf(Utils.v6(&quot;name=justin&amp;age=19&quot;.getBytes())));
 </code></pre>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native String v6(byte[] data);
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">JNIEXPORT jstring JNICALL
 Java_com_justin_s8day12_Utils_v6(JNIEnv *env, jclass clazz, jbyteArray data) {
     //    jbyte *byteArray = (*env)-&gt;GetByteArrayElements(env, data, 0);
@@ -459,8 +487,10 @@ Java_com_justin_s8day12_Utils_v6(JNIEnv *env, jclass clazz, jbyteArray data) {
 }
 </code></pre>
 <h4 id="327-">3.2.7 字节处理-案例</h4>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native String v7(byte[] data);
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">JNIEXPORT jstring JNICALL
 Java_com_justin_s8day12_Utils_v7(JNIEnv *env, jclass clazz, jbyteArray data) {
     char *byteArray = (*env)-&gt;GetByteArrayElements(env, data, 0);
@@ -480,23 +510,26 @@ Java_com_justin_s8day12_Utils_v7(JNIEnv *env, jclass clazz, jbyteArray data) {
 </code></pre>
 <h3 id="33-cjava">3.3 C调Java案例</h3>
 <h4 id="331">3.3.1 静态方法</h4>
-<pre><code class="language-java">public static native String v8();
-</code></pre>
+<p><strong>MainActivity.java</strong></p>
 <pre><code class="language-java">tv.setText(String.valueOf(Utils.v8()));
 </code></pre>
+<p><strong>Utils.java</strong></p>
+<pre><code class="language-java">public static native String v8();
+</code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">JNIEXPORT jstring JNICALL
 Java_com_justin_s8day12_Utils_v8(JNIEnv *env, jclass clazz) {
     // 找到类
-    jclass cls = (*env)-&gt;FindClass(env, &quot;com/justin/s8day12/Foo&quot;);
+        jclass cls = (*env)-&gt;FindClass(env, &quot;com/example/jniapplication/Foo&quot;);
     // 找到静态方法---&gt;没有参数的方法
-    jmethodID method1 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;, &quot;()Ljava/lang/String;&quot;);
+    jmethodID method1 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign1&quot;, &quot;()Ljava/lang/String;&quot;);
     // 如果有重载( 有两个int参数) ,括号里是参数，后面是返回值，参数详见[类型]
-    jmethodID method2 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;, &quot;(II)Ljava/lang/String;&quot;);
+    jmethodID method2 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign2&quot;, &quot;(II)Ljava/lang/String;&quot;);
 
-    jmethodID method3 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;,
+    jmethodID method3 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign3&quot;,
                                                   &quot;(Ljava/lang/String;)Ljava/lang/String;&quot;);
 
-    jmethodID method4 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;, &quot;(Ljava/lang/String;I)I&quot;);
+    jmethodID method4 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign4&quot;, &quot;(Ljava/lang/String;I)I&quot;);
 
     // 执行方法(method1)
     jstring res1 = (*env)-&gt;CallStaticObjectMethod(env, cls, method1);
@@ -524,19 +557,34 @@ Java_com_justin_s8day12_Utils_v8(JNIEnv *env, jclass clazz) {
 
     return res1;
 
-
 }
 </code></pre>
+<p><strong>Foo.java</strong></p>
+<p><img alt="image-20241230150817208" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20241230150817208.png" /></p>
 <pre><code class="language-java">package com.justin.s8day12;
 
 public class Foo {
 
-    public static String getSign(){
+    public static String getSign1(){
         return &quot;sign001&quot;;
     }
-    public static String getSign(int a,int b){
+    public static String getSign2(int a,int b){
         return &quot;sign002&quot;;
     }
+    public static String getSign3(String s){
+        return &quot;sign003&quot;;
+    }
+    public static int getSign4(String prev, int v1) {
+        return 100;
+    }
+}
+</code></pre>
+<p><strong>注意：</strong></p>
+<p>如果c当前要调用的java方法有重载(俩个方法名一样)，那么c中是根据参数和返回值不同而确认调用的是哪一个(也就是根据签名不同进行确认)</p>
+<p><strong>Foo.java</strong></p>
+<pre><code class="language-java">package com.justin.s8day12;
+
+public class Foo {
     public static String getSign(String s){
         return &quot;sign003&quot;;
     }
@@ -544,17 +592,52 @@ public class Foo {
         return 100;
     }
 }
+</code></pre>
+<p><strong>utils.c</strong></p>
+<pre><code class="language-c">JNIEXPORT jstring
+JNICALL
+Java_com_example_jniapplication_Utils_v8(JNIEnv *env, jclass clazz) {
+    // 找到类
+    jclass cls = (*env)-&gt;FindClass(env, &quot;com/example/jniapplication/Foo&quot;);
+    // 找到静态方法---&gt;参数与返回值类型均为String
 
+    jmethodID method3 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;,
+                                                  &quot;(Ljava/lang/String;)Ljava/lang/String;&quot;);
+
+        // 找到静态方法---&gt;参数1位String。参数2位Int  返回值类型为Int
+    jmethodID method4 = (*env)-&gt;GetStaticMethodID(env, cls, &quot;getSign&quot;, &quot;(Ljava/lang/String;I)I&quot;);
+
+    //执行方法(method3 传参数,把c的字符串转成jstring类型)
+    jstring res3 = (*env)-&gt;CallStaticObjectMethod(env, cls, method3,(*env)-&gt;NewStringUTF(env, &quot;justin&quot;));
+
+    //执行方法(method4 传参数,把c的字符串转成jstring类型)
+    jint res4 = (*env)-&gt;CallStaticIntMethod(env, cls, method4, (*env)-&gt;NewStringUTF(env, &quot;justin&quot;),18);
+
+
+    // 可以做其他操作，把jstring转成c的字符串，处理完，再转成jstring类型
+    char *p3 = (*env)-&gt;GetStringUTFChars(env, res3, 0);
+    char *p4 = (*env)-&gt;GetStringUTFChars(env, res4, 0);
+
+    char *result = malloc(50);
+    strcat(result,p3);
+    strcat(result,p4);
+
+//    return (*env)-&gt;NewStringUTF(env, result);
+    return res3;
+}
 </code></pre>
 <h4 id="332">3.3.2 成员方法</h4>
+<p><strong>MainActivity.java</strong></p>
 <pre><code class="language-java">tv.setText(String.valueOf(Utils.v9()));
 </code></pre>
+<p><strong>Utils.java</strong></p>
 <pre><code class="language-java"> public static native String v9();
 </code></pre>
+<p><strong>utils.c</strong></p>
 <pre><code class="language-c">JNIEXPORT jstring JNICALL
 Java_com_justin_s8day12_Utils_v9(JNIEnv *env, jclass clazz) {
     // 找到类
-    jclass cls = (*env)-&gt;FindClass(env, &quot;com/justin/s8day12/Foo&quot;);
+    jclass cls = (*env)-&gt;FindClass(env, &quot;com/example/jniapplication/Foo&quot;);
 
     // 找到构造方法
     jmethodID init = (*env)-&gt;GetMethodID(env, cls, &quot;&lt;init&gt;&quot;, &quot;(Ljava/lang/String;)V&quot;);
@@ -563,7 +646,7 @@ Java_com_justin_s8day12_Utils_v9(JNIEnv *env, jclass clazz) {
     jobject cls_obj = (*env)-&gt;NewObject(env, cls, init, (*env)-&gt;NewStringUTF(env, &quot;justin&quot;));
 
     // 找到方法
-    jmethodID method1 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;, &quot;()Ljava/lang/String;&quot;);
+    jmethodID method1 = (*env)-&gt;GetMethodID(env, cls, &quot; &quot;, &quot;()Ljava/lang/String;&quot;);
 //    jmethodID method2 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;, &quot;(I)Ljava/lang/String;&quot;);
 //    jmethodID method3 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;,&quot;(Ljava/lang/String;)Ljava/lang/String;&quot;);
 //    jmethodID method4 = (*env)-&gt;GetMethodID(env, cls, &quot;ShowName&quot;, &quot;(Ljava/lang/String;I)I&quot;);
@@ -582,6 +665,7 @@ Java_com_justin_s8day12_Utils_v9(JNIEnv *env, jclass clazz) {
 
 }
 </code></pre>
+<p><strong>Foo.java</strong></p>
 <pre><code class="language-java">package com.justin.s8day12;
 
 public class Foo {
@@ -615,8 +699,13 @@ public class Foo {
 <h4 id="341">3.4.1 静态注册</h4>
 <p>上述编写的C语言的函数和Java的对应关系，在函数名上就可以体现，例如：</p>
 <pre><code>Java_com_justin_s8day12_Utils_v9
-Java_com_justin_s8day12_Utils_v8
 </code></pre>
+<p>Java_包名_类名_方法名</p>
+<ul>
+<li>com_justin_s8day12  包名</li>
+<li>Utils                              类名</li>
+<li>v9                                  方法名</li>
+</ul>
 <p>这种称为静态注册，如果是静态注册，那么在逆向时，是比较方便的，直接可以找到函数在C中的实现。例如：车智赢。</p>
 <p><img alt="image-20220519193907236" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193907236.png" /></p>
 <p><img alt="image-20220519193832337" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193832337.png" /></p>
