@@ -67,7 +67,7 @@
 <li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app.html">
 <a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
 <li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
-<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量</a>
 <li class="chapter" data-path="day18-B%E7%AB%9902.html">
 <a href="day18-B%E7%AB%9902.html">十八、B站02</a>
 <li class="chapter" data-path="day19-B%E7%AB%9903.html">
@@ -364,6 +364,15 @@ Java_com_justin_s8day12_Utils_v3(JNIEnv *env, jclass clazz, jstring s) {
     return (*env)-&gt;NewStringUTF(env, info);
 }
 </code></pre>
+<ul>
+<li>
+<p><code>char *info = (*env)-&gt;GetStringUTFChars(env, s, 0);</code></p>
+</li>
+<li>
+<p>这行代码的作用是将传入的 <code>jstring</code> 类型的参数 <code>s</code> 转换为 C 风格的字符串（即以 null 结尾的字符数组）。<code>GetStringUTFChars</code> 函数返回一个指向该字符串的指针。</p>
+</li>
+<li>第三个参数是一个布尔类型的指针，用来指示是否需要释放这个字符串。如果设置为 <code>JNI_TRUE</code>，则 JNI 环境会确保当本地方法返回时自动释放该字符串；如果是 <code>JNI_FALSE</code> 或者 <code>NULL</code>，那么你需要手动调用 <code>ReleaseStringUTFChars</code> 来释放。</li>
+</ul>
 <h4 id="324">3.2.4 字符串拼接</h4>
 <p><strong>MainActivity.java</strong></p>
 <pre><code class="language-java">tv.setText(String.valueOf(Utils.v4(&quot;a&quot;, &quot;b&quot;)));
@@ -405,7 +414,9 @@ Java_com_justin_s8day12_Utils_v4(JNIEnv *env, jclass clazz, jstring name, jstrin
     return (*env)-&gt;NewStringUTF(env, result);
 }
 </code></pre>
-<h4 id="325">3.2.5 字符处理</h4>
+<p><strong>结果</strong></p>
+<p><img src="./imgs/day13-JNI开发.assets/image-20241231095454961.png" alt="image-20241231095454961" style="zoom:50%;" /></p>
+<h4 id="325-">3.2.5 字符处理-返回十六进制</h4>
 <p><strong>MainActivity.java</strong></p>
 <pre><code class="language-java">String n5 = Utils.v5(&quot;name=justin&amp;age=19&quot;);
 </code></pre>
@@ -486,6 +497,10 @@ Java_com_justin_s8day12_Utils_v6(JNIEnv *env, jclass clazz, jbyteArray data) {
     return (*env)-&gt;NewStringUTF(env, v34);
 }
 </code></pre>
+<ul>
+<li><code>(*env)-&gt;GetByteArrayElements(env, data, 0)</code></li>
+</ul>
+<p>这句代码的作用是从 Java 层的 byte[] 数组获取指向其元素的指针。具体来说，这行代码用于将一个 Java 字节数组转换为本地应用可以直接操作的 C/C++ 风格的字节数组。</p>
 <h4 id="327-">3.2.7 字节处理-案例</h4>
 <p><strong>Utils.java</strong></p>
 <pre><code class="language-java">public static native String v7(byte[] data);
@@ -712,6 +727,8 @@ public class Foo {
 <p><img alt="image-20220519193843997" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193843997.png" /></p>
 <p><img alt="image-20220519193944611" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20220519193944611.png" /></p>
 <h4 id="342">3.4.2 动态注册</h4>
+<p><strong>逆向查找：</strong>  JNI_OnLoad</p>
+<p><strong>Dnamic.java</strong></p>
 <pre><code class="language-java">package com.justin.s8day12;
 
 public class Dynamic {
@@ -724,6 +741,7 @@ public class Dynamic {
 }
 </code></pre>
 <p><img alt="image-20230725191400885" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725191400885.png" /></p>
+<p><strong>dnamic.c</strong></p>
 <pre><code class="language-c">#include &lt;jni.h&gt;
 
 
@@ -752,7 +770,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     // 找到Java中的类
     jclass clazz = (*env)-&gt;FindClass(env, &quot;com/justin/s8day12/Dynamic&quot;);
     // 将类中的方法注册到JNI中 (RegisterNatives)
-    int res = (*env)-&gt;RegisterNatives(env, clazz, gMethods, 1);
+    int res = (*env)-&gt;RegisterNatives(env, clazz, gMethods, 2);
 
     // ----下面都是固定的----
     if (res &lt; 0) {
@@ -763,6 +781,12 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
 }
 
 </code></pre>
+<p><strong>说明：</strong></p>
+<p>(*env)-&gt;RegisterNatives(env, clazz, gMethods, 2);</p>
+<ul>
+<li>参数 2    gMethods 写对应关系(c中和java中函数的对应关系)</li>
+<li>参数3     是当前绑定了几个方法</li>
+</ul>
 <p><img alt="image-20230725191438096" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725191438096.png" /></p>
 <p><img alt="image-20230725191510063" src="imgs/day13-JNI%E5%BC%80%E5%8F%91.assets/image-20230725191510063.png" /></p>
 <p>这种情况下，在逆向时，就不能直接找对应关系了，就需要去找jni_onload</p>

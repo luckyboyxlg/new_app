@@ -67,7 +67,7 @@
 <li class="chapter active" data-path="day16-%E5%BE%97%E7%89%A9app.html">
 <a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
 <li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
-<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量day01</a>
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量</a>
 <li class="chapter" data-path="day18-B%E7%AB%9902.html">
 <a href="day18-B%E7%AB%9902.html">十八、B站02</a>
 <li class="chapter" data-path="day19-B%E7%AB%9903.html">
@@ -137,49 +137,65 @@ Theme by GitBook
 
 
 <h1 id="app">十六、得物app</h1>
-<h1 id="1">1 得物目标</h1>
+<h2 id="_1">一、前言</h2>
+<h3 id="1">1、得物目标</h3>
 <pre><code class="language-python"># 采集推荐信息
 # 版本
     -4.74.5
 </code></pre>
-<p><img alt="image-20231013200415647" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20231013200415647.png" /></p>
-<h1 id="2">2 绕过强制更新</h1>
+<p><img src="imgs/day16-得物app.assets/image-20231013200415647.png" alt="image-20231013200415647" style="zoom:50%;" /></p>
+<h3 id="2">2、绕过强制更新</h3>
 <pre><code class="language-python"># 先断网，打开app，再联网即可
 </code></pre>
-<p><img alt="image-20231013200531328" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20231013200531328.png" /></p>
-<h1 id="3">3 抓包</h1>
-<h3 id="31-socksdroid">3.1 使用SocksDroid</h3>
-<pre><code class="language-python"># 该app禁用了手机端代理，所以我们使用SocksDroid代理
-# 操作步骤
-    - 手机系统代理删除
-    - 基本配置
-
-切记：在使用前删除手机上设置的系统代理。
-
-
-# 根据抓包分析，我们发现/sns-rec/v1/recommend  地址为首页推荐接口
-# 地址如下：https://app.dewu.com/sns-rec/v1/recommend/all/feed
-    -地址：https://app.dewu.com/sns-rec/v1/recommend/all/feed
-    -请求方式：get
-    -请求头：
-        -X-Auth-Token：必须带
-    -请求参数：
-        -newSign：这个接口不需要带，学习破解它，后续别的接口需要带
-</code></pre>
+<p><img src="imgs/day16-得物app.assets/image-20231013200531328.png" alt="image-20231013200531328" style="zoom:50%;" /></p>
+<h3 id="3-socksdroid">3、抓包工具-SocksDroid</h3>
+<ul>
+<li>工具使用</li>
+</ul>
+<p>SocksDroid</p>
+<ul>
+<li>
+<p>步骤</p>
+</li>
+<li>
+<p>该app禁用了手机端代理，所以我们使用SocksDroid代理</p>
+</li>
+<li>
+<p>手机系统代理删除</p>
 <p><img alt="image-20220928184546944" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20220928184546944.png" /></p>
 <p><img alt="image-20230801161344280" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801161344280.png" /></p>
-<h1 id="4-newsign">4 破解newSign</h1>
-<h2 id="41-newsign">4.1 反编译搜索newSign</h2>
-<pre><code class="language-python"># 1 把app拖入 jadx中，反编译，搜索     &quot;newSign
-# 2 搜出8个，但实际上只有5个有效，5个都在同一个类中---》随便点一个进去看--》hook验证
-# 3 发现它是写在拦截器中---》所有请求，都会带这个newSign
-# 4 最终调用了RequestUtils.c
-# 5 hook一下 RequestUtils.c， 确认有没有走
-</code></pre>
+</li>
+<li>
+<p>抓包说明</p>
+</li>
+<li>
+<p>根据抓包分析，我们发现/sns-rec/v1/recommend  地址为首页推荐接口</p>
+</li>
+<li>
+<p>地址如下：https://app.dewu.com/sns-rec/v1/recommend/all/feed</p>
+<p><code>-请求方式：get
+-请求头：
+-X-Auth-Token：必须带
+-请求参数：
+-newSign：这个接口不需要带，学习破解它，后续别的接口需要带</code></p>
+</li>
+</ul>
+<h2 id="newsign">二、破解newSign</h2>
+<h3 id="1newsign">1、反编译搜索newSign</h3>
+<ul>
+<li>把app拖入 jadx中，反编译，搜索     "newSign</li>
+<li>搜出8个，但实际上只有5个有效，5个都在同一个类中---》随便点一个进去看--》hook验证</li>
+<li>发现它是写在拦截器中---》所有请求，都会带这个newSign</li>
+<li>最终调用了RequestUtils.c</li>
+<li>hook一下 RequestUtils.c， 确认有没有走</li>
+</ul>
 <p><img alt="image-20230801162017994" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801162017994.png" /></p>
 <p><img alt="image-20230801162215134" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801162215134.png" /></p>
 <p><img alt="image-20230801162358102" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801162358102.png" /></p>
-<h2 id="42-hook-requestutilsc">4.2 Hook-RequestUtils.c</h2>
+<h3 id="2hook-requestutilsc">2、Hook-RequestUtils.c</h3>
+<ul>
+<li><strong>hook代码</strong></li>
+</ul>
 <pre><code class="language-python">import frida
 import sys
 
@@ -226,7 +242,7 @@ sys.stdin.read()
 </code></pre>
 <p><img alt="image-20240102203740760" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20240102203740760.png" /></p>
 <p><img alt="image-20240102203958837" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20240102203958837.png" /></p>
-<h2 id="43-requestutilsc">4.3 分析RequestUtils.c核心逻辑</h2>
+<h3 id="3requestutilsc">3、分析RequestUtils.c核心逻辑</h3>
 <pre><code class="language-java">public static synchronized String c(Map&lt;String, String&gt; map, long j2) throws UnsupportedEncodingException {
     synchronized (RequestUtils.class) {
         PatchProxyResult proxy = PatchProxy.proxy(new Object[]{map, new Long(j2)}, null, changeQuickRedirect, true, 6612, new Class[]{Map.class, Long.TYPE}, String.class);
@@ -295,7 +311,7 @@ a(AESEncrypt.encode(DuHttpConfig.f15796c, sb2));
 
 
 </code></pre>
-<h3 id="431-a-md5">4.3.1 a 函数就是md5加密</h3>
+<h3 id="4a-md5">4、a 函数就是md5加密</h3>
 <pre><code class="language-java">public static String a(String str) {
     PatchProxyResult proxy = PatchProxy.proxy(new Object[]{str}, null, changeQuickRedirect, true, 6616, new Class[]{String.class}, String.class);
     if (proxy.isSupported) {
@@ -321,8 +337,10 @@ a(AESEncrypt.encode(DuHttpConfig.f15796c, sb2));
 }
 }
 </code></pre>
-<h3 id="432-aesencryptencode">4.3.2 AESEncrypt.encode</h3>
-<h4 id="4321-hook-aesencryptencode">4.3.2.1 hook--&gt;AESEncrypt.encode</h4>
+<h3 id="5aesencryptencode">5、AESEncrypt.encode</h3>
+<ul>
+<li>hook--&gt;AESEncrypt.encode</li>
+</ul>
 <pre><code class="language-python"># 1 AESEncrypt.encode(DuHttpConfig.f15796c, sb2)
 # 2 双击点进去
     public class AESEncrypt {
@@ -390,7 +408,7 @@ sys.stdin.read()
 
 '''
 </code></pre>
-<h4 id="4322-aesencryptencode">4.3.2.2 分析源码AESEncrypt.encode</h4>
+<h3 id="6aesencryptencode">6、分析源码AESEncrypt.encode</h3>
 <pre><code class="language-java">static {
         try {
             System.loadLibrary(&quot;JNIEncrypt&quot;);
@@ -453,12 +471,13 @@ script.on(&quot;message&quot;, on_message)
 script.load()
 sys.stdin.read()
 </code></pre>
-<h3 id="433-aesencryptencodebyte">4.3.3 AESEncrypt.encodeByte</h3>
+<h3 id="7aesencryptencodebyte">7、AESEncrypt.encodeByte</h3>
 <pre><code class="language-java">public static native String encodeByte(byte[] bArr, String str);
 // bArr是loginTokenplatformandroidtimestamp1690879969300type1uuidaa39fda5dfb88d79v4.74.5字节数组
 // str是一堆010100101，多hook几次，发现是固定的（其实后续代码没有使用）
 </code></pre>
-<h4 id="4331-solibjniencryptso-64">4.3.3.1 反编译so文件(libJNIEncrypt.so-64位)</h4>
+<h3 id="8so">8、反编译so文件</h3>
+<p>libJNIEncrypt.so-64位</p>
 <pre><code class="language-python"># 1 使用IDA打开,点击exports
 # 2 发现没有java开发的方法，说明是【动态注册】
 # 3 所以我们要找JNI_OnLoad---》点击进入
@@ -505,7 +524,7 @@ jint JNI_OnLoad(JavaVM *vm, void *reserved)
 <p><img alt="image-20230801170830994" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801170830994.png" /></p>
 <p><img alt="image-20230801171446185" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801171446185.png" /></p>
 <p><img alt="image-20230801171706591" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801171706591.png" /></p>
-<h3 id="4332-soencode">4.3.3.2 反编译的so文件，encode源代码</h3>
+<h3 id="9soencode">9、反编译的so文件，encode源代码</h3>
 <pre><code class="language-c">// 把a1转换成 JNIEnv_
 jstring __fastcall encode(JNIEnv_ *a1, __int64 a2, __int64 a3, __int64 a4)
 {
@@ -582,9 +601,13 @@ LABEL_8:
 <p><img alt="image-20230801172522564" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801172522564.png" /></p>
 <p><img alt="image-20230801172608050" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801172608050.png" /></p>
 <pre><code class="language-python"># 我们猜想它内部就是用了aes加密，使用base64编码，我们hook一下验证--》AES_128_ECB_PKCS5Padding_Encrypt
-
 </code></pre>
-<h3 id="433-hook-libjniencryptso-aes_128_ecb_pkcs5padding_encrypt">4.3.3 hook--&gt;libJNIEncrypt.so--&gt;AES_128_ECB_PKCS5Padding_Encrypt</h3>
+<h3 id="10hook-so">10、hook-so文件</h3>
+<ul>
+<li><strong>so文件：</strong>libJNIEncrypt.so</li>
+<li><strong>方法：</strong> AES_128_ECB_PKCS5Padding_Encrypt</li>
+<li>hook代码</li>
+</ul>
 <pre><code class="language-python"># com.shizhuang.duapp
 import frida
 import sys
@@ -631,7 +654,7 @@ sys.stdin.read()
 '''
 </code></pre>
 <p><img alt="image-20240102215806518" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20240102215806518.png" /></p>
-<h3 id="434-pythoncaes">4.3.4 使用python重写c的aes加密</h3>
+<h3 id="11pythoncaes">11、使用python重写c的aes加密</h3>
 <pre><code class="language-python">from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 import base64
@@ -659,27 +682,7 @@ print(result)
 
 '''
 </code></pre>
-<h2 id="44-uuid">4.4 加密的明文分析uuid</h2>
-<pre><code class="language-python"># loginTokenplatformandroidrouterVersion569timestamp1690882175032uuidaa39fda5dfb88d79v4.74.5
-# 变成
-loginToken
-platform android
-router 569
-timestamp 1690882175032
-uuid aa39fda5dfb88d79  # 这个uuid我们要破解
-Version v4.74.5
-
-
-# 找到PatchProxy.proxy ，美团出的热修复代理框架，这里找不到，它不是直接调用的
-
-# 搜索 X-Auth-Token 或者 hashMap.put(&quot;uuid&quot;,
-# 最终确认，这个uuid就是获取设备id，我们代码自己生成即可
-</code></pre>
-<p><strong><img alt="image-20230801173554545" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801173554545.png" /></strong></p>
-<p><img alt="image-20230801173617683" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801173617683.png" /></p>
-<p><img alt="image-20230801174138000" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174138000.png" /></p>
-<p><img alt="image-20230801174424523" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174424523.png" /></p>
-<h2 id="45-newsign">4.5 代码整合newSign</h2>
+<h3 id="12newsign">12、代码整合newSign</h3>
 <pre><code class="language-python">import time
 import requests
 import hashlib
@@ -735,23 +738,73 @@ aes_string = base64.encodebytes(aes_string)
 aes_string = aes_string.replace(b&quot;\n&quot;, b&quot;&quot;)
 sign_string = md5(aes_string)
 print(sign_string)
-
 </code></pre>
-<h1 id="5-x-auth-token">5 破解X-Auth-Token</h1>
+<h2 id="uuid">三、 加密的明文分析uuid</h2>
+<ul>
+<li>说明</li>
+</ul>
+<pre><code class="language-python"># loginTokenplatformandroidrouterVersion569timestamp1690882175032uuidaa39fda5dfb88d79v4.74.5
+# 变成
+loginToken
+platform android
+router 569
+timestamp 1690882175032
+uuid aa39fda5dfb88d79  # 这个uuid我们要破解
+Version v4.74.5
+
+
+# 找到PatchProxy.proxy ，美团出的热修复代理框架，这里找不到，它不是直接调用的
+
+# 搜索 X-Auth-Token 或者 hashMap.put(&quot;uuid&quot;,
+# 最终确认，这个uuid就是获取设备id，我们代码自己生成即可
+</code></pre>
+<p><strong><img alt="image-20230801173554545" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801173554545.png" /></strong></p>
+<p><img alt="image-20230801173617683" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801173617683.png" /></p>
+<p><img alt="image-20230801174138000" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174138000.png" /></p>
+<p><img alt="image-20230801174424523" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174424523.png" /></p>
+<h3 id="_2"></h3>
+<h2 id="x-auth-token">四、破解X-Auth-Token</h2>
 <pre><code class="language-python"># jwt 都是后端生成，返回给前端的，所以我们需要找之前的请求，看那个请求返回了jwt
 </code></pre>
 <p><img alt="image-20230801174646182" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801174646182.png" /></p>
-<h2 id="51-token">5.1 查看token的值</h2>
-<pre><code class="language-python">t='eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2OTA4ODMzMzIsImV4cCI6MTcyMjQxOTMzMiwiaXNzIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInN1YiI6ImFhMzlmZGE1ZGZiODhkNzkiLCJ1dWlkIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInVzZXJJZCI6MTkyMjE2ODYzOCwidXNlck5hbWUiOiLlvpfniallci1DMUkzUDdMNyIsImlzR3Vlc3QiOnRydWV9.TSxYlcBPSA8V1iX22dIVESYSLyW37t3LmWL3E5rAMsTPi7RyDbaS4rQNbmhDZUt25OdzB2gmeAAyKu8jv_oQotSx-Sl5R_eU4Pa4trtHaAQyxaVEgJ06TM-UBOu58ZEOobS0yHRpQb9CogBmUYoQdyZkss7qhsm5WcdPiS3PK0WwSt0Vkdd_Pa6Ash_PvmRGhrczMFGtYYMkPBd5X-1TmoGWv139sMzJ3KbWpebIedmJprQI8SXqwQq9FEMTeSrHYokObnwonmScZkkAjSUjT8LXsfH6QKRforuy1CI0yhKu14K-ZBXdO1bZMTaTXEuMIOn_DxvRmg9RBvaypvi_pw'
-import base64
-res=base64.b64decode('eyJpYXQiOjE2OTA4ODMzMzIsImV4cCI6MTcyMjQxOTMzMiwiaXNzIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInN1YiI6ImFhMzlmZGE1ZGZiODhkNzkiLCJ1dWlkIjoiYWEzOWZkYTVkZmI4OGQ3OSIsInVzZXJJZCI6MTkyMjE2ODYzOCwidXNlck5hbWUiOiLlvpfniallci1DMUkzUDdMNyIsImlzR3Vlc3QiOnRydWV9')
-print(res)
-
-b=b'\xe5\xbe\x97\xe7\x89\xa9er-C1I3P7L7'
-print(str(b,encoding='utf-8'))
+<h3 id="1token">1、查看token的值</h3>
+<p>JWT（JSON Web Token）是一种开放标准 (RFC 7519) 的紧凑型、自包含机制，用于在网络应用环境间安全地传输信息。JWT 主要用于身份验证和信息交换。通过数字签名，可以确保信息的完整性。</p>
+<h3 id="2jwt"><strong>2、JWT 的结构</strong></h3>
+<p>JWT 由三部分组成，每一部分用<code>.</code>分隔：</p>
+<ol>
+<li><strong>头部（Header）</strong></li>
+</ol>
+<p><strong>通常是固定的    公司信息，加密方式等</strong></p>
+<ol>
+<li><strong>载荷（Payload）</strong></li>
+</ol>
+<p>载荷包含了声明（claims），这些声明是实际要传递的数据。JWT 规范定义了一些标准字段（注册声明），但你也可以定义自己的私有声明。</p>
+<p><strong>（用户信息，用户名，用户id，token过期时间，token签发时间）</strong></p>
+<ol>
+<li><strong>签名（Signature）</strong></li>
+</ol>
+<p>签名部分用于验证消息在传输过程中没有被更改，并且，对于使用私钥签名的 token，它还可以验证 JWT 的发送方的身份。</p>
+<p><strong>（把第一段和第二段使用加密方式签名得到--》反解出重要信息）</strong></p>
+<p>因为是用于传输数据和验证登录，也就是App运行的时候就会向后端发起请求获得，所以我们可以清除App数据，然后通过抓包进行观察</p>
+<h3 id="3x-auth-token">3、<strong>X-Auth-Token</strong></h3>
+<p><img alt="image-20250102141853659" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20250102141853659.png" /></p>
+<pre><code>Bearer eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MzU2MzA0NjEsImV4cCI6MTc2NzE2NjQ2MSwiaXNzIjoiM2IwNzk5NmNmMzM0MjQzMyIsInN1YiI6IjNiMDc5OTZjZjMzNDI0MzMiLCJ1dWlkIjoiM2IwNzk5NmNmMzM0MjQzMyIsInVzZXJJZCI6MjQ0MDQyNDIzOSwidXNlck5hbWUiOiLlvpfniallci01SzJDNlUwRCIsImlzR3Vlc3QiOnRydWV9.bsAltPwKL7kuKfXOBC39d2M_EhXLeMgqpVOddHrV0c3nooZKZcbNXX5GJtqr6n5jsFcwxgR6inaQQI496cNi4JWGXiPRUqAo0f381ZGd7Etxo2p7bDSuH32sAkdfXh2NgUw_ZU8PVnijey5CZnyOnvrByAS4NwNNQsyywt2kAT5yiGh-wPH791AHmYw7ritknLV_Luc0bblIoCy1pHP5k1TYTPkm9j-D6wwU0RwgzUyd7deD82yGN-mCI-RcxcYWqx0YVbAF3hnyb16KhhczMFD3jg988K_WanalEzlRk0KLI2kTbL95oh3a-AC_Hcdk-qygz5NFO5R06n2jL3lDCg
 </code></pre>
-<h2 id="52-token">5.2 获取token</h2>
+<p>分为三段式(按照点分割)</p>
+<p><strong>头部</strong> </p>
+<pre><code>eyJhbGciOiJSUzI1NiJ9    
+</code></pre>
+<p><strong>荷载</strong></p>
+<pre><code>eyJpYXQiOjE3MzU2MzA0NjEsImV4cCI6MTc2NzE2NjQ2MSwiaXNzIjoiM2IwNzk5NmNmMzM0MjQzMyIsInN1YiI6IjNiMDc5OTZjZjMzNDI0MzMiLCJ1dWlkIjoiM2IwNzk5NmNmMzM0MjQzMyIsInVzZXJJZCI6MjQ0MDQyNDIzOSwidXNlck5hbWUiOiLlvpfniallci01SzJDNlUwRCIsImlzR3Vlc3QiOnRydWV9
+</code></pre>
+<p>解码base64(得到用户相关的信息)</p>
+<p><img alt="image-20250102162728853" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20250102162728853.png" /></p>
+<p><strong>签名</strong></p>
+<pre><code>bsAltPwKL7kuKfXOBC39d2M_EhXLeMgqpVOddHrV0c3nooZKZcbNXX5GJtqr6n5jsFcwxgR6inaQQI496cNi4JWGXiPRUqAo0f381ZGd7Etxo2p7bDSuH32sAkdfXh2NgUw_ZU8PVnijey5CZnyOnvrByAS4NwNNQsyywt2kAT5yiGh-wPH791AHmYw7ritknLV_Luc0bblIoCy1pHP5k1TYTPkm9j-D6wwU0RwgzUyd7deD82yGN-mCI-RcxcYWqx0YVbAF3hnyb16KhhczMFD3jg988K_WanalEzlRk0KLI2kTbL95oh3a-AC_Hcdk-qygz5NFO5R06n2jL3lDCg
+</code></pre>
+<h3 id="4token">4、获取token</h3>
 <p><img alt="image-20230801180114385" src="imgs/day16-%E5%BE%97%E7%89%A9app.assets/image-20230801180114385.png" /></p>
+<p><strong>代码实现</strong></p>
 <pre><code class="language-python">import time
 import requests
 import hashlib
@@ -822,7 +875,7 @@ x_auth_token = res.headers['X-Auth-Token']
 print(x_auth_token)
 
 </code></pre>
-<h1 id="6">6 代码整合</h1>
+<h2 id="_3">五、代码整合</h2>
 <pre><code class="language-python">import time
 import requests
 import hashlib
