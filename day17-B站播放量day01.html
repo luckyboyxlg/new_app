@@ -32,8 +32,8 @@
 <li class="divider"></li>
 <li class="chapter" data-path="index.html">
 <a href="index.html">Welcome to Lucky App逆向</a>
-<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
-<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">
+<a href="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">一、前期准备</a>
 <li class="chapter" data-path="day02-adb.html">
 <a href="day02-adb.html">二、adb</a>
 <li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
@@ -137,11 +137,12 @@ Theme by GitBook
 
 
 <h1 id="b">十七、B站播放量</h1>
-<h1 id="1">1 目标和版本</h1>
+<h2 id="_1">一、前提</h2>
+<h3 id="1">1、目标和版本</h3>
 <pre><code class="language-python"># 目标：B站视频刷播放量
 # 版本：v6.24.0
 </code></pre>
-<h1 id="2">2 抓包</h1>
+<h3 id="2">2、抓包</h3>
 <pre><code class="language-python"># 1 B站没有反代理---》直接手机配置代理抓包即可
 # 2 打开B站app，随便点击一个视频，抓包查看
     -定位到某个可以提高播放量的接口
@@ -160,8 +161,9 @@ Theme by GitBook
 
 </code></pre>
 <p><img alt="image-20230803162146692" src="imgs/day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.assets/image-20230803162146692.png" /></p>
-<h1 id="3">3 反编译</h1>
-<h2 id="31-jadx">3.1 jadx增加内存</h2>
+<h2 id="_2">二、处理加密</h2>
+<h3 id="1_1">1、反编译</h3>
+<p><strong>jadx增加内存</strong></p>
 <pre><code class="language-python"># jadx-gui 反编译app的时候内存不足
 1.使用记事本或者notpad++打开jadx-gui.bat
 2.找到 set DEFAULT_JVM_OPTS=&quot;-Xms128M&quot; &quot;-Xmx4g&quot;
@@ -169,7 +171,7 @@ Theme by GitBook
 </code></pre>
 <p><img alt="image-20230803163140464" src="imgs/day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.assets/image-20230803163140464.png" /></p>
 <p><img alt="image-20230803163358343" src="imgs/day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.assets/image-20230803163358343.png" /></p>
-<h1 id="4">4 请求体加密算法破解</h1>
+<h3 id="2_1">2、请求体加密算法破解</h3>
 <pre><code class="language-python"># 1 反编译后---》搜索请求地址： click/android2
 # 2 一个位置，双击进入
 # 3 查找用例：reportClick，就只有一个位置
@@ -190,7 +192,7 @@ c0 create = c0.create('编码方式', d.this.H7(this.b.a(), this.b.b(), this.b.h
 
 # 7 d.this.H7 源码分析
 </code></pre>
-<h2 id="40">4.0 搜索定位分析</h2>
+<h3 id="3">3、搜索定位分析</h3>
 <p><img alt="image-20230803163647956" src="imgs/day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.assets/image-20230803163647956.png" /></p>
 <pre><code class="language-java">public final void a() {
     long j2;
@@ -220,7 +222,7 @@ d.this.H7：传入了参数，我们查看H7代码
 */
 
 </code></pre>
-<h3 id="401-dthish7">4.0.1 d.this.H7</h3>
+<h4 id="1-dthish7">(1) d.this.H7</h4>
 <pre><code class="language-java">public final byte[] H7(long j2, long j4, int i, long j5, long j6, int i2, int i3, long j7, String str, int i4, String str2, String str3) throws Exception {
     long j8;
     int i5;
@@ -297,7 +299,7 @@ sb=aid=asdfasdf&amp;cid=asadfasd&amp;part=sadfasd&amp;sign=加密串
 7 得到的就是 请求体的内
 */
 </code></pre>
-<h3 id="402-hook-h7">4.0.2 hook--&gt;h7查看</h3>
+<h4 id="2-hook-h7">(2) hook--&gt;h7查看</h4>
 <pre><code class="language-python">import subprocess
 subprocess.run('adb forward tcp:27042 tcp:27042')
 subprocess.run('adb forward tcp:27043 tcp:27043')
@@ -340,7 +342,7 @@ script.load()
 sys.stdin.read()
 
 </code></pre>
-<h3 id="403-16">4.0.3 把抓包得到的二进制字节数组--》转成16进制字符串</h3>
+<h4 id="3-16">(3) 把抓包得到的二进制字节数组--》转成16进制字符串</h4>
 <pre><code class="language-python"># 把java的有符号的字节，转成python无符号的字节---》转成16进制
 
 v=[-84,80,71,-56,45,62,-111,-96,41,107,1,-92,32,103,-68,5,62,10,-30,-1,88,-113,115,-110,-90,60,-44,8,3,50,106,112,126,-35,58,-73,5,22,2,61,5,105,-104,-16,88,-94,27,-109,72,-112,16,-103,-111,-73,98,-49,54,19,121,9,-55,-60,-124,-3,-18,126,91,-10,-102,109,71,16,-114,101,-29,-125,125,108,-22,-89,46,43,-56,106,96,-77,-89,-12,11,65,-8,-24,71,119,53,72,-54,-95,-20,-85,-110,-69,-126,-101,60,-105,33,-126,-66,-70,-86,66,-46,3,-38,73,-81,-104,-7,82,92,31,99,-89,-116,-119,61,6,123,-113,-58,1,98,90,-23,-83,25,-3,107,116,-76,123,43,64,90,-62,91,68,111,78,0,95,-89,-2,-1,44,-15,-112,-123,-89,-124,-18,-82,-112,-46,12,-80,-111,-110,94,-82,80,-91,54,-73,55,8,22,-2,-125,-39,-90,5,67,-108,-119,-16,-97,-13,-5,-127,12,-81,79,18,52,107,48,-10,58,-9,28,-12,102,86,-110,46,83,63,61,17,-55,44,67,-37,-53,-85,-7,-36,93,127,-16,-94,87,34,-3,-75,-99,40,-30,-39,-1,0,123,14,-108,10,71,72,96,6,118,89,-89,-95,75,111,2,47,97,20,26,-68,-43,77,-97,112,-32,54,-81,0,51,-69,-92,-92,72,-109,36,-61,-91,94,31,29,48,-100,118,-83,-15,19,22,89,43,-74,-60,92,99,116,-66,-15,-121,-66,-27,18,-13,-126,109,-14,69,-113,102,-69,-95,-76,-56,10,-112,-16,28,-76,-118,109,-66,35,-52,10,80,-61,-121,-6,-75,-4,-109,-102,110,18,-94,96,84,-117,-81,44,-7,-124,-26,66,-63]
@@ -361,7 +363,7 @@ print(''.join(res)) # 转成字符串
 '''
 </code></pre>
 <p><img alt="image-20230803170659828" src="imgs/day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.assets/image-20230803170659828.png" /></p>
-<h2 id="41-sign">4.1 sign签名</h2>
+<h3 id="4sign">4、sign签名</h3>
 <pre><code class="language-python"># 1 上面分析的：
  调用：t3.a.i.a.a.a.b.e.b对 aid=asdfasdf&amp;cid=asadfasd&amp;part=sadfasd进行加密，得到签名字符串
 # 2 代码如下--》破解加密如何加的--》sign是如何加密的
@@ -382,7 +384,7 @@ sb.append(b2);
 
 # 3 查看 t3.a.i.a.a.a.b.e.b
 </code></pre>
-<h3 id="411-dthish7">4.1.1 分析d.this.H7源码</h3>
+<h3 id="5dthish7">5、分析d.this.H7源码</h3>
 <pre><code class="language-java">public final byte[] H7(long j2, long j4, int i, long j5, long j6, int i2, int i3, long j7, String str, int i4, String str2, String str3) throws Exception {
     // 1 把一堆key-value放到TreeMap中
     TreeMap treeMap = new TreeMap();
@@ -447,8 +449,7 @@ t3.a.i.a.a.a.b.e.a(sb3);
 
 */
 </code></pre>
-<h3 id="412-t3aiaaabeb">4.1.2 分析t3.a.i.a.a.a.b.e.b</h3>
-<h4 id="4121-t3aiaaabeb">4.1.2.1 t3.a.i.a.a.a.b.e.b</h4>
+<h3 id="6-t3aiaaabeb">6、 t3.a.i.a.a.a.b.e.b</h3>
 <pre><code class="language-java">public final String b(String params) {
     Charset charset = com.bilibili.commons.c.b;
     //1  把传入的params字符串，得到bytes格式，params=aid=asdfsd&amp;cid=121342&amp;part=3dseffs
@@ -478,7 +479,7 @@ t3.a.i.a.a.a.b.e.a(sb3);
 // 典型的SHA256加密:对传入的两个参数加密，一个是加密体，一个是盐，盐一般不变
 
 </code></pre>
-<h4 id="4122-combilibilicommonsmagbytes-bytes2">4.1.2.2 com.bilibili.commons.m.a.g(bytes, bytes2)</h4>
+<h3 id="7combilibilicommonsmagbytes-bytes2">7、com.bilibili.commons.m.a.g(bytes, bytes2)</h3>
 <pre><code class="language-java">// 继续分析com.bilibili.commons.m.a.g(bytes, bytes2)
 // 典型的SHA256加密:对传入的两个参数加密，一个是加密体，一个是盐，盐一般不变
 public static String g(byte[] bArr, byte[] bArr2) {
@@ -497,7 +498,7 @@ public static String g(byte[] bArr, byte[] bArr2) {
 }
 // 继续分析g.H---》就是把传入的字符数组转成16进制字符串
 </code></pre>
-<h4 id="4123-gh">4.1.2.3 g.H</h4>
+<h3 id="8gh">8、g.H</h3>
 <pre><code class="language-java">// 继续分析g.H---》就是把传入的字符数组转成16进制字符串
 public static String H(byte[] bArr) {
     StringBuilder sb = new StringBuilder();
@@ -511,7 +512,7 @@ public static String H(byte[] bArr) {
     return sb.toString();
 }
 </code></pre>
-<h4 id="4124-hook-gsha256">4.1.2.4 hook--&gt;g看看sha256的盐是什么</h4>
+<h3 id="9hook-gsha256">9、hook--&gt;g看看sha256的盐是什么</h3>
 <pre><code class="language-python">import frida
 import sys
 
@@ -557,7 +558,7 @@ sys.stdin.read()
     2 通过盐：9cafa6466a028bfb  + sha256 加密 得到加密串
     3 转成16进制
 </code></pre>
-<h4 id="4125-pythonsha256">4.1.2.5 python实现sha256加密</h4>
+<h3 id="10pythonsha256">10、python实现sha256加密</h3>
 <pre><code class="language-python">import hashlib
 
 data = &quot;aid=201583388&amp;auto_play=0&amp;build=6240300&amp;cid=219823580&amp;did=IBksFHYQJ0QiF3FAckQmFVUFbBRxHS93Ow&amp;epid=&amp;from_spmid=main.ugc-video-detail.0.0&amp;ftime=1690993444&amp;lv=0&amp;mid=0&amp;mobi_app=android&amp;part=1&amp;sid=0&amp;spmid=main.ugc-video-detail.0.0&amp;stime=1691055961&amp;sub_type=0&amp;type=3&quot;
@@ -579,8 +580,8 @@ sign= 2c3744b21ae185adf9e9d90b4b2f89e8826b4837a6fcc78aae2438e9cb55e280
 2c3744b21ae185adf9e9d90b4b2f89e8826b4837a6fcc78aae2438e9cb55e280
 '''
 </code></pre>
-<h2 id="42">4.2 请求体内容加密</h2>
-<h3 id="421-t3aiaaabea-">4.2.1 分析t3.a.i.a.a.a.b.e.a--》返回字节数组</h3>
+<h2 id="_3">三、请求体内容加密</h2>
+<h3 id="1t3aiaaabea-">1、分析t3.a.i.a.a.a.b.e.a--》返回字节数组</h3>
 <pre><code class="language-java">// aes加密
 public final byte[] a(String body) {
     try {
@@ -636,7 +637,7 @@ static {
 
 
 </code></pre>
-<h3 id="422-hook-aesiv">4.2.2 hook--&gt;得到aes秘钥和iv</h3>
+<h3 id="2hook-aesiv">2、hook--&gt;得到aes秘钥和iv</h3>
 <pre><code class="language-python">import frida
 import sys
 
@@ -687,7 +688,7 @@ aes的iv是
 iv= 77b07a672d57d64c
 '''
 </code></pre>
-<h3 id="423-pythonaes">4.2.3 python实现aes加密</h3>
+<h3 id="3python">3、python 实现请求体加密</h3>
 <pre><code class="language-python">from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 
@@ -712,7 +713,7 @@ bytes_data = aes_encrypt(data)
 result = [item for item in bytes_data]
 print(result)
 </code></pre>
-<h2 id="43">4.3   总结流程</h2>
+<h3 id="4">4、总结流程</h3>
 <pre><code class="language-python"># 1 根据请求地址：x/report/click/android2  ---》反编译查找
 # 2 retrofit发送请求---》用例
     ResponseBody responseBody = retrofit.create(接口类a.class).reportClick(参数).execute().body()
@@ -738,7 +739,7 @@ sb=aid=asdfasdf&amp;cid=asadfasd&amp;part=sadfasd&amp;sign=加密串
 
 # 7 得到最终的字符串，又加密了---》aes加密：秘钥，iv，明文
 </code></pre>
-<h1 id="5-aidciddid">5 请求体中aid，cid，did破解</h1>
+<h2 id="aidciddid">四、请求体中aid，cid，did破解</h2>
 <pre><code class="language-python"># 把请求体字符串转成字典
 &quot;aid=201583388&amp;auto_play=0&amp;build=6240300&amp;cid=219823580&amp;did=IBksFHYQJ0QiF3FAckQmFVUFbBRxHS93Ow&amp;epid=&amp;from_spmid=main.ugc-video-detail.0.0&amp;ftime=1690993444&amp;lv=0&amp;mid=0&amp;mobi_app=android&amp;part=1&amp;sid=0&amp;spmid=main.ugc-video-detail.0.0&amp;stime=1691055961&amp;sub_type=0&amp;type=3&quot;
 
@@ -768,7 +769,7 @@ sb=aid=asdfasdf&amp;cid=asadfasd&amp;part=sadfasd&amp;sign=加密串
     &quot;type&quot;:&quot;3&quot;
 }
 </code></pre>
-<h2 id="51-aidcid">5.1 aid和cid</h2>
+<h3 id="1aidcid">1、aid和cid</h3>
 <pre><code class="language-python"># 正常app也是可以返回aid和cid的，但是之前在web端破解过这个，我们因为要刷自己的视频，地址是知道的，所以直接获得即可
 import requests
 import json
@@ -789,7 +790,7 @@ print(aid)
 print(cid)
 
 </code></pre>
-<h2 id="52-did">5.2 参数did</h2>
+<h3 id="2did">2、did获取</h3>
 <pre><code class="language-python"># 1 找到did位置：treeMap.put(&quot;did&quot;, com.bilibili.lib.biliid.utils.f.a.c(f2));
 # 2 看源码，找到c
 public static String c(@Nullable Context context) {
@@ -876,7 +877,7 @@ public static String b(String str) {
 }
 
 </code></pre>
-<h3 id="521-hook-fdid-">5.2.1 hook--》f拿到did--&gt;清除所有数据</h3>
+<h3 id="3-hook-fdid-">3、 hook--》f拿到did--&gt;清除所有数据</h3>
 <pre><code class="language-python">import frida
 import sys
 
@@ -942,8 +943,8 @@ sys.stdin.read()
 hook到的是：|||
 '''
 </code></pre>
-<h3 id="53-macsn">5.3 生成字符串（mac地址|蓝牙地址|设备总线|sn号）</h3>
-<h4 id="531-macsn">5.3.1 生成mac和sn</h4>
+<h3 id="4macsn">4、生成字符串（mac地址|蓝牙地址|设备总线|sn号）</h3>
+<h3 id="5-macsn">5、 生成mac和sn</h3>
 <pre><code class="language-python">import random
 import string
 
@@ -967,7 +968,7 @@ sn = gen_sn()
 prev_did = &quot;{}|||{}&quot;.format(mac_string, sn)
 print(prev_did)
 </code></pre>
-<h3 id="54">5.4 位运算</h3>
+<h3 id="6">6、位运算</h3>
 <pre><code class="language-java">//b函数
 public static String b(String str) {
     // 把传入的字符串变成字节
@@ -987,7 +988,7 @@ public static String b(String str) {
     }
 }
 </code></pre>
-<h4 id="541-python">5.4.1 python实现</h4>
+<h3 id="7python">7、python实现</h3>
 <pre><code class="language-python">import random
 import string
 import base64
@@ -1000,7 +1001,7 @@ def base64_encrypt(data_string):
     res = base64.encodebytes(bytes(data_bytes))
     return res.strip().strip(b&quot;==&quot;).decode('utf-8')
 </code></pre>
-<h1 id="6">6 代码整合</h1>
+<h3 id="8">8、代码整合</h3>
 <pre><code class="language-python">import random
 import string
 import base64

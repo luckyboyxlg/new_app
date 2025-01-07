@@ -32,8 +32,8 @@
 <li class="divider"></li>
 <li class="chapter" data-path="index.html">
 <a href="index.html">Welcome to Lucky App逆向</a>
-<li class="chapter" data-path="day01-%E5%BC%80%E7%8F%AD.html">
-<a href="day01-%E5%BC%80%E7%8F%AD.html">一、前期准备</a>
+<li class="chapter" data-path="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">
+<a href="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">一、前期准备</a>
 <li class="chapter" data-path="day02-adb.html">
 <a href="day02-adb.html">二、adb</a>
 <li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
@@ -137,7 +137,7 @@ Theme by GitBook
 
 
 <h1 id="hook-app">四、hook-常用加密-抓包app</h1>
-<h1 id="1-hookfrida">1 hook框架frida</h1>
+<h2 id="hookfrida">一、hook框架frida</h2>
 <ul>
 <li>说明</li>
 </ul>
@@ -152,13 +152,13 @@ Theme by GitBook
 </li>
 <li>Frida：Frida 是一个跨平台的动态 Hook 框架，支持安卓和其他操作系统。它提供了一个强大的 JavaScript API，可以在运行时对应用程序进行 Hook，包括方法拦截、参数修改、调用注入等。Frida 可以用于安全研究、逆向工程和应用程序调试等方面。</li>
 </ul>
-<h2 id="11">1.1 下载安装</h2>
+<h3 id="1">1、下载安装</h3>
 <pre><code class="language-python">##### 注意事项####
 手机端 装 frida-server端 ----》放手机上
 电脑端 转 frida的python模块---》python解释器上
 ##### 版本必须相同 #####
 </code></pre>
-<h3 id="111">1.1.1 电脑端安装</h3>
+<h3 id="2">2、电脑端安装</h3>
 <ul>
 <li>安装在python解释器上，两个模块---》建议装在虚拟环境中</li>
 </ul>
@@ -176,8 +176,8 @@ Theme by GitBook
         找到对应你平台的whl文件
         pip install 把下载的文件拖到命令窗口</li>
 </ul>
-<p><img alt="image-20240313201611060" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313201611060.png" /></p>
-<h3 id="112-frida-server">1.1.2 手机端安装--frida-server</h3>
+<p><img alt="image-20240313201611060" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20240313201611060-6237480.png" /></p>
+<h3 id="3-frida-server">3、手机端安装--frida-server</h3>
 <ul>
 <li>下载地址</li>
 </ul>
@@ -219,10 +219,10 @@ Theme by GitBook
   chmod 777 frida-server-16.2.1-android-arm64
       rw- rw- rw- # 原来文件权限
       rwx rwx rwx # 文件权限变成这样了</code></p>
-<p><img alt="image-20240313202257406" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313202257406.png" /></p>
-<p><img alt="image-20240313202929621" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313202929621.png" /></p>
-<p><img alt="image-20240313203103404" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313203103404.png" /></p>
-<h2 id="12-hook-app">1.2 启动并hook-app</h2>
+<p><img alt="image-20240313202257406" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20240313202257406-6237477.png" /></p>
+<p><img alt="image-20240313202929621" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20240313202929621-6237469.png" /></p>
+<p><img alt="image-20240313203103404" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20240313203103404-6237466.png" /></p>
+<h3 id="4hook-app">4、启动并hook-app</h3>
 <ul>
 <li>在手机端 执行这个可执行文件</li>
 </ul>
@@ -268,8 +268,8 @@ subprocess.getoutput("adb forward tcp:27042 tcp:27042")
 subprocess.getoutput("adb forward tcp:27043 tcp:27043")</code></p>
 </li>
 </ul>
-<p><img alt="image-20230615163240601" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230615163240601.png" /></p>
-<h3 id="121-python-">1.2.1 编写python代码-打印手机中进程</h3>
+<p><img alt="image-20230615163240601" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20230615163240601-6237460.png" /></p>
+<h3 id="5python-">5、编写python代码-打印手机中进程</h3>
 <pre><code class="language-python"># 枚举手机上的所有进程 &amp; 前台进程
 import frida
 # 获取设备信息
@@ -288,8 +288,8 @@ print(front_app)
 
 # 没做端口转发就会报图下错误
 </code></pre>
-<p><img alt="image-20240313205324508" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20240313205324508.png" /></p>
-<h2 id="13-hook">1.3 hook某智赢加密算法</h2>
+<p><img alt="image-20240313205324508" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20240313205324508-6237440.png" /></p>
+<h3 id="6hook">6、hook某智赢加密算法</h3>
 <pre><code class="language-python"># 1 手机端启动 frida-server  ---》咱们启动了
 # 2 电脑端做端口转发---》做了
 # 3 写python脚本---》暂时先不用关注脚本是啥意思
@@ -297,7 +297,7 @@ print(front_app)
 # 5 右键运行 python脚本---卡住
 # 6 在手机端操作app的登录功能---》电脑端控制台就会有打印
 </code></pre>
-<h3 id="131-hook-">1.3.1 hook-车智赢脚本</h3>
+<h3 id="7hook-">7、hook-车智赢脚本</h3>
 <pre><code class="language-python">import frida
 import sys
 # 连接手机设备
@@ -330,29 +330,47 @@ script.load()
 sys.stdin.read()
 
 </code></pre>
-<h2 id="14-python-hook">1.4 python hook方式</h2>
-<pre><code class="language-python"># Spawn 方式适应场景：Spawn 方式是在目标应用程序启动时直接注入 Frida 的 Agent 代码
-# 只要一运行---》app会自动重启--》直接就把frida注入到程序中去了
-需要在应用程序启动的早期阶段进行 Hook。
-需要访问和修改应用程序的内部状态，例如应用程序的全局变量、静态变量等。
-需要 Hook 应用程序的初始化过程，以实现对应用程序的自定义初始化逻辑。
-需要在应用程序的上下文中执行代码，并与其他模块或库进行交互。
-
-
-
-# Attach 方式适应场景：Attach 方式是在目标应用程序已经运行的过程中动态地连接并注入 Frida 的 Agent 代码
-# 追加方案---》app运行了--》我们再运行hook脚本
-# 缺点--它不能hook，app一运行时执行的方法
-需要对已经运行的应用程序进行 Hook，即动态地连接到正在运行的进程。
-需要在应用程序运行时拦截和修改特定的方法调用。
-需要实时监视和修改应用程序的行为，例如参数修改、返回值篡改等。
-需要对应用程序进行调试和分析，以查找潜在的问题和漏洞。
-
-
-# spanw方案是在app运行一开始就hook--》它能hook更早期的方法
-# attach方案，在app运行后，再进行hook--》只能hook，某个操作对应的方法
-</code></pre>
-<h3 id="141-attach">1.4.1 attach方案</h3>
+<h2 id="spawnattach">二、Spawn与Attach方案</h2>
+<h3 id="1_1">1、区别</h3>
+<ul>
+<li>
+<p>Spawn</p>
+</li>
+<li>
+<p>Spawn 方式适应场景：Spawn 方式是在目标应用程序启动时直接注入 Frida 的 Agent 代码</p>
+</li>
+<li>只要一运行---》app会自动重启--》直接就把frida注入到程序中去了</li>
+<li>
+<p>需要在应用程序启动的早期阶段进行 Hook。
+    需要访问和修改应用程序的内部状态，例如应用程序的全局变量、静态变量等。
+    需要 Hook 应用程序的初始化过程，以实现对应用程序的自定义初始化逻辑。
+    需要在应用程序的上下文中执行代码，并与其他模块或库进行交互。</p>
+</li>
+<li>
+<p>Attach</p>
+</li>
+<li>
+<p>Attach 方式适应场景：Attach 方式是在目标应用程序已经运行的过程中动态地连接并注入 Frida 的 Agent 代码</p>
+</li>
+<li>
+<p>追加方案---》app运行了--》我们再运行hook脚本</p>
+</li>
+<li>
+<p>缺点--它不能hook，app一运行时执行的方法</p>
+</li>
+<li>
+<p>需要对已经运行的应用程序进行 Hook，即动态地连接到正在运行的进程。
+    需要在应用程序运行时拦截和修改特定的方法调用。
+    需要实时监视和修改应用程序的行为，例如参数修改、返回值篡改等。
+    需要对应用程序进行调试和分析，以查找潜在的问题和漏洞。</p>
+</li>
+<li>
+<p>spanw方案是在app运行一开始就hook--》它能hook更早期的方法</p>
+</li>
+</ul>
+<p>attach方案，在app运行后，再进行hook--》只能hook，某个操作对应的方法</p>
+<h3 id="2python-hook">2、python hook方式</h3>
+<h4 id="1-attach">(1) attach方案</h4>
 <ul>
 <li>代码</li>
 </ul>
@@ -385,7 +403,7 @@ sys.stdin.read()
   script.load()
   sys.stdin.read()</p>
 <p>```</p>
-<h3 id="142-spwan">1.4.2 spwan方案</h3>
+<h4 id="2-spwan">(2) spwan方案</h4>
 <ul>
 <li>代码</li>
 </ul>
@@ -417,7 +435,7 @@ sys.stdin.read()
   rdev.resume(pid)
   sys.stdin.read()
   ```</p>
-<h3 id="143">1.4.3 俩种区别</h3>
+<h4 id="3">(3) 俩种区别</h4>
 <h5 id="fridaattach"><strong>frida.attach()</strong></h5>
 <ul>
 <li><strong>用途</strong>：用于连接到一个已经运行的应用程序进程。</li>
@@ -440,8 +458,8 @@ sys.stdin.read()
 <li>需要手动恢复进程（使用 <code>resume(pid)</code>），否则应用将保持暂停状态。</li>
 <li>某些应用可能有反调试机制，可能会检测到这种启动方式并采取措施。</li>
 </ul>
-<h2 id="15-js-hook">1.5 js hook方式</h2>
-<h3 id="151-js-attach-hook">1.5.1 js 的attach-hook方案</h3>
+<h3 id="3js-hook">3、js hook方式</h3>
+<h4 id="1-attach-hook">(1) attach-hook方案</h4>
 <pre><code class="language-js">Java.perform(function () {
     var SecurityUtil = Java.use(&quot;com.autohome.ahkit.utils.SecurityUtil&quot;);
     SecurityUtil.encodeMD5.implementation = function(str){
@@ -455,7 +473,11 @@ sys.stdin.read()
 // attach 方案：frida -UF -l 4-js-hook方案.js   
 // 不需要写跟应用(app)相关的东西---》因为app现在正在前台运行
 </code></pre>
-<h3 id="152-jsspwan-hook">1.5.2 js的spwan-hook方案</h3>
+<ul>
+<li>执行命令</li>
+</ul>
+<p>frida -UF -l 4-js-hook方案.js   </p>
+<h4 id="2-spwan-hook">(2) spwan-hook方案</h4>
 <pre><code class="language-js">Java.perform(function () {
     var SecurityUtil = Java.use(&quot;com.autohome.ahkit.utils.SecurityUtil&quot;);
     SecurityUtil.encodeMD5.implementation = function(str){
@@ -464,34 +486,76 @@ sys.stdin.read()
         console.log(&quot;md5加密结果=&quot;,res);
         return res;
     }
-});
-// spawn 方案：
-frida -U -f com.che168.autotradercloud -l 4-js-hook方案.js 
-
-// 按 q退出
+}); 
 </code></pre>
-<h1 id="2-python">2 常见的加密算法python还原</h1>
-<pre><code class="language-python"># 加密分类
-1 单向加密：MD5，sha1 
-    -摘要算法，固定长度，但是根据加密后的结果反解不出明文
-
-2 对称加密：AES，DES
-    -加密和解密使用同一个秘钥
-
-3 非对称加密：RSA，DSA
+<ul>
+<li>执行命令</li>
+</ul>
+<p>frida -U -f com.che168.autotradercloud -l 4-js-hook方案.js </p>
+<p>按 q退出</p>
+<ul>
+<li>
+<p>这条命令的意思是：</p>
+</li>
+<li>
+<p><code>-U</code> 表示连接到通过 USB 连接的设备（通常是 Android 设备）。</p>
+</li>
+<li>
+<p><code>-f com.che168.autotradercloud</code> 表示启动包名为 <code>com.che168.autotradercloud</code> 的应用程序，并在启动后附加到该应用进程中。</p>
+</li>
+<li>
+<p><code>-l 4-js-hook方案.js</code> 中的 <code>-l</code> 意味着“加载”（load），后面跟的是一个 JavaScript 文件的路径，即 <code>4-js-hook方案.js</code>。这个文件应该包含你编写的 JavaScript 代码，用来定义你希望在目标应用中执行的操作，比如函数 hook、变量监控等。</p>
+<p><img alt="image-20250107160527818" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20250107160527818.png" /></p>
+</li>
+</ul>
+<h3 id="4python-hook-vs-js-hook">4、Python Hook vs JS Hook</h3>
+<h4 id="1_2">1.启动和附加方式</h4>
+<ul>
+<li>Python Hook：</li>
+<li>使用 <code>frida.get_remote_device().spawn()</code> 来启动目标应用程序，并随后使用 <code>attach()</code> 方法连接到新启动的应用程序。</li>
+<li>这种方式下，Frida 会等待应用程序完全启动后再加载脚本。</li>
+<li>JS Hook：</li>
+<li>使用命令行工具 <code>frida</code> 直接通过 <code>-f</code> 参数指定包名来启动应用程序并立即加载脚本。</li>
+<li>这种方式下，Frida 在启动时就会加载脚本，并且脚本会在应用初始化过程中执行。</li>
+</ul>
+<h4 id="2_1">2. 脚本加载时机</h4>
+<ul>
+<li>Python Hook：</li>
+<li>Python 代码中，<code>script.load()</code> 是在调用 <code>session.create_script(scr)</code> 之后显式调用的，这意味着脚本是在应用程序已经启动并且进入了稳定状态之后才加载的。</li>
+<li>JS Hook：</li>
+<li>当使用命令行工具时，<code>-l</code> 参数指定的脚本会在应用程序启动时立即加载，因此可以在更早的时间点影响应用程序的行为。</li>
+</ul>
+<h4 id="3_1">3. 应用重启行为</h4>
+<ul>
+<li>Python Hook：</li>
+<li>如果应用程序重启了，而 Python 程序仍然保持运行，那么可能会出现资源未正确释放或重新附加的问题，导致应用程序卡住。</li>
+<li>JS Hook：</li>
+<li>使用命令行工具时，一旦应用程序重启，之前的 Hook 会失效，需要重新运行命令行工具来重新 Hook。这种方式通常不会导致应用程序卡住，因为它不依赖于长时间运行的外部进程。</li>
+</ul>
+<h4 id="4pythonspawnhookapp">4.有的时候使用python的方式进行spawn方式hook会造成App应用卡住</h4>
+<p>当应用程序重启时，它可能会经历一系列的状态变化，包括重新初始化、重新加载资源等。如果你的 Python Hook 代码没有正确处理这些状态变化，比如没有及时释放旧的会话或者正确地重新附加到新的进程中，就可能导致应用程序无法正常继续运行。</p>
+<p>此外，Python 中使用的 <code>sys.stdin.read()</code> 会让程序挂起等待输入，这可能阻止了正确的退出机制。如果应用程序崩溃或重启，Python 程序可能没有机会清理资源，从而导致后续的操作出现问题。</p>
+<h4 id="5pythonjsspawn">5.如果python的方式卡主推荐使用js的spawn的方式</h4>
+<h2 id="python">三、常见的加密算法python还原</h2>
+<p><strong>加密分类</strong></p>
+<ul>
+<li>单向加密：MD5，sha1 
+    -摘要算法，固定长度，但是根据加密后的结果反解不出明文、不可逆</li>
+<li>对称加密：AES，DES
+    -加密和解密使用同一个秘钥    </li>
+<li>非对称加密：RSA，DSA
     -公钥，私钥，加密和解密不使用同一个秘钥
-    -公钥加密，私钥解密
-
-4 补充算法：base64 
-    -不叫加密--》只是编码
-</code></pre>
-<h2 id="21-md5">2.1 md5</h2>
+      -公钥加密，私钥解密</li>
+<li>补充算法：base64 
+    不叫加密--》只是编码</li>
+</ul>
+<h3 id="1md5">1、md5</h3>
 <pre><code class="language-python">import hashlib
 m = hashlib.md5()
 m.update('111111'.encode(&quot;utf8&quot;))
 print(m.hexdigest())
 </code></pre>
-<h2 id="22-sha1">2.2 sha1</h2>
+<h3 id="2sha1">2、sha1</h3>
 <pre><code class="language-python">import hashlib
 sha1 = hashlib.sha1()
 data = 'helloword'
@@ -499,7 +563,7 @@ sha1.update(data.encode('utf-8'))
 sha1_data = sha1.hexdigest()
 print(sha1_data)
 </code></pre>
-<h2 id="23-des">2.3 des加密</h2>
+<h3 id="3des">3、des加密</h3>
 <pre><code class="language-python"># pip3 install pycryptodomex
 # DES是一个分组加密算法，典型的DES以64位为分组对数据加密，加密和解密用的是同一个算法。它的密钥长度是56位（因为每个第8 位都用作奇偶校验），密钥可以是任意的56位的数，而且可以任意时候改变。
 
@@ -516,7 +580,7 @@ plaintext = des.decrypt(ciphertext)
 plaintext = plaintext[:(len(plaintext)-count)]
 print(plaintext)
 </code></pre>
-<h2 id="24-rsa">2.4 非对称加密-rsa</h2>
+<h3 id="4-rsa">4、非对称加密-rsa</h3>
 <pre><code class="language-python"># 安装模块
 pip3 install rsa -i https://pypi.douban.com/simple
 
@@ -544,7 +608,7 @@ method = rsa.verify(b&quot;hello world1&quot;, sign_message, public_key) # 报�
 print(method)
 
 </code></pre>
-<h2 id="25-base64">2.5 base64</h2>
+<h2 id="5base64">5、base64</h2>
 <pre><code class="language-python">import base64
 
 # 编码
@@ -555,9 +619,9 @@ print(res)
 res=base64.b64decode('aGVsbG8gd29ybGQ=')
 print(res)
 </code></pre>
-<h1 id="3">3 抓包破解案例</h1>
-<h2 id="31-app">3.1 金树林app</h2>
-<h3 id="311">3.1.1 目标</h3>
+<h2 id="_1">四、抓包破解案例</h2>
+<p><strong>金树林app</strong></p>
+<h3 id="1_3">1、目标</h3>
 <pre><code class="language-python">#1 发送手机验证码--》python实现
 #2 自动注册--》python注册
 #3 自动登录---》获取登录后的token
@@ -567,7 +631,7 @@ print(res)
 # 配置好代理
 
 </code></pre>
-<h3 id="312">3.1.2 发送短信验证码</h3>
+<h3 id="2_2">2、发送短信验证码</h3>
 <pre><code class="language-python"># 抓包：
     请求地址：https://miappshop.jshulin.com/memberLogin/phoneCode
     请求方式：get
@@ -589,7 +653,7 @@ res = requests.get('https://miappshop.jshulin.com/memberLogin/phoneCode?phone=%s
 
 print(res.text)
 </code></pre>
-<h3 id="313">3.1.3 注册功能</h3>
+<h3 id="3_2">3、注册功能</h3>
 <pre><code class="language-python"># 抓包
     -请求地址：https://miappshop.jshulin.com/memberLogin/memberRegister
     -请求方式：post
@@ -607,7 +671,7 @@ data = {&quot;phone&quot;: &quot;17717823244&quot;, &quot;fid&quot;: &quot;&quot
 res = requests.post('https://miappshop.jshulin.com/memberLogin/memberRegister', json=data, headers=headers)
 print(res.text)
 </code></pre>
-<h3 id="314">3.1.4 登录功能</h3>
+<h3 id="4">4、登录功能</h3>
 <pre><code class="language-python"># 抓包
     -请求地址：https://miappshop.jshulin.com/memberLogin/login
     -请求方式：post
@@ -626,7 +690,7 @@ print(res.text)
 # token 登录信息，以后需要登录后才能访问的接口，必须携带这个token
 # eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNjcwODM4OTQ0MDY3ODU0MzM4IiwiZXhwIjoxNzEwMzQ0MTI4LCJpYXQiOjE3MTAzNDA1MjgsInVzZXJJZCI6IjE2NzA4Mzg5NDQwNjc4NTQzMzgiLCJ1c2VybmFtZSI6IjE4OTUzNjc1MjIxIn0.zQGMUz3jnw3bDxdj-UfUxOJ-pYVi-6SLr_XdALbDUYA
 </code></pre>
-<h3 id="315">3.1.5 登录后查询商品</h3>
+<h3 id="5">5、登录后查询商品</h3>
 <pre><code class="language-python"># 抓包
     -地址：https://miappshop.jshulin.com/pro/searchByPage
     -请求方式：post
@@ -658,7 +722,7 @@ data = {
 res = requests.post('https://miappshop.jshulin.com/pro/searchByPage', json=data, headers=headers)
 print(res.text)
 </code></pre>
-<h3 id="316">3.1.6 请求头字符串转字典   查询字符串转字典</h3>
+<h3 id="6">6、将请求头字符串转换成字典</h3>
 <pre><code class="language-python"># python 脚本--》把字符串转 字典
 header = '''
 Mobile-Token    eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNjcwODM4OTQ0MDY3ODU0MzM4IiwiZXhwIjoxNzEwMzQzOTk3LCJpYXQiOjE3MTAzNDAzOTcsInVzZXJJZCI6IjE2NzA4Mzg5NDQwNjc4NTQzMzgiLCJ1c2VybmFtZSI6IjE4OTUzNjc1MjIxIn0.-d6jE4WxH8o_X8o5xMtw0eQ--A_qilWAQpH5rxC66Xw
@@ -695,7 +759,7 @@ def query_to_dict(s):
 print(query_to_dict(s))
 
 </code></pre>
-<h3 id="317-url">3.1.7 url编码和解码</h3>
+<h3 id="7url">7、url编码和解码</h3>
 <pre><code class="language-python">#  %E4%B8%8A%E6%B5%B7
 # 中文被url编码了
 
@@ -704,7 +768,7 @@ print(parse.quote('上海'))  # %E4%B8%8A%E6%B5%B7
 # print(parse.unquote('%E4%B8%8A%E6%B5%B7'))
 
 </code></pre>
-<h3 id="318">3.1.8 补充接码平台</h3>
+<h3 id="8">8、补充接码平台</h3>
 <pre><code class="language-python"># 正常手机发短信，必须使用一个正常的手机--》接手短信---》接受到短信后，手动输入到程序中，完成后续操作
 
 # 使用接码平台（违法的）
@@ -722,9 +786,9 @@ https://smscoders.com/china_phones
 
 
 </code></pre>
-<p><img alt="image-20230818192506833" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230818192506833.png" /></p>
-<p><img alt="image-20230818192521411" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230818192521411.png" /></p>
-<p><img alt="image-20230818192534314" src="imgs/day04-%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0.assets/image-20230818192534314.png" /></p>
+<p><img alt="image-20230818192506833" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20230818192506833-6237529.png" /></p>
+<p><img alt="image-20230818192521411" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20230818192521411-6237539.png" /></p>
+<p><img alt="image-20230818192534314" src="imgs/day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.assets/image-20230818192534314-6237543.png" /></p>
 
 
 </section>
