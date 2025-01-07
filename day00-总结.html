@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Day00 总结 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter active" data-path="day00-%E6%80%BB%E7%BB%93.html">
+<a href="day00-%E6%80%BB%E7%BB%93.html">Day00 总结</a>
+<li class="chapter" data-path="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">
+<a href="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%8001.html">
+<a href="day06-java%E5%9F%BA%E7%A1%8001.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-java%E5%9F%BA%E7%A1%8002.html">
+<a href="day07-java%E5%9F%BA%E7%A1%8002.html">七、java基础02</a>
+<li class="chapter" data-path="day08-java%E5%9F%BA%E7%A1%8003.html">
+<a href="day08-java%E5%9F%BA%E7%A1%8003.html">八、java基础03</a>
+<li class="chapter" data-path="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day09-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day09 安卓开发01</a>
+<li class="chapter" data-path="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day10-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">十、安卓开发02</a>
+<li class="chapter" data-path="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day10%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">十、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十二、C语言和JNI开发</a>
+<li class="chapter" data-path="day13-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day13-JNI%E5%BC%80%E5%8F%91.html">十三、JNI开发</a>
+<li class="chapter" data-path="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day14-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十四、车智赢</a>
+<li class="chapter" data-path="day15-%E8%AF%86%E8%B4%A7app.html">
+<a href="day15-%E8%AF%86%E8%B4%A7app.html">十五、识货app</a>
+<li class="chapter" data-path="day16-%E5%BE%97%E7%89%A9app.html">
+<a href="day16-%E5%BE%97%E7%89%A9app.html">十六、得物app</a>
+<li class="chapter" data-path="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day17-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十七、B站播放量</a>
+<li class="chapter" data-path="day18-B%E7%AB%9902.html">
+<a href="day18-B%E7%AB%9902.html">十八、B站02</a>
+<li class="chapter" data-path="day19-B%E7%AB%9903.html">
+<a href="day19-B%E7%AB%9903.html">十九、B站02</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
+<li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<li class="chapter" data-path="day22-DYM.html">
+<a href="day22-DYM.html">二十二、DYM</a>
+<li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">二十三、酒仙网</a>
+<li class="chapter" data-path="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十四、司小宝</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8A.html">
+<a href="day25-unidbg-%E4%B8%8A.html">二十五、unidbg-上</a>
+<li class="chapter" data-path="day26-unidbg-%E4%B8%AD%E7%AF%87.html">
+<a href="day26-unidbg-%E4%B8%AD%E7%AF%87.html">二十六、unidbg-中</a>
+<li class="chapter" data-path="day27-unidbg-%E4%B8%8B.html">
+<a href="day27-unidbg-%E4%B8%8B.html">二十七、unidbg-下</a>
+<li class="chapter" data-path="day28-xhs-%E4%B8%8A.html">
+<a href="day28-xhs-%E4%B8%8A.html">二十八、xhs-上</a>
+<li class="chapter" data-path="day29-xhs-%E4%B8%8B.html">
+<a href="day29-xhs-%E4%B8%8B.html">二十九、xhs-下</a>
+<li class="chapter" data-path="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day30-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十、无障碍开发</a>
+<li class="chapter" data-path="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
+<li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h2 id="adb">一、adb常用命令</h2>
+<ul>
+<li>开启和关闭adb服务(了解即可)</li>
+</ul>
+<p>adb start-server     启动ADB
+  adb kill-server          关闭ADB</p>
+<ul>
+<li>查看当前链接的手机设备（敲任意一个adb命令，adb server会自动启动）</li>
+</ul>
+<p>adb devices 
+  adb -s emulator-5554 shell</p>
+<p><code>List of devices attached
+  801KPUU1367574  device  可以看到一个设备</code></p>
+<p>如果你们看不到--》说明--》usb调试没搞好--》线拔掉--》重新插入</p>
+<ul>
+<li>向手机上传文件</li>
+</ul>
+<p>adb -s 设备id号 push 电脑目录  手机目录
+   adb  push 电脑目录  手机目录 # 如果电脑只连接了一个手机设备，-s可以不加</p>
+<p>```</p>
+<blockquote>
+<p>adb push D:\爬虫逆向11期\day02\软件\apps\爱学生.apk /sdcard/a.apk
+  ```</p>
+</blockquote>
+<ul>
+<li>adb -s 设备id号 pull 手机目录和文件 电脑目录</li>
+</ul>
+<p>```</p>
+<blockquote>
+<p>adb pull /sdcard/a.apk ./ # 把sdcard下的a.apk 拉倒电脑的当前目录下
+  ```</p>
+</blockquote>
+<ul>
+<li>安装卸载app</li>
+</ul>
+<p>```
+  adb install 路径  # 电脑上的路径</p>
+<blockquote>
+<p>adb install D:\爬虫逆向11期\day02\软件\apps\爱学生.apk
+  adb uninstall 包名  # 目前不知道包名是什么
+  # 查看手机上装了那些应用，显示包名
+  adb  shell pm list packages                 # 查看包列表
+  adb  shell pm list packages -e  justin
+  ```</p>
+</blockquote>
+<ul>
+<li>查看手机处理器(32位，64位)</li>
+</ul>
+<p><code>adb shell -s 设备id号 getprop ro.product.cpu.abi 
+  adb shell getprop ro.product.cpu.abi</code></p>
+<p>armeabi-v7a（32位ARM设备）
+  arm64-v8a  （64位ARM设备）</p>
+<h2 id="hookspawnattach">二、hook中Spawn与Attach方案</h2>
+<h3 id="1">1、区别</h3>
+<ul>
+<li>
+<p>Spawn</p>
+</li>
+<li>
+<p>Spawn 方式适应场景：Spawn 方式是在目标应用程序启动时直接注入 Frida 的 Agent 代码</p>
+</li>
+<li>只要一运行---》app会自动重启--》直接就把frida注入到程序中去了</li>
+<li>
+<p>需要在应用程序启动的早期阶段进行 Hook。
+    需要访问和修改应用程序的内部状态，例如应用程序的全局变量、静态变量等。
+    需要 Hook 应用程序的初始化过程，以实现对应用程序的自定义初始化逻辑。
+    需要在应用程序的上下文中执行代码，并与其他模块或库进行交互。</p>
+</li>
+<li>
+<p>Attach</p>
+</li>
+<li>
+<p>Attach 方式适应场景：Attach 方式是在目标应用程序已经运行的过程中动态地连接并注入 Frida 的 Agent 代码</p>
+</li>
+<li>
+<p>追加方案---》app运行了--》我们再运行hook脚本</p>
+</li>
+<li>
+<p>缺点--它不能hook，app一运行时执行的方法</p>
+</li>
+<li>
+<p>需要对已经运行的应用程序进行 Hook，即动态地连接到正在运行的进程。
+    需要在应用程序运行时拦截和修改特定的方法调用。
+    需要实时监视和修改应用程序的行为，例如参数修改、返回值篡改等。
+    需要对应用程序进行调试和分析，以查找潜在的问题和漏洞。</p>
+</li>
+<li>
+<p>spanw方案是在app运行一开始就hook--》它能hook更早期的方法</p>
+</li>
+</ul>
+<p>attach方案，在app运行后，再进行hook--》只能hook，某个操作对应的方法</p>
+<h3 id="2python-hook">2、python hook方式</h3>
+<h4 id="1-attach">(1) attach方案</h4>
+<ul>
+<li>代码</li>
+</ul>
+<p>```python
+  import frida
+  import sys
+  # 连接手机设备
+  rdev = frida.get_remote_device()
+  # 包名：com.che168.autotradercloud
+  # 车智赢+
+  session = rdev.attach("车智赢+")
+  scr = """
+  Java.perform(function () {
+      //找到类 反编译的首行+类名：com.autohome.ahkit.utils下的
+      var SecurityUtil = Java.use("com.autohome.ahkit.utils.SecurityUtil");</p>
+<pre><code>  //替换类中的方法
+  SecurityUtil.encodeMD5.implementation = function(str){
+      console.log("参数：",str);
+      var res = this.encodeMD5(str); //调用原来的函数
+      console.log("返回值：",res);
+      return res;
+  }
+</code></pre>
+<p>});
+  """</p>
+<p>script = session.create_script(scr)</p>
+<p>def on_message(message, data):
+      print(message, data)</p>
+<p>script.on("message", on_message)
+  script.load()
+  sys.stdin.read()</p>
+<p>```</p>
+<h4 id="2-spwan">(2) spwan方案</h4>
+<ul>
+<li>代码</li>
+</ul>
+<p>```python
+  import frida
+  import sys</p>
+<p>rdev = frida.get_remote_device()
+  # 不是放app名字了，放的是app的包名
+  pid = rdev.spawn(["com.che168.autotradercloud"])
+  session = rdev.attach(pid)
+  ## 上面是固定的，以后只要改app的包名即可
+  scr = """
+  Java.perform(function () {
+      var SecurityUtil = Java.use("com.autohome.ahkit.utils.SecurityUtil");
+      SecurityUtil.encodeMD5.implementation = function(str){
+          console.log("明文：",str);
+          var res = this.encodeMD5(str);
+          console.log("md5加密结果=",res);
+          return res;
+      }
+  });
+  """</p>
+<p>## 以下都是固定的
+  script = session.create_script(scr)
+  def on_message(message, data):
+      print(message, data)</p>
+<p>script.on("message", on_message)
+  script.load()
+  rdev.resume(pid)
+  sys.stdin.read()
+  ```</p>
+<h4 id="3">(3) 俩种区别</h4>
+<h5 id="fridaattach"><strong>frida.attach()</strong></h5>
+<ul>
+<li><strong>用途</strong>：用于连接到一个已经运行的应用程序进程。</li>
+<li><strong>行为</strong>：<code>attach()</code> 方法会尝试找到并附加到指定名称或PID的现有进程。如果找不到匹配的进程，则会抛出异常。</li>
+<li>优点</li>
+<li>不会中断应用的正常启动流程。</li>
+<li>对于那些启动时立即执行关键操作的应用非常有用，因为你可以确保在这些操作发生之前就已附加。</li>
+<li>缺点</li>
+<li>如果应用没有运行，则无法附加。</li>
+<li>不能控制应用启动时的行为。</li>
+</ul>
+<h5 id="fridaspawn"><strong>frida.spawn()</strong></h5>
+<ul>
+<li><strong>用途</strong>：用于启动一个应用程序，并在启动后立即附加到它。</li>
+<li><strong>行为</strong>：<code>spawn()</code> 方法会启动一个新的进程，并暂停它直到你调用 <code>resume(pid)</code> 来恢复其执行。这样可以在进程启动的早期阶段插入钩子（hook），从而确保所有后续的函数调用都可以被监控。</li>
+<li>优点</li>
+<li>可以完全控制应用的启动过程。</li>
+<li>确保在应用开始执行任何逻辑之前就已经附加了Frida脚本。</li>
+<li>缺点</li>
+<li>需要手动恢复进程（使用 <code>resume(pid)</code>），否则应用将保持暂停状态。</li>
+<li>某些应用可能有反调试机制，可能会检测到这种启动方式并采取措施。</li>
+</ul>
+<h3 id="3js-hook">3、js hook方式</h3>
+<h4 id="1-attach-hook">(1) attach-hook方案</h4>
+<pre><code class="language-js">Java.perform(function () {
+    var SecurityUtil = Java.use(&quot;com.autohome.ahkit.utils.SecurityUtil&quot;);
+    SecurityUtil.encodeMD5.implementation = function(str){
+        console.log(&quot;明文：&quot;,str);
+        var res = this.encodeMD5(str);
+        console.log(&quot;md5加密结果=&quot;,res);
+        return res;
+    }
+});
+
+// attach 方案：frida -UF -l 4-js-hook方案.js   
+// 不需要写跟应用(app)相关的东西---》因为app现在正在前台运行
+</code></pre>
+<ul>
+<li>执行命令</li>
+</ul>
+<p>frida -UF -l 4-js-hook方案.js   </p>
+<h4 id="2-spwan-hook">(2) spwan-hook方案</h4>
+<pre><code class="language-js">Java.perform(function () {
+    var SecurityUtil = Java.use(&quot;com.autohome.ahkit.utils.SecurityUtil&quot;);
+    SecurityUtil.encodeMD5.implementation = function(str){
+        console.log(&quot;明文：&quot;,str);
+        var res = this.encodeMD5(str);
+        console.log(&quot;md5加密结果=&quot;,res);
+        return res;
+    }
+}); 
+</code></pre>
+<ul>
+<li>执行命令</li>
+</ul>
+<p>frida -U -f com.che168.autotradercloud -l 4-js-hook方案.js </p>
+<p>按 q退出</p>
+<ul>
+<li>
+<p>这条命令的意思是：</p>
+</li>
+<li>
+<p><code>-U</code> 表示连接到通过 USB 连接的设备（通常是 Android 设备）。</p>
+</li>
+<li>
+<p><code>-f com.che168.autotradercloud</code> 表示启动包名为 <code>com.che168.autotradercloud</code> 的应用程序，并在启动后附加到该应用进程中。</p>
+</li>
+<li>
+<p><code>-l 4-js-hook方案.js</code> 中的 <code>-l</code> 意味着“加载”（load），后面跟的是一个 JavaScript 文件的路径，即 <code>4-js-hook方案.js</code>。这个文件应该包含你编写的 JavaScript 代码，用来定义你希望在目标应用中执行的操作，比如函数 hook、变量监控等。</p>
+<p><img alt="image-20250107160527818" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250107160527818.png" /></p>
+</li>
+</ul>
+<h3 id="4python-hook-vs-js-hook">4、Python Hook vs JS Hook</h3>
+<h4 id="1_1">1.启动和附加方式</h4>
+<ul>
+<li>Python Hook：</li>
+<li>使用 <code>frida.get_remote_device().spawn()</code> 来启动目标应用程序，并随后使用 <code>attach()</code> 方法连接到新启动的应用程序。</li>
+<li>这种方式下，Frida 会等待应用程序完全启动后再加载脚本。</li>
+<li>JS Hook：</li>
+<li>使用命令行工具 <code>frida</code> 直接通过 <code>-f</code> 参数指定包名来启动应用程序并立即加载脚本。</li>
+<li>这种方式下，Frida 在启动时就会加载脚本，并且脚本会在应用初始化过程中执行。</li>
+</ul>
+<h4 id="2">2. 脚本加载时机</h4>
+<ul>
+<li>Python Hook：</li>
+<li>Python 代码中，<code>script.load()</code> 是在调用 <code>session.create_script(scr)</code> 之后显式调用的，这意味着脚本是在应用程序已经启动并且进入了稳定状态之后才加载的。</li>
+<li>JS Hook：</li>
+<li>当使用命令行工具时，<code>-l</code> 参数指定的脚本会在应用程序启动时立即加载，因此可以在更早的时间点影响应用程序的行为。</li>
+</ul>
+<h4 id="3_1">3. 应用重启行为</h4>
+<ul>
+<li>Python Hook：</li>
+<li>如果应用程序重启了，而 Python 程序仍然保持运行，那么可能会出现资源未正确释放或重新附加的问题，导致应用程序卡住。</li>
+<li>JS Hook：</li>
+<li>使用命令行工具时，一旦应用程序重启，之前的 Hook 会失效，需要重新运行命令行工具来重新 Hook。这种方式通常不会导致应用程序卡住，因为它不依赖于长时间运行的外部进程。</li>
+</ul>
+<h4 id="4pythonspawnhookapp">4.有的时候使用python的方式进行spawn方式hook会造成App应用卡住</h4>
+<p>当应用程序重启时，它可能会经历一系列的状态变化，包括重新初始化、重新加载资源等。如果你的 Python Hook 代码没有正确处理这些状态变化，比如没有及时释放旧的会话或者正确地重新附加到新的进程中，就可能导致应用程序无法正常继续运行。</p>
+<p>此外，Python 中使用的 <code>sys.stdin.read()</code> 会让程序挂起等待输入，这可能阻止了正确的退出机制。如果应用程序崩溃或重启，Python 程序可能没有机会清理资源，从而导致后续的操作出现问题。</p>
+<h4 id="5pythonjsspawn">5.如果python的方式卡主推荐使用js的spawn的方式</h4>
+<h2 id="app">三、绕过app强制更新</h2>
+<pre><code class="language-python"># 以后使用app，更新会遇到两种情况
+    1 选择更新：只是弹出更新框，但是有 关闭，可以关闭，暂时不更新----》app中的所有接口肯定是能用的
+    2 强制更新：弹出更新框，直接覆盖住app，无法关闭，必须更新---》可以绕过更新，看看接口是否还能用---》接口能用，接口不能用---》老版本的app，接口解密方式会比最新的简单一些---》识货，就是这种情况
+
+
+
+# 绕过强制更新
+    1 车智赢：断网，进入app，再打开网络
+        -app一启动---》向后端发送请求，获取最新版本版本号，跟本地app版本号做比较，如果相差太大，它就会让你更新app，一般情况下，代码就在app开启的第一个页面上，只要切换到别的页面了，这个代码也就不执行了，于是就绕过了
+    2 识货app：断网，绕不过，只要连上网，又需要更新，通过hook，让它不 弹出这个弹出框
+        -反编译找到 弹出框的源代码---》通过hook，让这个框不弹出
+
+
+
+# 注意点：一定要运行一次app，第一次运行app，一定会弹出一个框，再执行hook
+</code></pre>
+<h3 id="hookspawn">使用hook方式，让弹窗不执行(spawn方式)</h3>
+<ul>
+<li>思路</li>
+</ul>
+<p>搜索    最新版本 </p>
+<ul>
+<li>
+<p>使用spawn方式hook</p>
+</li>
+<li>
+<p>图例</p>
+</li>
+</ul>
+<p><img alt="image-20230727173533340" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230727173533340.png" /></p>
+<p>枚举手机上的所有进程 &amp; 前台进程,找到 识货的包名</p>
+<pre><code class="language-python">import frida
+
+# 获取设备信息
+rdev = frida.get_remote_device()
+
+# 枚举所有的进程
+processes = rdev.enumerate_processes()
+for process in processes:
+    print(process)
+
+# 获取在前台运行的APP
+front_app = rdev.get_frontmost_application()
+print(front_app)
+# Application(identifier=&quot;com.hupu.shihuo&quot;, name=&quot;识货&quot;, pid=28602, parameters={})
+</code></pre>
+<p>端口转发</p>
+<pre><code class="language-python">import subprocess
+# 使用sbuprocess模块，执行命令，如果转发不了，就执行命令
+
+'''
+adb forward tcp:27042 tcp:27042
+adb forward tcp:27043 tcp:27043
+'''
+subprocess.run('adb forward tcp:27042 tcp:27042')
+subprocess.run('adb forward tcp:27043 tcp:27043')
+</code></pre>
+<p>hook代码</p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+pid = rdev.spawn([&quot;com.hupu.shihuo&quot;])
+session = rdev.attach(pid)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var UpdateDialog = Java.use('com.azhon.appupdate.dialog.UpdateDialog');
+    UpdateDialog.show.implementation = function(ctx){
+        console.log(&quot;执行了&quot;);
+        //this.show();
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+rdev.resume(pid)
+sys.stdin.read()
+</code></pre>
+<p>使用spawn的原因是  当程序启动就要进行hook，防止弹框</p>
+<p>一运行hook脚本，app闪退了</p>
+<pre><code class="language-python">app做了frida检测
+    + 删某些so文件（今天学这种）
+    + ptrace占坑
+  + frida加强版
+</code></pre>
+<h2 id="frida">四、绕过frida反调试</h2>
+<h3 id="1-frida-hook">(1) <strong>不能frida   hook的原因</strong></h3>
+<p>识货这款app，做了frida的反调试，检测到只要frida脚本在运行，app就自动结束</p>
+<h3 id="2_1">(2) 对于强制更新的处理方式</h3>
+<h4 id="_1"><strong>方法一</strong></h4>
+<p>这种公司，一般情况下，公司的安全人员写了一个so文件，检测是否在运行frida的hook，如果检测到，就把app强制终止</p>
+<p>安全人员写的so，一般情况下跟app业务无关，只用来做hook的检测，这种情况下，我们可以尝试删除这个so文件尝试一下，如果删除了，app还能顺利运行，说明这个so跟业务是无关的，就可以删除
+像识货，得物这种app就是这样的、于是，我们要找到 是那个so文件，做了检测</p>
+<p>有的app，会检测frida调试，只要发现，就会不让app启动</p>
+<ul>
+<li>处理</li>
+</ul>
+<p>一般这种公司的安全人员会单独写so文件用来检测，所以我们可以hook-app启动时，执行了那些so文件，发现执行到最后一个程序闪退了，一般就是因为这个so文件导致的，我们可以尝试删除试试</p>
+<ul>
+<li>HOOK 安卓系统底层的函数：dlopen和android_dlopen_ext</li>
+</ul>
+<p><code>/data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/libmsaoaidsec.so</code></p>
+<p>发现最后执行libmsaoaidsec.so报错了这样可以把这个so文件删除</p>
+<ul>
+<li>步骤</li>
+</ul>
+<p><code>adb shell
+  su
+  cd /data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/
+  rm libmsaoaidsec.so</code></p>
+<h4 id="_2"><strong>方法二</strong></h4>
+<p>断网执行app，发现能正常打开app后，在打开网络，刷新也可以</p>
+<h3 id="3-hook-appso">(3) hook app在启动过程中执行了那些so文件</h3>
+<p>代码</p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+pid = rdev.spawn([&quot;com.hupu.shihuo&quot;])
+session = rdev.attach(pid)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+
+    var dlopen = Module.findExportByName(null, &quot;dlopen&quot;);   // 老版本的App
+    var android_dlopen_ext = Module.findExportByName(null, &quot;android_dlopen_ext&quot;);  // 新版本的App
+
+    Interceptor.attach(dlopen, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            console.log(&quot;[dlopen:]&quot;, path);
+        },
+        onLeave: function (retval) {
+
+        }
+    });
+
+    Interceptor.attach(android_dlopen_ext, {
+        onEnter: function (args) {
+            var path_ptr = args[0];
+            var path = ptr(path_ptr).readCString();
+            console.log(&quot;[dlopen_ext:]&quot;, path);
+        },
+        onLeave: function (retval) {
+        }
+    });
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+def on_message(message, data):
+    print(message, data)
+script.on(&quot;message&quot;, on_message)
+script.load()
+rdev.resume(pid)
+sys.stdin.read()
+</code></pre>
+<ul>
+<li>图例</li>
+</ul>
+<p><img alt="image-20230727175234861" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230727175234861.png" /></p>
+<ul>
+<li>当前使用mumu模拟器如果没发现这个so文件的话，可以直接在adb里搜索一下</li>
+</ul>
+<p>find -name libmsaoaidsec.so </p>
+<p>然后把当前地址中的libmsaoaidsec.so删除</p>
+<p><img alt="image-20241225134236475" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20241225134236475.png" /></p>
+<ul>
+<li>打开frida-server  </li>
+</ul>
+<p>/data/local/tmp/frida-server-16.4.10-android-arm64  </p>
+<ul>
+<li>接下来打开hook不展示更新的程序</li>
+</ul>
+<h2 id="app_1">五、绕过app检测使用代理</h2>
+<h4 id="socksdroid">SocksDroid（推荐）</h4>
+<ul>
+<li>手机系统代理删除</li>
+<li>基本配置</li>
+</ul>
+<p>切记：在使用前<strong>删除</strong>手机上设置的系统代理。</p>
+<p><img src="./imgs/day00-总结.assets/image-20230727180643212.png" alt="image-20230727180643212" style="zoom:67%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20220928184546944.png" alt="image-20220928184546944" style="zoom:67%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230727180857286.png" alt="image-20230727180857286" style="zoom:67%;" /></p>
+<h2 id="jwt">六、JWT</h2>
+<p>JWT 由三部分组成，每一部分用<code>.</code>分隔：</p>
+<ol>
+<li><strong>头部（Header）</strong></li>
+</ol>
+<p><strong>通常是固定的    公司信息，加密方式等</strong></p>
+<ol>
+<li><strong>载荷（Payload）</strong></li>
+</ol>
+<p>载荷包含了声明（claims），这些声明是实际要传递的数据。JWT 规范定义了一些标准字段（注册声明），但你也可以定义自己的私有声明。</p>
+<p><strong>（用户信息，用户名，用户id，token过期时间，token签发时间）</strong></p>
+<ol>
+<li><strong>签名（Signature）</strong></li>
+</ol>
+<p>签名部分用于验证消息在传输过程中没有被更改，并且，对于使用私钥签名的 token，它还可以验证 JWT 的发送方的身份。</p>
+<p><strong>（把第一段和第二段使用加密方式签名得到--》反解出重要信息）</strong></p>
+<p>因为是用于传输数据和验证登录，也就是App运行的时候就会向后端发起请求获得，所以我们可以清除App数据，然后通过抓包进行观察</p>
+<p><strong>实例</strong></p>
+<p><img alt="image-20250102141853659" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250102141853659.png" /></p>
+<pre><code>Bearer eyJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MzU2MzA0NjEsImV4cCI6MTc2NzE2NjQ2MSwiaXNzIjoiM2IwNzk5NmNmMzM0MjQzMyIsInN1YiI6IjNiMDc5OTZjZjMzNDI0MzMiLCJ1dWlkIjoiM2IwNzk5NmNmMzM0MjQzMyIsInVzZXJJZCI6MjQ0MDQyNDIzOSwidXNlck5hbWUiOiLlvpfniallci01SzJDNlUwRCIsImlzR3Vlc3QiOnRydWV9.bsAltPwKL7kuKfXOBC39d2M_EhXLeMgqpVOddHrV0c3nooZKZcbNXX5GJtqr6n5jsFcwxgR6inaQQI496cNi4JWGXiPRUqAo0f381ZGd7Etxo2p7bDSuH32sAkdfXh2NgUw_ZU8PVnijey5CZnyOnvrByAS4NwNNQsyywt2kAT5yiGh-wPH791AHmYw7ritknLV_Luc0bblIoCy1pHP5k1TYTPkm9j-D6wwU0RwgzUyd7deD82yGN-mCI-RcxcYWqx0YVbAF3hnyb16KhhczMFD3jg988K_WanalEzlRk0KLI2kTbL95oh3a-AC_Hcdk-qygz5NFO5R06n2jL3lDCg
+</code></pre>
+<p>分为三段式(按照点分割)</p>
+<p><strong>头部</strong> </p>
+<pre><code>eyJhbGciOiJSUzI1NiJ9    
+</code></pre>
+<p><strong>荷载</strong></p>
+<pre><code>eyJpYXQiOjE3MzU2MzA0NjEsImV4cCI6MTc2NzE2NjQ2MSwiaXNzIjoiM2IwNzk5NmNmMzM0MjQzMyIsInN1YiI6IjNiMDc5OTZjZjMzNDI0MzMiLCJ1dWlkIjoiM2IwNzk5NmNmMzM0MjQzMyIsInVzZXJJZCI6MjQ0MDQyNDIzOSwidXNlck5hbWUiOiLlvpfniallci01SzJDNlUwRCIsImlzR3Vlc3QiOnRydWV9
+</code></pre>
+<p>解码base64(得到用户相关的信息)</p>
+<p><img alt="image-20250102162728853" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250102162728853.png" /></p>
+<p><strong>签名</strong></p>
+<pre><code>bsAltPwKL7kuKfXOBC39d2M_EhXLeMgqpVOddHrV0c3nooZKZcbNXX5GJtqr6n5jsFcwxgR6inaQQI496cNi4JWGXiPRUqAo0f381ZGd7Etxo2p7bDSuH32sAkdfXh2NgUw_ZU8PVnijey5CZnyOnvrByAS4NwNNQsyywt2kAT5yiGh-wPH791AHmYw7ritknLV_Luc0bblIoCy1pHP5k1TYTPkm9j-D6wwU0RwgzUyd7deD82yGN-mCI-RcxcYWqx0YVbAF3hnyb16KhhczMFD3jg988K_WanalEzlRk0KLI2kTbL95oh3a-AC_Hcdk-qygz5NFO5R06n2jL3lDCg
+</code></pre>
+<h2 id="root">七、绕过Root检测</h2>
+<h3 id="1root">1、root检测原理</h3>
+<ul>
+<li>
+<p>运行app--》app会用代码去固定位置检查，当前位置下有没有su 命令，如果有，说明手机root了</p>
+</li>
+<li>
+<p>root的手机，会有一些特征：典型的特征就是 su 命令</p>
+</li>
+<li>
+<p>我们使用的root工具是：面具，superuser.apk---&gt;每个软件都有不同特征</p>
+</li>
+<li>
+<p>只要手机root了，会在如下目录出现特殊的标识</p>
+</li>
+</ul>
+<p><code>"/system/bin/su", # 不同root软件，生成的位置不同，面具一般在这个目录下
+        "/data/local/bin/su",
+      "/data/local/su",
+      "/data/local/xbin/su",
+      "/sbin/su",
+      "/system/app/Superuser.apk",
+      "/system/bin/failsafe/su",
+      "/su/bin/su",
+      "/system/sd/xbin/su",
+      "/system/xbin/busybox",
+      "/system/xbin/daemonsu",
+      "/system/xbin/su",
+      "/system/sbin/su",</code></p>
+<ul>
+<li>我们查看手机是否必备root，直接进入：/system/bin 看看有没有su可执行文件、并且app有这些权限查看</li>
+</ul>
+<p><code>adb shell  # 进入到手机
+  su         # 获得超级用户权限
+  /system/bin # 进入到目录下
+  ls          # 查看当前目录下的文件或文件夹
+  ls | grep su  # 查看当前目录下 名字中包含 su 的 文件或文件夹</code></p>
+<ul>
+<li>
+<p>绕过</p>
+</li>
+<li>
+<p>反编译apk，找到检测代码--》hook，让它不执行---》绕过强制跟新一样</p>
+</li>
+<li>通过修改 su 可执行文件的名字</li>
+<li>aosp 刷机并root，修改su文件名 su1</li>
+</ul>
+<p><img src="./imgs/day00-总结.assets/image-20230829152219227.png" alt="image-20230829152219227" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829152612149.png" alt="image-20230829152612149" style="zoom:50%;" /></p>
+<h3 id="2-js-hook">2、方案一  通用js  hook脚本</h3>
+<p><strong>hook-antiroot.js</strong>（绕过root检测的通用脚本）</p>
+<ul>
+<li>地址：https://github.com/AshenOneYe/FridaAntiRootDetection</li>
+<li>原理：就是hook方案（可能是c层，可能是java层）---》不让app检测到su文件</li>
+</ul>
+<p><strong>使用步骤:</strong></p>
+<ul>
+<li>
+<p>复制它提供的 antiroot.js</p>
+</li>
+<li>
+<p>启动frida，端口转发</p>
+</li>
+<li>
+<p>运行这个js脚本</p>
+</li>
+</ul>
+<p>frida -UF -l antiroot.js</p>
+<ul>
+<li>启动app，发现root检测就检测不到了</li>
+</ul>
+<h3 id="3-shamikomagisk">3、方案二 面具+Shamiko模块方案+隐藏magisk应用</h3>
+<pre><code class="language-python">##### 面具+Shamiko模块方案+隐藏magisk应用
+
+# 1 把提供的Shamiko-v0.5.2-120-release.zip，推送到手机
+    adb push Shamiko-v0.5.2-120-release.zip /sdcard/Download/Shamiko-v0.5.2-120-release.zip
+
+# 2 选择从本地安装，将zip刷入--图1 ，图2，图3
+
+# 3 刷入成功，重启，可以看到 图4 ，图5
+
+
+# 4 在面具中选择--》主页---》设置(右上角)--》选择配置排除列表 图6
+
+# 5 再打开app，就没有提示了
+
+# 注意：针对一些银行类app，不仅做root检测，还做面具检测(是否安装面具)--&gt;通过修改面具应用的名字，实现绕过  图 7
+
+</code></pre>
+<p><img src="./imgs/day00-总结.assets/image-20230829153642416.png" alt="image-20230829153642416" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829153712132.png" alt="image-20230829153712132" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829153750591.png" alt="image-20230829153750591" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829153840197.png" alt="image-20230829153840197" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829153906460.png" alt="image-20230829153906460" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829154024177.png" alt="image-20230829154024177" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829154124251.png" alt="image-20230829154124251" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20230829154311832.png" alt="image-20230829154311832" style="zoom:50%;" /></p>
+<h3 id="4-hook">4、方案三 hook检测的代码</h3>
+<h4 id="hook">通过hook检测的代码</h4>
+<pre><code class="language-python">#### frida-hook方案---》通过反编译，找到root检测位置，通过hook，返回false绕过
+
+# 1 反编译app
+# 2 搜索  威胁您的    
+# 3 找到代码，图 2
+# 4 查看MiscUtil.isRooted()，如下图
+    -public static final String y = &quot;su&quot;;
+# 5 查看isSimulator--》Build.FINGERPRINT
+    -cat /system/build.prop 
+
+# 6 我们通过 hook isRooted()和isSimulator(),都返回false，即可绕过
+</code></pre>
+<p><img alt="image-20230829154546644" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230829154546644.png" /></p>
+<p><img alt="image-20230829154710658" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230829154710658.png" /></p>
+<p><img alt="image-20230829154804390" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230829154804390.png" /></p>
+<p><img alt="image-20230829154937635" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230829154937635.png" /></p>
+<p><img alt="image-20230829155257049" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230829155257049.png" /></p>
+<h4 id="js"><strong>js实现</strong></h4>
+<p>frida进行端口转发</p>
+<pre><code class="language-python">// hook 不成功，卸载重装
+//1 端口转发
+
+import subprocess
+# 使用sbuprocess模块，执行命令，如果转发不了，就执行命令
+
+'''
+adb forward tcp:27042 tcp:27042
+adb forward tcp:27043 tcp:27043
+'''
+subprocess.run('adb forward tcp:27042 tcp:27042')
+subprocess.run('adb forward tcp:27043 tcp:27043')
+</code></pre>
+<p>js脚本</p>
+<p>root.js</p>
+<pre><code class="language-js">Java.perform(function () {
+    var MiscUtil = Java.use(&quot;com.yoloho.libcore.util.MiscUtil&quot;);
+
+    MiscUtil.isRooted.implementation = function () {
+        return false;
+    }
+
+    MiscUtil.isSimulator.implementation = function (ctx) {
+        return false;
+    }
+    var SystemManager = Java.use(&quot;com.mobile.auth.gatewayauth.manager.SystemManager&quot;);
+
+    SystemManager.checkEnvSafe.implementation = function () {
+        return null;
+    }
+});
+// frida -UF -l  root.js
+</code></pre>
+<h4 id="python">python实现</h4>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+pid = rdev.spawn([&quot;com.yoloho.dayima&quot;])
+session = rdev.attach(pid)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var MiscUtil = Java.use(&quot;com.yoloho.libcore.util.MiscUtil&quot;);
+    MiscUtil.isRooted.implementation = function () {
+        console.log('绕过')
+        return false;
+    }
+
+    MiscUtil.isSimulator.implementation = function (ctx) {
+        console.log('绕过')
+        return false;
+    }
+});
+&quot;&quot;&quot;
+
+
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+rdev.resume(pid)
+sys.stdin.read()
+</code></pre>
+<p><img alt="image-20230829160225857" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230829160225857.png" /></p>
+<p><img alt="image-20230829160250330" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230829160250330.png" /></p>
+<h3 id="5-aosp">5、方案四  aosp 刷机方案</h3>
+<ul>
+<li>aosp是什么
+  Android是开源的，AOSP（Android Open Source Project）为Android开源项目的缩写,自己编译Android系统</li>
+<li>免费开源---》拿到它的源代码---》修改它的代码---》编译---》装到手机上---》自己的操作系统
+  鸿蒙
+  小米 miui是--》改ui改的多，底层基本没改</li>
+</ul>
+<h2 id="frida-rpc">七、frida-rpc</h2>
+<h3 id="1so">1、遇到so无法分析算法如何做</h3>
+<pre><code class="language-python"># 1 直接分析---之前在做
+# 2 frida-rpc，直接调用手机中方法。
+# 3 编写安卓应用，直接调用so文件中的方法。
+# 4 unidbg，用java代码模拟手机去运行so中的方法。
+</code></pre>
+<h3 id="2frida-rpc">2、frida-rpc是什么</h3>
+<pre><code class="language-python">frida 提供了一种跨平台的 rpc (远程过程调用)机制,通过 frida rpc 可以在主机和目标设备之间进行通信,并在目标设备上执行代码
+Frida-RPC 是一个基于 Frida 框架的扩展，用于在不同进程之间进行远程过程调用（RPC）。Frida 是一个功能强大的动态插桩工具，它允许开发人员在运行时监控、修改和控制应用程序的行为。通过使用 Frida-RPC，您可以在不同的进程之间建立通信通道，使得您能够从一个进程中调用另一个进程的函数或方法，就好像它们都在同一个进程中一样
+
+
+# 缺点:
+    -依赖于frida，还得运行app，脱离他们无法执行
+</code></pre>
+<p><img alt="image-20240123221034609" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20240123221034609.png" /></p>
+<p><img alt="image-20240123221334619" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20240123221334619.png" /></p>
+<h3 id="3rpc">3、rpc脚本</h3>
+<p><strong>流程</strong></p>
+<ol>
+<li>手机端启动 frida-server</li>
+<li>运行app</li>
+<li>电脑端端口转发，运行脚本</li>
+</ol>
+<p><strong>frida-hook代码</strong></p>
+<pre><code class="language-python">import frida
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;大姨妈&quot;)
+
+scr = &quot;&quot;&quot;
+rpc.exports = {   
+    xx:function(j2,str,j3){
+         var res;
+         Java.perform(function () { 
+            // 包.类
+            var Crypt = Java.use(&quot;com.yoloho.libcore.util.Crypt&quot;);
+            // 类中的方法
+            res = Crypt.encrypt_data(j2,str,j3);
+         });
+
+         return res;
+    }
+}
+&quot;&quot;&quot;
+script = session.create_script(scr)
+script.load()
+
+# python 调用代码
+sign = script.exports_sync.xx(0, &quot;bcae572b84d20c385d6d9d2d7d9e645da29da3c0user/login18953675221WA89qByLlDeaGjmVNzXm/w==&quot;, 85)
+print(sign)
+
+# 得到结果20d97aad1b9ba75db3e0901e8c3b11d5  跟抓包结果一致
+</code></pre>
+<h3 id="_3"></h3>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>
