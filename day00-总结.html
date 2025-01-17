@@ -1167,6 +1167,115 @@ v37 = a1-&gt;functions-&gt;NewObject((JNIEnv *)a1, v36, v35, v32);
 <li>自己编写安卓应用---》调用别人的so---》完成加密---【简单--交付麻烦】</li>
 <li>unidbg：集合了1和2,3的优点---》不需要手机，也不需要硬核破解---》直接用代码模拟手机--》只需要调用so文件中的某个方法，传入参数--》把结果跑出来---》以后交付用户---》python+java的jar包</li>
 </ol>
+<h2 id="gzip">十二、gzip压缩</h2>
+<p><strong>说明：</strong></p>
+<p>这段代码通常用于以下几种情况：</p>
+<ol>
+<li><strong>HTTP 请求/响应</strong>：</li>
+<li>在发送 HTTP 请求或接收 HTTP 响应时，有时需要对请求体或响应体进行压缩以减少传输的数据量。例如，当发送大量 JSON 数据时，可以先压缩再发送。</li>
+<li><strong>文件压缩</strong>：</li>
+<li>在保存大文本文件到磁盘之前，可以通过压缩来节省存储空间。</li>
+<li><strong>数据传输</strong>：</li>
+<li>当通过网络或其他方式传输大量文本数据时，压缩可以显著减少带宽使用。</li>
+<li><strong>内存优化</strong>：</li>
+<li>在内存中处理大数据集时，压缩可以减少内存占用。</li>
+</ol>
+<h3 id="1python">1、python进行压缩</h3>
+<p><strong>示例</strong></p>
+<p>假设 <code>body</code> 是一个包含文本数据的字符串：</p>
+<pre><code class="language-python">import gzip
+
+body = &quot;This is a test string.&quot;
+gzip_body = gzip.compress(body.encode('utf-8'))
+
+print(&quot;Original data:&quot;, body)
+print(&quot;Compressed data:&quot;, gzip_body)
+</code></pre>
+<p>输出可能如下所示（实际输出会有所不同，因为压缩数据是二进制格式）：</p>
+<pre><code>Original data: This is a test string.
+Compressed data: b'\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\x03K\xcc+I\xe4\x02\x00\xa6\x9e\x07\x1a\x0c\x00\x00\x00'
+</code></pre>
+<p><strong>解压数据</strong></p>
+<p><strong>逐步解析</strong></p>
+<ol>
+<li><strong><code>body.encode('utf-8')</code></strong>:</li>
+<li><strong>作用</strong>：将 Python 字符串（<code>str</code> 类型）转换为字节串（<code>bytes</code> 类型），使用 UTF-8 编码。</li>
+<li><strong>原因</strong>：许多压缩算法（包括 gzip）处理的是字节数据而不是文本字符串。因此，在压缩之前需要将字符串编码为字节。</li>
+<li><strong><code>gzip.compress(...)</code></strong>:</li>
+<li><strong>作用</strong>：使用 gzip 算法对传入的字节串进行压缩，并返回压缩后的字节串。</li>
+<li><strong>参数</strong>：接受一个字节串（<code>bytes</code> 类型）作为输入。</li>
+<li><strong>返回值</strong>：返回一个新的字节串，该字节串是原始数据的压缩版本。</li>
+<li><strong><code>gzip_body</code></strong>:</li>
+<li><strong>作用</strong>：存储压缩后的字节串。</li>
+<li><strong>类型</strong>：<code>bytes</code> 类型。</li>
+</ol>
+<p>如果你需要解压这个压缩后的数据，可以使用 <code>gzip.decompress()</code> 函数：</p>
+<p>python深色版本</p>
+<pre><code>decompressed_body = gzip.decompress(gzip_body).decode('utf-8')
+print(&quot;Decompressed data:&quot;, decompressed_body)
+</code></pre>
+<p>这将把压缩后的字节串还原为原始的字符串。</p>
+<p><strong>总结</strong></p>
+<ul>
+<li><strong><code>body.encode('utf-8')</code></strong>：将字符串编码为字节串。</li>
+<li><strong><code>gzip.compress(...)</code></strong>：使用 gzip 算法压缩字节串。</li>
+<li><strong>应用场景</strong>：适用于 HTTP 请求/响应、文件压缩、数据传输和内存优化等场景。</li>
+</ul>
+<h3 id="2javagzip">2、Java进行gzip压缩</h3>
+<pre><code class="language-java">import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.zip.GZIPOutputStream;
+
+public class GzipCompressor {
+    public static byte[] compress(String body) throws IOException {
+        // 将字符串编码为字节串（UTF-8）
+        byte[] inputBytes = body.getBytes(StandardCharsets.UTF_8);
+
+        // 创建一个 ByteArrayOutputStream 来保存压缩后的数据
+        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
+            // 创建一个 GZIPOutputStream 来进行压缩
+            try (GZIPOutputStream gzipOutputStream = new GZIPOutputStream(byteArrayOutputStream)) {
+                // 写入要压缩的数据
+                gzipOutputStream.write(inputBytes);
+            }
+            // 返回压缩后的字节数组
+            return byteArrayOutputStream.toByteArray();
+        }
+    }
+    public static void main(String[] args) {
+        try {
+            String body = &quot;This is a test string.&quot;;
+            byte[] gzipBody = compress(body);
+
+            System.out.println(&quot;Original data: &quot; + body);
+            System.out.println(&quot;Compressed data: &quot; + bytesToHex(gzipBody));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    // 辅助方法：将字节数组转换为十六进制字符串表示（便于打印查看）
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (byte b : bytes) {
+            sb.append(String.format(&quot;%02x&quot;, b));
+        }
+        return sb.toString();
+    }
+}
+</code></pre>
+<h3 id="3_2">3、注意</h3>
+<p><strong>处理gzip（java和python的结果不一样）</strong></p>
+<pre><code class="language-python">import gzip
+body = &quot;lucky&quot;
+# 1.对文本进行gzip压缩
+gzip_body = gzip.compress(body.encode('utf-8'))
+# 2.处理gzip（java和python的结果不一样）
+bs = bytearray(gzip_body)
+print(bs)
+bs[3:10] = [0, 0, 0, 0, 0, 0, 0]
+print(bs)
+</code></pre>
 
 
 </section>
