@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>Day00 总结 - App逆向在线笔记</title>
+<title>总结 - App逆向在线笔记</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
@@ -33,7 +33,7 @@
 <li class="chapter" data-path="index.html">
 <a href="index.html">Welcome to Lucky App逆向</a>
 <li class="chapter active" data-path="day00-%E6%80%BB%E7%BB%93.html">
-<a href="day00-%E6%80%BB%E7%BB%93.html">Day00 总结</a>
+<a href="day00-%E6%80%BB%E7%BB%93.html">总结</a>
 <li class="chapter" data-path="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">
 <a href="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">一、前期准备</a>
 <li class="chapter" data-path="day02-adb.html">
@@ -77,7 +77,7 @@
 <li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
 <a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A01.html">二十、唯品会01</a>
 <li class="chapter" data-path="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
-<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十一、唯品会02</a>
+<a href="day21-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十二、唯品会02</a>
 <li class="chapter" data-path="day22-DYM.html">
 <a href="day22-DYM.html">二十二、DYM</a>
 <li class="chapter" data-path="day23-%E9%85%92%E4%BB%99%E7%BD%91.html">
@@ -100,6 +100,12 @@
 <a href="day31-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">三十一、无障碍image-20240703160302051</a>
 <li class="chapter" data-path="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
 <a href="day32-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">三十二、无障碍项目部署</a>
+<li class="chapter" data-path="day33-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day33-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">三十三、App逆向入口查找</a>
+<li class="chapter" data-path="day34-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day34-%E5%90%84%E7%A7%8Dhook.html">三十四、关于hook知识点</a>
+<li class="chapter" data-path="day35-%E6%8A%96%E9%9F%B3.html">
+<a href="day35-%E6%8A%96%E9%9F%B3.html">三十五、抖音</a>
 <li class="divider"></li>
 
 
@@ -138,6 +144,7 @@ Theme by GitBook
 
 
 
+<h1 id="_1">总结</h1>
 <h2 id="adb">一、adb常用命令</h2>
 <ul>
 <li>开启和关闭adb服务(了解即可)</li>
@@ -318,6 +325,36 @@ Theme by GitBook
 <li>需要手动恢复进程（使用 <code>resume(pid)</code>），否则应用将保持暂停状态。</li>
 <li>某些应用可能有反调试机制，可能会检测到这种启动方式并采取措施。</li>
 </ul>
+<h3 id="4-hookjavaperform">(4) hook中Java.perform</h3>
+<p><code>Java.perform</code> 是 Frida 提供的一个 API，主要用于在 Android 应用中执行 Java 代码的 hook 操作。它确保了所有传入的 JavaScript 函数都在一个安全的环境中运行，并且该环境允许与 Java 类和对象进行交互。这个函数的主要作用是：</p>
+<ol>
+<li><strong>确保同步性</strong>：<code>Java.perform</code> 确保所提供的函数在一个合适的时机被调用，即当 JVM（Java 虚拟机）已经准备好处理来自 JavaScript 的请求时。这对于避免在 JVM 尚未初始化或处于不可预测状态时尝试操作 Java 对象是非常重要的。</li>
+<li><strong>提供上下文</strong>：它为传递给它的函数创建了一个适当的 Java 上下文，使得你可以在其中安全地使用 <code>Java.use</code>, <code>Java.choose</code>, <code>Java.enumerateLoadedClasses</code> 等其他 Frida-Java API 来 hook 或操纵 Java 类和方法。</li>
+<li><strong>保护作用域</strong>：<code>Java.perform</code> 内部的代码块是线程安全的，它保证了在多线程环境下对 Java 类和对象的操作不会引发冲突或不一致的状态。</li>
+</ol>
+<h5 id="_2">使用场景</h5>
+<p>当你想要 hook 或修改 Android 应用中的 Java 方法时，你应该将你的操作包裹在 <code>Java.perform</code> 中。例如，如果你要 hook 一个特定的 Java 方法，你可以这样做：</p>
+<p>javascript深色版本</p>
+<pre><code>Java.perform(function () {
+    // 定义你想 hook 的类和方法
+    var MainActivity = Java.use(&quot;com.example.MainActivity&quot;);
+
+    // Hook 其中一个方法
+    MainActivity.someMethod.implementation = function (arg) {
+        console.log(&quot;someMethod was called with argument: &quot; + arg);
+
+        // 调用原始方法并返回结果（如果需要的话）
+        return this.someMethod(arg); // 如果 you want to call the original method
+    };
+});
+</code></pre>
+<p>在这个例子中，<code>Java.perform</code> 确保了我们对 <code>MainActivity</code> 类的 <code>someMethod</code> 方法的 hook 操作是在一个正确的、线程安全的环境中进行的。</p>
+<h5 id="_3"><strong>注意事项</strong></h5>
+<ul>
+<li>不要在 <code>Java.perform</code> 外部直接调用 Java 相关的 API，因为这可能会导致不稳定的行为或崩溃。</li>
+<li>如果你在 <code>Java.perform</code> 内部定义了异步操作（如网络请求），请确保这些操作完成之前不要让 <code>Java.perform</code> 结束，否则可能导致操作提前终止或出现异常情况。</li>
+</ul>
+<p>总之，<code>Java.perform</code> 是在 Android 应用中进行 Java 层面 hook 和操纵的关键工具，确保了操作的安全性和正确性。</p>
 <h3 id="3js-hook">3、js hook方式</h3>
 <h4 id="1-attach-hook">(1) attach-hook方案</h4>
 <pre><code class="language-js">Java.perform(function () {
@@ -492,9 +529,24 @@ sys.stdin.read()
 </code></pre>
 <h2 id="frida">四、绕过frida反调试</h2>
 <h3 id="1-frida-hook">(1) <strong>不能frida   hook的原因</strong></h3>
+<ol>
+<li>
+<p>有检测frida的so文件，这种情况通过hook查看是哪个so文件检测的， 删除既可</p>
+</li>
+<li>
+<p>会有ptrace占坑，也就是一个进程只能有一个进程进行监视，那么ptrace占坑以后那么你的frida就无法进行监视</p>
+</li>
+</ol>
+<p>解决：使用spawn方案进行hook，App刚运行我们进行使用frida进行监视，这样ptrace就无法进行监控(查看第八大点)</p>
+<ol>
+<li>会有对frida运行信息监测的，比如进程名等，使用frida增强版，hluda-server运行，其它hook脚本正常运行既可(酒仙网就是)</li>
+</ol>
+<p><code>hluda-server-16.4.10-android-arm64</code></p>
 <p>识货这款app，做了frida的反调试，检测到只要frida脚本在运行，app就自动结束</p>
+<p><strong>注意：</strong></p>
+<p>python安装的frida模块需要和手机frida-server的版本对应</p>
 <h3 id="2_1">(2) 对于强制更新的处理方式</h3>
-<h4 id="_1"><strong>方法一</strong></h4>
+<h4 id="_4"><strong>方法一</strong></h4>
 <p>这种公司，一般情况下，公司的安全人员写了一个so文件，检测是否在运行frida的hook，如果检测到，就把app强制终止</p>
 <p>安全人员写的so，一般情况下跟app业务无关，只用来做hook的检测，这种情况下，我们可以尝试删除这个so文件尝试一下，如果删除了，app还能顺利运行，说明这个so跟业务是无关的，就可以删除
 像识货，得物这种app就是这样的、于是，我们要找到 是那个so文件，做了检测</p>
@@ -515,7 +567,7 @@ sys.stdin.read()
   su
   cd /data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/
   rm libmsaoaidsec.so</code></p>
-<h4 id="_2"><strong>方法二</strong></h4>
+<h4 id="_5"><strong>方法二</strong></h4>
 <p>断网执行app，发现能正常打开app后，在打开网络，刷新也可以</p>
 <h3 id="3-hook-appso">(3) hook app在启动过程中执行了那些so文件</h3>
 <p>代码</p>
@@ -873,7 +925,248 @@ print(sign)
 
 # 得到结果20d97aad1b9ba75db3e0901e8c3b11d5  跟抓包结果一致
 </code></pre>
-<h3 id="_3"></h3>
+<h3 id="_6"></h3>
+<h2 id="ptrace">八、ptrace占坑</h2>
+<h3 id="1ptrace">1、ptrace说明</h3>
+<p>这是<strong>ptrace占坑</strong>的标志。</p>
+<p>ptrace可以让一个进程监视和控制另一个进程的执行,并且修改被监视进程的内存、寄存器等,主要应用于调试器的断点调试、系统调用跟踪等。</p>
+<p>在Android app保护中,ptrace被广泛用于反调试。一个进程只能被ptrace一次,如果先调用了ptrace方法,那就可以防止别人调试我们的程序。这就是传说中的先占坑。</p>
+<p>一个进程只能被一个进程附加，为了防止frida的附加，程序中自己先基于ptrace附加自己，我们如果后期使用frida去附加app时，就会报错了。</p>
+<p>frida内部会使用ptrace。</p>
+<pre><code>ps -A |grep lite
+ps -e |grep lite
+</code></pre>
+<p><img alt="image-20230912003432089" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20230912003432089.png" /></p>
+<p><strong>(2) 如何查看这个app，是不是被占坑了</strong></p>
+<ul>
+<li>查看手机正在运行的进程，【需要在手机上执行  adb shell 进入到手机】</li>
+</ul>
+<p><code>ps -A |grep 车智赢包名
+  ps -A |grep autotradercloud  # 只过滤车智赢的进程</code></p>
+<ul>
+<li>查看司小宝进程</li>
+</ul>
+<p>ps -A |grep lite  # 只过司小宝的进程</p>
+<p>忽略掉带 :  结果，如果发现有两条记录，咱们就可以断定它使用了ptrace占坑</p>
+<p><img alt="image-20250106134307646" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250106134307646.png" /></p>
+<p>查看车智赢的进行对比</p>
+<p><img alt="image-20250106134440955" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250106134440955.png" /></p>
+<ul>
+<li>查看当前手机正在运行的应用</li>
+</ul>
+<p>正在运行的应用和正在运行的进程不是一个概念</p>
+<ul>
+<li>
+<p>手机端开启frida-server</p>
+</li>
+<li>
+<p>在电脑上执行</p>
+<p>frida-ps -U -a</p>
+</li>
+<li>
+<p>可以看到 车智赢在运行
+    com.che168.autotradercloud</p>
+</li>
+<li>
+<p>hook应用时候，可以用应用名字，也可以用应用进程id号、</p>
+</li>
+</ul>
+<p><code>session = rdev.attach('车智赢+')  # 通过应用名称</code></p>
+<p><code>session = rdev.attach(9894)      # 进程id号</code></p>
+<h3 id="2-ptrace">2、解决 ptrace占坑方式</h3>
+<ul>
+<li>方式一</li>
+</ul>
+<p><strong>注意：</strong>通过杀进程方案，导致真正的进程也会被关掉。如果是这种app，就没法用这种方式</p>
+<p><strong>司小宝：</strong><code>kill -9 ptrace</code>占坑的进程   -9则为强制终止进程。</p>
+<p><code>__skb_..</code> 打开司小宝发现只有一个主进程了,没有ptrace占坑进程了，hook就可以正常用。如果还不能使用，则换spawn的方案</p>
+<p><img alt="image-20250106141809567" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250106141809567.png" /></p>
+<ul>
+<li>方式二</li>
+</ul>
+<p>开启app--&gt;自动起一个进程---&gt;占坑---&gt;使用spawn方案hook---&gt;让hook脚本早于它占坑的进程执行---&gt;它占坑的进程就起不来
+  使用spawn方案就可以解决这个问题</p>
+<ul>
+<li>方式三</li>
+</ul>
+<p>后期学习 aosp刷机，修改aosp源码---》让app自己附加的进程都启动失败--》编译后刷入到手机中，就可以避免这个问题</p>
+<h3 id="3ptrace">3、解决ptrace占坑实现</h3>
+<ul>
+<li>方法1：速度快点让frida先附加(使用spawn方案运行)。</li>
+</ul>
+<p><code>frida -U -f cmt.chinaway.com.lite -l 111.js</code></p>
+<ul>
+<li>方法2：修改AOSP源码，让它自己附加自己失败，编译并刷入自己手机。</li>
+</ul>
+<p><code>bionic/libc/bionic/ptrace.cpp</code></p>
+<p>```c
+  bool is_peek = (req == PTRACE_PEEKUSR || req == PTRACE_PEEKTEXT || req == PTRACE_PEEKDATA);
+  long peek_result;</p>
+<p>va_list args;
+  va_start(args, req);
+  pid_t pid = va_arg(args, pid_t);
+  void<em> addr = va_arg(args, void</em>);
+  void<em> data;
+  if (is_peek) {
+    data = &amp;peek_result;
+  } else {
+    data = va_arg(args, void</em>);
+  }
+  va_end(args);</p>
+<p>///ADD START
+  int caller_uid=getuid();</p>
+<p>//int caller_pid=getpid();
+  //caller_uid&gt;10000说明是普通App调用
+  if(caller_uid&gt;10000)
+  {</p>
+<pre><code>if(req ==PTRACE_TRACEME)
+{
+  //自己ptrace自己,直接返回成功
+  return 0;
+}
+if(req==PTRACE_ATTACH)
+{
+  int caller_ppid=getppid();
+  if(caller_ppid==pid)
+  {
+    //如果是子进程ptrace父进程，直接返回成功
+    return 0;
+  }
+  //也可以通过读取/proc/$pid/status获取进程的uid
+  //如果uid和当前调用ptrace的uid一致，也直接返回成功
+}
+</code></pre>
+<p>}
+  ///ADD END
+  long result = __ptrace(req, pid, addr, data);
+  if (is_peek &amp;&amp; result == 0) {
+    return peek_result;
+  }
+  return result;
+  }
+  ```</p>
+<p>hook成功</p>
+<p>```js
+  Java.perform(function () {
+      var p0 = Java.use("cmt.chinaway.com.lite.q.p0");
+      p0.a.implementation = function (str, str2, str3,str4) {
+          console.log("---------------------")
+          console.log(str, str2, str3,str4);
+          var res = this.a(str, str2, str3,str4);
+          console.log(res);
+          return res;
+      };
+  });</p>
+<p>// 使用spawn方案hook---
+  frida -U -f cmt.chinaway.com.lite -l 111.js</p>
+<p>/*
+  四个参数，第一个不变，第二个是post请求，第三个是时间戳，第四个是 inside.php
+  1KMrg0dfufc0wpnXEJacEQX1YEUYA0Ja POST 1694450485059 inside.php
+  5VnGRNih2xWwXIF3QeuAYdD7j%2F4%3D</p>
+<hr />
+<p>1KMrg0dfufc0wpnXEJacEQX1YEUYA0Ja POST 1694450485061 inside.php
+  B6YjwYF02I2NsLEydxcwFJBemH0%3D</p>
+<p>*/
+  ```</p>
+<p><strong>注意：</strong>使用ps命令查看的 时候，要使用root权限</p>
+<h2 id="android-xml">九、Android-xml持久化</h2>
+<h3 id="1_2"><strong>(1) 说明：</strong></h3>
+<p>登录案例--》后端返给前端一个唯一标识（token）--》以后访问需要登录后才能访问的接口，必须携带这个token--》后端就可以区分出，是谁来访问的</p>
+<p><strong>app端</strong>：需要在登录后，把token，保存到某个位置</p>
+<ul>
+<li>app端有sqlite，可以用来存储数据</li>
+<li>把登录信息，存到手机端的xml中--》惯用方案</li>
+</ul>
+<p><strong>目的：</strong></p>
+<p>学习保存的目的--》后期咱们会有app，把数据保存到手机端的xml中--》如果我们想用这个数据--》发送请求----》我们可以去手机端某个位置找到它，放到请求中，模拟发送请求</p>
+<h3 id="2-xml">(2) 操作xml</h3>
+<ul>
+<li>新增</li>
+</ul>
+<p>登录成后，把token的值，存储到手机端的xml中---开始</p>
+<p><code>java
+  SharedPreferences sp= getSharedPreferences("sp_token",MODE_PRIVATE);
+  SharedPreferences.Editor edit=sp.edit();
+  edit.putString("token",r.token);
+  edit.commit();</code></p>
+<ul>
+<li>删除xml中的值</li>
+</ul>
+<p><code>SharedPreferences sp1=getSharedPreferences("sp_token",MODE_PRIVATE);
+  SharedPreferences.Editor edit=sp1.edit();
+  edit.remove("token");
+  edit.commit();</code></p>
+<ul>
+<li>获取</li>
+</ul>
+<p><code>SharedPreferences sp=getSharedPreferences("sp_token",MODE_PRIVATE);
+  String token=sp.getString("token","");
+  Log.e("xxxxx",token);</code></p>
+<h3 id="3-xml">(3) 查看手机端xml值</h3>
+<pre><code class="language-python"># 保存到手机上：`/data/data/包名`
+adb shell
+su
+cd /data/data
+cd 包名         # cd com.justin.s11day10
+
+cd shared_prefs # 保存过才有
+ls
+cat sp_token.xml  # 打印出xml中的值
+</code></pre>
+<p><img alt="image-20240412202309335" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20240412202309335.png" /></p>
+<h3 id="4">(4) 我们学习的目的</h3>
+<pre><code class="language-python"># 后续反编译出来，只要看到getSharedPreferences 我们就知道，app在操作xml
+    -后续会看到的，某些值，在app启动生成---》存到xml
+    -以后发送请求，从xml中拿出来，携带发请求
+    -从xml 手动扣出来，发送请求
+</code></pre>
+<h2 id="_7">十、各种加密</h2>
+<h3 id="1javaaes">1、java做aes加密</h3>
+<pre><code class="language-java">public static String encryptData(String key, String iv, String content)  {
+    # 1 把content明文，拿到bytes格式
+    byte[] byteContent = content.getBytes( StandardCharsets.UTF_8);
+    # 2 实例化得到SecretKeySpec对象：key是aes加密的key值
+    SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), &quot;AES&quot;);
+    # 3 实例化得到IvParameterSpec对象：iv是aes加密的iv值
+    IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes());
+    # 4 拿到cipher对象：Cipher类的getInstance方法
+    Cipher cipher = Cipher.getInstance(&quot;AES/CBC/PKCS5Padding&quot;);
+    # 5 把aes的key和iv设置到对象中
+    cipher.init(1, secretKeySpec, ivParameterSpec);
+    # 6 doFinal真正的加密
+    byte[] encryptedBytes = cipher.doFinal(byteContent);
+    return Base64.encodeBase64String(encryptedBytes);
+}
+</code></pre>
+<h3 id="2sojavaaes">2、在so中调用java进行aes加密</h3>
+<pre><code class="language-c"># c调用java中类的静态方法：Cipher类的getInstance方法
+v22 = a1-&gt;functions-&gt;FindClass(a1, &quot;javax/crypto/Cipher&quot;);
+v23 = a1-&gt;functions-&gt;GetStaticMethodID(a1, v22, &quot;getInstance&quot;, &quot;(Ljava/lang/String;)Ljavax/crypto/Cipher;&quot;);
+v24 = a1-&gt;functions-&gt;NewStringUTF(a1, &quot;AES/CBC/PKCS5Padding&quot;);
+v58 = a1-&gt;functions-&gt;CallStaticObjectMethod((JNIEnv *)a1, v22, v23, v24);
+
+# c调用java，实例化得到对象 ：SecretKeySpec 的对象
+v26 = a1-&gt;functions-&gt;FindClass(a1, &quot;javax/crypto/spec/SecretKeySpec&quot;);
+v27 = a1-&gt;functions-&gt;GetMethodID(a1, v26, &quot;&lt;init&gt;&quot;, &quot;([BLjava/lang/String;)V&quot;);
+# 实例化得到对象时，传入的：aes的key
+# v20:就是ase的key
+# v25：是 aes字符串，咱们不需要
+v21 = a1-&gt;functions-&gt;NewObject((JNIEnv *)a1, v26, v27, v20, v25);
+
+
+# c调用java，实例化得到对象：IvParameterSpec的对象
+v34 = a1-&gt;functions-&gt;FindClass(a1, &quot;javax/crypto/spec/IvParameterSpec&quot;);
+v35 = a1-&gt;functions-&gt;GetMethodID(a1, v34, &quot;&lt;init&gt;&quot;, &quot;([B)V&quot;);
+# v32是aes的iv
+v37 = a1-&gt;functions-&gt;NewObject((JNIEnv *)a1, v36, v35, v32);
+</code></pre>
+<h2 id="so">十一、破解so文件加密的几种方式</h2>
+<ol>
+<li>硬核破解---》直接反编译搜--》读代码逻辑--》使用python实现---》之前咱们学过：得物【难度很大】</li>
+<li>frida-rpc---》不需要硬核破解--》直接远程过程调用so文件中的某个方法--》传入参数---》返回了加密后的数据--》大姨妈案例---【破解简单--交付麻烦】</li>
+<li>自己编写安卓应用---》调用别人的so---》完成加密---【简单--交付麻烦】</li>
+<li>unidbg：集合了1和2,3的优点---》不需要手机，也不需要硬核破解---》直接用代码模拟手机--》只需要调用so文件中的某个方法，传入参数--》把结果跑出来---》以后交付用户---》python+java的jar包</li>
+</ol>
 
 
 </section>
