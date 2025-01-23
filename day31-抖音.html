@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>三十一、抖音 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day00-%E6%80%BB%E7%BB%93.html">
+<a href="day00-%E6%80%BB%E7%BB%93.html">总结</a>
+<li class="chapter" data-path="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">
+<a href="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%80.html">
+<a href="day06-java%E5%9F%BA%E7%A1%80.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day07-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">Day07 安卓开发01</a>
+<li class="chapter" data-path="day08-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day08-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">八、安卓开发02</a>
+<li class="chapter" data-path="day09%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day09%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">九、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day10-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day10-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十、C语言安装与入门</a>
+<li class="chapter" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%92%8CJNI%E5%BC%80%E5%8F%91.html">十一、C语言安装与入门</a>
+<li class="chapter" data-path="day12-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-JNI%E5%BC%80%E5%8F%91.html">十二、JNI开发</a>
+<li class="chapter" data-path="day13-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day13-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十三、车智赢</a>
+<li class="chapter" data-path="day14-%E8%AF%86%E8%B4%A7app.html">
+<a href="day14-%E8%AF%86%E8%B4%A7app.html">十四、识货app</a>
+<li class="chapter" data-path="day15-%E5%BE%97%E7%89%A9app.html">
+<a href="day15-%E5%BE%97%E7%89%A9app.html">十五、得物app</a>
+<li class="chapter" data-path="day16-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day16-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十六、B站播放量</a>
+<li class="chapter" data-path="day17-B%E7%AB%9902.html">
+<a href="day17-B%E7%AB%9902.html">十七、B站02</a>
+<li class="chapter" data-path="day18-B%E7%AB%9903.html">
+<a href="day18-B%E7%AB%9903.html">十八、B站02</a>
+<li class="chapter" data-path="day19-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day19-%E5%94%AF%E5%93%81%E4%BC%9A01.html">十九、唯品会01</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十、唯品会02</a>
+<li class="chapter" data-path="day21-DYM.html">
+<a href="day21-DYM.html">二十一、DYM</a>
+<li class="chapter" data-path="day22-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day22-%E9%85%92%E4%BB%99%E7%BD%91.html">二十二、酒仙网</a>
+<li class="chapter" data-path="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十三、司小宝</a>
+<li class="chapter" data-path="day24-unidbg-%E4%B8%8A.html">
+<a href="day24-unidbg-%E4%B8%8A.html">二十四、unidbg-上</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8B.html">
+<a href="day25-unidbg-%E4%B8%8B.html">二十五、unidbg-下</a>
+<li class="chapter" data-path="day26-xhs.html">
+<a href="day26-xhs.html">二十六、xhs</a>
+<li class="chapter" data-path="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
+<li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">二十八、无障碍项目部署</a>
+<li class="chapter" data-path="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">二十九、App逆向入口查找</a>
+<li class="chapter" data-path="day30-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day30-%E5%90%84%E7%A7%8Dhook.html">三十、关于hook知识点</a>
+<li class="chapter active" data-path="day31-%E6%8A%96%E9%9F%B3.html">
+<a href="day31-%E6%8A%96%E9%9F%B3.html">三十一、抖音</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="_1">三十一、抖音</h1>
+<ul>
+<li>
+<p>目标：获取评论信息</p>
+</li>
+<li>
+<p>版本：</p>
+</li>
+<li>v11.5.0【83.7M】（真机）</li>
+<li>v11.5.1【5.7M】</li>
+</ul>
+<h2 id="1">1.抓包</h2>
+<p><img alt="image-20211104092106334" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104092106334.png" /></p>
+<h3 id="11-url">1.1 URL参数</h3>
+<p><img alt="image-20211104092514546" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104092514546.png" /></p>
+<p><img alt="image-20211104092553353" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104092553353.png" /></p>
+<h3 id="12-cookie">1.2 Cookie</h3>
+<p><img alt="image-20211104093301038" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104093301038.png" /></p>
+<h3 id="13">1.3 请求头</h3>
+<p><img alt="image-20211104093722561" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104093722561.png" /></p>
+<h2 id="2url">2.URL参数处理</h2>
+<h3 id="21-cdid">2.1 cdid</h3>
+<p>根据关键字搜索 <code>cdid</code>。</p>
+<p><img alt="image-20211104101201719" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104101201719.png" /></p>
+<p><img alt="image-20211104101249724" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104101249724.png" /></p>
+<p><img alt="image-20211104111124426" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104111124426.png" /></p>
+<p>此处看到了 <code>SharedPreferences</code>，分析一下应该是：优先去xml文件中读取，如果没有的话，就使用 UUID 生成一个新的返回（同时写入到xml文件中）。</p>
+<pre><code class="language-python">import uuid
+
+cdid = str(uuid.uuid4())
+</code></pre>
+<p>接下来：</p>
+<ul>
+<li>想要验证的话，就可以在此处进行hook【清除手机数据后，再打开】。</li>
+<li>此处获取调用栈，也可以知道是谁调用的 <code>cdid</code>，根据调用栈也可以找到生成其他参数的地方。</li>
+</ul>
+<p>Hook UUID</p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var UUID = Java.use(&quot;java.util.UUID&quot;);
+    UUID.randomUUID.implementation = function(){
+        var res = this.randomUUID();
+        console.log(res,res.toString());
+        console.log(Java.use(&quot;android.util.Log&quot;).getStackTraceString(Java.use(&quot;java.lang.Throwable&quot;).$new()));
+        console.log('-------------');
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+sys.stdin.read()
+</code></pre>
+<pre><code>4ad06c6d-6d84-49a1-a749-d8485832df61 4ad06c6d-6d84-49a1-a749-d8485832df61
+529c42b5-ef56-4866-8bc1-c53d55638953 529c42b5-ef56-4866-8bc1-c53d55638953
+java.lang.Throwable
+    at java.util.UUID.randomUUID(Native Method)
+    at com.ss.android.ugc.aweme.shortvideo.e.a.b(SourceFile:458894)
+    at com.ss.android.ugc.aweme.services.AVPublishServiceImpl.lambda$tryRestorePublish$0$AVPublishServiceImpl(SourceFile:393258)
+    at com.ss.android.ugc.aweme.services.AVPublishServiceImpl$$Lambda$0.call(Unknown Source:21)
+    at bolts.Task$10.run(SourceFile:262164)
+    at com.ss.android.ugc.aweme.bs.c.run(SourceFile:459000)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.ss.android.ugc.aweme.bs.e$3$1.run(SourceFile:262193)
+    at java.lang.Thread.run(Thread.java:919)
+
+-------------
+java.lang.Throwable 这个
+    at java.util.UUID.randomUUID(Native Method)
+    at com.ss.android.deviceregister.d.a$1.a(SourceFile:17039392)
+    at com.ss.android.deviceregister.d.h.b(SourceFile:16973833)
+    at com.ss.android.deviceregister.d.a.a(SourceFile:16908296)
+
+    at com.ss.android.common.applog.NetUtil.putCommonParams(SourceFile:34079342)
+
+    at com.ss.android.ugc.aweme.legoImp.task.CrashSdkInitTask$a.a(SourceFile:262176)
+    at com.bytedance.crash.runtime.c.b(SourceFile:393225)
+    at com.bytedance.crash.upload.e.run(SourceFile:393410)
+
+    at android.os.Handler.handleCallback(Handler.java:883)
+    at android.os.Handler.dispatchMessage(Handler.java:100)
+    at android.os.Looper.loop(Looper.java:223)
+    at com.bytedance.crash.runtime.q$c.onLooperPrepared(SourceFile:327712)
+    at android.os.HandlerThread.run(HandlerThread.java:66)
+
+
+</code></pre>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var cls = Java.use(&quot;com.ss.android.deviceregister.d.a&quot;);
+    cls.a.implementation = function(arg4){
+        var res = this.a(arg4);
+        console.log(&quot;获取cdid=&quot;,res);
+        console.log(Java.use(&quot;android.util.Log&quot;).getStackTraceString(Java.use(&quot;java.lang.Throwable&quot;).$new()));
+        console.log('-------------');
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+sys.stdin.read()
+</code></pre>
+<p>hook后的结果是：</p>
+<pre><code>获取cdid= 7236424f-bf31-4bb5-9147-fd17b10aedbf
+java.lang.Throwable
+    at com.ss.android.deviceregister.d.a.a(Native Method)
+    at com.ss.android.common.applog.NetUtil.putCommonParams(SourceFile:34079342)
+    at com.ss.android.ugc.aweme.net.interceptor.CommonParamsInterceptorTTNet.intercept(SourceFile:17170479)
+    ...
+</code></pre>
+<p>分析：在代码中应该写了拦截器，对公共参数进行处理。</p>
+<h3 id="22">2.2 其他参数</h3>
+<p>顺着调用栈向上找：</p>
+<pre><code>at com.ss.android.common.applog.NetUtil.putCommonParams(SourceFile:34079342)
+</code></pre>
+<p><img alt="image-20211104111315613" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104111315613.png" /></p>
+<p>所有的参数都在这里了，所以从这里就可以开始找各个参数了。</p>
+<h3 id="23-oaid">2.3 oaid</h3>
+<p><img alt="image-20211104111501971" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104111501971.png" /></p>
+<p>这个就是去读取手机上的虚拟身份ID，可以在手机上进行关闭。</p>
+<p>【设置】-&gt; 【搜索：虚拟】-&gt; 【虚拟身份管理】</p>
+<p><img src="./imgs/day35-抖音.assets/image-20211005090432907.png" alt="image-20211005090432907" style="zoom:25%;" /></p>
+<pre><code>关于OAID要从获取android设备唯一标识说起。
+Android设备唯一标识包含IMEI，ANDROID_ID，Mac 地址等，随着国外对隐私保护的越来越看重，这些唯一标识要么无法获取，要么就是无效值，亦或者像ANDROID_ID各个应用获取到的是不同值，但总有一些场景需要唯一标识一台设备，尤其是CPI广告（CPI广告是按照实际的安装数量结算，需要唯一标识来确保没有重复计算），所以移动安全联盟搞了这个OAID，其本质是一个设备唯一标识。
+</code></pre>
+<p>关闭后，再次发送请求。</p>
+<p><img alt="image-20211005090513431" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211005090513431.png" /></p>
+<h3 id="24-_rticket">2.4 _rticket</h3>
+<p><img alt="image-20211104111957930" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104111957930.png" /></p>
+<pre><code class="language-java">1633395754178，毫秒级别。
+</code></pre>
+<p>用python实现：</p>
+<pre><code class="language-python">import time
+
+_rticket = str( int(time.time() * 1000) )
+</code></pre>
+<h3 id="25-openudid">2.5 openudid</h3>
+<p><img alt="image-20211104113427765" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104113427765.png" /></p>
+<p><img alt="image-20211104113545700" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104113545700.png" /></p>
+<p><img alt="image-20211104114119499" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104114119499.png" /></p>
+<p><img alt="image-20211104114246784" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104114246784.png" /></p>
+<p><img alt="image-20211104114556483" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104114556483.png" /></p>
+<p><img alt="image-20211104114421485" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104114421485.png" /></p>
+<p><img alt="image-20211104115030078" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104115030078.png" /></p>
+<p><img alt="image-20211104115437343" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104115437343.png" /></p>
+<p>此处去调用一个接口，那么实现这个接口的类是谁呢？</p>
+<ul>
+<li>可以分析</li>
+</ul>
+<p><img src="./imgs/day35-抖音.assets/image-20211104120322312.png" alt="image-20211104120322312" style="zoom:25%;" /></p>
+<ul>
+<li>可以用JADX寻找引用
+  <img src="./imgs/day35-抖音.assets/image-20211104120234157.png" alt="image-20211104120234157" style="zoom:25%;" /></li>
+</ul>
+<p>找到类之后，就来看其中的a方法。</p>
+<p><img alt="image-20211104120214845" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104120214845.png" /></p>
+<p>如果想要验证，就需要让代码走这里。怎么搞呢？</p>
+<p>可以hook  SharedPreferences，读取 openudid时，如果为空，肯定就会重新生成了。</p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var SharedPreferences = Java.use(&quot;android.content.SharedPreferences&quot;);
+
+    var c = Java.use(&quot;com.ss.android.deviceregister.c&quot;);
+    var e = Java.use(&quot;com.ss.android.deviceregister.d.e&quot;);
+    var BigInteger = Java.use(&quot;java.math.BigInteger&quot;);
+
+    SharedPreferences.getString.implementation = function(key,a2){
+        // 获取openudid为空
+        if(key===&quot;openudid&quot;){
+            return &quot;&quot;;
+        }
+        return this.getString(a1,a2);
+    }
+
+
+    c.a.overload('boolean').implementation = function(a9){
+        // 调用a方法
+        var res = this.a(a9);
+        console.log(&quot;获取openudid，值为：&quot;,res);
+        return res;
+    }
+
+    e.c.overload('android.content.Context').implementation = function(ctx){
+        // 在a方法中确保，v0为空
+        return null;
+    }
+
+    BigInteger.toString.overload('int').implementation = function(arg){
+        var res = this.toString(arg);
+        console.log(res);
+        console.log(arg);
+        console.log(Java.use(&quot;android.util.Log&quot;).getStackTraceString(Java.use(&quot;java.lang.Throwable&quot;).$new()));
+        console.log('-------------');
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+sys.stdin.read()
+</code></pre>
+<p>实现代码：</p>
+<pre><code class="language-python">import random
+
+open_udid = &quot;&quot;.join([hex(i)[2:] for i in random.randbytes(10)])
+
+print(open_udid) # 长度20
+</code></pre>
+<pre><code class="language-java">import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+
+public class Hello {
+
+    public static void main(String[] args) {
+        // 随机生成80位，10个字节
+        BigInteger v4 = new BigInteger(80, new SecureRandom());
+        // 让字节以16进制展示
+        System.out.println(v4.toString(16));
+
+    }
+}
+</code></pre>
+<h2 id="3-device_idiid">3. device_id和iid 问题</h2>
+<p>iid其实就是install_id。</p>
+<p>而 device_id 和 install_id （包括cookie中的值）是发送请求 <code>/service/2/device_register/</code> 获得的返回值。</p>
+<p>所以，要先搞定这个请求，再去搞评论。</p>
+<p><img alt="image-20211104141549149" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104141549149.png" /></p>
+<p>所以，在jeb中搜索：<code>device_register</code></p>
+<p><img alt="image-20211005160520531" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211005160520531.png" /></p>
+<p><img alt="image-20211005160544579" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211005160544579.png" /></p>
+<p><img alt="image-20211104142121918" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104142121918.png" /></p>
+<p><img alt="image-20211104142211993" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104142211993.png" /></p>
+<h3 id="31">3.1 明文</h3>
+<h4 id="311">3.1.1 明文内容</h4>
+<p>对 getLogEncryptSwitch 进行hook，强制返回 False，这样就可以让注册过程发送明文。</p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var AppLog = Java.use(&quot;com.ss.android.common.applog.AppLog&quot;);
+    AppLog.getLogEncryptSwitch.implementation = function(){
+        var res = this.getLogEncryptSwitch();
+        console.log(res);
+        return false;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message, data)
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+sys.stdin.read()
+</code></pre>
+<p><img alt="image-20211104141549149" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104141549149.png" /></p>
+<p>发送的请求的数据如下：</p>
+<ul>
+<li>URL</li>
+</ul>
+<p><code>https://log3-misc.amemv.com/service/2/device_register/?ac=wifi&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;channel=gdt_growth14_big_yybwz&amp;aid=1128&amp;app_name=aweme&amp;version_code=110500&amp;version_name=11.5.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid=2348574b5d8a004d&amp;manifest_version_code=110501&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=11509900&amp;_rticket=1633699391792&amp;mcc_mnc=46001&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;app_type=normal&amp;ts=1633699391&amp;cdid=4e33229a-53d4-4a23-9c18-b182738d64e2&amp;oaid&amp;manifest_version_code=110501&amp;_rticket=1633699391844&amp;app_type=normal&amp;channel=gdt_growth14_big_yybwz&amp;device_type=Redmi%208A&amp;language=zh&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;resolution=720*1369&amp;openudid=2348574b5d8a004d&amp;update_version_code=11509900&amp;cdid=4e33229a-53d4-4a23-9c18-b182738d64e2&amp;os_api=29&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;dpi=320&amp;oaid=&amp;ac=wifi&amp;mcc_mnc=46001&amp;os_version=10&amp;version_code=110500&amp;app_name=aweme&amp;version_name=11.5.0&amp;device_brand=Xiaomi&amp;ssmix=a&amp;device_platform=android&amp;aid=1128&amp;ts=1633699391</code></p>
+<ul>
+<li>请求体</li>
+</ul>
+<p><code>{"magic_tag":"ss_app_log","header":{"display_name":"抖音短视频","update_version_code":11509900,"manifest_version_code":110501,"app_version_minor":"","aid":1128,"channel":"gdt_growth14_big_yybwz","appkey":"57bfa27c67e58e7d920028d3","package":"com.ss.android.ugc.aweme","app_version":"11.5.0","version_code":110500,"sdk_version":"2.14.0-alpha.4","sdk_target_version":29,"git_hash":"c1aa4085","os":"Android","os_version":"10","os_api":29,"device_model":"Redmi 8A","device_brand":"Xiaomi","device_manufacturer":"Xiaomi","cpu_abi":"armeabi-v7a","release_build":"b44f245_20200615_436d6cbc-aecc-11ea-bfa1-02420a000026","density_dpi":320,"display_density":"xhdpi","resolution":"1369x720","language":"zh","mc":"E0:1F:88:AA:B3:39","timezone":8,"access":"wifi","not_request_sender":0,"carrier":"中国联通","mcc_mnc":"46001","rom":"MIUI-V12.0.3.0.QCPCNXM","rom_version":"miui_V12_V12.0.3.0.QCPCNXM","cdid":"4e33229a-53d4-4a23-9c18-b182738d64e2","sig_hash":"aea615ab910015038f73c47e45d21466","openudid":"2348574b5d8a004d","clientudid":"f96392a8-81c8-4a9c-a1a4-39a1ee4de7e0","sim_serial_number":[],"region":"CN","tz_name":"Asia\/Shanghai","tz_offset":28800,"sim_region":"cn","oaid":{"req_id":"bf3d0cf4-4a87-452e-9f02-42189c3104e7","hw_id_version_code":"null","take_ms":"52","is_track_limited":"null","query_times":"1","id":"","time":"1633699382168"},"oaid_may_support":true,"req_id":"7847b04b-2a79-4544-b321-ac0d0d49fc8b","custom":{"filter_warn":0,"web_ua":"Mozilla\/5.0 (Linux; Android 10; Redmi 8A Build\/QKQ1.191014.001; wv) AppleWebKit\/537.36 (KHTML, like Gecko) Version\/4.0 Chrome\/87.0.4280.101 Mobile Safari\/537.36"},"apk_first_install_time":1633661064526,"is_system_app":0,"sdk_flavor":"china"},"_gen_time":1633699391789}</code></p>
+<h4 id="312-gzip">3.1.2 请求体gzip压缩</h4>
+<p><img alt="image-20211104144420501" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104144420501.png" /></p>
+<p><img alt="image-20211104144841370" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104144841370.png" /></p>
+<p><img alt="image-20211104144814925" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104144814925.png" /></p>
+<p><img alt="image-20211104145047672" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104145047672.png" /></p>
+<p><img alt="image-20211104144458053" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104144458053.png" /></p>
+<h4 id="313">3.1.3 发送请求</h4>
+<p>使用jadx查询继承 <code>NetworkClient</code>的类   或  Hook输出 <code>NetworkClient.getDefault()</code> ，就会发现：</p>
+<pre><code>com.ss.android.ugc.aweme.statistic.AppLogNetworkClient
+</code></pre>
+<p><img alt="image-20211104145408675" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104145408675.png" /></p>
+<p>Python中实现gzip压缩的算法：</p>
+<pre><code class="language-python">import base64
+import gzip
+
+
+# 压缩
+s_in = &quot;我是武沛齐&quot;.encode('utf-8')
+s_out = gzip.compress(s_in)
+print([i for i in s_out])
+
+&quot;&quot;&quot;
+# 解压缩
+res = gzip.decompress(s_out)
+print(res)
+print(res.decode('utf-8'))
+&quot;&quot;&quot;
+
+
+# 解，java中gzip压缩的结果 -&gt; OK
+&quot;&quot;&quot;
+data_list = [31, -117, 8, 0, 0, 0, 0, 0, 0, 0, 123, -42, 49, -15, -39, -116, -11, -49, -42, 46, 123, -74, 105, -10, -53, -67, 19, 0, 44, -81, 125, -121, 15, 0, 0, 0]
+res_list = [256+item if item&lt;0 else item for item in data_list]
+print(res_list)
+
+res = gzip.decompress(bytearray(res_list))
+print(res)
+print(res.decode('utf-8'))
+&quot;&quot;&quot;
+
+</code></pre>
+<pre><code class="language-java">import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.io.OutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+
+public class Hello {
+
+    public static void main(String[] args) throws IOException {
+
+        // 压缩
+        String data = &quot;我是武沛齐&quot;;
+        System.out.println(Arrays.toString(data.getBytes()));
+        ByteArrayOutputStream v0_1 = new ByteArrayOutputStream();
+        GZIPOutputStream v1 = new GZIPOutputStream((v0_1));
+        v1.write(data.getBytes());
+        v1.close();
+        byte[] arg6 = v0_1.toByteArray();
+        System.out.println(Arrays.toString(arg6));
+
+        // 解压缩
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ByteArrayInputStream in = new ByteArrayInputStream(arg6);
+        GZIPInputStream ungzip = new GZIPInputStream(in);
+        byte[] buffer = new byte[256];
+        int n;
+        while ((n = ungzip.read(buffer)) &gt;= 0) {
+            out.write(buffer, 0, n);
+        }
+        byte[] res = out.toByteArray();
+        System.out.println(Arrays.toString(res));
+        System.out.println(out.toString(&quot;UTF-8&quot;));
+
+    }
+}
+</code></pre>
+<p>提醒：Java和Python进行gzip压缩时，会发现有些字节是不同（不影响他的结果）</p>
+<pre><code># java
+[31, -117, 8, 0, 0, 0, 0, 0, 0, 0, 123, -42, 49, -15, -39, -116, -11, -49, -42, 46, 123, -74, 105, -10, -53, -67, 19, 0, 44, -81, 125, -121, 15, 0, 0, 0]
+
+[31, 139, 8, 0, 0, 0, 0, 0, 0, 0, 123, 214, 49, 241, 217, 140, 245, 207, 214, 46, 123, 182, 105, 246, 203, 189, 19, 0, 44, 175, 125, 135, 15, 0, 0, 0]
+
+# python
+[31, 139, 8, 0, 0, 0, 0, 0, 0, 0, 123, 214, 49, 241, 217, 140, 245, 207, 214, 46, 123, 182, 105, 246, 203, 189, 19, 0, 44, 175, 125, 135, 15, 0, 0, 0]
+
+
+[31, 139, 8, 0, 100, 108, 138, 97, 2, 255, 123, 214, 49, 241, 217, 140, 245, 207, 214, 46, 123, 182, 105, 246, 203, 189, 19, 0, 44, 175, 125, 135, 15, 0, 0, 0]
+</code></pre>
+<p>对于请求体：发送明文 -&gt; 字节 -&gt; gzip压缩。</p>
+<h3 id="32">3.2 密文</h3>
+<p><img alt="image-20211104142121918" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104142121918.png" /></p>
+<p><img alt="image-20211104150557501" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104150557501.png" /></p>
+<h4 id="321-gzip">3.2.1 请求体gzip压缩</h4>
+<p><img alt="image-20211104150748874" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104150748874.png" /></p>
+<h4 id="322-so">3.2.2 so加密</h4>
+<p><img alt="image-20211104151035387" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104151035387.png" /></p>
+<p><img alt="image-20211104151148740" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104151148740.png" /></p>
+<p>我们自己不再剖析JNI中算法的实现；把这个so文件当做当做是我们的模块，主动调用，基于：<code>frida-rpc</code></p>
+<ul>
+<li>
+<p>手机</p>
+</li>
+<li>
+<p>安装 frida</p>
+</li>
+<li>
+<p>启动 frida</p>
+</li>
+<li>
+<p>PC电脑</p>
+</li>
+<li>
+<p>写frida-rpc代码</p>
+<p><code>函数
+    调用 ttEncrypt 方法，结果拿到。</code></p>
+</li>
+</ul>
+<p>这是没有C和底层基础同学的一个福音，不用逆向JNI代码，直接基于设备执行并获取加密结果。</p>
+<h4 id="323-frida-rpc">3.2.3 frida-rpc</h4>
+<p>frida-rpc，可以实现主动调用设备中 so文件中的方法。</p>
+<pre><code class="language-python">import frida
+import gzip
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+rpc.exports = {      
+    //自定义一个方法，接收两个参数。 [1,2,31,33,12,31]
+    ttencrypt:function(bArr,len){
+         var res;
+
+         Java.perform(function () {
+            var EncryptorUtil = Java.use(&quot;com.bytedance.frameworks.encryptor.EncryptorUtil&quot;);  
+
+            // 将bArr转换成Java的字节数组。
+            var dataByteArray = Java.array('byte',bArr);
+
+            // 调用native方法，并获取返回值。
+            res = EncryptorUtil.ttEncrypt(dataByteArray,len);
+         });
+
+         return res;
+    }
+}
+&quot;&quot;&quot;
+script = session.create_script(scr)
+script.load()
+
+
+
+
+# 0.要加密的文本
+body = &quot;武沛齐&quot;
+
+# 1.对文本进行gzip压缩
+gzip_body = gzip.compress(body.encode('utf-8'))
+
+# 2.处理gzip（java和python的结果不一样）
+bs = bytearray(gzip_body)
+bs[3:10] = [0, 0, 0, 0, 0, 0, 0]
+
+# 3.ttencrypt加密并获取密文
+sign_byte_list = script.exports.ttencrypt(list(bs), len(bs))
+print(sign_byte_list)
+</code></pre>
+<p><img alt="image-20211104160446821" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104160446821.png" /></p>
+<p>这样就可以自己调用so文件的方法并获取加密后的数据。</p>
+<p>获取到的密文就是请求体。</p>
+<h4 id="324">3.2.4 发送请求</h4>
+<p><img alt="image-20211104150557501" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104150557501.png" /></p>
+<p>使用jadx查询继承 <code>NetworkClient</code>的类   或  Hook输出 <code>NetworkClient.getDefault()</code> ，就会发现：</p>
+<pre><code>com.ss.android.ugc.aweme.statistic.AppLogNetworkClient
+</code></pre>
+<p><img alt="image-20211104145408675" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104145408675.png" /></p>
+<h2 id="4">4.请求头（评论和注册设备）</h2>
+<p>上述 【获取评论】 和 【注册设备】 发送请求时，都要携带一些请求头。</p>
+<ul>
+<li>
+<p>获取评论<strong>【GET请求】</strong>
+  <img alt="image-20211104161330292" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104161330292-7357671.png" /></p>
+</li>
+<li>
+<p>注册设备<strong>【POST请求】</strong></p>
+</li>
+</ul>
+<p><img alt="image-20211104161150900" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104161150900-7357671.png" /></p>
+<h3 id="41-x-ss-stub">4.1 x-ss-stub</h3>
+<p>发现在 post 请求时，会携带这个请求头，而 get 请求是没有的。</p>
+<p>在jeb中根据关键字搜索：<code>x-ss-stub</code></p>
+<p><img alt="image-20211104161722719" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104161722719-7357671.png" /></p>
+<pre><code>v1.f.getBody，应该是获取请求体，然后对请求体再进行操作（md5加密）
+</code></pre>
+<p><img alt="image-20211104161825619" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104161825619-7357671.png" /></p>
+<p><img alt="image-20211104161848494" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104161848494-7357671.png" /></p>
+<p><img alt="image-20211104162731629" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104162731629-7357671.png" /></p>
+<p><img alt="image-20211007150917858" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211007150917858-7357671.png" /></p>
+<p><img alt="image-20211007150937314" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211007150937314-7357671.png" /></p>
+<p>这就是个md5加密。</p>
+<p>所以，如果发送POST请求时， <code>x-ss-stub</code> 就是对请求体加密的值。</p>
+<p>回顾一下，在注册设备时（POST请求）我们会发送明文或密码。</p>
+<ul>
+<li>明文时</li>
+</ul>
+<p>```
+  明文 -&gt; gzip压缩 ==&gt; 请求体</p>
+<p>x-ss-stub就是对gzip压缩的数据进行md5加密。
+  ```</p>
+<ul>
+<li>密文时</li>
+</ul>
+<p>```
+  明文 -&gt; gzip压缩 -&gt; so加密 -&gt; 请求体</p>
+<p>x-ss-stub就是对加密后的请求体进行md5加密。
+  ```</p>
+<h3 id="42-x-gorgon-x-khronos">4.2 x-gorgon 和 x-khronos</h3>
+<p>这个两个请求头是所有请求都会携带的。</p>
+<p>在jadx搜索：x-gorgon</p>
+<p><img alt="image-20211104163929231" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104163929231-7357671.png" /></p>
+<p><img alt="image-20211104164801303" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104164801303-7357671.png" /></p>
+<h4 id="421">4.2.1 参数是什么？</h4>
+<p>想要hook这个 <code>mo36295a</code> 方法，但是不知道他的类名叫什么，怎么hook？</p>
+<blockquote>
+<p>可以先hook它里面的类，输出下调用栈，就知道了：com.ss.sys.ces.gg.tt$1.a</p>
+</blockquote>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    var tt1 = Java.use(&quot;com.ss.sys.ces.gg.tt&quot;);
+    tt1.d.implementation = function(str){
+        console.log(Java.use(&quot;android.util.Log&quot;).getStackTraceString(Java.use(&quot;java.lang.Throwable&quot;).$new()));
+        var res = this.d(str);
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+script.load()
+sys.stdin.read()
+</code></pre>
+<p><img alt="image-20211104170225839" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104170225839-7357671.png" /></p>
+<p>接下来，对 <code>mo36295a</code> 进行hook并获取他的参数，看看参数到底是个啥？</p>
+<pre><code class="language-python">import frida
+import sys
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+Java.perform(function () {
+    function showMap(title,map){
+        var result = &quot;&quot;;
+        var keyset = map.keySet();
+        var it = keyset.iterator();
+        while(it.hasNext()){
+            var keystr = it.next().toString();
+            var valuestr = map.get(keystr).toString();
+            result += keystr;
+            result += &quot;=&quot;;
+            result += valuestr;
+            result += &quot;; &quot;;
+        }
+        console.log(title, result);
+    }
+
+    var tt1 = Java.use(&quot;com.ss.sys.ces.gg.tt$1&quot;);
+    tt1.a.implementation = function(str,header){
+        console.log('参数1-&gt;',str);
+        showMap(&quot;参数2-&gt;&quot;,header);
+
+        var res = this.a(str,header);
+        showMap(&quot;结果-&quot;,res);
+
+        console.log('-------------');
+        return res;
+    }
+});
+&quot;&quot;&quot;
+script = session.create_script(scr)
+
+
+def on_message(message, data):
+    print(message['payload'])
+
+
+script.on(&quot;message&quot;, on_message)
+script.load()
+sys.stdin.read()
+
+
+</code></pre>
+<p>注册设备时抓包：</p>
+<pre><code>参数1-&gt; https://log3-misc.amemv.com/service/2/device_register/?ac=wifi&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;channel=gdt_growth14_big_yybwz&amp;aid=1128&amp;app_name=aweme&amp;version_code=110500&amp;version_name=11.5.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid=04e124ac30b67377&amp;manifest_version_code=110501&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=11509900&amp;_rticket=1649339089767&amp;mcc_mnc=46001&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;app_type=normal&amp;ts=1649339090&amp;cdid=ad467171-7199-46a5-aff0-a7ee9b5fdab7&amp;oaid=2cee3c1c62e89ce1&amp;tt_data=a&amp;manifest_version_code=110501&amp;_rticket=1649339089832&amp;app_type=normal&amp;channel=gdt_growth14_big_yybwz&amp;device_type=Redmi%208A&amp;language=zh&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;resolution=720*1369&amp;openudid=04e124ac30b67377&amp;update_version_code=11509900&amp;cdid=ad467171-7199-46a5-aff0-a7ee9b5fdab7&amp;os_api=29&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;dpi=320&amp;oaid=2cee3c1c62e89ce1&amp;ac=wifi&amp;mcc_mnc=46001&amp;os_version=10&amp;version_code=110500&amp;app_name=aweme&amp;version_name=11.5.0&amp;device_brand=Xiaomi&amp;ssmix=a&amp;device_platform=android&amp;aid=1128&amp;ts=1649339090
+
+
+
+ac=wifi&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;channel=gdt_growth14_big_yybwz&amp;aid=1128&amp;app_name=aweme&amp;version_code=110500&amp;version_name=11.5.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid=04e124ac30b67377&amp;manifest_version_code=110501&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=11509900&amp;_rticket=1649339089767&amp;mcc_mnc=46001&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;app_type=normal&amp;ts=1649339090&amp;cdid=ad467171-7199-46a5-aff0-a7ee9b5fdab7&amp;oaid=2cee3c1c62e89ce1&amp;tt_data=a&amp;manifest_version_code=110501&amp;_rticket=1649339089832&amp;app_type=normal&amp;channel=gdt_growth14_big_yybwz&amp;device_type=Redmi%208A&amp;language=zh&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;resolution=720*1369&amp;openudid=04e124ac30b67377&amp;update_version_code=11509900&amp;cdid=ad467171-7199-46a5-aff0-a7ee9b5fdab7&amp;os_api=29&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;dpi=320&amp;oaid=2cee3c1c62e89ce1&amp;ac=wifi&amp;mcc_mnc=46001&amp;os_version=10&amp;version_code=110500&amp;app_name=aweme&amp;version_name=11.5.0&amp;device_brand=Xiaomi&amp;ssmix=a&amp;device_platform=android&amp;aid=1128&amp;ts=1649339090
+</code></pre>
+<pre><code>参数2-&gt; x-tt-trace-id=[00-0445453d01083072df37445b89ca0468-0445453d01083072-01]; content-length=[1238]; sdk-version=[1]; x-ss-stub=[FE97B517E6ADB55F881C6197D3F26250]; content-type=[application/octet-stream;tt-data=a]; x-ss-dp=[1128]; accept-encoding=[gzip, deflate]; x-ss-req-ticket=[1649339089814]; user-agent=[com.ss.android.ugc.aweme/110501 (Linux; U; Android 10; zh_CN; Redmi 8A; Build/QKQ1.191014.001; Cronet/TTNetVersion:3c28619c 2020-05-19 QuicVersion:0144d358 2020-03-24)]; 
+</code></pre>
+<p>此被调用时：</p>
+<ul>
+<li>参数：str，请求的URL</li>
+</ul>
+<p><code>https://api3-normal-c-lf.amemv.com/aweme/v2/comment/list/?aweme_id=7014729210929466627&amp;cursor=0&amp;count=20&amp;address_book_access=2&amp;gps_access=2&amp;forward_page_type=1&amp;channel_id=0&amp;city=130400&amp;hotsoon_filtered_count=0&amp;hotsoon_has_more=0&amp;follower_count=0&amp;is_familiar=0&amp;page_source=0&amp;manifest_version_code=110501&amp;_rticket=1633579437171&amp;app_type=normal&amp;iid=1469383821240509&amp;channel=gdt_growth14_big_yybwz&amp;device_type=Redmi%208A&amp;language=zh&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;resolution=720*1369&amp;openudid=2348574b5d8a004d&amp;update_version_code=11509900&amp;cdid=966d6c76-0369-4841-acd2-e06584644a2a&amp;os_api=29&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;dpi=320&amp;oaid=&amp;ac=wifi&amp;device_id=1891579430189188&amp;mcc_mnc=46001&amp;os_version=10&amp;version_code=110500&amp;app_name=aweme&amp;version_name=11.5.0&amp;device_brand=Xiaomi&amp;ssmix=a&amp;device_platform=android&amp;aid=1128&amp;ts=1633579440</code></p>
+<p><code>https://log.snssdk.com/service/2/device_register/?ac=wifi&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;channel=gdt_growth14_big_yybwz&amp;aid=1128&amp;app_name=aweme&amp;version_code=110500&amp;version_name=11.5.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid=04e124ac30b67377&amp;manifest_version_code=110501&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=11509900&amp;_rticket=1649335336520&amp;mcc_mnc=46001&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;app_type=normal&amp;ts=1649335337&amp;cdid=ed278214-a7c1-4d24-b38f-150b02ae8b80&amp;oaid=2cee3c1c62e89ce1&amp;manifest_version_code=110501&amp;_rticket=1649335336558&amp;app_type=normal&amp;channel=gdt_growth14_big_yybwz&amp;device_type=Redmi%208A&amp;language=zh&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;resolution=720*1369&amp;openudid=04e124ac30b67377&amp;update_version_code=11509900&amp;cdid=ed278214-a7c1-4d24-b38f-150b02ae8b80&amp;os_api=29&amp;mac_address=E0%3A1F%3A88%3AAA%3AB3%3A39&amp;dpi=320&amp;oaid=2cee3c1c62e89ce1&amp;ac=wifi&amp;mcc_mnc=46001&amp;os_version=10&amp;version_code=110500&amp;app_name=aweme&amp;version_name=11.5.0&amp;device_brand=Xiaomi&amp;ssmix=a&amp;device_platform=android&amp;aid=1128&amp;ts=1649335337</code></p>
+<ul>
+<li>参数：map，请求头（字典类型）</li>
+</ul>
+<p>```
+  x-tt-trace-id=[00-58ec0df80d6b861a800388486c520468-58ec0df80d6b861a-01]; 
+  cookie=[
+    "install_id=1469383821240509; 
+    ttreq=1$9f534ee7a9db1e3bcb06024a7461a696cf931581;   odin_tt=50121ea7cbffd9d6fea1bbbada4adf1801fefd6a58a89ad39952dcc7b66a828761cc6780ced008b18d2c5180c5026832c8d89090e8dc8011cd5e61044fdd32ab"
+  ]; </p>
+<p>sdk-version=[1]; 
+  x-ss-dp=[1128]; 
+  accept-encoding=[gzip, deflate, br]; 
+  x-ss-req-ticket=[1633579437166]; 
+  user-agent=[com.ss.android.ugc.aweme/110501 (Linux; U; Android 10; zh_CN; Redmi 8A; Build/QKQ1.191014.001;Cronet/TTNetVersion:3c28619c 2020-05-19 QuicVersion:0144d358 2020-03-24)]; 
+  ```</p>
+<ul>
+<li>返回值</li>
+</ul>
+<p><code>结果- X-Khronos=1633579437; X-Gorgon=04043843000592c74a3a2bceabd7afeb8d36fc897b4e58d8238f;</code></p>
+<h4 id="422">4.2.2 分析变量</h4>
+<p><img alt="image-20211104171923612" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104171923612-7357671.png" /></p>
+<h5 id="d">变量d</h5>
+<p>切割当前请求的URL，获取参数部分。</p>
+<pre><code class="language-java">String d = C68187tt.m122906d(str);
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-python">str = &quot;https://api3-normal-c-lf.amemv.com/aweme/v2/comment/list/?aweme_id=7014729210929466627&amp;cursor=0&amp;count=20&amp;address_book_access=2&amp;gps_access=2&amp;forward_page_type=1&amp;channel_id=0&amp;city=130400&amp;hotsoon_filtered_count=0&amp;hotsoon_has_more=0&amp;follower_count=0&amp;is_familiar=0&amp;page_source=0&amp;manifest_versio...&quot;
+
+# 切割后的值为：
+
+d=&quot;aweme_id=7014729210929466627&amp;cursor=0&amp;count=20&amp;address_book_access=2&amp;gps_access=2&amp;forward_page_type=1&amp;channel_id=0&amp;city=130400&amp;hotsoon_filtered_count=0&amp;hotsoon_has_more=0&amp;follower_count=0&amp;is_familiar=0&amp;page_source=0&amp;manifest_versio...&quot;
+</code></pre>
+<h5 id="a">变量a</h5>
+<p>对切割后的GET参数进行md5加密。</p>
+<pre><code class="language-java">String a = (d == null || d.length() &lt;= 0) ? null : C23677b.m44420a(d);
+</code></pre>
+<p><img alt="image-20211104172426360" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104172426360-7357671.png" /></p>
+<h5 id="str7">变量str7</h5>
+<p>读取请求体中的 <code>X-SS-STUB</code> （请求体的md5加密值）。</p>
+<ul>
+<li>如果有值，则 str7 = <code>请求体中的X-SS-STUB值</code>       【POST请求】</li>
+<li>如果没值，则 str7 = "00000000000000000000000000000000" 【GET请求】</li>
+</ul>
+<p><img alt="image-20211104172959390" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104172959390-7357671.png" /></p>
+<h5 id="str8">变量str8</h5>
+<p>读取cookie，并对cookie的值进行md5加密。</p>
+<pre><code class="language-python">cookie的值=&quot;install_id=1469383821240509; ttreq=1$9f534ee7a9db1e3bcb06024a7461a696cf931581; odin_tt=50121ea7cbffd9d6fea1bbbada4adf1801fefd6a58a89ad39952dcc7b66a828761cc6780ced008b18d2c5180c5026832c8d89090e8dc8011cd5e61044fdd32ab&quot;
+
+# cookie是在放在请求体中的的，所有这里是去请求体中获取的。
+</code></pre>
+<p><img alt="image-20211104173343514" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104173343514-7357671.png" /></p>
+<h5 id="str9">变量str9</h5>
+<p>读取cookie中的 sessionid。</p>
+<ul>
+<li>如果有：<code>str9 = 对session_id进行md5加密</code></li>
+<li>如果没：<code>str9= "00000000000000000000000000000000"</code> </li>
+</ul>
+<p>注意：抓包发现cookie中没有session_id，所以str9就是 <code>0000...</code></p>
+<p><img alt="image-20211104173739456" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104173739456-7357671.png" /></p>
+<p><img alt="image-20211104173717820" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104173717820-7357671.png" /></p>
+<h5 id="i2">变量i2</h5>
+<pre><code>i2 = -1
+</code></pre>
+<p>因为hook的请求体中根本没有 <code>META-SHADOWMAZE</code>。</p>
+<p><img alt="image-20211104174349457" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104174349457-7357671.png" /></p>
+<h4 id="423">4.2.3 加密和处理</h4>
+<p><img alt="image-20211104174656937" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104174656937-7357671.png" /></p>
+<h5 id="1_1">第1步：拼接</h5>
+<pre><code class="language-python">a + str7 + str8 + str9
+
+a = &quot;GET参数md5加密&quot;
+str7 = &quot;00000000000000000000000000000000&quot; 或 'X-SS-STUB头'
+str8 = 'cookie的md5加密'
+str9 = '00000000000000000000000000000000'
+</code></pre>
+<h5 id="2m44418a">第2步：m44418a处理</h5>
+<p><img alt="image-20211104174948735" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104174948735-7357671.png" /></p>
+<pre><code class="language-java">public static byte[] m44418a(String str) {
+    // 字符串长度
+    int length = str.length();
+
+    // 字节数组，是总长度的 1/2
+    // [x,]
+    byte[] bArr = new byte[(length / 2)];
+
+    for (int i = 0; i &lt; length; i += 2) {
+        // 值 = ( 第i个字符转以16进制转整形 &lt;&lt; 4 ) + 第i+1个字符转以16进制转整形
+        bArr[i / 2] = (byte) ((Character.digit(str.charAt(i), 16) &lt;&lt; 4) + Character.digit(str.charAt(i + 1), 16));
+    }
+    return bArr;
+}
+</code></pre>
+<pre><code class="language-javascript">// JavaScript实现
+var str = &quot;拼接后的字符串&quot;
+
+var bArr = [];
+for(var i=0;i&lt;str.length;i+=2){
+    var item = (parseInt(str[i],16) &lt;&lt; 4) + parseInt(str[i+1],16);
+    bArr.push(item);
+}
+</code></pre>
+<pre><code class="language-python"># Python实现
+str_data = '6c2a0c5df32f1c2dcf537cb1b7c3c28a0000000000000000000000000000000054807aabff5a113a220938e77db4058d00000000000000000000000000000000'
+
+data_list = []
+for i in range(0, len(str_data), 2):
+    char = int(int(str_data[i], base=16) &lt;&lt; 4) + int(str_data[i + 1], base=16)
+    data_list.append(char)
+print(data_list)
+</code></pre>
+<h5 id="3so">第3步：so加密</h5>
+<pre><code>int currentTimeMillis = (int) (System.currentTimeMillis() / 1000);
+
+参数1：-1    
+参数2：时间戳 currentTimeMillis（X-Khronos就是这个值）
+参数3：第2步处理后的字节数组
+
+C68153a.leviathan(i2, currentTimeMillis, C23676a.m44418a(a + str7 + str8 + str9))
+</code></pre>
+<p><img alt="image-20211104180612541" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104180612541-7357671.png" /></p>
+<p><img alt="image-20211104180651417" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104180651417-7357671.png" /></p>
+<p>此处就可以直接使用 frida-rpc 来主动调用 leviathan方法。</p>
+<pre><code class="language-python">import frida
+import time
+
+rdev = frida.get_remote_device()
+session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+scr = &quot;&quot;&quot;
+rpc.exports = {   
+    execandleviathan: function (i2,str){
+        var result;
+        Java.perform(function () {
+            // 先处理拼接好的数据（字节数组） m44418a方法
+            var bArr = [];
+            for(var i=0;i&lt;str.length;i+=2){
+                var item = (parseInt(str[i],16) &lt;&lt; 4) + parseInt(str[i+1],16);
+                bArr.push(item);
+            }
+
+            // 转换为java的字节数组
+            var dataByteArray = Java.array('byte',bArr);
+
+            // 调用leviathan方法
+            var Gorgon = Java.use(&quot;com.ss.sys.ces.a&quot;);
+            result = Gorgon.leviathan(-1, i2 , dataByteArray);   //leviathan为方法名
+        });
+        return result;
+    }
+}
+&quot;&quot;&quot;
+script = session.create_script(scr)
+script.load()
+
+
+
+khronos = int(time.time())
+un_sign_string = '6c2a0c5df32f1c2dcf537cb1b7c3c28a0000000000000000000000000000000054807aabff5a113a220938e77db4058d00000000000000000000000000000000'
+
+sign_byte_list = script.exports.execandleviathan(khronos, un_sign_string)
+
+print(sign_byte_list)
+</code></pre>
+<p><img alt="image-20211104183316617" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104183316617-7357671.png" /></p>
+<h5 id="4m44417a">第4步：m44417a处理</h5>
+<p>处理之后的结果就是 <code>x-gorgon</code></p>
+<p><img alt="image-20211104183621529" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104183621529-7357671.png" /></p>
+<p><img alt="image-20211104183806059" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104183806059-7357671.png" /></p>
+<pre><code class="language-python">import ctypes
+
+def m44417a(barr):
+    def int_overflow(val):
+        maxint = 2147483647
+        if not -maxint - 1 &lt;= val &lt;= maxint:
+            val = (val + (maxint + 1)) % (2 * (maxint + 1)) - maxint - 1
+        return val
+
+    def unsigned_right_shift(n, i):
+        # 数字小于0，则转为32位无符号uint     n&gt;&gt;&gt;i
+        if n &lt; 0:
+            n = ctypes.c_uint32(n).value
+        # 正常位移位数是为正数，但是为了兼容js之类的，负数就右移变成左移好了
+        if i &lt; 0:
+            return -int_overflow(n &lt;&lt; abs(i))
+        # print(n)
+        return int_overflow(n &gt;&gt; i)
+
+    char_array = &quot;0123456789abcdef&quot;
+    result = ['' for i in range(len(barr) * 2)]
+    for i in range(len(barr)):
+        i2 = barr[i] &amp; 255
+        i3 = i * 2
+        result[i3] = char_array[  unsigned_right_shift(i2, 4)  ]  # i2 &gt;&gt;&gt; 4
+        result[i3 + 1] = char_array[i2 &amp; 15]
+    return ''.join(result)
+
+</code></pre>
+<h5 id="_2">整合代码</h5>
+<pre><code class="language-python">import frida
+import time
+
+import ctypes
+
+
+def m44417a(barr):
+    def int_overflow(val):
+        maxint = 2147483647
+        if not -maxint - 1 &lt;= val &lt;= maxint:
+            val = (val + (maxint + 1)) % (2 * (maxint + 1)) - maxint - 1
+        return val
+
+    def unsigned_right_shift(n, i):
+        # 数字小于0，则转为32位无符号uint     n&gt;&gt;&gt;i
+        if n &lt; 0:
+            n = ctypes.c_uint32(n).value
+        # 正常位移位数是为正数，但是为了兼容js之类的，负数就右移变成左移好了
+        if i &lt; 0:
+            return -int_overflow(n &lt;&lt; abs(i))
+        # print(n)
+        return int_overflow(n &gt;&gt; i)
+
+    char_array = &quot;0123456789abcdef&quot;
+    result = ['' for i in range(len(barr) * 2)]
+    for i in range(len(barr)):
+        i2 = barr[i] &amp; 255
+        i3 = i * 2
+        result[i3] = char_array[unsigned_right_shift(i2, 4)]  # i2&gt;&gt;&gt;4
+        result[i3 + 1] = char_array[i2 &amp; 15]
+    return ''.join(result)
+
+
+def get_frida_rpc_script():
+    rdev = frida.get_remote_device()
+    session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+    scr = &quot;&quot;&quot;
+    rpc.exports = {   
+        execandleviathan: function (i2,str){
+            var result;
+            Java.perform(function () {
+                // 先处理拼接好的数据（字节数组）
+                var bArr = [];
+                for(var i=0;i&lt;str.length;i+=2){
+                    var item = (parseInt(str[i],16) &lt;&lt; 4) + parseInt(str[i+1],16);
+                    bArr.push(item);
+                }
+
+                // 转换为java的字节数组
+                var dataByteArray = Java.array('byte',bArr);
+
+                // 调用leviathan方法
+                var Gorgon = Java.use(&quot;com.ss.sys.ces.a&quot;);
+                result = Gorgon.leviathan(-1, i2 , dataByteArray);   //leviathan为方法名
+            });
+            return result;
+        }
+    }
+    &quot;&quot;&quot;
+    script = session.create_script(scr)
+    script.load()
+    return script
+
+
+script = get_frida_rpc_script()
+
+khronos = int(time.time())
+un_sign_string = '6c2a0c5df32f1c2dcf537cb1b7c3c28a0000000000000000000000000000000054807aabff5a113a220938e77db4058d00000000000000000000000000000000'
+sign_byte_list = script.exports.execandleviathan(khronos, un_sign_string)
+
+gorgon = m44417a(sign_byte_list)
+print(gorgon)
+print(khronos)
+</code></pre>
+<p><img alt="image-20211104184436073" src="imgs/day35-%E6%8A%96%E9%9F%B3.assets/image-20211104184436073-7357671.png" /></p>
+<p>请求头 <code>x-gorgon</code> 和 <code>x-khronos</code> 搞定。。。</p>
+<h2 id="_3">注册设备代码（完整版）</h2>
+<pre><code class="language-python">import frida
+import time
+import ctypes
+import hashlib
+import random
+import uuid
+import time
+import gzip
+import requests
+from urllib.parse import quote_plus
+
+
+def create_random_mac(sep=&quot;:&quot;):
+    &quot;&quot;&quot; 随机生成mac地址 &quot;&quot;&quot;
+
+    def mac_same_char(mac_string):
+        v0 = mac_string[0]
+        index = 1
+        while index &lt; len(mac_string):
+            if v0 != mac_string[index]:
+                return False
+            index += 1
+        return True
+
+    data_list = []
+    for i in range(1, 7):
+        part = &quot;&quot;.join(random.sample(&quot;0123456789ABCDEF&quot;, 2))
+        data_list.append(part)
+    mac = sep.join(data_list)
+
+    if not mac_same_char(mac) and mac != &quot;00:90:4C:11:22:33&quot;:
+        return mac
+
+    return create_random_mac(sep)
+
+
+def create_cdid():
+    return str(uuid.uuid4())
+
+
+def create_openudid():
+    return &quot;&quot;.join([hex(i)[2:] for i in random.randbytes(10)])
+
+
+def m44417a(barr):
+    def int_overflow(val):
+        maxint = 2147483647
+        if not -maxint - 1 &lt;= val &lt;= maxint:
+            val = (val + (maxint + 1)) % (2 * (maxint + 1)) - maxint - 1
+        return val
+
+    def unsigned_right_shift(n, i):
+        # 数字小于0，则转为32位无符号uint     n&gt;&gt;&gt;i
+        if n &lt; 0:
+            n = ctypes.c_uint32(n).value
+        # 正常位移位数是为正数，但是为了兼容js之类的，负数就右移变成左移好了
+        if i &lt; 0:
+            return -int_overflow(n &lt;&lt; abs(i))
+        # print(n)
+        return int_overflow(n &gt;&gt; i)
+
+    char_array = &quot;0123456789abcdef&quot;
+    result = ['' for i in range(len(barr) * 2)]
+    for i in range(len(barr)):
+        i2 = barr[i] &amp; 255
+        i3 = i * 2
+        result[i3] = char_array[unsigned_right_shift(i2, 4)]  # i2&gt;&gt;&gt;4
+        result[i3 + 1] = char_array[i2 &amp; 15]
+    return ''.join(result)
+
+
+def get_frida_rpc_script():
+    rdev = frida.get_remote_device()
+    session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+    scr = &quot;&quot;&quot;
+    rpc.exports = {   
+        ttencrypt:function(bArr,len){
+             var res;
+
+             Java.perform(function () {
+                var EncryptorUtil = Java.use(&quot;com.bytedance.frameworks.encryptor.EncryptorUtil&quot;);  
+
+                // 将bArr转换成Java的字节数组。
+                var dataByteArray = Java.array('byte',bArr);
+
+                // 调用native方法，并获取返回值。
+                res = EncryptorUtil.ttEncrypt(dataByteArray,len);
+             });
+
+             return res;
+        },
+        execandleviathan: function (i2,str){
+            var result;
+            Java.perform(function () {
+                // 先处理拼接好的数据（字节数组）
+                var bArr = [];
+                for(var i=0;i&lt;str.length;i+=2){
+                    var item = (parseInt(str[i],16) &lt;&lt; 4) + parseInt(str[i+1],16);
+                    bArr.push(item);
+                }
+
+                // 转换为java的字节数组
+                var dataByteArray = Java.array('byte',bArr);
+
+                // 调用leviathan方法
+                var Gorgon = Java.use(&quot;com.ss.sys.ces.a&quot;);
+                result = Gorgon.leviathan(-1, i2 , dataByteArray);   //leviathan为方法名
+            });
+            return result;
+        }
+    }
+    &quot;&quot;&quot;
+    script = session.create_script(scr)
+    script.load()
+    return script
+
+
+def register_device_encrypt():
+    &quot;&quot;&quot; 密文注册设备 &quot;&quot;&quot;
+    script = get_frida_rpc_script()
+
+    # 1.生成参数
+    mac_addr = create_random_mac()
+    cdid = create_cdid()
+    clientudid = create_cdid()
+    openudid = create_openudid()
+    _rticket = int(time.time() * 1000)
+    ts = int(time.time())
+
+    # 2.构造请求头和URL参数
+    body_tpl = '{&quot;magic_tag&quot;:&quot;ss_app_log&quot;,&quot;header&quot;:{&quot;display_name&quot;:&quot;抖音短视频&quot;,&quot;update_version_code&quot;:1800,&quot;manifest_version_code&quot;:180,&quot;aid&quot;:1128,&quot;channel&quot;:&quot;sem_shenma_dy_and17&quot;,&quot;appkey&quot;:&quot;57bfa27c67e58e7d920028d3&quot;,&quot;package&quot;:&quot;com.ss.android.ugc.aweme&quot;,&quot;app_version&quot;:&quot;1.8.0&quot;,&quot;version_code&quot;:180,&quot;sdk_version&quot;:201,&quot;os&quot;:&quot;Android&quot;,&quot;os_version&quot;:&quot;10&quot;,&quot;os_api&quot;:29,&quot;device_model&quot;:&quot;Redmi 8A&quot;,&quot;device_brand&quot;:&quot;Xiaomi&quot;,&quot;device_manufacturer&quot;:&quot;Xiaomi&quot;,&quot;cpu_abi&quot;:&quot;armeabi-v7a&quot;,&quot;build_serial&quot;:&quot;unknown&quot;,&quot;release_build&quot;:&quot;024a06f_20200618&quot;,&quot;density_dpi&quot;:320,&quot;display_density&quot;:&quot;xhdpi&quot;,&quot;resolution&quot;:&quot;1369x720&quot;,&quot;language&quot;:&quot;zh&quot;,&quot;mc&quot;:&quot;%s&quot;,&quot;timezone&quot;:8,&quot;access&quot;:&quot;wifi&quot;,&quot;not_request_sender&quot;:0,&quot;carrier&quot;:&quot;中国联通&quot;,&quot;mcc_mnc&quot;:&quot;46001&quot;,&quot;rom&quot;:&quot;MIUI-V12.0.3.0.QCPCNXM&quot;,&quot;rom_version&quot;:&quot;miui_V12_V12.0.3.0.QCPCNXM&quot;,&quot;sig_hash&quot;:&quot;aea615ab910015038f73c47e45d21466&quot;,&quot;openudid&quot;:&quot;%s&quot;,&quot;clientudid&quot;:&quot;%s&quot;,&quot;serial_number&quot;:&quot;unknown&quot;,&quot;sim_serial_number&quot;:[],&quot;region&quot;:&quot;CN&quot;,&quot;tz_name&quot;:&quot;Asia\/Shanghai&quot;,&quot;tz_offset&quot;:28800000,&quot;sim_region&quot;:&quot;cn&quot;},&quot;_gen_time&quot;:%s}'
+    body = body_tpl % (mac_addr, openudid, clientudid, _rticket)
+
+    param_string_tpl = &quot;ac=wifi&amp;channel=sem_shenma_dy_and17&amp;aid=1128&amp;app_name=aweme&amp;version_code=180&amp;version_name=1.8.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid={openudid}&amp;manifest_version_code=180&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=1800&amp;_rticket={_rticket}&amp;iid=&amp;tt_data=a&quot;
+    param_string = param_string_tpl.format(openudid=openudid, _rticket=_rticket)
+
+    # 3.gzip压缩
+    gzip_body = gzip.compress(body.encode('utf-8'))
+    java_gzip_body = bytearray(gzip_body)
+    java_gzip_body[3:10] = [0, 0, 0, 0, 0, 0, 0]
+
+    # 4.执行so请求体加密（ttencrypt）
+    ttencrypt_bytes_list = script.exports.ttencrypt(list(java_gzip_body), len(java_gzip_body))
+
+    # 5.字节中的负值的处理（java的字节有符号，python字节无符号），因为后续要进行md5加密，必须是python的字节）
+    ttencrypt_to_python_bytes = bytearray([i + 256 if i &lt; 0 else i for i in ttencrypt_bytes_list])
+
+    # 6.对请求体md5加密，生成 x_ss_stud
+    ha = hashlib.md5()
+    ha.update(bytes(ttencrypt_to_python_bytes))
+    x_ss_stud = ha.hexdigest().upper()
+
+    # 7.变量a，对URL参数进行md5加密，生成 a
+    ha = hashlib.md5()
+    ha.update(param_string.encode('utf-8'))
+    a = ha.hexdigest()
+
+    # 8.变量str7（get请求时是000.。，post请求时是x_ss_stud ）
+    str7 = x_ss_stud
+
+    # 9.变量str8，对cookie的md5加密（抓包注册设备时cookie是空的；获取评论时cookie才有值）
+    str8 = &quot;00000000000000000000000000000000&quot;
+
+    # 10.变量str9，sessionid的md5（无）
+    str9 = &quot;00000000000000000000000000000000&quot;
+
+    # 11.拼接变量
+    un_sign_string = &quot;{}{}{}{}&quot;.format(a, str7, str8, str9)
+
+    # 12.m44418a处理 + 执行so中的leviathan
+    khronos = int(time.time())
+    gorgon_byte_list = script.exports.execandleviathan(khronos, un_sign_string)
+
+    # 13.m44417a处理
+    gorgon = m44417a(gorgon_byte_list)
+
+    # 此时已生成 khronos 和 gorgon
+
+    # 14.发送请求注册设备请求
+    res = requests.post(
+        url=&quot;https://ib.snssdk.com/service/2/device_register/?{}&quot;.format(param_string),
+        data=ttencrypt_to_python_bytes,
+        headers={
+            &quot;x-ss-stub&quot;: x_ss_stud,
+            &quot;content-encoding&quot;: &quot;gzip&quot;,
+            &quot;x-ss-req-ticket&quot;: str(khronos),
+            &quot;x-khronos&quot;: str(khronos),
+            &quot;x-gorgon&quot;: gorgon,
+            &quot;content-type&quot;: &quot;application/octet-stream;tt-data=a&quot;,
+            &quot;user-agent&quot;: &quot;okhttp/3.10.0.1&quot;
+        }
+    )
+    device_dict = res.json()
+    cookie_dict = res.cookies.get_dict()
+    print(device_dict)
+    print(cookie_dict)
+
+
+def register_device():
+    &quot;&quot;&quot; 明文注册设备 &quot;&quot;&quot;
+    script = get_frida_rpc_script()
+
+    # 1.生成参数
+    mac_addr = create_random_mac()
+    cdid = create_cdid()
+    clientudid = create_cdid()
+    openudid = create_openudid()
+    _rticket = int(time.time() * 1000)
+    ts = int(time.time())
+
+    # 2.构造请求头和URL参数
+    body_tpl = '{&quot;magic_tag&quot;:&quot;ss_app_log&quot;,&quot;header&quot;:{&quot;display_name&quot;:&quot;抖音短视频&quot;,&quot;update_version_code&quot;:11509900,&quot;manifest_version_code&quot;:110501,&quot;app_version_minor&quot;:&quot;&quot;,&quot;aid&quot;:1128,&quot;channel&quot;:&quot;gdt_growth14_big_yybwz&quot;,&quot;appkey&quot;:&quot;57bfa27c67e58e7d920028d3&quot;,&quot;package&quot;:&quot;com.ss.android.ugc.aweme&quot;,&quot;app_version&quot;:&quot;11.5.0&quot;,&quot;version_code&quot;:110500,&quot;sdk_version&quot;:&quot;2.14.0-alpha.4&quot;,&quot;sdk_target_version&quot;:29,&quot;git_hash&quot;:&quot;c1aa4085&quot;,&quot;os&quot;:&quot;Android&quot;,&quot;os_version&quot;:&quot;10&quot;,&quot;os_api&quot;:29,&quot;device_model&quot;:&quot;Redmi 8A&quot;,&quot;device_brand&quot;:&quot;Xiaomi&quot;,&quot;device_manufacturer&quot;:&quot;Xiaomi&quot;,&quot;cpu_abi&quot;:&quot;armeabi-v7a&quot;,&quot;release_build&quot;:&quot;b44f245_20200615_436d6cbc-aecc-11ea-bfa1-02420a000026&quot;,&quot;density_dpi&quot;:320,&quot;display_density&quot;:&quot;xhdpi&quot;,&quot;resolution&quot;:&quot;1369x720&quot;,&quot;language&quot;:&quot;zh&quot;,&quot;mc&quot;:&quot;%s&quot;,&quot;timezone&quot;:8,&quot;access&quot;:&quot;wifi&quot;,&quot;not_request_sender&quot;:0,&quot;carrier&quot;:&quot;中国联通&quot;,&quot;mcc_mnc&quot;:&quot;46001&quot;,&quot;rom&quot;:&quot;MIUI-V12.0.3.0.QCPCNXM&quot;,&quot;rom_version&quot;:&quot;miui_V12_V12.0.3.0.QCPCNXM&quot;,&quot;cdid&quot;:&quot;%s&quot;,&quot;sig_hash&quot;:&quot;aea615ab910015038f73c47e45d21466&quot;,&quot;openudid&quot;:&quot;%s&quot;,&quot;clientudid&quot;:&quot;%s&quot;,&quot;sim_serial_number&quot;:[],&quot;region&quot;:&quot;CN&quot;,&quot;tz_name&quot;:&quot;Asia\/Shanghai&quot;,&quot;tz_offset&quot;:28800,&quot;sim_region&quot;:&quot;cn&quot;,&quot;oaid&quot;:{&quot;req_id&quot;:&quot;f0959dbb-1be0-4e11-b020-edde265e4aa1&quot;,&quot;hw_id_version_code&quot;:&quot;null&quot;,&quot;take_ms&quot;:&quot;95&quot;,&quot;is_track_limited&quot;:&quot;null&quot;,&quot;query_times&quot;:&quot;1&quot;,&quot;id&quot;:&quot;&quot;,&quot;time&quot;:&quot;1633765787228&quot;},&quot;oaid_may_support&quot;:true,&quot;req_id&quot;:&quot;8f29815c-a81e-48d0-843b-7c3d17d4f6ef&quot;,&quot;custom&quot;:{&quot;filter_warn&quot;:0},&quot;apk_first_install_time&quot;:1633765712501,&quot;is_system_app&quot;:0,&quot;sdk_flavor&quot;:&quot;china&quot;},&quot;_gen_time&quot;:%d}'
+    body = body_tpl % (mac_addr, cdid, openudid, clientudid, _rticket)
+
+    # param_string_tpl = &quot;ac=wifi&amp;channel=sem_shenma_dy_and17&amp;aid=1128&amp;app_name=aweme&amp;version_code=180&amp;version_name=1.8.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid={openudid}&amp;manifest_version_code=180&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=1800&amp;_rticket={_rticket}&amp;iid=&amp;tt_data=a&quot;
+    # param_string = param_string_tpl.format(openudid=openudid, _rticket=_rticket)
+    param_string_tpl = &quot;ac=wifi&amp;mac_address={mac_addr}&amp;channel=gdt_growth14_big_yybwz&amp;aid=1128&amp;app_name=aweme&amp;version_code=110500&amp;version_name=11.5.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid={openudid}&amp;manifest_version_code=110501&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=11509900&amp;_rticket={_rticket}&amp;mcc_mnc=46001&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;app_type=normal&amp;ts={ts}&amp;cdid={cdid}&amp;oaid&amp;manifest_version_code=110501&amp;_rticket={_rticket}&amp;app_type=normal&amp;channel=gdt_growth14_big_yybwz&amp;device_type=Redmi%208A&amp;language=zh&amp;cpu_support64=false&amp;host_abi=armeabi-v7a&amp;resolution=720*1369&amp;openudid=2348574b5d8a004d&amp;update_version_code=11509900&amp;cdid={cdid}&amp;os_api=29&amp;mac_address={mac_addr}&amp;dpi=320&amp;oaid=&amp;ac=wifi&amp;mcc_mnc=46001&amp;os_version=10&amp;version_code=110500&amp;app_name=aweme&amp;version_name=11.5.0&amp;device_brand=Xiaomi&amp;ssmix=a&amp;device_platform=android&amp;aid=1128&amp;ts={ts}&quot;
+    param_string = param_string_tpl.format(
+        mac_addr=quote_plus(mac_addr),
+        openudid=openudid,
+        _rticket=_rticket,
+        ts=ts,
+        cdid=cdid,
+    )
+
+    # 3.gzip压缩
+    gzip_body = gzip.compress(body.encode('utf-8'))
+    java_gzip_body = bytearray(gzip_body)
+    java_gzip_body[3:10] = [0, 0, 0, 0, 0, 0, 0]
+
+    # 4.执行so请求体加密（ttencrypt）
+    # ttencrypt_bytes_list = script.exports.ttencrypt(list(java_gzip_body), len(java_gzip_body))
+
+    # 5.字节中的负值的处理（java的字节有符号，python字节无符号），因为后续要进行md5加密，必须是python的字节）
+    # ttencrypt_to_python_bytes = bytearray([i + 256 if i &lt; 0 else i for i in ttencrypt_bytes_list])
+
+    # 6.对请求体md5加密，生成 x_ss_stud
+    ha = hashlib.md5()
+    ha.update(bytes(java_gzip_body))
+    x_ss_stud = ha.hexdigest().upper()
+
+    # 7.变量a，对URL参数进行md5加密，生成 a
+    ha = hashlib.md5()
+    ha.update(param_string.encode('utf-8'))
+    a = ha.hexdigest()
+
+    # 8.变量str7（get请求时是000.。，post请求时是x_ss_stud ）
+    str7 = x_ss_stud
+
+    # 9.变量str8，对cookie的md5加密（抓包注册设备时cookie是空的；获取评论时cookie才有值）
+    str8 = &quot;00000000000000000000000000000000&quot;
+
+    # 10.变量str9，sessionid的md5（无）
+    str9 = &quot;00000000000000000000000000000000&quot;
+
+    # 11.拼接变量
+    un_sign_string = &quot;{}{}{}{}&quot;.format(a, str7, str8, str9)
+
+    # 12.m44418a处理 + 执行so中的leviathan
+    khronos = int(time.time())
+    gorgon_byte_list = script.exports.execandleviathan(khronos, un_sign_string)
+
+    # 13.m44417a处理
+    gorgon = m44417a(gorgon_byte_list)
+
+    # 此时已生成 khronos 和 gorgon
+
+    # 14.发送请求注册设备请求
+
+    res = requests.post(
+        url=&quot;https://ib.snssdk.com/service/2/device_register/?{}&quot;.format(param_string),
+        data=java_gzip_body,
+        headers={
+            &quot;x-ss-stub&quot;: x_ss_stud,
+            &quot;content-encoding&quot;: &quot;gzip&quot;,
+            &quot;x-ss-req-ticket&quot;: str(khronos),
+            &quot;x-khronos&quot;: str(khronos),
+            &quot;x-gorgon&quot;: gorgon,
+            &quot;content-type&quot;: &quot;application/json; charset=utf-8&quot;,
+            &quot;user-agent&quot;: &quot;okhttp/3.10.0.1&quot;
+        }
+    )
+    device_dict = res.json()
+    cookie_dict = res.cookies.get_dict()
+    print(device_dict)
+    print(cookie_dict)
+
+
+if __name__ == '__main__':
+    register_device()
+</code></pre>
+<h2 id="_4">获取评论代码（完整版）</h2>
+<pre><code class="language-python">import frida
+import time
+import ctypes
+import hashlib
+import random
+import uuid
+import time
+import gzip
+import requests
+from urllib.parse import quote_plus
+from urllib.parse import urlencode
+
+SCRIPT = None
+
+
+def md5(data_string):
+    obj = hashlib.md5()
+    obj.update(data_string.encode(&quot;utf-8&quot;))
+    return obj.hexdigest()
+
+
+def create_random_mac(sep=&quot;:&quot;):
+    &quot;&quot;&quot; 随机生成mac地址 &quot;&quot;&quot;
+
+    def mac_same_char(mac_string):
+        v0 = mac_string[0]
+        index = 1
+        while index &lt; len(mac_string):
+            if v0 != mac_string[index]:
+                return False
+            index += 1
+        return True
+
+    data_list = []
+    for i in range(1, 7):
+        part = &quot;&quot;.join(random.sample(&quot;0123456789ABCDEF&quot;, 2))
+        data_list.append(part)
+    mac = sep.join(data_list)
+
+    if not mac_same_char(mac) and mac != &quot;00:90:4C:11:22:33&quot;:
+        return mac
+
+    return create_random_mac(sep)
+
+
+def create_cdid():
+    return str(uuid.uuid4())
+
+
+def create_openudid():
+    return &quot;&quot;.join([hex(i)[2:] for i in random.randbytes(10)])
+
+
+def m44417a(barr):
+    def int_overflow(val):
+        maxint = 2147483647
+        if not -maxint - 1 &lt;= val &lt;= maxint:
+            val = (val + (maxint + 1)) % (2 * (maxint + 1)) - maxint - 1
+        return val
+
+    def unsigned_right_shift(n, i):
+        # 数字小于0，则转为32位无符号uint     n&gt;&gt;&gt;i
+        if n &lt; 0:
+            n = ctypes.c_uint32(n).value
+        # 正常位移位数是为正数，但是为了兼容js之类的，负数就右移变成左移好了
+        if i &lt; 0:
+            return -int_overflow(n &lt;&lt; abs(i))
+        # print(n)
+        return int_overflow(n &gt;&gt; i)
+
+    char_array = &quot;0123456789abcdef&quot;
+    result = ['' for i in range(len(barr) * 2)]
+    for i in range(len(barr)):
+        i2 = barr[i] &amp; 255
+        i3 = i * 2
+        result[i3] = char_array[unsigned_right_shift(i2, 4)]  # i2&gt;&gt;&gt;4
+        result[i3 + 1] = char_array[i2 &amp; 15]
+    return ''.join(result)
+
+
+def get_frida_rpc_script():
+    global SCRIPT
+    if SCRIPT:
+        return SCRIPT
+
+    rdev = frida.get_remote_device()
+    session = rdev.attach(&quot;com.ss.android.ugc.aweme&quot;)
+
+    scr = &quot;&quot;&quot;
+    rpc.exports = {   
+        ttencrypt:function(bArr,len){
+             var res;
+
+             Java.perform(function () {
+                var EncryptorUtil = Java.use(&quot;com.bytedance.frameworks.encryptor.EncryptorUtil&quot;);  
+
+                // 将bArr转换成Java的字节数组。
+                var dataByteArray = Java.array('byte',bArr);
+
+                // 调用native方法，并获取返回值。
+                res = EncryptorUtil.ttEncrypt(dataByteArray,len);
+             });
+
+             return res;
+        },
+        execandleviathan: function (i2,str){
+            var result;
+            Java.perform(function () {
+                // 先处理拼接好的数据（字节数组）
+                var bArr = [];
+                for(var i=0;i&lt;str.length;i+=2){
+                    var item = (parseInt(str[i],16) &lt;&lt; 4) + parseInt(str[i+1],16);
+                    bArr.push(item);
+                }
+
+                // 转换为java的字节数组
+                var dataByteArray = Java.array('byte',bArr);
+
+                // 调用leviathan方法
+                var Gorgon = Java.use(&quot;com.ss.sys.ces.a&quot;);
+                result = Gorgon.leviathan(-1, i2 , dataByteArray);   //leviathan为方法名
+            });
+            return result;
+        }
+    }
+    &quot;&quot;&quot;
+    script = session.create_script(scr)
+    script.load()
+    SCRIPT = script
+    return script
+
+
+def get_gorgon(script, param_string, cookie_string, body=None):
+    x_ss_stud = None
+    if body:
+        # 6.对请求体md5加密，生成 x_ss_stud
+        ha = hashlib.md5()
+        ha.update(bytes(body))
+        x_ss_stud = ha.hexdigest().upper()
+
+    # 7.变量a，对URL参数进行md5加密，生成 a
+    ha = hashlib.md5()
+    ha.update(param_string.encode('utf-8'))
+    a = ha.hexdigest()
+
+    # 8.变量str7（get请求时是000.。，post请求时是x_ss_stud ）
+    if x_ss_stud:
+        str7 = x_ss_stud
+    else:
+        str7 = '00000000000000000000000000000000'
+
+    # 9.变量str8，对cookie的md5加密（抓包注册设备时cookie是空的；获取评论时cookie才有值）
+    if cookie_string:
+        str8 = md5(cookie_string)  # 00000000000000000000000000000000 也可以，说明cookie不是必须的。
+    else:
+        str8 = &quot;00000000000000000000000000000000&quot;
+
+    # 10.变量str9，sessionid的md5（无）
+    str9 = &quot;00000000000000000000000000000000&quot;
+
+    # 11.拼接变量
+    un_sign_string = &quot;{}{}{}{}&quot;.format(a, str7, str8, str9)
+
+    # 12.m44418a处理 + 执行so中的leviathan
+    khronos = int(time.time())
+    gorgon_byte_list = script.exports.execandleviathan(khronos, un_sign_string)
+
+    # 13.m44417a处理
+    gorgon = m44417a(gorgon_byte_list)
+    return x_ss_stud, gorgon, khronos
+
+
+def register_device_encrypt():
+    &quot;&quot;&quot; 密文注册设备 &quot;&quot;&quot;
+    script = get_frida_rpc_script()
+
+    # 1.生成参数
+    mac_addr = create_random_mac()
+    cdid = create_cdid()
+    clientudid = create_cdid()
+    openudid = create_openudid()
+    _rticket = int(time.time() * 1000)
+    ts = int(time.time())
+
+    # 2.构造请求头和URL参数
+    body_tpl = '{&quot;magic_tag&quot;:&quot;ss_app_log&quot;,&quot;header&quot;:{&quot;display_name&quot;:&quot;抖音短视频&quot;,&quot;update_version_code&quot;:1800,&quot;manifest_version_code&quot;:180,&quot;aid&quot;:1128,&quot;channel&quot;:&quot;sem_shenma_dy_and17&quot;,&quot;appkey&quot;:&quot;57bfa27c67e58e7d920028d3&quot;,&quot;package&quot;:&quot;com.ss.android.ugc.aweme&quot;,&quot;app_version&quot;:&quot;1.8.0&quot;,&quot;version_code&quot;:180,&quot;sdk_version&quot;:201,&quot;os&quot;:&quot;Android&quot;,&quot;os_version&quot;:&quot;10&quot;,&quot;os_api&quot;:29,&quot;device_model&quot;:&quot;Redmi 8A&quot;,&quot;device_brand&quot;:&quot;Xiaomi&quot;,&quot;device_manufacturer&quot;:&quot;Xiaomi&quot;,&quot;cpu_abi&quot;:&quot;armeabi-v7a&quot;,&quot;build_serial&quot;:&quot;unknown&quot;,&quot;release_build&quot;:&quot;024a06f_20200618&quot;,&quot;density_dpi&quot;:320,&quot;display_density&quot;:&quot;xhdpi&quot;,&quot;resolution&quot;:&quot;1369x720&quot;,&quot;language&quot;:&quot;zh&quot;,&quot;mc&quot;:&quot;%s&quot;,&quot;timezone&quot;:8,&quot;access&quot;:&quot;wifi&quot;,&quot;not_request_sender&quot;:0,&quot;carrier&quot;:&quot;中国联通&quot;,&quot;mcc_mnc&quot;:&quot;46001&quot;,&quot;rom&quot;:&quot;MIUI-V12.0.3.0.QCPCNXM&quot;,&quot;rom_version&quot;:&quot;miui_V12_V12.0.3.0.QCPCNXM&quot;,&quot;sig_hash&quot;:&quot;aea615ab910015038f73c47e45d21466&quot;,&quot;openudid&quot;:&quot;%s&quot;,&quot;clientudid&quot;:&quot;%s&quot;,&quot;serial_number&quot;:&quot;unknown&quot;,&quot;sim_serial_number&quot;:[],&quot;region&quot;:&quot;CN&quot;,&quot;tz_name&quot;:&quot;Asia\/Shanghai&quot;,&quot;tz_offset&quot;:28800000,&quot;sim_region&quot;:&quot;cn&quot;},&quot;_gen_time&quot;:%s}'
+    body = body_tpl % (mac_addr, openudid, clientudid, _rticket)
+
+    param_string_tpl = &quot;ac=wifi&amp;channel=sem_shenma_dy_and17&amp;aid=1128&amp;app_name=aweme&amp;version_code=180&amp;version_name=1.8.0&amp;device_platform=android&amp;ssmix=a&amp;device_type=Redmi+8A&amp;device_brand=Xiaomi&amp;language=zh&amp;os_api=29&amp;os_version=10&amp;openudid={openudid}&amp;manifest_version_code=180&amp;resolution=720*1369&amp;dpi=320&amp;update_version_code=1800&amp;_rticket={_rticket}&amp;iid=&amp;tt_data=a&quot;
+    param_string = param_string_tpl.format(openudid=openudid, _rticket=_rticket)
+
+    # 3.gzip压缩
+    gzip_body = gzip.compress(body.encode('utf-8'))
+    java_gzip_body = bytearray(gzip_body)
+    java_gzip_body[3:10] = [0, 0, 0, 0, 0, 0, 0]
+
+    # 4.执行so请求体加密（ttencrypt）
+    ttencrypt_bytes_list = script.exports.ttencrypt(list(java_gzip_body), len(java_gzip_body))
+
+    # 5.字节中的负值的处理（java的字节有符号，python字节无符号），因为后续要进行md5加密，必须是python的字节）
+    ttencrypt_to_python_bytes = bytearray([i + 256 if i &lt; 0 else i for i in ttencrypt_bytes_list])
+
+    # 6.对请求体md5加密，生成 x_ss_stud
+    ha = hashlib.md5()
+    ha.update(bytes(ttencrypt_to_python_bytes))
+    x_ss_stud = ha.hexdigest().upper()
+
+    # 7.变量a，对URL参数进行md5加密，生成 a
+    ha = hashlib.md5()
+    ha.update(param_string.encode('utf-8'))
+    a = ha.hexdigest()
+
+    # 8.变量str7（get请求时是000.。，post请求时是x_ss_stud ）
+    str7 = x_ss_stud
+
+    # 9.变量str8，对cookie的md5加密（抓包注册设备时cookie是空的；获取评论时cookie才有值）
+    str8 = &quot;00000000000000000000000000000000&quot;
+
+    # 10.变量str9，sessionid的md5（无）
+    str9 = &quot;00000000000000000000000000000000&quot;
+
+    # 11.拼接变量
+    un_sign_string = &quot;{}{}{}{}&quot;.format(a, str7, str8, str9)
+
+    # 12.m44418a处理 + 执行so中的leviathan
+    khronos = int(time.time())
+    gorgon_byte_list = script.exports.execandleviathan(khronos, un_sign_string)
+
+    # 13.m44417a处理
+    gorgon = m44417a(gorgon_byte_list)
+
+    # 此时已生成 khronos 和 gorgon
+
+    # 14.发送请求注册设备请求
+    res = requests.post(
+        url=&quot;https://ib.snssdk.com/service/2/device_register/?{}&quot;.format(param_string),
+        data=ttencrypt_to_python_bytes,
+        headers={
+            &quot;x-ss-stub&quot;: x_ss_stud,
+            &quot;content-encoding&quot;: &quot;gzip&quot;,
+            &quot;x-ss-req-ticket&quot;: str(khronos),
+            &quot;x-khronos&quot;: str(khronos),
+            &quot;x-gorgon&quot;: gorgon,
+            &quot;content-type&quot;: &quot;application/octet-stream;tt-data=a&quot;,
+            &quot;user-agent&quot;: &quot;okhttp/3.10.0.1&quot;
+        }
+    )
+    device_dict = res.json()
+    cookie_dict = res.cookies.get_dict()
+
+    return (
+        device_dict,
+        cookie_dict,
+        {
+            'mac_addr': mac_addr,
+            'cdid': cdid,
+            'clientudid': clientudid,
+            'openudid': openudid
+        }
+    )
+
+
+def get_comment_list():
+    &quot;&quot;&quot; 获取评论 &quot;&quot;&quot;
+    script = get_frida_rpc_script()
+
+    ctime = time.time()
+
+    # 注册设备
+    device_dict, cookie_dict, device_info_dict = register_device_encrypt()
+
+    print(device_dict)
+    print(cookie_dict)
+    print(device_info_dict)
+
+    device_id = device_dict['device_id_str']  # &quot;1891579430189188&quot;  # 必须 且 不能修改
+    iid = device_dict['install_id_str']  # &quot;1082357444254472&quot;  # 必须 且 不能修改
+
+    cdid = device_info_dict['cdid']  # &quot;603dd68a-988a-4b04-9204-e47f0792668b&quot;
+    openudid = device_info_dict['openudid']  # &quot;2348574b5d8a004d&quot;
+    mac_addr = device_info_dict['mac_addr']  # &quot;E0%3A1F%3A88%3AAA%3AB3%3A39&quot;
+
+    # 在获取评论时，没啥用；可以删除 &amp; 可以是空 &amp; 可以是其他值
+    ttreq = cookie_dict['ttreq']
+    odin_tt = &quot;2e00d7ebb44285f3b13eb73c3e487a05df718ef6f133a7fd9d41287cbe636389685d223452118eb257fa7a328e48a4d119cef4c410ce2c89f03956f5bd95e650&quot;
+
+    param_dict = {
+        &quot;aweme_id&quot;: &quot;7082930475433463078&quot;,
+        &quot;cursor&quot;: &quot;0&quot;,
+        &quot;count&quot;: &quot;20&quot;,
+        &quot;address_book_access&quot;: &quot;2&quot;,
+        &quot;gps_access&quot;: &quot;2&quot;,
+        &quot;forward_page_type&quot;: &quot;1&quot;,
+        &quot;channel_id&quot;: &quot;0&quot;,
+        &quot;city&quot;: &quot;130400&quot;,
+        &quot;hotsoon_filtered_count&quot;: &quot;0&quot;,
+        &quot;hotsoon_has_more&quot;: &quot;0&quot;,
+        &quot;follower_count&quot;: &quot;0&quot;,
+        &quot;is_familiar&quot;: &quot;0&quot;,
+        &quot;page_source&quot;: &quot;0&quot;,
+        &quot;manifest_version_code&quot;: &quot;110501&quot;,
+        &quot;_rticket&quot;: int(ctime * 1000),
+        &quot;app_type&quot;: &quot;normal&quot;,
+        &quot;iid&quot;: iid,
+        &quot;channel&quot;: &quot;gdt_growth14_big_yybwz&quot;,
+        &quot;device_type&quot;: &quot;Redmi%208A&quot;,
+        &quot;language&quot;: &quot;zh&quot;,
+        &quot;cpu_support64&quot;: &quot;false&quot;,
+        &quot;host_abi&quot;: &quot;armeabi-v7a&quot;,
+        &quot;resolution&quot;: &quot;720*1369&quot;,
+        &quot;openudid&quot;: openudid,
+        &quot;update_version_code&quot;: &quot;11509900&quot;,
+        &quot;cdid&quot;: cdid,
+        &quot;os_api&quot;: &quot;29&quot;,
+        &quot;mac_address&quot;: mac_addr,
+        &quot;dpi&quot;: &quot;320&quot;,
+        &quot;oaid&quot;: &quot;&quot;,
+        &quot;ac&quot;: &quot;wifi&quot;,
+        &quot;device_id&quot;: device_id,
+        &quot;mcc_mnc&quot;: &quot;46001&quot;,
+        &quot;os_version&quot;: &quot;10&quot;,
+        &quot;version_code&quot;: &quot;110500&quot;,
+        &quot;app_name&quot;: &quot;aweme&quot;,
+        &quot;version_name&quot;: &quot;11.5.0&quot;,
+        &quot;device_brand&quot;: &quot;Xiaomi&quot;,
+        &quot;ssmix&quot;: &quot;a&quot;,
+        &quot;device_platform&quot;: &quot;android&quot;,
+        &quot;aid&quot;: &quot;1128&quot;,
+        &quot;ts&quot;: int(ctime)
+    }
+
+    param_string = urlencode(param_dict)
+
+    # 获取评论时候，有cookie
+    cookie_string = &quot;install_id={}; ttreq={}; odin_tt={}&quot;.format(iid, ttreq, odin_tt)
+
+    x_ss_stud, gorgon, khronos = get_gorgon(script, param_string, cookie_string)
+
+    res = requests.get(
+        url=&quot;https://api3-normal-c-lf.amemv.com/aweme/v2/comment/list/&quot;,
+        params=param_dict,
+        headers={
+            &quot;user-agent&quot;: &quot;com.ss.android.ugc.aweme/110501 (Linux; U; Android 10; zh_CN; Redmi 8A; Build/QKQ1.191014.001; Cronet/TTNetVersion:3c28619c 2020-05-19 QuicVersion:0144d358 2020-03-24)&quot;,
+            &quot;x-khronos&quot;: str(khronos),
+            &quot;x-gorgon&quot;: gorgon
+        },
+        cookies={
+            # &quot;install_id&quot;: iid
+            # &quot;ttreq&quot;: &quot;1$72ab148e01bd30ad687678eaf07afda41debf579&quot;,
+            # &quot;odin_tt&quot;: &quot;2e00d7ebb44285f3b13eb73c3e487a05df718ef6f133a7fd9d41287cbe636389685d223452118eb257fa7a328e48a4d119cef4c410ce2c89f03956f5bd95e650&quot;
+        }
+    )
+
+    print(&quot;\n\n\n -------获取评论------- \n\n&quot;)
+    print(res.text)
+
+
+if __name__ == '__main__':
+    get_comment_list()
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>
