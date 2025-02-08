@@ -85,7 +85,7 @@
 <li class="chapter" data-path="day25-unidbg-%E4%B8%8B.html">
 <a href="day25-unidbg-%E4%B8%8B.html">二十五、unidbg-下</a>
 <li class="chapter" data-path="day26-xhs.html">
-<a href="day26-xhs.html">二十六、xhs</a>
+<a href="day26-xhs.html">二十六、小红书</a>
 <li class="chapter" data-path="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
@@ -371,6 +371,19 @@ ByteString.of(key).utf8()
 <pre><code class="language-javascript">var TreeMap = Java.use('java.util.TreeMap');
 KeyInfo.gsNav.implementation = function (ctx, map,str,z10) {
     console.log(&quot;参数==&gt;&quot;, Java.cast(map,TreeMap).toString());
+</code></pre>
+<h4 id="6-object">(6) 对于参数是Object的处理</h4>
+<pre><code class="language-javascript">Java.perform(function () {
+    var SecurityUtil = Java.use(&quot;com.duapp.aesjni.AESEncrypt&quot;);
+    SecurityUtil.encode.overload('java.lang.Object', 'java.lang.String').implementation = function(obj, str){
+        console.log(&quot;明文：obj&quot;,obj);
+        console.log(&quot;明文：str&quot;,str);
+        var res = this.encode(obj, str);
+        console.log(&quot;加密结果=&quot;,res);
+        console.log(&quot;-------------------------------&quot;);
+        return res;
+    }
+}); 
 </code></pre>
 <h3 id="11hook-interceptor">11、hook-Interceptor</h3>
 <pre><code class="language-javascript">Java.perform(function () {

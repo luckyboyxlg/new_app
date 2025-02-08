@@ -85,7 +85,7 @@
 <li class="chapter" data-path="day25-unidbg-%E4%B8%8B.html">
 <a href="day25-unidbg-%E4%B8%8B.html">二十五、unidbg-下</a>
 <li class="chapter" data-path="day26-xhs.html">
-<a href="day26-xhs.html">二十六、xhs</a>
+<a href="day26-xhs.html">二十六、小红书</a>
 <li class="chapter" data-path="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
@@ -317,6 +317,11 @@ Theme by GitBook
 <td></td>
 <td>Ljava/lang/Object;</td>
 </tr>
+<tr>
+<td>Set</td>
+<td>java/util/Set</td>
+<td>Ljava/util/Set</td>
+</tr>
 </tbody>
 </table>
 <ul>
@@ -328,35 +333,48 @@ Theme by GitBook
 <tr>
 <th>Java类型</th>
 <th>unidbg包裹</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>null</td>
 <td>null</td>
+<td></td>
 </tr>
 <tr>
-<td>数值</td>
-<td>数值</td>
+<td>数值(整数、小数)</td>
+<td>数值(整数、小数)</td>
+<td></td>
 </tr>
 <tr>
 <td>True/False</td>
 <td>True/False</td>
+<td></td>
 </tr>
 <tr>
 <td>字符串："justin"</td>
 <td>new StringObject(vm, "justin")</td>
+<td></td>
 </tr>
 <tr>
 <td>字节数组：{11,22}</td>
 <td>new ByteArray({11,22})</td>
+<td></td>
 </tr>
 <tr>
 <td>自定义类型：Info</td>
 <td>vm.resolveClass("com/nb/utils/Info").newObject(对象)</td>
+<td></td>
+</tr>
+<tr>
+<td>除了null以外的参数都可以传</td>
+<td>ProxyDvmObject.createObject(vm,对象)</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<p>除了null以外和不需要包裹的类型都可以使用ProxyDvmObject.createObject</p>
 <h3 id="7">7、使用步骤</h3>
 <h4 id="1-unidbg">(1) 在unidbg项目中创建一个类</h4>
 <pre><code class="language-python"># 在unidbg-android/src/test/java/com/nb/demo/CheZhiYing.class
@@ -435,7 +453,27 @@ public class CheZhiYing extends AbstractJni{
 
     // sign 成员方法，用来破解加密
     public void sign() {
+      // 1 找到java中 jni的类 native 类，必须用固定的写法写
+        // 只要拿类，就要使用这个方法写，使用resolveClass把它包裹起来，中间用 /  区分
+        DvmClass Crypt = vm.resolveClass(&quot;com/yoloho/libcore/util/Crypt&quot;);
 
+        // 2 找到类中的方法--》固定写法
+        // 方法名(参数签名)返回值签名
+        String method = &quot;encrypt_data(JLjava/lang/String;J)Ljava/lang/String;&quot;;
+        // 3 执行这个方法，传入参数
+        //第一个参数是：设备对象
+        // 第二个参数是：方法
+        // 第三个参数往后的是：方法要传的参数,传参数的具体方式
+        StringObject obj = Crypt.callStaticJniMethodObject(
+                emulator,
+                method,
+                0,
+                new StringObject(vm,&quot;bcae572b84d20c385d6d9d2d7d9e645da29da3c0user/login18953675221WA89qByLlDeaGjmVNzXm/w==&quot;),
+                85
+        );
+        // 4 得到结果，打印出来
+        String result = obj.getValue();
+        System.out.println(result);
     }
 
     // 代码右键运行，创建一个main
@@ -452,13 +490,243 @@ public class CheZhiYing extends AbstractJni{
   ProxyDvmObject.createObject(vm,map)--&gt;好处是，我们不需要管它是什么类型，直接放入即可
 </code></pre>
 <h4 id="5">(5) 注意</h4>
+<p>在补环境的时候遇到这种类型</p>
+<pre><code>java/util/Map$Entry-&gt;getKey()Ljava/lang/Object;
+</code></pre>
+<p>则是代表Map下的Entry，写法为Map.Entry</p>
+<p><strong>实例</strong></p>
+<pre><code class="language-java">if(signature.equals(&quot;java/util/Map$Entry-&gt;getKey()Ljava/lang/Object;&quot;)){
+  Map.Entry entry = (Map.Entry)dvmObject.getValue();
+  Object obj = entry.getKey();
+  return ProxyDvmObject.createObject(vm,obj);
+}
+</code></pre>
+<p><strong>创建虚拟器32或者64位的问题</strong></p>
 <p>创建设备在选择模拟器的时候，如果lib包给的是32位的，并且so文件也是在32位的文件夹里获取到的，但是运行报错，那么可以尝试去64位的包里拿到so文件，创建模拟器的时候改成64位的既可</p>
 <p><img alt="image-20250121165310872" src="imgs/day25-unidbg-%E4%B8%8A.assets/image-20250121165310872.png" /></p>
 <p>AndroidEmulatorBuilder.for32Bit()</p>
 <p>报错</p>
 <p><img src="./imgs/day25-unidbg-上.assets/image-20250121165427516.png" alt="image-20250121165427516" style="zoom:50%;" /></p>
+<h4 id="_1"></h4>
+<h3 id="8">8、补环境中方法每个参数的作用</h3>
+<p><strong>例如：</strong></p>
+<pre><code class="language-java">public DvmObject&lt;?&gt; callObjectMethod(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VarArg varArg) {
+  if(signature.equals(&quot;android/content/Context-&gt;getSystemService(Ljava/lang/String;)Ljava/lang/Object;&quot;)){
+  return vm.resolveClass(&quot;android/telephony/TelephonyManager&quot;).newObject(null);
+  }
+return super.callObjectMethod(vm, dvmObject, signature, varArg);
+}
+</code></pre>
+<p><strong>每个参数的作用：</strong></p>
+<ol>
+<li>
+<p><strong>BaseVM vm</strong></p>
+</li>
+<li>
+<p><strong>作用</strong>：<code>vm</code> 是一个虚拟机实例，代表了当前正在模拟的 Android 虚拟环境（Virtual Machine）。它提供了访问和操作 Dalvik VM 状态的方法，例如获取或设置全局变量、调用方法等。</p>
+</li>
+<li>
+<p><strong>用途</strong>：通过这个参数，你可以在模拟过程中与虚拟机进行交互，比如查询或修改虚拟机的状态。</p>
+</li>
+<li>
+<p><strong>DvmObject&lt;?&gt; dvmObject</strong></p>
+</li>
+<li>
+<p><strong>作用</strong>：<code>dvmObject</code> 通常表示调用该方法的对象实例。在 Java 或者 Android 开发中，非静态方法的第一个隐式参数是 <code>this</code>，即调用该方法的对象本身。这里的 <code>dvmObject</code> 就是用来表示这个对象实例。</p>
+</li>
+<li>
+<p><strong>用途</strong>：当你需要知道哪个对象实例调用了这个方法时，可以使用这个参数。它可以用来获取对象的属性或者调用对象上的其他方法。</p>
+</li>
+<li>
+<p>例子：获取当前调用的对象并转换为TreeMap对象，并进行调用entrySet方法，返回Set对象</p>
+<p><code>java
+ if(signature.equals("java/util/TreeMap-&gt;entrySet()Ljava/util/Set;")){
+     TreeMap map = (TreeMap)dvmObject.getValue();
+     Set set = map.entrySet();
+     return ProxyDvmObject.createObject(vm,set);
+ }</code></p>
+</li>
+<li>
+<p><strong>String signature</strong></p>
+</li>
+<li>
+<p><strong>作用</strong>：<code>signature</code> 是被调用方法的签名（Signature），它描述了方法的名称、所属类以及参数类型和返回值类型。签名格式遵循 JNI（Java Native Interface）规范，例如 <code>"android/content/Context-&gt;checkSelfPermission(Ljava/lang/String;)I"</code> 表示 <code>Context</code> 类中的 <code>checkSelfPermission(String)</code> 方法，返回类型为 <code>int</code>。</p>
+</li>
+<li>
+<p><strong>用途</strong>：通过检查方法签名，你可以确定当前正在模拟的具体方法，并根据不同的方法实现不同的逻辑。这对于处理多个不同方法的调用非常有用。</p>
+</li>
+<li>
+<p>例子：判断当前报错是否为android/content/Context-&gt;getSystemService(Ljava/lang/String;)Ljava/lang/Object;</p>
+<p><code>java
+ signature.equals("android/content/Context-&gt;getSystemService(Ljava/lang/String;)Ljava/lang/Object;")</code></p>
+</li>
+<li>
+<p><strong>VarArg varArg</strong></p>
+</li>
+<li>
+<p><strong>作用</strong>：<code>varArg</code> 包含了传递给被模拟方法的所有参数。由于方法可能接受不同数量和类型的参数，因此使用 <code>VarArg</code> 来灵活地表示这些参数。</p>
+</li>
+<li>
+<p><strong>用途</strong>：通过 <code>varArg</code>，你可以访问所有传递给目标方法的参数。例如，如果你需要获取某个参数的具体值（如字符串或整数），可以通过 <code>varArg.getObjectArg(index)</code> 或 <code>varArg.getIntArg(index)</code> 等方法来获取。</p>
+</li>
+<li>
+<p>例子：获取第一个参数并转换为String对象</p>
+<p><code>java
+ String s=(String) varArg.getObjectArg(0).getValue();</code></p>
+</li>
+</ol>
+<h3 id="9">9、补环境中检测手机的环境</h3>
+<ul>
+<li><strong>getSystemService</strong></li>
+</ul>
+<p><img src="./imgs/day24-unidbg-上.assets/image-20250206095357828.png" alt="image-20250206095357828" style="zoom:67%;" /></p>
+<p>TelephonyManager  android.telephony.TelephonyManager 是 Android SDK 中的一个系统服务类，它提供了对设备电话服务的访问接口。通过 TelephonyManager，你可以获取关于设备的电话状态、SIM 卡信息、网络信息等。</p>
+<p><code>java
+  if(signature.equals("android/content/Context-&gt;getSystemService(Ljava/lang/String;)Ljava/lang/Object;")){
+    // 获取参数值为 phone
+    System.out.println(varArg.getObjectArg(0).getValue());
+    // 构造一个  TelephonyManager对象返回
+    return vm.resolveClass("android/telephony/TelephonyManager").newObject(null);
+  }</code></p>
+<ul>
+<li><strong>getSimOperatorName</strong></li>
+</ul>
+<p>检测运营商</p>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getSimOperatorName()Ljava/lang/String;")){
+    return ProxyDvmObject.createObject(vm, "中国移动");
+  }</code></p>
+<ul>
+<li><strong>getSimCountryIso</strong></li>
+</ul>
+<p><code>getSimCountryIso()</code> 是 <code>TelephonyManager</code> 类中的一个方法，用于获取 SIM 卡对应的国家的 ISO 3166-1 alpha-2 格式的国家代码。这个方法返回的是一个由两个字母组成的字符串，代表了 SIM 卡注册的国家。</p>
+<p>String：返回 SIM 卡所属国家的 ISO 3166-1 alpha-2 国家代码。例如，“US”代表美国，“CN”代表中国。</p>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getSimCountryIso()Ljava/lang/String;")){
+    return ProxyDvmObject.createObject(vm, "CN");
+  }</code></p>
+<ul>
+<li><strong>getNetworkType</strong></li>
+</ul>
+<p><code>getNetworkType()</code> 是 Android <code>TelephonyManager</code> 类中的一个方法，用于获取当前设备所连接的网络类型。这个方法返回的是一个整数值，代表了当前使用的网络技术或标准</p>
+<p><strong>返回值</strong></p>
+<p><code>getNetworkType()</code> 方法返回一个整数，表示当前网络类型。以下是可能的返回值及其含义（部分列举，完整的定义请参见 <a href="https://developer.android.com/reference/android/telephony/TelephonyManager#getNetworkType()">TelephonyManager 文档</a>)：</p>
+<ul>
+<li><strong><code>TelephonyManager.NETWORK_TYPE_UNKNOWN</code> (0)</strong>：网络类型未知。</li>
+<li><strong><code>TelephonyManager.NETWORK_TYPE_GPRS</code> (1)</strong>：GPRS（2.5G）。</li>
+<li><strong><code>TelephonyManager.NETWORK_TYPE_EDGE</code> (2)</strong>：EDGE（2.75G）。</li>
+<li><strong><code>TelephonyManager.NETWORK_TYPE_UMTS</code> (3)</strong>：UMTS（3G）。</li>
+<li><strong><code>TelephonyManager.NETWORK_TYPE_HSDPA</code> (8)</strong>：HSDPA（3.5G）。</li>
+<li><strong><code>TelephonyManager.NETWORK_TYPE_LTE</code> (13)</strong>：LTE（4G）。</li>
+<li><strong><code>TelephonyManager.NETWORK_TYPE_NR</code> (20)</strong>：NR（5G）。</li>
+</ul>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getNetworkType()I")){
+    return 1;
+  }</code></p>
+<ul>
+<li><strong>getNetworkOperator</strong></li>
+</ul>
+<p><code>getNetworkOperator()</code> 是 Android <code>TelephonyManager</code> 类中的一个方法，用于获取当前设备连接的移动网络运营商的 MCC（移动国家代码）和 MNC（移动网络代码）组合成的一个字符串。这个信息可以帮助识别设备正在使用的具体运营商。</p>
+<p><strong>返回值</strong></p>
+<ul>
+<li><strong>String</strong>：返回一个由 MCC 和 MNC 组成的字符串，格式为 <code>&lt;MCC&gt;&lt;MNC&gt;</code>。例如，“46000”代表中国移动，“46001”代表中国联通。</li>
+<li>如果无法确定运营商信息，则可能返回空字符串("")。</li>
+</ul>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getNetworkOperator()Ljava/lang/String;")){
+    return ProxyDvmObject.createObject(vm, "46000");
+  }</code></p>
+<ul>
+<li><strong>getNetworkOperatorName</strong></li>
+</ul>
+<p><code>getNetworkOperatorName()</code> 是 Android <code>TelephonyManager</code> 类中的一个方法，用于获取当前设备连接的移动网络运营商的名字。与 <code>getNetworkOperator()</code> 不同，后者返回的是 MCC（移动国家代码）和 MNC（移动网络代码）的组合字符串，而 <code>getNetworkOperatorName()</code> 返回的是运营商的名称，比如 "China Mobile" 或 "AT&amp;T"。</p>
+<p><strong>返回值</strong></p>
+<ul>
+<li><strong>String</strong>：返回当前网络运营商的名字。例如，“China Mobile”、“AT&amp;T”等。</li>
+<li>如果无法确定运营商信息，则可能返回空字符串("")或 <code>null</code>。</li>
+</ul>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getNetworkOperatorName()Ljava/lang/String;")){
+    return ProxyDvmObject.createObject(vm, "China Mobile");
+  }</code></p>
+<ul>
+<li><strong>getNetworkCountryIso</strong></li>
+</ul>
+<p><code>getNetworkCountryIso()</code> 是 Android <code>TelephonyManager</code> 类中的一个方法，用于获取设备当前连接的移动网络运营商所在国家的 ISO 3166-1 alpha-2 格式的国家代码。这个方法返回的是一个由两个字母组成的字符串，代表了当前网络运营商所在的国家。</p>
+<p><strong>返回值</strong></p>
+<ul>
+<li><strong>String</strong>：返回当前网络运营商所在国家的 ISO 3166-1 alpha-2 国家代码。例如，“US”代表美国，“CN”代表中国。</li>
+<li>如果无法确定国家信息，则可能返回空字符串("")或 <code>null</code>（取决于设备和 Android 版本）。</li>
+</ul>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getNetworkCountryIso()Ljava/lang/String;")){
+    return ProxyDvmObject.createObject(vm, "CN");
+  }</code></p>
+<ul>
+<li><strong>getDataState</strong></li>
+</ul>
+<p><code>getDataState()</code> 是 Android <code>TelephonyManager</code> 类中的一个方法，用于获取当前设备移动数据连接的状态。这个方法返回的是一个整数值，表示移动数据连接的不同状态。</p>
+<p><strong>返回值</strong></p>
+<p>该方法返回的整数值代表了不同的数据连接状态：</p>
+<ul>
+<li><strong><code>TelephonyManager.DATA_DISCONNECTED</code> (0)</strong>：数据连接已断开。</li>
+<li><strong><code>TelephonyManager.DATA_CONNECTING</code> (1)</strong>：正在尝试建立数据连接。</li>
+<li><strong><code>TelephonyManager.DATA_CONNECTED</code> (2)</strong>：数据连接已成功建立。</li>
+<li><strong><code>TelephonyManager.DATA_SUSPENDED</code> (3)</strong>：数据连接已挂起（例如，在通话期间暂停数据传输）。</li>
+</ul>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getDataState()I")){
+    return 2;
+  }</code></p>
+<ul>
+<li><strong>getDataActivity</strong></li>
+</ul>
+<p><code>getDataActivity()</code> 是 Android <code>TelephonyManager</code> 类中的一个方法，用于获取当前数据连接的活动状态。这个方法返回的是一个整数值，表示移动数据连接的不同活动类型。</p>
+<p><strong>返回值</strong></p>
+<p>该方法返回的整数值代表了不同的数据活动状态：</p>
+<ul>
+<li><strong><code>TelephonyManager.DATA_ACTIVITY_NONE</code> (0)</strong>：没有数据发送或接收。</li>
+<li><strong><code>TelephonyManager.DATA_ACTIVITY_IN</code> (1)</strong>：当前有数据正在被接收（下行流量）。</li>
+<li><strong><code>TelephonyManager.DATA_ACTIVITY_OUT</code> (2)</strong>：当前有数据正在被发送（上行流量）。</li>
+<li><strong><code>TelephonyManager.DATA_ACTIVITY_INOUT</code> (3)</strong>：当前既有数据正在被发送也有数据正在被接收。</li>
+<li><strong><code>TelephonyManager.DATA_ACTIVITY_DORMANT</code> (4)</strong>：数据连接处于休眠状态（从 Android API 级别 29 开始引入）。</li>
+</ul>
+<p><code>java
+  if(signature.equals("android/telephony/TelephonyManager-&gt;getDataActivity()I")){
+    return 3;
+  }</code></p>
+<h3 id="10">10、注意</h3>
+<h4 id="1">(1) 如果在补环境的时候</h4>
+<p>通过dvmObject获取当前正在实际运行的对象进行补的时候如果补完还报错，并且不是报下一个环境调用的错误</p>
+<pre><code class="language-java">Throwable obj = (Throwable) dvmObject.getValue();
+StackTraceElement[] stackTraceElements = obj.getStackTrace();
+return ProxyDvmObject.createObject(vm, stackTraceElements);
+</code></pre>
+<p>则改成以下方式，重新重建一个新的对象</p>
+<pre><code class="language-java">Throwable obj = new Throwable();
+StackTraceElement[] stackTraceElements = obj.getStackTrace();
+return ProxyDvmObject.createObject(vm, stackTraceElements);
+</code></pre>
+<h4 id="2-java">(2) 补环境中java不存在的模块</h4>
+<p>如果在unidbg补环境中报如下错误，也就是说我们java环境中没有当前的模块，因为是在Android的app下，如果出现这种错误，我们直接创建一个要返回的<code>android/app/ActivityThread</code> 类型的对象既可</p>
+<p><img alt="image-20250206144720290" src="imgs/day24-unidbg-%E4%B8%8A.assets/image-20250206144720290.png" /></p>
+<p><strong>解决</strong></p>
+<pre><code class="language-java">@Override
+public DvmObject&lt;?&gt; callStaticObjectMethod(BaseVM vm, DvmClass dvmClass, String signature, VarArg varArg) {
+  if (signature.equals(&quot;android/app/ActivityThread-&gt;currentActivityThread()Landroid/app/ActivityThread;&quot;)){
+    return vm.resolveClass(&quot;android/app/ActivityThread&quot;).newObject(null);
+  }
+return super.callStaticObjectMethod(vm, dvmClass, signature, varArg);
+}
+</code></pre>
+<h3 id="3-base64">(3) base64解码</h3>
+<p>如果传递过长的参数值，如果补完环境还报错，确认当前是否为base64的数据，先base64解码，在处理</p>
+<pre><code>import java.util.Base64;
+byte[] bArr = Base64.getUrlDecoder().decode(response);
+</code></pre>
 <h2 id="unidbg_1">二、案例应用unidbg</h2>
-<h3 id="1">1、车智赢案例</h3>
+<h3 id="1_1">1、车智赢案例</h3>
 <pre><code class="language-python"># 第14天讲的
 
 # 破解udid的时候--》udid是通过des加密得到--》加密的明文我们已经找到了---》但是des加密的秘钥，我们找到了--》jni中的--》get3desKey--&gt;返回了秘钥
@@ -811,7 +1079,7 @@ public class Du extends AbstractJni{
 <pre><code class="language-python"># 破解    hnairSign  加密---》unidgb跑出来
 
 </code></pre>
-<h4 id="1_1">(1) 抓包</h4>
+<h4 id="1_2">(1) 抓包</h4>
 <p><img alt="image-20231117222013342" src="imgs/day25-unidbg-%E4%B8%8A.assets/image-20231117222013342.png" /></p>
 <h4 id="2_3">(2) 反编译搜索</h4>
 <pre><code class="language-python"># 1 搜索 hnairSign 
@@ -1701,7 +1969,7 @@ com.github.unidbg.linux.android.dvm.AbstractJni.callObjectMethod(AbstractJni.jav
         return super.callBooleanMethod(vm, dvmObject, signature, varArg);
     }
 </code></pre>
-<h4 id="8">(8) 总结三点</h4>
+<h4 id="8_1">(8) 总结三点</h4>
 <p><strong>第一点</strong></p>
 <pre><code class="language-python"># 第7天，循环Map
 
@@ -1763,7 +2031,7 @@ Java_com_justin_s8day12_Utils_v9(JNIEnv *env, jclass clazz) {
 </code></pre>
 <p><img alt="image-20231122215338585" src="imgs/day25-unidbg-%E4%B8%8A.assets/image-20231122215338585.png" /></p>
 <h3 id="6-">6、识货案例--安卓中对象</h3>
-<h4 id="1_2">(1) 回顾</h4>
+<h4 id="1_3">(1) 回顾</h4>
 <pre><code class="language-python"># 使用jadx反编译识货---》不全
 # 使用GDA反编译--》找
 

@@ -85,7 +85,7 @@
 <li class="chapter" data-path="day25-unidbg-%E4%B8%8B.html">
 <a href="day25-unidbg-%E4%B8%8B.html">二十五、unidbg-下</a>
 <li class="chapter" data-path="day26-xhs.html">
-<a href="day26-xhs.html">二十六、xhs</a>
+<a href="day26-xhs.html">二十六、小红书</a>
 <li class="chapter" data-path="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
@@ -325,7 +325,7 @@ Theme by GitBook
 <h5 id="_2">使用场景</h5>
 <p>当你想要 hook 或修改 Android 应用中的 Java 方法时，你应该将你的操作包裹在 <code>Java.perform</code> 中。例如，如果你要 hook 一个特定的 Java 方法，你可以这样做：</p>
 <p>javascript深色版本</p>
-<pre><code>Java.perform(function () {
+<pre><code class="language-javascript">Java.perform(function () {
     // 定义你想 hook 的类和方法
     var MainActivity = Java.use(&quot;com.example.MainActivity&quot;);
 
@@ -423,6 +423,53 @@ Theme by GitBook
 <p>当应用程序重启时，它可能会经历一系列的状态变化，包括重新初始化、重新加载资源等。如果你的 Python Hook 代码没有正确处理这些状态变化，比如没有及时释放旧的会话或者正确地重新附加到新的进程中，就可能导致应用程序无法正常继续运行。</p>
 <p>此外，Python 中使用的 <code>sys.stdin.read()</code> 会让程序挂起等待输入，这可能阻止了正确的退出机制。如果应用程序崩溃或重启，Python 程序可能没有机会清理资源，从而导致后续的操作出现问题。</p>
 <h4 id="5pythonjsspawn">5.如果python的方式卡主推荐使用js的spawn的方式</h4>
+<h4 id="6">6、注意：</h4>
+<h5 id="1-hook">(1) 对于hook绑定参数</h5>
+<p>当使用frida进行hook的时候如果当前的方法有重写，进行hook的时候需要进行overload进行绑定参数，以此来hook到你指定的函数</p>
+<p><strong>比如</strong></p>
+<pre><code class="language-java">@Override // okhttp3.Interceptor
+    public Response intercept(Interceptor.Chain chain) throws IOException {
+        Response intercept;
+        long currentTimeMillis = ContextHolder.sJavaLogAble ? System.currentTimeMillis() : 0L;
+        a&lt;Request&gt; aVar = this.predicate;
+        if (aVar != null &amp;&amp; !aVar.test(chain.request())) {
+            intercept = chain.proceed(chain.request());
+        } else {
+            intercept = intercept(chain, this.cPtr);
+        }
+        if (ContextHolder.sJavaLogAble) {
+            Log.i(&quot;XhsHttpInterceptor&quot;, &quot;cost:&quot; + (System.currentTimeMillis() - currentTimeMillis));
+        }
+        return intercept;
+    }
+
+    public native Response intercept(Interceptor.Chain chain, long j2) throws IOException;
+
+</code></pre>
+<p><img alt="image-20250207154746095" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250207154746095.png" /></p>
+<p><strong>进行hook</strong></p>
+<pre><code class="language-javascript">Java.perform(function () {
+    var a = Java.use(&quot;com.xingin.shield.http.XhsHttpInterceptor&quot;);
+    a.intercept.overload('okhttp3.Interceptor$Chain', 'long').implementation = function (chain) {
+        var req = chain.request(); // 获取当前拦截器的请求对象  因为获取到了对象才能去打印当前请求的一些参数，比如body，url，请求头等
+        var httpUrl = req.url().toString();
+        // 判断当前执行的是不是详情的URL，是的话输出
+        if( httpUrl.indexOf(&quot;https://sh-gateway.shihuo.cn/v4/services/sh-goodsapi/app_swoole_shoe/preload/single&quot;) != -1 ){
+            console.log('执行前',httpUrl);
+        }
+        // var response = this.intercept(chain); // 执行自己这个拦截器
+        // 不走自己的拦截器了，跳过该拦截器执行，继续执行下面的拦截器
+        var response = chain.proceed(req);
+        return response;
+    }
+});
+</code></pre>
+<h5 id="2_1">(2) 绑定参数中出现$符号</h5>
+<p>因为当前Chain是出现在子类中，所以在进行绑定时候需要添加$</p>
+<p><img alt="image-20250207155120393" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250207155120393.png" /></p>
+<h5 id="3_2">(3) 关于 <code>$</code> 符号</h5>
+<p>在 Frida 的 JavaScript API 中，当你使用 <code>Java.use</code> 来引用 Java 类并尝试 hook 其方法时，需要准确地指定类和方法签名。这里的 <code>$</code> 符号用于表示内部类或嵌套类。</p>
+<p>在 Java 中，当一个类是另一个类的内部类（nested class）或者静态嵌套类（static nested class），在编译时，这些类的名字会被转换为包含 <code>$</code> 的形式。例如，如果有一个名为 <code>OuterClass</code> 的外部类和一个名为 <code>InnerClass</code> 的内部类，在字节码中，这个内部类将被命名为 <code>OuterClass$InnerClass</code>。</p>
 <h2 id="app">三、绕过app强制更新</h2>
 <pre><code class="language-python"># 以后使用app，更新会遇到两种情况
     1 选择更新：只是弹出更新框，但是有 关闭，可以关闭，暂时不更新----》app中的所有接口肯定是能用的
@@ -535,7 +582,7 @@ sys.stdin.read()
 <p>识货这款app，做了frida的反调试，检测到只要frida脚本在运行，app就自动结束</p>
 <p><strong>注意：</strong></p>
 <p>python安装的frida模块需要和手机frida-server的版本对应</p>
-<h3 id="2_1">(2) 对于强制更新的处理方式</h3>
+<h3 id="2_2">(2) 对于强制更新的处理方式</h3>
 <h4 id="_4"><strong>方法一</strong></h4>
 <p>这种公司，一般情况下，公司的安全人员写了一个so文件，检测是否在运行frida的hook，如果检测到，就把app强制终止</p>
 <p>安全人员写的so，一般情况下跟app业务无关，只用来做hook的检测，这种情况下，我们可以尝试删除这个so文件尝试一下，如果删除了，app还能顺利运行，说明这个so跟业务是无关的，就可以删除
@@ -559,6 +606,16 @@ sys.stdin.read()
   rm libmsaoaidsec.so</code></p>
 <h4 id="_5"><strong>方法二</strong></h4>
 <p>断网执行app，发现能正常打开app后，在打开网络，刷新也可以</p>
+<h4 id="_6">方法三</h4>
+<p>找到当前请求更新的URL，篡改响应内容</p>
+<p><strong>示例</strong>(识货App)</p>
+<p>URL：https://sh-gateway.shihuo.cn/v4/services/sh-message/popup/list</p>
+<p><img alt="image-20250123171645004" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250123171645004.png" /></p>
+<p>将响应内容复制出来，通过Charles篡改响应</p>
+<p>Map-Local</p>
+<p><img src="./imgs/day00-总结.assets/image-20250123171821292.png" alt="image-20250123171821292" style="zoom:50%;" /></p>
+<p><img src="./imgs/day00-总结.assets/image-20250123171802943.png" alt="image-20250123171802943" style="zoom:50%;" /></p>
+<p><img alt="image-20250123171739627" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20250123171739627.png" /></p>
 <h3 id="3-hook-appso">(3) hook app在启动过程中执行了那些so文件</h3>
 <p>代码</p>
 <pre><code class="language-python">import frida
@@ -915,7 +972,6 @@ print(sign)
 
 # 得到结果20d97aad1b9ba75db3e0901e8c3b11d5  跟抓包结果一致
 </code></pre>
-<h3 id="_6"></h3>
 <h2 id="ptrace">八、ptrace占坑</h2>
 <h3 id="1ptrace">1、ptrace说明</h3>
 <p>这是<strong>ptrace占坑</strong>的标志。</p>
@@ -1287,6 +1343,41 @@ bs = bytearray(gzip_body)
 print(bs)
 bs[3:10] = [0, 0, 0, 0, 0, 0, 0]
 print(bs)
+</code></pre>
+<h2 id="unidbg">十三、unidbg</h2>
+<p>如果在unidbg中，参数是字符串，并且太长，运行起来会报错， 那么可以使用python循环处理</p>
+<p>9535这个值你给多大的步长都行</p>
+<pre><code class="language-python">info = &quot;超长字符串&quot;
+for i in range(0, len(info), 9535):
+    print('sb.append(&quot;{}&quot;);'.format(  info[i:i + 9535])  )
+    # print(info[i:i + 9535])
+</code></pre>
+<p>unidbg中使用</p>
+<p>把上面python中运行打印的sb.append("{字符串}");复制过来既可</p>
+<pre><code class="language-java">StringBuilder str  = new StringBuilder();
+str.append(&quot;字符串&quot;);
+String response = str.toString();
+System.out.println(response);
+</code></pre>
+<p><strong>打包</strong></p>
+<p>如果是打包unidbg的话，那需要将当前大段内容放入文件中，然后unidbg从文件中读取</p>
+<pre><code class="language-java">public String readFileBody(String path) {
+        try {
+            FileReader reader = new FileReader(new File(path));
+            StringBuilder stringBuilder = new StringBuilder();
+            char[] buffer = new char[10];
+            int size;
+            while ((size = reader.read(buffer)) != -1) {
+                stringBuilder.append(buffer, 0, size);
+            }
+            return stringBuilder.toString();
+        } catch (Exception e) {
+            return &quot;&quot;;
+        }
+}
+// 调用
+String filePath = &quot;apks/shihuo/con.txt&quot;; // 替换为你的文件路径
+String body = readFileBody(filePath);
 </code></pre>
 
 
