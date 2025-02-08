@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>十一、C语言基础 - App逆向在线笔记</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="index.html" target="_blank" class="custom-link">App逆向在线笔记</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="index.html">
+<a href="index.html">Welcome to Lucky App逆向</a>
+<li class="chapter" data-path="day00-%E6%80%BB%E7%BB%93.html">
+<a href="day00-%E6%80%BB%E7%BB%93.html">总结</a>
+<li class="chapter" data-path="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">
+<a href="day01-%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87.html">一、前期准备</a>
+<li class="chapter" data-path="day02-adb.html">
+<a href="day02-adb.html">二、adb</a>
+<li class="chapter" data-path="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">
+<a href="day03-%E6%8A%93%E5%8C%85%E5%92%8C%E5%8F%8D%E7%BC%96%E8%AF%91.html">三、抓包和反编译</a>
+<li class="chapter" data-path="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">
+<a href="day04-hook-%E5%B8%B8%E7%94%A8%E5%8A%A0%E5%AF%86-%E6%8A%93%E5%8C%85app.html">四、hook-常用加密-抓包app</a>
+<li class="chapter" data-path="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">
+<a href="day05-%E9%80%86x%E6%A1%88%E4%BE%8B.html">五、抓包和逆向案例</a>
+<li class="chapter" data-path="day06-java%E5%9F%BA%E7%A1%80.html">
+<a href="day06-java%E5%9F%BA%E7%A1%80.html">六、java基础-01</a>
+<li class="chapter" data-path="day07-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">
+<a href="day07-%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%9101.html">七、安卓开发01</a>
+<li class="chapter" data-path="day08-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">
+<a href="day08-%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%8002.html">八、安卓开发02</a>
+<li class="chapter" data-path="day09%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">
+<a href="day09%E5%AE%89%E5%8D%93%E5%9F%BA%E7%A1%80%E5%8A%A0%E5%AF%86%E6%8B%A6%E6%88%AA%E5%99%A8.html">九、安卓基础加密拦截器</a>
+<li class="chapter" data-path="day10-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">
+<a href="day10-C%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85.html">十、C语言安装与入门</a>
+<li class="chapter active" data-path="day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.html">
+<a href="day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.html">十一、C语言基础</a>
+<li class="chapter" data-path="day12-JNI%E5%BC%80%E5%8F%91.html">
+<a href="day12-JNI%E5%BC%80%E5%8F%91.html">十二、JNI开发</a>
+<li class="chapter" data-path="day13-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">
+<a href="day13-%E8%BD%A6%E6%99%BA%E8%B5%A2.html">十三、车智赢</a>
+<li class="chapter" data-path="day14-%E8%AF%86%E8%B4%A7app.html">
+<a href="day14-%E8%AF%86%E8%B4%A7app.html">十四、识货app</a>
+<li class="chapter" data-path="day15-%E5%BE%97%E7%89%A9app.html">
+<a href="day15-%E5%BE%97%E7%89%A9app.html">十五、得物app</a>
+<li class="chapter" data-path="day16-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">
+<a href="day16-B%E7%AB%99%E6%92%AD%E6%94%BE%E9%87%8Fday01.html">十六、B站播放量</a>
+<li class="chapter" data-path="day17-B%E7%AB%9902.html">
+<a href="day17-B%E7%AB%9902.html">十七、B站02</a>
+<li class="chapter" data-path="day18-B%E7%AB%9903.html">
+<a href="day18-B%E7%AB%9903.html">十八、B站02</a>
+<li class="chapter" data-path="day19-%E5%94%AF%E5%93%81%E4%BC%9A01.html">
+<a href="day19-%E5%94%AF%E5%93%81%E4%BC%9A01.html">十九、唯品会01</a>
+<li class="chapter" data-path="day20-%E5%94%AF%E5%93%81%E4%BC%9A02.html">
+<a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十、唯品会02</a>
+<li class="chapter" data-path="day21-DYM.html">
+<a href="day21-DYM.html">二十一、DYM</a>
+<li class="chapter" data-path="day22-%E9%85%92%E4%BB%99%E7%BD%91.html">
+<a href="day22-%E9%85%92%E4%BB%99%E7%BD%91.html">二十二、酒仙网</a>
+<li class="chapter" data-path="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
+<a href="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十三、司小宝</a>
+<li class="chapter" data-path="day24-unidbg-%E4%B8%8A.html">
+<a href="day24-unidbg-%E4%B8%8A.html">二十四、unidbg-上</a>
+<li class="chapter" data-path="day25-unidbg-%E4%B8%8B.html">
+<a href="day25-unidbg-%E4%B8%8B.html">二十五、unidbg-下</a>
+<li class="chapter" data-path="day26-xhs.html">
+<a href="day26-xhs.html">二十六、小红书</a>
+<li class="chapter" data-path="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">
+<a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
+<li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
+<a href="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">二十八、无障碍项目部署</a>
+<li class="chapter" data-path="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">二十九、App逆向入口查找</a>
+<li class="chapter" data-path="day30-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day30-%E5%90%84%E7%A7%8Dhook.html">三十、关于hook知识点</a>
+<li class="chapter" data-path="day31-%E6%8A%96%E9%9F%B3.html">
+<a href="day31-%E6%8A%96%E9%9F%B3.html">三十一、抖音</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="c">十一、C语言基础</h1>
+<h2 id="_1">一、基础语法</h2>
+<h3 id="1">1、整形</h3>
+<pre><code class="language-python"># 整数类型
+</code></pre>
+<p><img alt="image-20240417200813964" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417200813964.png" /></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    //1 char 类型
+    char i =99;
+    printf(&quot;%d\n&quot;,i); // 十进制形式展示
+    printf(&quot;%c\n&quot;,i); // 字符形式展示
+    printf(&quot;-------------\n&quot;);
+    // 2 unsigned char
+    unsigned char i1=99;
+    printf(&quot;%d\n&quot;,i1);
+    printf(&quot;%c\n&quot;,i1);
+    printf(&quot;-------------\n&quot;);
+    //3 short  signed short  unsigned short
+    short i2=32767;  // 默认有符号，整数最大32767
+    signed short i3=32767;  // 默认有符号，整数最大32767
+    unsigned short i4=65535;  // 有符号，正数最大 65535
+    printf(&quot;%d\n&quot;,i2);
+    printf(&quot;i3 是：%d\n&quot;,i3);
+    printf(&quot;%d\n&quot;,i4);
+    printf(&quot;-------------\n&quot;);
+    // 4 int  和 long
+    int i5=65536;
+    long i6=65536;
+    printf(&quot;%d\n&quot;,i6);
+    printf(&quot;long类型占：%d字节\n&quot;,sizeof(long ));  // long 占4个字节
+    printf(&quot;-------------\n&quot;);
+    // 各种类型的存储大小与系统位数有关，但目前通用的以64位系统为主
+    // int 在64位机器上，占4字节
+    int i9=9999;
+    printf(&quot;%d\n&quot;,i9);
+    printf(&quot;%d\n&quot;,sizeof(i9));
+    printf(&quot;%d\n&quot;,sizeof(int));  //统计这个类型占几个字节
+
+
+    return 0;
+}
+
+</code></pre>
+<h3 id="2">2、浮点型</h3>
+<pre><code class="language-python"># 浮点型--》小数类型
+</code></pre>
+<p><img alt="image-20240417201745215" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417201745215.png" /></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main() {
+    //1  float   double   占几个字节
+    printf(&quot;float 存储最大字节数 : %d \n&quot;, sizeof(float));
+    printf(&quot;double 存储最大字节数 : %d \n&quot;, sizeof(double));
+
+    // 2 具体演示
+    // %f代表一般计数法输出，%e代表指数计数法输出
+    float f1=365.123456789F;
+    printf(&quot;%f---%e\n&quot;,f1,f1);
+
+    double f2=365.123456789;
+    printf(&quot;%f---%e\n&quot;,f2,f2);
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="3">3、常量</h3>
+<pre><code class="language-python"># 定义赋值后，以后不能变了
+
+# python中没有常量，java中使用final 修饰的是常量
+    -python中虽然没常量，但是我们约定俗成，全大写表示常量，意思是只要是在python中全大写的变量，以后项目运行期间不能修改
+    -djang--的settings.py --&gt;配置项都是常量
+</code></pre>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main() {
+    // 1 定义常量
+    const int MAX_VALUE=99; // java中：final      python:全大写   js ：const定义的
+    printf(&quot;MAX_VALUE的值是：%d\n&quot;,MAX_VALUE);
+    // MAX_VALUE=89;
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="4">4、运算符</h3>
+<pre><code class="language-python"># 1 算数运算符
+# 2 关系运算符
+# 3 逻辑运算符
+# 4 赋值运算符
+# 5 其他
+</code></pre>
+<h4 id="1_1">(1) 算数运算符</h4>
+<p><img alt="image-20240417202542750" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417202542750.png" /></p>
+<pre><code>#include &lt;stdio.h&gt;
+int main() {
+    // 算数运算符
+    int a = 10;
+    int b = 20;
+    int c;
+
+    c = a + b;
+    printf(&quot;a+b结果是 %d\n&quot;, c);
+    c = a - b;
+    printf(&quot;a-b结果是 %d\n&quot;, c);
+    c = a * b;
+    printf(&quot;a * b 结果是%d\n&quot;, c);
+    c = b / a;
+    printf(&quot;b / a的值是 %d\n&quot;, c);
+    c = 10 % 3;
+    printf(&quot;10 % 3取整除的值是 %d\n&quot;, c);
+    c = a++;  // 赋值后再加 1 ，c 为 10，a 为 11
+    printf(&quot;赋值后再加 的值是 %d,a的值为：%d\n&quot;, c, a);
+    c = a--;  // 赋值后再减 1 ，c 为 11 ，a 为 10
+    printf(&quot;赋值后再减 1的值是 %d,a的值为：%d\n&quot;, c, a);
+
+
+    // a++     ++a 的区别
+    // c=a++  先赋值再运算
+    // c=++a  先运算再赋值
+    return 0;
+}
+</code></pre>
+<h4 id="2_1">(2) 关系运算</h4>
+<p><img alt="image-20240417202918774" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417202918774.png" /></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int main() {
+    // 算数运算符
+    int a =10;
+    int b=20;
+    if(a!=b){
+        printf(&quot;不相等&quot;);
+    }
+    return 0;
+}
+</code></pre>
+<h4 id="3_1">(3) 逻辑运算符</h4>
+<p><img alt="image-20240417203231878" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417203231878.png" /></p>
+<h4 id="4_1">(4) 赋值运算</h4>
+<p><img alt="image-20240417203324663" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417203324663.png" /></p>
+<pre><code class="language-python">https://zhuanlan.zhihu.com/p/370167569
+</code></pre>
+<h4 id="5">(5) 其他</h4>
+<p><img alt="image-20240417203750374" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417203750374.png" /></p>
+<h3 id="5-if">5、 if判断</h3>
+<pre><code class="language-python">#include &lt;stdio.h&gt;
+
+int main() {
+    // 输入数字，打印成绩等级
+    int num;
+    printf(&quot;请输入数字：&quot;);
+    scanf(&quot;%d&quot;, &amp;num);
+    if (num &gt; 90) {
+        printf(&quot;优秀\n&quot;);
+    } else if (num &gt; 60 &amp;&amp; num &lt; 90) {
+        printf(&quot;及格\n&quot;);
+    } else {
+        printf(&quot;不及格&quot;);
+    }
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="6">6、循环</h3>
+<p><img alt="image-20240417204314957" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417204314957.png" /></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // 循环
+
+    int num = 0;
+    //1  while循环 打印0--9
+//    while (num &lt; 10) {
+//        printf(&quot;%d\n&quot;, num);
+//        num++;
+//    }
+    printf(&quot;-------do while循环-------\n&quot;);
+//    do {
+//        printf(&quot;%d\n&quot;, num);
+//        num++;
+//    } while (num &lt; 10);
+
+    printf(&quot;-------for循环-------\n&quot;);
+    for (int i = 0; i &lt; 10; ++i) {
+        printf(&quot;%d\n&quot;, i);
+    }
+
+    printf(&quot;-------死循环-------\n&quot;);
+    for (;;) {
+        printf(&quot;死循环&quot;);
+    }
+
+
+    printf(&quot;-------continue 和 break 跟其他语言完全一样-------\n&quot;);
+
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="7">7、函数</h3>
+<pre><code class="language-python"># 固定格式
+返回值类型 函数名(参数类型 形参1,参数类型 形参2){
+    函数体内容;
+}
+</code></pre>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+int add(int a, int b){
+    return a+b;
+}
+void speak(){
+    printf(&quot;说话了&quot;);
+    int a=add(4,5);
+    printf(&quot;%d\n&quot;,a);
+
+}
+
+
+int main() {
+    int res=add(4,5);
+    printf(&quot;%d\n&quot;,res);
+
+    speak();
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="8">8、字符和字符串</h3>
+<pre><code class="language-python"># 在c中没有字符串 类型 
+# 通过字符数组构建字符串
+</code></pre>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+
+int main() {
+    // 字符和字符数组
+    // 1 定义字符
+    char a ='A';
+    printf(&quot;数字是：%d--字符是：%c\n&quot;,a,a);
+
+    // 2 定义字符串--》c中没有字符串类型--》字符数组代替
+    char s[]=&quot;justin&quot;;
+    printf(&quot;%s\n&quot;,s);
+    printf(&quot;%c\n&quot;,s[0]);
+    s[0]='p';
+    printf(&quot;%s\n&quot;,s);
+
+    char s1[]={'j','u','s','t','i','n','\0'};
+    printf(&quot;%s\n&quot;,s1);
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="9">9、数组</h3>
+<pre><code class="language-python"># 对于**数组**来说，内部元素是挨个存放，内存地址相邻。--》当成python的列表
+
+# 它可以存储一个固定大小的相同类型元素的顺序集合。
+#  数组是用来存储一系列数据，是一系列相同类型的变量
+</code></pre>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+
+int main() {
+    // 数组
+    // 1 int数组
+    int v1[3]={11,22,33};
+    printf(&quot;%d\n&quot;,v1[2]);  // 其它语言都会报错，c不报错，取出来的数据是不对的
+
+    v1[0]=99;
+
+    // 2 数组的大小
+    // 打印字节大小
+    printf(&quot;%d\n&quot;,sizeof(v1));  // 12 --&gt;因为一个int 占 4个 byte
+    // 数组大小
+    printf(&quot;%d\n&quot;,sizeof(v1)/sizeof(v1[0]));  // int类型数组真正的大小
+
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h2 id="_2">二、指针</h2>
+<p>指针是存储变量内存地址的变量</p>
+<p><img alt="image-20230718180306820" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20230718180306820.png" /></p>
+<pre><code class="language-c">/* 重要：
+     * 1  * 放在定义的变量前[int *v2]--&gt;表示指向这个类型的指针--》定义指向这个类型的指针
+     * 2  &amp; 放在变量前--》表示 取这个变量的字---》&amp;v1--》表示取v1的内存地址
+     * 3  * 放在指针类型变量前，表示解引用
+*/
+</code></pre>
+<h3 id="1_2">1、定义指针类型变量和取变量地址</h3>
+<pre><code class="language-python">#include &lt;stdio.h&gt;
+
+int main() {
+    //  定义指针类型变量和取变量地址
+    int v1=666;
+    int *v2=&amp;v1; // 定义了指针类型变量v2，指向了v1的地址，v2中存着v1的地址
+    // v1和v2 不是一个东西，都不是一个类型，更不相等
+    printf(&quot;v2的值是:%p&quot;,v2); // 0061FF18
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="2_2">2、指针类型变量解引用</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+
+int main() {
+    //  定义指针类型变量和取变量地址
+    int v1=666;
+    int *v2=&amp;v1; // 定义了指针类型变量v2，指向了v1的地址，v2中存着v1的地址
+    // v1和v2 不是一个东西，都不是一个类型，更不相等
+    printf(&quot;v2的值是:%p\n&quot;,v2); // 0061FF18
+
+    // v2 指向的地址里面到底存了什么--》我们存了66
+
+    printf(&quot;v2解引用后是：%d\n&quot;,*v2);
+
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="3_2">3、修改变量的值</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    //  定义指针类型变量和取变量地址
+    int v1=666;
+    int *v2=&amp;v1; // 定义了指针类型变量v2，指向了v1的地址，v2中存着v1的地址
+    // v1和v2 不是一个东西，都不是一个类型，更不相等
+    printf(&quot;v2的值是:%p\n&quot;,v2); // 0061FF18
+
+    // v2 指向的地址里面到底存了什么--》我们存了66
+
+    printf(&quot;v2解引用后是：%d\n&quot;,*v2);
+
+    // 修改变量的值
+    v1=999;
+    // 问：v2的值会变吗？--没变
+    printf(&quot;v2的值是:%p\n&quot;,v2);
+    // 问：v2指向的值，现在是多少？   999
+    printf(&quot;v2解引用后是：%d\n&quot;,*v2);
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="4_2">4、指针的零值和长度</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+
+int main() {
+
+    // 指针的零值和长度  如果不赋值，随便指向了一个地址，有时候就是 00000000 ,咱们统一让他指向 NULL
+    int *v2=NULL;
+    int *v3=NULL;
+    int *v4=NULL;
+
+    printf(&quot;%p\n&quot;,v2);
+    printf(&quot;%p\n&quot;,v3);
+    printf(&quot;%p\n&quot;,v4);
+
+    int i=99;
+    v2=&amp;i;
+    printf(&quot;%p\n&quot;,v2);
+
+    printf(&quot;指针大小：%d\n&quot;,sizeof(v2)); // 4
+    if(!v3){   // 通过 ！指针，直接判断是否为空
+
+        printf(&quot;是空&quot;);
+    }
+
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="5_1">5、通过指针修改变量</h3>
+<pre><code class="language-c">// 修改变量的值--》不通过v1改，通过v2 指针来修改
+*v2=777;  //解引用后改值--》777
+if(*v2==v1){
+    printf(&quot;对的呢&quot;);
+}
+printf(&quot;v1的值是：%d\n&quot;,v1);
+// v2的值变了吗？ 一直没有变
+</code></pre>
+<h3 id="6_1">6、指针类型参数</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+void changeA(int a){
+    a=999;
+    printf(&quot;内部是：%d\n&quot;,a);
+}
+
+
+void changePointA(int *a){
+    *a=999;
+    printf(&quot;内部是：%d\n&quot;,*a);
+
+}
+int main() {
+
+    // 指针类型参数
+
+    // 1  参数传递，修改值
+    int a=1;
+    // 调用changeA，修改a的值，a不会被真正的修改掉
+    changeA(a);  // 把a复制了一份传进去了，里面改了，不会影响原来的值
+    printf(&quot;外部是：%d\n&quot;,a);
+
+    // 2  参数传递，指针类型修改值
+    int a1=1;
+    // 调用changePointA，修改a的值，a会被真正的修改掉
+    changePointA(&amp;a1);  // 把a1复制了一份,由于是个地址传进去了，在函数里面改了，改的是指向的位置，会影响原来的值
+    printf(&quot;外部是：%d\n&quot;,a1);
+
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="7_1">7、数组的指针(指针运算)</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // 数组的指针
+    int a[3]={11,22,33};
+    // 取数组的地址--》
+    int *p=&amp;a;   // 取地址赋值是，取了数组第一个位置的值，放在了p中
+
+
+    printf(&quot;数组的第0个位置：%d\n&quot;,a[0]);
+    printf(&quot;数组的第0个位置（指针）：%d\n&quot;,*p);
+
+    printf(&quot;数组的第1个位置：%d\n&quot;,a[1]);
+    printf(&quot;数组的第1个位置（指针）：%d\n&quot;,*(++p));
+
+    printf(&quot;数组的第1个位置：%d\n&quot;,a[2]);
+    printf(&quot;数组的第1个位置（指针）：%d\n&quot;,*(++p));
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="8_1">8、指针的指针(了解)</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // 指针的指针
+    int a =100;
+    int *p1 = &amp;a;
+
+    int **p2=&amp;p1; // p2是指针p1的内存地址
+
+    printf(&quot;p2的值是：%p\n&quot;,p2);
+    printf(&quot;p1的值是：%p\n&quot;,p1);
+    printf(&quot;p2解引用的值是：%p--》就是p1\n&quot;,*p2);
+    printf(&quot;p2解引用再解引用：%d--》就是a\n&quot;,**p2);
+
+    return 0;
+}
+
+</code></pre>
+<h3 id="9_1">9、字符串案例</h3>
+<h4 id="1_3">(1) 字符串格式</h4>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // 字符串案例
+
+    char a[6];
+    char *p =&amp;a;  // p 是指向 a 这个字符数组的 指针
+    // 字符串格式化，放值
+    sprintf(p, &quot;%c&quot;, 'j');
+    p += 1;
+    sprintf(p, &quot;%c&quot;, 'u');
+    p += 1;
+    sprintf(p, &quot;%c&quot;, 's');
+    p += 1;
+    sprintf(p, &quot;%c&quot;, 't');
+    p += 1;
+    sprintf(p, &quot;%c&quot;, 'i');
+    p += 1;
+    sprintf(p, &quot;%c&quot;, 'n');
+
+    printf(&quot;值为：%s&quot;, a);
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h4 id="2_3">(2) 字符串包含关系</h4>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    // 字符串案例
+    char name[] = &quot;justin is handsome&quot;;
+
+    // 判断是name中是否存在子序列is
+    char *res = strstr(name, &quot;is&quot;);
+    if (!res) {
+        printf(&quot;不存在&quot;);
+    } else {
+        printf(&quot;存在，从位置 %p 匹配成功的\n&quot;, res);
+    }
+
+    return 0;
+}
+
+
+
+</code></pre>
+<h4 id="3-">(3) 字符串相加-复制</h4>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+
+int main() {
+    // 字符串案例
+    char name[]=&quot;justin&quot;;
+    char role[]=&quot;teacher&quot;;
+    char *s = malloc(strlen(name) + strlen(role) + 1); // 申请一个内存空间：name和role长度+1
+    strcpy(s, name);  //字符串复制，把name内容复制到s指针上
+    strcat(s, role); // 字符串拼接，把s指针后面追加role字符串
+    printf(s);
+
+    return 0;
+}
+
+
+
+</code></pre>
+<p><img alt="image-20240417220510209" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20240417220510209.png" /></p>
+<h2 id="_3">三、结构体</h2>
+<pre><code class="language-python"># 一种用户自定义的数据类型，它允许存储不同类型的数据项
+    -python中的列表，字典。。 本质都是c语言结构体指针
+
+# 结构体中的数据成员可以是基本数据类型（如 int、float、char 等），也可以是其他结构体类型、指针类型等
+</code></pre>
+<h3 id="1_4">1、基本使用</h3>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+
+// 1 定义一个  人 结构体
+struct Person{
+    char name[30];
+    int age;
+};
+
+int main() {
+    //2  结构体定义和使用
+    struct Person p1={&quot;jsutin&quot;,88};
+    printf(&quot;人名是:%s,年龄是：%d\n&quot;,p1.name,p1.age);
+
+    struct Person p2={&quot;彭于晏&quot;,34};
+    printf(&quot;人名是:%s,年龄是：%d\n&quot;,p2.name,p2.age);
+
+
+    // 3 结构体指针
+    struct Person *p3=&amp;p2;
+    // 打印p3指向的地址人的名字
+    printf(&quot;人名是：%s\n&quot;,(*p3).name); // 咱们理解的方式
+    printf(&quot;人名是：%s\n&quot;,p3-&gt;name); //推荐使用这种
+    return 0;
+}
+
+
+
+</code></pre>
+<h3 id="2_4">2、单向链表</h3>
+<p><img alt="image-20220222223538114" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20220222223538114.png" /></p>
+<pre><code class="language-python">#include &lt;stdio.h&gt;
+
+// 定义一个Node结构体：要存数据，存下一个的地址
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+int main() {
+
+    struct Node v3 = {33};
+    struct Node v2 = {22, &amp;v3};
+    struct Node v1 = {11, &amp;v2};
+
+    printf(&quot;v1的数据为：%d\n&quot;, v1.data);                            // 11
+    printf(&quot;v1的下一个元素数据为：%d\n&quot;, v1.next-&gt;data);              // 22
+    printf(&quot;v1的下一个元素的下一个数据为：%d\n&quot;, v1.next-&gt;next-&gt;data); // 33
+
+    return 0;
+}
+</code></pre>
+<h3 id="3_3">3、双向链表</h3>
+<p><img alt="image-20210313235011708" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20210313235011708.png" /></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// 定义一个Node结构体：要存数据，存下一个的地址
+struct Node{
+    int data;
+    struct Node *next;
+    struct Node *prev;
+};
+
+int main() {
+    struct Node p3 = { 33 };
+    struct Node p2 = { 22 };
+    struct Node p1 = { 11 };
+
+    // p1 的next 指向跑p2
+    p1.next=&amp;p2;
+
+    // p2 的next 指向p3，  p2的prev指向p1
+    p2.next=&amp;p3;
+    p2.prev=&amp;p1;
+
+    // p3 的next 是空， p3的prev指向p2
+    p3.prev=&amp;p2;
+
+
+    // 随便用一个结构体，可以取出所有人
+    printf(&quot;p1的值: %d\n&quot;, p1.data);
+    printf(&quot;p2的值: %d\n&quot;, p1.next-&gt;data);
+    printf(&quot;p3的值: %d\n&quot;, p1.next-&gt;next-&gt;data);
+
+    printf(&quot;p3的值: %d\n&quot;, p3.data);
+    printf(&quot;p2的值: %d\n&quot;, p3.prev-&gt;data);
+    printf(&quot;p1的值: %d\n&quot;, p3.prev-&gt;prev-&gt;data);
+
+
+    return 0;
+}
+</code></pre>
+<h3 id="4_3">4、双向循环链表</h3>
+<p><img alt="image-20210313235047827" src="imgs/day11-C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.assets/image-20210313235047827.png" /></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// 定义一个Node结构体：要存数据，存下一个的地址
+struct Node{
+    int data;
+    struct Node *next;
+    struct Node *prev;
+};
+
+int main() {
+    struct Node p3 = { 33 };
+    struct Node p2 = { 22 };
+    struct Node p1 = { 11 };
+
+    // p1 的next 指向跑p2  p1的头是 p3
+    p1.next=&amp;p2;
+    p1.prev=&amp;p3;
+
+    // p2 的next 指向p3，  p2的prev指向p1
+    p2.next=&amp;p3;
+    p2.prev=&amp;p1;
+
+    // p3 的next 是空， p3的prev指向p2  有环
+    p3.prev=&amp;p2;
+    p3.next=&amp;p1;
+
+
+    // 随便用一个结构体，可以取出所有人
+    printf(&quot;p1的值: %d\n&quot;, p1.data);
+    printf(&quot;p2的值: %d\n&quot;, p1.next-&gt;data);
+    printf(&quot;p3的值: %d\n&quot;, p1.next-&gt;next-&gt;data);
+
+    printf(&quot;p1的值: %d\n&quot;, p1.next-&gt;next-&gt;next-&gt;data);
+    printf(&quot;p2的值: %d\n&quot;, p1.next-&gt;next-&gt;next-&gt;next-&gt;data);
+    printf(&quot;p3的值: %d\n&quot;, p1.next-&gt;next-&gt;next-&gt;next-&gt;next-&gt;data);
+
+
+    return 0;
+}
+
+</code></pre>
+<h2 id="_4">四、预处理和头文件</h2>
+<h3 id="1_5">1、预处理</h3>
+<pre><code class="language-python"> 预处理，在程序编译之前会先运行的。
+</code></pre>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+// 定义两个预处理变量
+#define ME 200
+#define SIZE   18
+
+int main() {
+    int data = 10;
+    printf(&quot;%d-%d-%d \n&quot;, ME, SIZE, data);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-c"># include &lt;stdio.h&gt;
+
+# define ADD(x1, x2)(x1+x2+100)
+
+int main() {
+    int data = ADD(11, 22);
+    printf(&quot;结果：%d \n&quot;, data);
+    return 0;
+}
+</code></pre>
+<pre><code class="language-c"># include &lt;stdio.h&gt;
+
+# define DB(x1, x2)(x1*x2)
+
+int main() {
+    int data = DB(2 + 1, 4);
+    printf(&quot;结果：%d \n&quot;, data);  // 结果是6，由于先运行，变成了2+1*4
+    return 0;
+}
+</code></pre>
+<h3 id="2_5">2、头文件</h3>
+<pre><code class="language-c">项目目录
+├── main.c
+├── utils.c
+└── utils.h
+</code></pre>
+<pre><code class="language-c">// utils.h
+
+int add(int a,int b);
+</code></pre>
+<pre><code class="language-c">// utils.c
+
+int add(int a,int b){
+    return a+b;
+}
+</code></pre>
+<pre><code class="language-c">//main.c
+
+# include &lt;stdio.h&gt;
+# include &quot;utils.h&quot;
+
+int main() {
+    int data = add(100,200);
+    printf(&quot;结果：%d \n&quot;, data);
+    return 0;
+}
+</code></pre>
+<p>比如后期，我们要进行JNI开发时，我们会在自己的c文件用去引入C语言中提供、JNI中提供一些头文件，才能使用头文件中的功能。</p>
+<h3 id="3python">3、Python解释器源码中头文件的使用</h3>
+<pre><code class="language-python"># cpython 解释器是用C语言写的
+
+# python中的 list  dict  其实都是 c语言结构体指针
+
+https://www.python.org/downloads/source/
+
+# github上cpython源码：https://github.com/python/cpython
+#Objects 下会有咱们得列表，字典等结构体
+https://github.com/python/cpython/tree/main/Objects# 
+
+# 列表：的源代码
+https://github.com/python/cpython/blob/main/Objects/listobject.c
+
+# 列表的头文件
+https://github.com/python/cpython/blob/main/Include/listobject.h
+
+
+#1   c   c++  c# 
+# c   #面向过程，没有面向对象     xx.c
+# c++ # c++兼容c，有了面向对象    xx.cpp
+# c#  # 跟java很像的一们语言     
+
+
+# 2 cpython---》python解释器--》使用c语言写的--》编译完成后，可以装在不同操作系统上
+
+</code></pre>
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>
