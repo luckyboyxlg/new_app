@@ -135,6 +135,23 @@ Theme by GitBook
 
 
 <h1 id="_1">总结</h1>
+<h4 id="_2">前期小知识点</h4>
+<p>1、在java中 以下代码里，当前执行顺序</p>
+<pre><code class="language-java">public class XhsHttpInterceptor implements Interceptor {
+    public long cPtr;
+    public a&lt;Request&gt; predicate;
+        // 第一执行
+    static {
+        initializeNative();
+    }
+    // 第二执行
+    public XhsHttpInterceptor(String str, a&lt;Request&gt; aVar) {
+        this.cPtr = initialize(str);
+        this.predicate = aVar;
+    }
+    public native long initialize(String str);
+}
+</code></pre>
 <h2 id="adb">一、adb常用命令</h2>
 <ul>
 <li>开启和关闭adb服务(了解即可)</li>
@@ -322,7 +339,7 @@ Theme by GitBook
 <li><strong>提供上下文</strong>：它为传递给它的函数创建了一个适当的 Java 上下文，使得你可以在其中安全地使用 <code>Java.use</code>, <code>Java.choose</code>, <code>Java.enumerateLoadedClasses</code> 等其他 Frida-Java API 来 hook 或操纵 Java 类和方法。</li>
 <li><strong>保护作用域</strong>：<code>Java.perform</code> 内部的代码块是线程安全的，它保证了在多线程环境下对 Java 类和对象的操作不会引发冲突或不一致的状态。</li>
 </ol>
-<h5 id="_2">使用场景</h5>
+<h5 id="_3">使用场景</h5>
 <p>当你想要 hook 或修改 Android 应用中的 Java 方法时，你应该将你的操作包裹在 <code>Java.perform</code> 中。例如，如果你要 hook 一个特定的 Java 方法，你可以这样做：</p>
 <p>javascript深色版本</p>
 <pre><code class="language-javascript">Java.perform(function () {
@@ -339,7 +356,7 @@ Theme by GitBook
 });
 </code></pre>
 <p>在这个例子中，<code>Java.perform</code> 确保了我们对 <code>MainActivity</code> 类的 <code>someMethod</code> 方法的 hook 操作是在一个正确的、线程安全的环境中进行的。</p>
-<h5 id="_3"><strong>注意事项</strong></h5>
+<h5 id="_4"><strong>注意事项</strong></h5>
 <ul>
 <li>不要在 <code>Java.perform</code> 外部直接调用 Java 相关的 API，因为这可能会导致不稳定的行为或崩溃。</li>
 <li>如果你在 <code>Java.perform</code> 内部定义了异步操作（如网络请求），请确保这些操作完成之前不要让 <code>Java.perform</code> 结束，否则可能导致操作提前终止或出现异常情况。</li>
@@ -470,6 +487,17 @@ Theme by GitBook
 <h5 id="3_2">(3) 关于 <code>$</code> 符号</h5>
 <p>在 Frida 的 JavaScript API 中，当你使用 <code>Java.use</code> 来引用 Java 类并尝试 hook 其方法时，需要准确地指定类和方法签名。这里的 <code>$</code> 符号用于表示内部类或嵌套类。</p>
 <p>在 Java 中，当一个类是另一个类的内部类（nested class）或者静态嵌套类（static nested class），在编译时，这些类的名字会被转换为包含 <code>$</code> 的形式。例如，如果有一个名为 <code>OuterClass</code> 的外部类和一个名为 <code>InnerClass</code> 的内部类，在字节码中，这个内部类将被命名为 <code>OuterClass$InnerClass</code>。</p>
+<h3 id="7-hook">7、 hook  类中属性值</h3>
+<pre><code class="language-javascript">Java.perform(function () {
+    var ContextHolder = Java.use('com.xingin.shield.http.ContextHolder');
+    console.log('sAppId=',ContextHolder.sAppId.value);
+    console.log('sDeviceId=',ContextHolder.sDeviceId.value);
+    console.log('sExperiment=',ContextHolder.sExperiment.value);
+});
+
+// 案例 -- 小红书  hook  ContextHolder类中的sAppI、sDeviceId、sExperimen三个属性值
+// frida -UF hook-类中属性值.js
+</code></pre>
 <h2 id="app">三、绕过app强制更新</h2>
 <pre><code class="language-python"># 以后使用app，更新会遇到两种情况
     1 选择更新：只是弹出更新框，但是有 关闭，可以关闭，暂时不更新----》app中的所有接口肯定是能用的
@@ -583,7 +611,7 @@ sys.stdin.read()
 <p><strong>注意：</strong></p>
 <p>python安装的frida模块需要和手机frida-server的版本对应</p>
 <h3 id="2_2">(2) 对于强制更新的处理方式</h3>
-<h4 id="_4"><strong>方法一</strong></h4>
+<h4 id="_5"><strong>方法一</strong></h4>
 <p>这种公司，一般情况下，公司的安全人员写了一个so文件，检测是否在运行frida的hook，如果检测到，就把app强制终止</p>
 <p>安全人员写的so，一般情况下跟app业务无关，只用来做hook的检测，这种情况下，我们可以尝试删除这个so文件尝试一下，如果删除了，app还能顺利运行，说明这个so跟业务是无关的，就可以删除
 像识货，得物这种app就是这样的、于是，我们要找到 是那个so文件，做了检测</p>
@@ -604,9 +632,9 @@ sys.stdin.read()
   su
   cd /data/app/~~GdbbeiF3cSp7reYK3i9dNg==/com.hupu.shihuo-wgqwYzKqYcSDqMWwvyzXEQ==/lib/arm64/
   rm libmsaoaidsec.so</code></p>
-<h4 id="_5"><strong>方法二</strong></h4>
+<h4 id="_6"><strong>方法二</strong></h4>
 <p>断网执行app，发现能正常打开app后，在打开网络，刷新也可以</p>
-<h4 id="_6">方法三</h4>
+<h4 id="_7">方法三</h4>
 <p>找到当前请求更新的URL，篡改响应内容</p>
 <p><strong>示例</strong>(识货App)</p>
 <p>URL：https://sh-gateway.shihuo.cn/v4/services/sh-message/popup/list</p>
@@ -1166,7 +1194,7 @@ cat sp_token.xml  # 打印出xml中的值
     -以后发送请求，从xml中拿出来，携带发请求
     -从xml 手动扣出来，发送请求
 </code></pre>
-<h2 id="_7">十、各种加密</h2>
+<h2 id="_8">十、各种加密</h2>
 <h3 id="1javaaes">1、java做aes加密</h3>
 <pre><code class="language-java">public static String encryptData(String key, String iv, String content)  {
     # 1 把content明文，拿到bytes格式

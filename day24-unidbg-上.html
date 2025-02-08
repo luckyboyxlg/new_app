@@ -507,7 +507,6 @@ public class CheZhiYing extends AbstractJni{
 <p>AndroidEmulatorBuilder.for32Bit()</p>
 <p>报错</p>
 <p><img src="./imgs/day25-unidbg-上.assets/image-20250121165427516.png" alt="image-20250121165427516" style="zoom:50%;" /></p>
-<h4 id="_1"></h4>
 <h3 id="8">8、补环境中方法每个参数的作用</h3>
 <p><strong>例如：</strong></p>
 <pre><code class="language-java">public DvmObject&lt;?&gt; callObjectMethod(BaseVM vm, DvmObject&lt;?&gt; dvmObject, String signature, VarArg varArg) {
@@ -720,11 +719,61 @@ public DvmObject&lt;?&gt; callStaticObjectMethod(BaseVM vm, DvmClass dvmClass, S
 return super.callStaticObjectMethod(vm, dvmClass, signature, varArg);
 }
 </code></pre>
-<h3 id="3-base64">(3) base64解码</h3>
+<h4 id="3-java">(3) 补环境中java存在的模块</h4>
+<p>如果是当前java中存在的模块，那么直接实例化返回既可</p>
+<p><img alt="image-20250208144058094" src="imgs/day24-unidbg-%E4%B8%8A.assets/image-20250208144058094.png" /></p>
+<pre><code class="language-java">@Override
+public DvmObject&lt;?&gt; callStaticObjectMethodV(BaseVM vm, DvmClass dvmClass, String signature, VaList vaList) {
+        if (signature.equals(&quot;java/nio/charset/Charset-&gt;defaultCharset()Ljava/nio/charset/Charset;&quot;)){
+            Charset c = Charset.defaultCharset();
+            return ProxyDvmObject.createObject(vm, c);
+        }
+        return super.callStaticObjectMethodV(vm, dvmClass, signature, vaList);
+}
+</code></pre>
+<h4 id="4">(4) 调用属性</h4>
+<p>如果出现以下错误com/xingin/shield/http/ContextHolder-&gt;sDeviceId:Ljava/lang/String;</p>
+<p>则为调用属性保措，补属性返回类型的值就可以了</p>
+<pre><code class="language-java">if (signature.equals(&quot;com/xingin/shield/http/ContextHolder-&gt;sDeviceId:Ljava/lang/String;&quot;)){
+            return ProxyDvmObject.createObject(vm, &quot;9e1d5ee7-2f8a-4c34-a9b0-d6757beeb5c8&quot;);
+}
+</code></pre>
+<h4 id="5-base64">(5) base64解码</h4>
 <p>如果传递过长的参数值，如果补完环境还报错，确认当前是否为base64的数据，先base64解码，在处理</p>
 <pre><code>import java.util.Base64;
 byte[] bArr = Base64.getUrlDecoder().decode(response);
 </code></pre>
+<h4 id="6">(6) 执行方法的类型</h4>
+<ul>
+<li>返回类型为String</li>
+</ul>
+<p><code>javascript
+  StringObject obj = Crypt.callStaticJniMethodObject(emulator, method);
+  // 得到结果，打印出来
+  String result = obj.getValue();
+  System.out.println(result);</code></p>
+<ul>
+<li>返回类型为long</li>
+</ul>
+<p><code>javascript
+  long obj = Crypt.callStaticJniMethodLong(emulator, method);
+  // 得到结果，打印出来
+  System.out.println(obj);</code></p>
+<p>小红书案例</p>
+<ul>
+<li>返回类型为 ByteArray</li>
+</ul>
+<p><code>javascript
+  ByteArray byteValues = SwSdk.callStaticJniMethodObject(
+                  emulator,
+                  method,
+                  new ByteArray(vm, bArr)
+  );
+  byte[] info=byteValues.getValue();
+  // 得到结果，打印出来
+  String data=new String(info);
+  System.out.println(data);</code></p>
+<p>识货案例</p>
 <h2 id="unidbg_1">二、案例应用unidbg</h2>
 <h3 id="1_1">1、车智赢案例</h3>
 <pre><code class="language-python"># 第14天讲的
@@ -1074,7 +1123,7 @@ public class Du extends AbstractJni{
 }
 
 </code></pre>
-<h3 id="4">4、海南航空案例</h3>
+<h3 id="4_1">4、海南航空案例</h3>
 <p>下载地址：https://m.hnair.com/cms/common/download/?isDl=1</p>
 <pre><code class="language-python"># 破解    hnairSign  加密---》unidgb跑出来
 
@@ -2191,7 +2240,7 @@ for i in range(0, len(info), 9535):
     print('sb.append(&quot;{}&quot;);'.format(  info[i:i + 9535])  )
     # print(info[i:i + 9535])
 </code></pre>
-<h4 id="4_1">(4) 关于系统对象</h4>
+<h4 id="4_2">(4) 关于系统对象</h4>
 <pre><code class="language-python"># 咱们在补环境过程中，会有java的对象和安卓的对象
     jdk---》java提供的--》唯品会就是补这个
     sdk---》安卓提供的---》识货就是补这个

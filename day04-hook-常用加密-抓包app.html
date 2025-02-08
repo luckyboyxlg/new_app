@@ -546,7 +546,7 @@ sys.stdin.read()
 </li>
 </ul>
 <h3 id="4python-hook-vs-js-hook">4、Python Hook vs JS Hook</h3>
-<h4 id="1_2">1.启动和附加方式</h4>
+<h4 id="1_2">(1) 启动和附加方式</h4>
 <ul>
 <li>Python Hook：</li>
 <li>使用 <code>frida.get_remote_device().spawn()</code> 来启动目标应用程序，并随后使用 <code>attach()</code> 方法连接到新启动的应用程序。</li>
@@ -555,24 +555,35 @@ sys.stdin.read()
 <li>使用命令行工具 <code>frida</code> 直接通过 <code>-f</code> 参数指定包名来启动应用程序并立即加载脚本。</li>
 <li>这种方式下，Frida 在启动时就会加载脚本，并且脚本会在应用初始化过程中执行。</li>
 </ul>
-<h4 id="2_1">2. 脚本加载时机</h4>
+<h4 id="2_1">(2) 脚本加载时机</h4>
 <ul>
 <li>Python Hook：</li>
 <li>Python 代码中，<code>script.load()</code> 是在调用 <code>session.create_script(scr)</code> 之后显式调用的，这意味着脚本是在应用程序已经启动并且进入了稳定状态之后才加载的。</li>
 <li>JS Hook：</li>
 <li>当使用命令行工具时，<code>-l</code> 参数指定的脚本会在应用程序启动时立即加载，因此可以在更早的时间点影响应用程序的行为。</li>
 </ul>
-<h4 id="3_1">3. 应用重启行为</h4>
+<h4 id="3_1">(3) 应用重启行为</h4>
 <ul>
 <li>Python Hook：</li>
 <li>如果应用程序重启了，而 Python 程序仍然保持运行，那么可能会出现资源未正确释放或重新附加的问题，导致应用程序卡住。</li>
 <li>JS Hook：</li>
 <li>使用命令行工具时，一旦应用程序重启，之前的 Hook 会失效，需要重新运行命令行工具来重新 Hook。这种方式通常不会导致应用程序卡住，因为它不依赖于长时间运行的外部进程。</li>
 </ul>
-<h4 id="4pythonspawnhookapp">4.有的时候使用python的方式进行spawn方式hook会造成App应用卡住</h4>
+<h4 id="4-pythonspawnhookapp">(4) 有的时候使用python的方式进行spawn方式hook会造成App应用卡住</h4>
 <p>当应用程序重启时，它可能会经历一系列的状态变化，包括重新初始化、重新加载资源等。如果你的 Python Hook 代码没有正确处理这些状态变化，比如没有及时释放旧的会话或者正确地重新附加到新的进程中，就可能导致应用程序无法正常继续运行。</p>
 <p>此外，Python 中使用的 <code>sys.stdin.read()</code> 会让程序挂起等待输入，这可能阻止了正确的退出机制。如果应用程序崩溃或重启，Python 程序可能没有机会清理资源，从而导致后续的操作出现问题。</p>
-<h4 id="5pythonjsspawn">5.如果python的方式卡主推荐使用js的spawn的方式</h4>
+<h4 id="5-pythonjsspawn">(5) 如果python的方式卡主推荐使用js的spawn的方式</h4>
+<h3 id="5-hook">5、 hook  类中属性值</h3>
+<pre><code class="language-javascript">Java.perform(function () {
+    var ContextHolder = Java.use('com.xingin.shield.http.ContextHolder');
+    console.log('sAppId=',ContextHolder.sAppId.value);
+    console.log('sDeviceId=',ContextHolder.sDeviceId.value);
+    console.log('sExperiment=',ContextHolder.sExperiment.value);
+});
+
+// 案例 -- 小红书  hook  ContextHolder类中的sAppI、sDeviceId、sExperimen三个属性值
+// frida -UF hook-类中属性值.js
+</code></pre>
 <h2 id="python">三、常见的加密算法python还原</h2>
 <p><strong>加密分类</strong></p>
 <ul>
