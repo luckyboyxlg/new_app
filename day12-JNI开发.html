@@ -90,12 +90,12 @@
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
 <a href="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">二十八、无障碍项目部署</a>
-<li class="chapter" data-path="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
-<a href="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">二十九、App逆向入口查找</a>
-<li class="chapter" data-path="day30-%E5%90%84%E7%A7%8Dhook.html">
-<a href="day30-%E5%90%84%E7%A7%8Dhook.html">三十、关于hook知识点</a>
-<li class="chapter" data-path="day31-%E6%8A%96%E9%9F%B3.html">
-<a href="day31-%E6%8A%96%E9%9F%B3.html">三十一、抖音</a>
+<li class="chapter" data-path="day29-%E6%8A%96%E9%9F%B3.html">
+<a href="day29-%E6%8A%96%E9%9F%B3.html">二十九、抖音</a>
+<li class="chapter" data-path="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">三十、App逆向入口查找</a>
+<li class="chapter" data-path="day31-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day31-%E5%90%84%E7%A7%8Dhook.html">三十一、关于hook知识点</a>
 <li class="divider"></li>
 
 
@@ -304,22 +304,33 @@ tv.setText(String.valueOf(Utils.v1(33,44)));
 <tr>
 <td>Context</td>
 <td>android.content.Context</td>
-<td>Landroid/content/Context</td>
+<td>Landroid/content/Context;</td>
 </tr>
 <tr>
 <td>Map</td>
 <td>java.util.Map</td>
-<td>Ljava/util/Map</td>
+<td>Ljava/util/Map;</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>Chain</td>
+<td>okhttp3.Interceptor$Chain</td>
+<td>Lokhttp3.Interceptor$Chain;</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>对于自定义类 <code>com/example/MyClass</code>，签名应该是：<code>(Lcom/example/MyClass;)Ljava/lang/String;</code></li>
+</ul>
+<p><code>L开始  地址  分号结束;</code></p>
+<ul>
+<li>
+<p>关于 <code>$</code> 符号</p>
+</li>
+<li>
+<p>因为当前Chain是出现在子类中，所以在进行绑定时候需要添加$</p>
+<p><img alt="image-20250207155120393" src="imgs/day12-JNI%E5%BC%80%E5%8F%91.assets/image-20250207155120393.png" /></p>
+<p>在 Frida 的 JavaScript API 中，当你使用 <code>Java.use</code> 来引用 Java 类并尝试 hook 其方法时，需要准确地指定类和方法签名。这里的 <code>$</code> 符号用于表示内部类或嵌套类。</p>
+</li>
 </ul>
 <h3 id="32-javac">3.2 Java调用C案例</h3>
 <p><strong>目录结构</strong></p>

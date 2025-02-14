@@ -90,12 +90,12 @@
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
 <a href="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">二十八、无障碍项目部署</a>
-<li class="chapter" data-path="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
-<a href="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">二十九、App逆向入口查找</a>
-<li class="chapter" data-path="day30-%E5%90%84%E7%A7%8Dhook.html">
-<a href="day30-%E5%90%84%E7%A7%8Dhook.html">三十、关于hook知识点</a>
-<li class="chapter" data-path="day31-%E6%8A%96%E9%9F%B3.html">
-<a href="day31-%E6%8A%96%E9%9F%B3.html">三十一、抖音</a>
+<li class="chapter" data-path="day29-%E6%8A%96%E9%9F%B3.html">
+<a href="day29-%E6%8A%96%E9%9F%B3.html">二十九、抖音</a>
+<li class="chapter" data-path="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">三十、App逆向入口查找</a>
+<li class="chapter" data-path="day31-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day31-%E5%90%84%E7%A7%8Dhook.html">三十一、关于hook知识点</a>
 <li class="divider"></li>
 
 
@@ -135,13 +135,109 @@ Theme by GitBook
 
 
 <h1 id="_1">二十七、无障碍开发</h1>
+<h2 id="_2"><strong>前情摘要</strong></h2>
+<h3 id="1">1、关于无障碍开发</h3>
+<ul>
+<li>群控，通过平台手机下发任务，执行任务。</li>
+<li>按键精灵</li>
+<li>无障碍开发<ul>
+<li>自己开发一个安卓APP，去控制手机上其他的APP
+   无障碍服务【安卓APP+服务】 -&gt; 控制其他的APP
+  专题本质</li>
+<li>开发【安卓APP+服务】            -&gt; 单机版
+  安卓APP+服务】 + 管理平台     -&gt; 群控版
+   背景（直播间）</li>
+</ul>
+</li>
+</ul>
+<h3 id="2">2、单机版</h3>
+<ul>
+<li>
+<p>准备工具</p>
+<ul>
+<li>
+<p>Android Studio</p>
+<ul>
+<li>
+<p>推荐 2020.3.1.24</p>
+</li>
+<li>
+<p>新版 + AirtestIDE</p>
+<p>```
+- 安卓手机（不需ROOT）
+    - 案例：红米Note9 Pro</p>
+<ul>
+<li>抖音v29.8.0
+    https://www.wandoujia.com/apps/7461948/history_v290801</li>
+</ul>
+<p>注意：AirtestIDE关闭再去调试无障碍应用。
+```</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>创建安卓应用 + 无障碍服务</p>
+</li>
+<li>
+<p>引导无障碍页面</p>
+<ul>
+<li>未开启当前【路飞助手】无障碍服务，启动APP引导无障碍页面<ul>
+<li>已开启</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>开始按钮 + 执行线程</p>
+</li>
+<li>
+<p>无障碍：清除应用</p>
+</li>
+<li>
+<p>无障碍：打开抖音（寻找抖音app+点击）</p>
+</li>
+<li>
+<p>无障碍：搜索+进入直播间</p>
+<ul>
+<li>搜索：com.ss.android.ugc.aweme:id/he-<ul>
+<li>输入：com.ss.android.ugc.aweme:id/et_search_kw  + 输入直播地址</li>
+<li>搜索：com.ss.android.ugc.aweme:id/zy=  + 标签找坐标+点击</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>评论</p>
+</li>
+<li>
+<p>寻找“说点什么”输入框 + 点击</p>
+</li>
+<li>
+<p>文本输入框 + 输入</p>
+</li>
+<li>发送 + 点击</li>
+</ul>
+<p>小结：
+    - 无脑自动化
+        - 核心：
+        - 返回Home
+        - 最近打开的应用
+        - 杀死其他应用（保护自己应用）
+        - 寻找标签（ID+文本）
+        - 点击标签（可点击+坐标点击）
+        - 输入文本
+        - 滑动
+        - 群控
+        - 其他同学方案:自动化+Mitmproxy</p>
 <p>无障碍开发，编写一个自己的安卓APP并开启无障碍服务，然后APP就可以实现去控制手机中的其他APP。很多的群控软件都是基于无障碍开发实现。</p>
 <p>例如：抖音的自动评论工具。</p>
 <p><img alt="image-20240702170022431" src="imgs/day30-%E5%AE%89%E6%8E%92.assets/image-20240702170022431.png" /></p>
-<h1 id="1">1.常见版本</h1>
+<h1 id="1_1">1.常见版本</h1>
 <p><img alt="image-20240702171725022" src="imgs/day30-%E5%AE%89%E6%8E%92.assets/image-20240702171725022.png" /></p>
 <p><img alt="image-20240702171733937" src="imgs/day30-%E5%AE%89%E6%8E%92.assets/image-20240702171733937.png" /></p>
-<h1 id="2">2.环境准备</h1>
+<h1 id="2_1">2.环境准备</h1>
 <ul>
 <li>Android Studio【2020.3.1.24】</li>
 </ul>
@@ -1462,22 +1558,23 @@ public class LuckyAccessibilityService extends AccessibilityService {
 <ul>
 <li>创建项目</li>
 </ul>
-<p><code>django-admin startproject mysite</code></p>
+<p><code>django-admin startproject wuzhangai</code></p>
 <ul>
 <li>创建app</li>
 </ul>
 <p><code>cd mysite
-  python manage.py startapp app01</code></p>
+  python manage.py startapp app</code></p>
 <ul>
 <li>启动程序</li>
 </ul>
-<p><code>python manage.py runserver 127.0.0.1:8001</code></p>
+<p><code>python3 manage.py runserver 127.0.0.1:8000</code></p>
 <h2 id="12-orm">1.2 ORM</h2>
 <pre><code class="language-python">from django.db import models
 
 
 class Device(models.Model):
     &quot;&quot;&quot; 设备表 &quot;&quot;&quot;
+
     device_id = models.CharField(verbose_name=&quot;设备ID&quot;, max_length=32, db_index=True)
     dy_account = models.CharField(verbose_name=&quot;抖音账号&quot;, max_length=64)
     model = models.CharField(verbose_name=&quot;手机型号&quot;, max_length=64)
@@ -1502,9 +1599,12 @@ class Task(models.Model):
         verbose_name_plural = &quot;任务&quot;
 </code></pre>
 <h2 id="13">1.3 接口开发</h2>
+<ul>
+<li>Url.py</li>
+</ul>
 <pre><code class="language-python">from django.contrib import admin
 from django.urls import path
-from api import views
+from app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -1513,26 +1613,29 @@ urlpatterns = [
     path('complete/task/&lt;str:task_id&gt;/', views.complete_task),
 ]
 </code></pre>
+<p>View.py</p>
 <pre><code class="language-python">from django.http import JsonResponse
 from django.db.models import F
-from api import models
+from . import models
 
 
 def fetch_task(request, device_id):
-    instance = models.Task.objects.filter(device__device_id=device_id, status=0).order_by(&quot;id&quot;).first()
-    if not instance:
+    device_object = models.Device.objects.filter(device_id=device_id).first()
+    if not device_object:
+        return JsonResponse({&quot;status&quot;: True})
+
+    # 2.2 根据设备id查找任务表
+    task_row = models.Task.objects.filter(device_id=device_object.id, status=0).order_by(&quot;id&quot;).first()  # asc
+    if not task_row:
         return JsonResponse({&quot;status&quot;: False})
 
     context = {
         &quot;status&quot;: True,
-        &quot;address&quot;: instance.address,
-        &quot;textList&quot;: instance.text.split(&quot;\n&quot;),
-        &quot;counter&quot;: instance.counter,
-        &quot;taskId&quot;: instance.id
+        &quot;address&quot;: task_row.address,
+        &quot;textList&quot;: task_row.text.split(&quot;\r\n&quot;),
+        &quot;loopCount&quot;: task_row.counter,
+        &quot;taskId&quot;: task_row.id
     }
-    instance.success_count = 0
-    instance.status = 1
-    instance.save()
     return JsonResponse(context)
 
 
@@ -1547,11 +1650,12 @@ def complete_task(request, task_id):
 </code></pre>
 <h2 id="14-admin">1.4 Admin</h2>
 <p>django默认提供了一个后台管理，用于对数据库中的表进行快速的增删改查。</p>
+<p>Admin.py</p>
 <pre><code class="language-python">import re
 
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from api import models
+from . import models
 from django import forms
 
 
@@ -1611,30 +1715,63 @@ class TaskAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Task, TaskAdmin)
 </code></pre>
-<p>创建admin账号：</p>
-<pre><code>python manage.py createsuperuser
+<ul>
+<li>Settings.py</li>
+</ul>
+<pre><code class="language-python"># app添加进来
+INSTALLED_APPS = [
+    ...
+    'app'
+]
+LANGUAGE_CODE = 'zh-hans'   # 改成中文
 </code></pre>
+<h2 id="15">1.5 迁移模型到数据库中</h2>
+<ul>
+<li>python3 manage.py makemigrations</li>
+<li>python3 manage.py migrate</li>
+</ul>
+<h2 id="16-admin">1.6  创建admin账号：</h2>
+<ul>
+<li>python3 manage.py createsuperuser</li>
+</ul>
 <p><img alt="image-20240703161930407" src="imgs/day28-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703161930407.png" /></p>
 <h1 id="5">5.无障碍应用</h1>
 <h2 id="21">2.1 网络配置</h2>
-<p><img alt="image-20240703162419902" src="imgs/day28-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703162419902.png" /></p>
+<ul>
+<li>AndroidManifest.xml</li>
+</ul>
+<p><img alt="image-20250213144421404" src="imgs/day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20250213144421404.png" /></p>
 <pre><code class="language-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
 &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
 </code></pre>
 <pre><code>android:networkSecurityConfig=&quot;@xml/network_security_config&quot;
 </code></pre>
+<ul>
+<li>xml/network_security_config.xml</li>
+</ul>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;network-security-config&gt;
     &lt;!--禁用掉明文流量请求的检查--&gt;
     &lt;base-config cleartextTrafficPermitted=&quot;true&quot; /&gt;
 &lt;/network-security-config&gt;
 </code></pre>
-<pre><code class="language-xml">    implementation &quot;com.squareup.okhttp3:okhttp:4.9.1&quot;
-    implementation 'com.google.code.gson:gson:2.8.6'
+<ul>
+<li>build.gradle.kts</li>
+</ul>
+<p><img alt="image-20250213145300391" src="imgs/day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20250213145300391.png" /></p>
+<pre><code class="language-xml">implementation &quot;com.squareup.okhttp3:okhttp:4.9.1&quot;
+implementation 'com.google.code.gson:gson:2.8.6'
+</code></pre>
+<p>或者（新版本语法）</p>
+<pre><code>implementation(&quot;com.squareup.okhttp3:okhttp:4.9.1&quot;)
+implementation(&quot;com.google.code.gson:gson:2.8.6&quot;)
 </code></pre>
 <p>注意：如果app还是无法发送请求，就卸载app重新安装。</p>
 <h2 id="22">2.2 设备和服务器</h2>
 <p><img alt="image-20240703163026174" src="imgs/day28-%E6%97%A0%E9%9A%9C%E7%A2%8D.assets/image-20240703163026174.png" /></p>
+<ul>
+<li>activity_main</li>
+</ul>
 <pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
@@ -1722,7 +1859,10 @@ admin.site.register(models.Task, TaskAdmin)
 
 &lt;/LinearLayout&gt;
 </code></pre>
-<pre><code class="language-java">package com.nb.autodemo;
+<ul>
+<li>MainActivity</li>
+</ul>
+<pre><code class="language-java">package com.lucky.myapplicationwzh;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -1739,7 +1879,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private Button btnStart;
-    private Button btnStop;
     private TextView txtDevice;
     private TextView txtAddress;
 
@@ -1750,22 +1889,20 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         initListener();
-        // 引导用户开启无障碍
+
+        // 判断无障碍是否开启，未开启则引导进入无障碍页面
         checkAccessibility();
     }
-
 
     private void initView() {
         btnStart = findViewById(R.id.btn_start);
 
+        txtAddress = findViewById(R.id.txt_address);
+        txtAddress.setText(new String(&quot;192.168.1.45:8000&quot;));
+
         txtDevice = findViewById(R.id.txt_device);
         String android_id = Settings.System.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
-        Log.e(&quot;设备ID&quot;,android_id);
         txtDevice.setText(android_id);
-
-        txtAddress = findViewById(R.id.txt_address);
-        txtAddress.setText(new String(&quot;127.0.0.1:8000&quot;));
-
     }
 
     private void initListener() {
@@ -1775,21 +1912,12 @@ public class MainActivity extends AppCompatActivity {
                 start();
             }
         });
-
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-            }
-        });
     }
-    private void start() {
-        // LuckyAccessibilityService.allowStart = true;
-        LuckyAccessibilityService.startTask(
-                String.valueOf(txtDevice.getText()),
-                String.valueOf(txtAddress.getText())
-        );
 
+    private void start() {
+        LuckyAccessibilityService.allowStart = true;
+        LuckyAccessibilityService.deviceName = String.valueOf(txtDevice.getText());
+        LuckyAccessibilityService.ipAddress = String.valueOf(txtAddress.getText());
     }
 
     /**
@@ -1797,7 +1925,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void checkAccessibility() {
         if (!isAccessibilitySettingsOn(getApplicationContext())) {
-            Toast.makeText(this, &quot;请先打开无障碍服务&quot;, Toast.LENGTH_LONG).show();
+            // 进入无障碍页面，去开启服务
             startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
         }
     }
@@ -1807,7 +1935,6 @@ public class MainActivity extends AppCompatActivity {
         final String service = getPackageName() + &quot;/&quot; + LuckyAccessibilityService.class.getCanonicalName();
         try {
             accessibilityEnabled = Settings.Secure.getInt(mContext.getApplicationContext().getContentResolver(), android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
-
         } catch (Settings.SettingNotFoundException e) {
             Log.e(&quot;主界面&quot;, &quot;配置文件没找到: &quot; + e.getMessage());
         }
@@ -1842,18 +1969,18 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 </code></pre>
-<h2 id="23">2.3 示例代码</h2>
-<pre><code class="language-java">package com.nb.autolive;
-
-
+<ul>
+<li>LuckyAccessibilityService</li>
+</ul>
+<pre><code class="language-java">package com.lucky.myapplicationwzh;
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.GestureDescription;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.graphics.Rect;
 
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 
@@ -1862,7 +1989,6 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -1870,84 +1996,56 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 
+/*
+{
+    &quot;status&quot;: True,
+    &quot;address&quot;: task_row.address,
+    &quot;textList&quot;: task_row.text.split(&quot;\r\n&quot;),
+    &quot;loopCount&quot;: task_row.loop_count,
+    &quot;taskId&quot;: task_row.id
+}
+ */
 class NetTaskResponse {
     public boolean status;
     public String address;
     public ArrayList&lt;String&gt; textList;
-    public int counter;
+    public int loopCount;
     public int taskId;
 }
 
 public class LuckyAccessibilityService extends AccessibilityService {
+    public static boolean allowStart = false;
+    public static boolean running = false;
+    public static Thread runThread = null;
 
     public static String deviceName;
     public static String ipAddress;
-    public static boolean allowStart = false;
-    public static boolean running = false;
-
-    public static Thread runThread = null;
 
     @Override
     public void onInterrupt() {
 
     }
 
-
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        // 手机内部自动触发调用，手机有一些变动，自动执行（系统）
-        // Log.e(&quot;无障碍&quot;, &quot;来了&quot;);
-        // 开启无障碍模式后，方法会自动调用（寻找相关标签、点击、欢动）
         if (!allowStart) {
             return;
         }
 
         if (!running) {
             running = true;
-            if (runThread != null &amp;&amp; runThread.isAlive()) {
-                return;
-            }
-            // Log.e(&quot;启动&quot;, &quot;创建线程&quot;);
-            // 创建线程去执行抖音薅羊毛任务（只有一个线程）
+
+            // 创建线程
             runThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    // 后续代码（新创建一个线程 + 防止创建很多线程）
-                    // Log.e(String.valueOf(runThread.getId()), &quot;开始&quot;);
                     loopTask();
                 }
             });
             runThread.start();
+
         }
 
-    }
-
-    public static void startTask(String device, String address) {
-        deviceName = device;
-        ipAddress = address;
-        allowStart = true;
-    }
-
-    public void loopTask() {
-        while (true) {
-            try {
-                // 1.领取任务，有任务再执行，无任务则不执行。
-                NetTaskResponse response = netFetchTask();
-                if (response == null || !response.status) {
-                    // Log.e(String.valueOf(runThread.getId()), &quot;无任务&quot;);
-                    Thread.sleep(10000);
-                    killAllProcess();
-                    continue;
-                }
-
-                // 2.执行任务
-                doTask(response);
-            } catch (Exception ex) {
-                // Log.e(&quot;异常&quot;, ex.toString());
-                ex.printStackTrace();
-            } finally {
-            }
-        }
     }
 
     public NetTaskResponse netFetchTask() {
@@ -1988,121 +2086,144 @@ public class LuckyAccessibilityService extends AccessibilityService {
         }
     }
 
-    public void doTask(NetTaskResponse response) throws InterruptedException {
 
-        // 1.回到首页 &amp; 杀死所有其他进程（记得开启无障碍应用保护）
-        Thread.sleep(randomInt(2, 5) * 1000L);
-        killAllProcess();
-
-        // 2.滑动屏幕，寻找抖音app，打开app
-        Thread.sleep(randomInt(2, 5) * 1000L);
-        if (!launchApplicationByName(&quot;抖音&quot;, 10)) {
-             Log.e(String.valueOf(runThread.getId()), &quot;无法启动抖音&quot;);
-            return;
-        }
-
-        // 3.点击搜索框
-        Thread.sleep(randomInt(5, 10) * 1000L);
-        AccessibilityNodeInfo searchNode = findSearchNode();
-        if (searchNode == null) {
-            return;
-        }
-        clickByNodeClickable(searchNode);
-
-        // 4.输入直播间分享地址
-        Thread.sleep(randomInt(5, 10) * 1000L);
-        AccessibilityNodeInfo searchTextNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/et_search_kw&quot;);
-        Bundle arguments = new Bundle();
-        arguments.putString(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, response.address);
-        searchTextNode.performAction(AccessibilityNodeInfoCompat.ACTION_SET_TEXT, arguments);
-
-        // 5.点击搜索，进入直播间
-        Thread.sleep(randomInt(5, 10) * 1000L);
-        AccessibilityNodeInfo doSearchNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/zy=&quot;);
-        clickByNodePosition(doSearchNode);
-
-        Thread.sleep(randomInt(10, 20) * 1000L);
-        for (int i = 0; i &lt; response.counter; i++) {
-            for (int j = 0; j &lt; response.textList.size(); j++) {
-                try {
-                    // 随机获取评论内容
-                    String text = response.textList.get(j);
-
-                    // 6.寻找评论位置，根据&quot;说点什么...&quot;
-                    Thread.sleep(randomInt(5, 10) * 1000L);
-                    AccessibilityNodeInfo commentNode = findNodeByText(&quot;说点什么...&quot;);
-                    if (commentNode == null) {
-                        commentNode = findNodeByText(&quot;聊一聊&quot;);
-                        if (commentNode == null) {
-                            return;
-                        }
-                    }
-                    clickByNodeClickable(commentNode);
-
-                    // 7.输入评论
-                    Thread.sleep(randomInt(5, 10) * 1000L);
-                    AccessibilityNodeInfo sayNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/f4f&quot;);
-                    AccessibilityNodeInfo child = sayNode.getChild(0);
-                    Bundle arguments1 = new Bundle();
-                    arguments1.putString(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, text);
-                    child.performAction(AccessibilityNodeInfoCompat.ACTION_SET_TEXT, arguments1);
-
-                    // 8.发送评论
-                    Thread.sleep(randomInt(2, 5) * 1000L);
-                    AccessibilityNodeInfo sendNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/z0c&quot;);
-                    clickByNodeClickable(sendNode);
-
-                    netRunningTask(response.taskId);
-
-                    // 9.间隔
-                    Thread.sleep(randomInt(30, 120) * 1000L);
-                } catch (Exception e) {
-
-                }
-            }
-        }
-
-        netCompleteTask(response.taskId);
-    }
-
-    private AccessibilityNodeInfo findSearchNode() {
-        try {
-            return findNodeById(&quot;com.ss.android.ugc.aweme:id/kq3&quot;);
-        } catch (Exception e) {
-            Log.e(&quot;进直播间&quot;, &quot;【异常】寻找搜索框失败&quot;);
-        }
-        return null;
-    }
-
-    /**
-     * 杀死所有进程（记得提前锁定无障碍应用）
-     */
     public void killAllProcess() throws InterruptedException {
-        // 1.回到首页 Home
-        Thread.sleep(2000);
-        performGlobalAction(GLOBAL_ACTION_HOME);
-        Thread.sleep(2000);
+
+        //返回Home界面
         performGlobalAction(GLOBAL_ACTION_HOME);
         Thread.sleep(2000);
 
-        // 杀死其他应用
+        //打开最近的应用
         performGlobalAction(GLOBAL_ACTION_RECENTS);
         Thread.sleep(2000);
 
-        String[] clearAppIdArray = new String[]{
-                &quot;com.huawei.android.launcher:id/clear_all_recents_image_button&quot;, // 华为v30 pro
-                &quot;com.hihonor.android.launcher:id/clear_all_recents_image_button&quot;, // 荣耀
-                &quot;com.android.systemui:id/clearAnimView&quot; // 小米8A
-        };
-        for (String id : clearAppIdArray) {
-            // 根据ID找到节点
-            AccessibilityNodeInfo clearIdNode = findNodeById(id);
-            if (clearIdNode != null) {
-                // 点击标签
-                clickByNodeClickable(clearIdNode);
+
+        // 寻找标签 com.android.systemui:id/clearAnimView
+        AccessibilityNodeInfo root1 = getRootInActiveWindow();
+        List&lt;AccessibilityNodeInfo&gt; nodeList = root1.findAccessibilityNodeInfosByViewId(&quot;com.android.systemui:id/clearAnimView&quot;);
+        AccessibilityNodeInfo node = nodeList.get(0);
+        Thread.sleep(2000);
+
+        // 点击（可点击）
+        node.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+        node.recycle();
+
+        Thread.sleep(2000);
+
+    }
+
+    public void loopTask() {
+        while (true) {
+            try {
+
+                // 1.获取任务，获取到，继续向后，未获取到
+                // http://127.0.0.1:8005/fetch/task/设备ID/
+                NetTaskResponse response = netFetchTask();
+                if (response == null || !response.status) {
+                    // 未获取到任务
+                    Thread.sleep(10 * 1000);
+//                    killAllProcess();
+                    continue;
+                }
+
+                // 2.获取到任务，开始执行任务【清除其他进程】
+                Log.e(&quot;无障碍&quot;, &quot;运行测试&quot;);
+                Thread.sleep(2000);
+//                killAllProcess();
+
+
+                // 3.寻找抖音
+                performGlobalAction(GLOBAL_ACTION_HOME);
+                AccessibilityNodeInfo root2 = getRootInActiveWindow();
+                List&lt;AccessibilityNodeInfo&gt; nodeList2 = root2.findAccessibilityNodeInfosByText(&quot;抖音&quot;);
+                AccessibilityNodeInfo nodeDouYin = nodeList2.get(0);
+                Log.e(&quot;无障碍&quot;, &quot;寻找抖音&quot;);
+                // 4 打开抖音
+                Thread.sleep(2000);
+                nodeDouYin.performAction(AccessibilityNodeInfo.ACTION_CLICK);
+                nodeDouYin.recycle();
+                Log.e(&quot;无障碍&quot;, &quot;打开抖音&quot;);
+
+
+
+
+
+                // 5 点击放大镜搜索
+                Thread.sleep(5000);
+                AccessibilityNodeInfo searchNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/kq3&quot;);
+                clickByNodeClickable(searchNode);
+                Log.e(&quot;无障碍&quot;, &quot;点击放大镜搜索&quot;);
+
+
+
+                // 6.输入直播间地址
+                Thread.sleep(2000);
+                // String address = &quot;5- #在抖音，记录美好生活#【兰兰形体有氧运动健身】正在直播，来和我一起支持Ta吧。复制下方链接，打开【抖音】，直接观看直播！ https://v.douyin.com/i691mf8E/ 2@2.com :0pm&quot;;
+                AccessibilityNodeInfo searchTextNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/et_search_kw&quot;);
+                Bundle arguments = new Bundle();
+                arguments.putString(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, response.address);
+                searchTextNode.performAction(AccessibilityNodeInfoCompat.ACTION_SET_TEXT, arguments);
+                Log.e(&quot;无障碍&quot;, &quot;输入直播间地址&quot;);
+
+                // 7.点击搜索进入直播间
+                Thread.sleep(2000);
+                AccessibilityNodeInfo doSearchNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/zy=&quot;);
+                clickByNodePosition(doSearchNode);
+                Log.e(&quot;无障碍&quot;, &quot;点击搜索进入直播间&quot;);
+
+
+                // 更新状态，正在执行
+                netRunningTask(response.taskId);
+
+                for (int i = 0; i &lt; response.loopCount; i++) {
+                    for (int j = 0; j &lt; response.textList.size(); j++) {
+                        // 获取要评论的文本
+                        String text = response.textList.get(j);
+                        Log.e(&quot;正在评论&quot;,text);
+
+                        // 8.找到评论框，并点击
+                        Thread.sleep(5 * 1000L);
+                        // AccessibilityNodeInfo commentNode = findNodeByText(&quot;说点什么...&quot;);
+                        AccessibilityNodeInfo commentNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/f18&quot;);
+                        clickByNodeClickable(commentNode);
+
+
+                        // 9.输入文本
+                        Thread.sleep(5 * 1000L);
+                        AccessibilityNodeInfo sayNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/f4f&quot;);
+                        AccessibilityNodeInfo child = sayNode.getChild(0);
+                        Bundle arguments1 = new Bundle();
+                        arguments1.putString(AccessibilityNodeInfoCompat.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, text);
+                        child.performAction(AccessibilityNodeInfoCompat.ACTION_SET_TEXT, arguments1);
+
+                        // 10.点击发送评论
+                        Thread.sleep(5 * 1000L);
+                        AccessibilityNodeInfo sendNode = findNodeById(&quot;com.ss.android.ugc.aweme:id/z0c&quot;);
+                        clickByNodeClickable(sendNode);
+                    }
+                }
+
+                // 更新状态，已完成
+                netCompleteTask(response.taskId);
                 break;
+            } catch (Exception ex) {
+                Log.e(&quot;异常&quot;, ex.toString());
+                ex.printStackTrace();
             }
         }
+    }
+
+    /**
+     * 根据坐标 点击
+     */
+    private void clickByNodePosition(AccessibilityNodeInfo node) {
+        Rect rc = new Rect();
+        node.getBoundsInScreen(rc);
+        Path path = new Path();
+        path.moveTo(rc.centerX(), rc.centerY());
+        GestureDescription.Builder builder = new GestureDescription.Builder();
+        GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, 0, 200)).build();
+        dispatchGesture(description, null, null);
     }
 
     /**
@@ -2145,9 +2266,8 @@ public class LuckyAccessibilityService extends AccessibilityService {
         return null;
     }
 
-
     /**
-     * 点击节点 点击
+     * 点击节点
      */
     private void clickByNodeClickable(AccessibilityNodeInfo node) {
         if (node.isClickable()) {
@@ -2160,72 +2280,8 @@ public class LuckyAccessibilityService extends AccessibilityService {
         }
     }
 
-
-    /**
-     * 根据坐标 点击
-     */
-    private void clickByNodePosition(AccessibilityNodeInfo node) {
-
-        Rect rc = new Rect();
-        node.getBoundsInScreen(rc);
-        Path path = new Path();
-        path.moveTo(rc.centerX(), rc.centerY());
-        GestureDescription.Builder builder = new GestureDescription.Builder();
-        GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, 0, 200)).build();
-        dispatchGesture(description, null, null);
-    }
-
-    /**
-     * 在页面上寻找名字叫啥的app
-     */
-    public boolean launchApplicationByName(String name, int retry) throws InterruptedException {
-        for (int i = 0; i &lt; retry; i++) {
-            // 翻看右边的页面
-            slideScreen(540, 800, 100, 800, 500L, 200L);
-            Thread.sleep(3000);
-
-            // 找抖音APP
-            AccessibilityNodeInfo app = findNodeByText(name);
-            if (app != null) {
-                Thread.sleep(500);
-                clickByNodeClickable(app);
-                Thread.sleep(5000);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * 滑动屏幕
-     */
-    private boolean slideScreen(int startX, int startY, int endX, int endY, Long startTime, Long duration) {
-        try {
-            Path path = new Path();
-            path.moveTo(startX, startY);
-            path.lineTo(endX, endY);
-            GestureDescription.Builder builder = new GestureDescription.Builder();
-            // GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, 500L, 37L)).build();
-            // GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, 1000L, 500L)).build();
-            GestureDescription description = builder.addStroke(new GestureDescription.StrokeDescription(path, startTime, duration)).build();
-            dispatchGesture(description, null, null);
-            return true;
-        } catch (Exception e) {
-            // Log.e(TAG, &quot;滑动屏幕失败，详细：&quot; + e.toString());
-            Log.e(&quot;无障碍&quot;, &quot;滑动屏幕失败&quot;);
-        }
-        return false;
-    }
-
-    /**
-     * 生成随机值
-     */
-    private int randomInt(int minValue, int maxValue) {
-        Random rand = new Random();
-        return rand.nextInt(maxValue - minValue) + minValue;
-    }
-
 }
+
 </code></pre>
 
 

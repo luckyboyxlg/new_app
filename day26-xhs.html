@@ -90,12 +90,12 @@
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
 <a href="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">二十八、无障碍项目部署</a>
-<li class="chapter" data-path="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
-<a href="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">二十九、App逆向入口查找</a>
-<li class="chapter" data-path="day30-%E5%90%84%E7%A7%8Dhook.html">
-<a href="day30-%E5%90%84%E7%A7%8Dhook.html">三十、关于hook知识点</a>
-<li class="chapter" data-path="day31-%E6%8A%96%E9%9F%B3.html">
-<a href="day31-%E6%8A%96%E9%9F%B3.html">三十一、抖音</a>
+<li class="chapter" data-path="day29-%E6%8A%96%E9%9F%B3.html">
+<a href="day29-%E6%8A%96%E9%9F%B3.html">二十九、抖音</a>
+<li class="chapter" data-path="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">三十、App逆向入口查找</a>
+<li class="chapter" data-path="day31-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day31-%E5%90%84%E7%A7%8Dhook.html">三十一、关于hook知识点</a>
 <li class="divider"></li>
 
 
@@ -173,7 +173,7 @@ Theme by GitBook
 
 
 # 5 hook到
-    so文件是：libshield.so
+      so文件是：libshield.so
     java类是：com.xingin.shield.http.XhsHttpInterceptor
 
 # 6 jadx中搜索类：com.xingin.shield.http.XhsHttpInterceptor中方法intercept
@@ -215,8 +215,6 @@ if (addrNewStringUTF != null) {
 }
 
 // frida -UF  -l  1-hook-NewStringUTF.js
-
-
 </code></pre>
 <p><img alt="image-20240305165225867" src="imgs/day28-xhs-%E4%B8%8A.assets/image-20240305165225867.png" /></p>
 <p><img alt="image-20240305165406410" src="imgs/day28-xhs-%E4%B8%8A.assets/image-20240305165406410.png" /></p>
@@ -516,8 +514,7 @@ https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;pho
 请求头：
 X-B3-TraceId: a3a3f74bee11080f
 
-xy-common-params: fid=1709625890105b664aedccbcd10c2ad2eb632c9e2dca&amp;device_fingerprint=2024030515543183adcbaf57cfa94ffd875e79c8f077a4011d87121ee36228&amp;device_fingerprint1=2024030515543183adcbaf57cfa94ffd
-875e79c8f077a4011d87121ee36228&amp;launch_id=1709633113&amp;tz=Asia%2FShanghai&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2&amp;platform=android&amp;sid=session.1709632456270565876089&amp;identifier_flag=0&amp;t=1709632497&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=welcome_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light
+xy-common-params: fid=1709625890105b664aedccbcd10c2ad2eb632c9e2dca&amp;device_fingerprint=2024030515543183adcbaf57cfa94ffd875e79c8f077a4011d87121ee36228&amp;device_fingerprint1=2024030515543183adcbaf57cfa94ffd875e79c8f077a4011d87121ee36228&amp;launch_id=1709633113&amp;tz=Asia%2FShanghai&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=c90832a6-bfb9-3e46-a3dd-f5a939a4bdd2&amp;platform=android&amp;sid=session.1709632456270565876089&amp;identifier_flag=0&amp;t=1709632497&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=welcome_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light
 
 User-Agent: Dalvik/2.1.0 (Linux; U; Android 11; Pixel 2 XL Build/RP1A.201005.004.A1) Resolution/1440*2880 Version/6.73.0 Build/6730157 Device/(Google;Pixel 2 XL) discover/6.73.0 NetType/WiFi
 
@@ -1771,7 +1768,7 @@ public class XHS extends AbstractJni {
 </code></pre>
 <h3 id="2_1">2、打包调用</h3>
 <p><img alt="image-20230111005444916" src="imgs/day28-xhs-%E4%B8%8A.assets/image-20230111005444916.png" /></p>
-<pre><code>java -jar unidbg-0.9.6.jar get &quot;https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;phone=18630099999&amp;code=112233&quot; &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673279778&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673279684&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_sms_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;  null
+<pre><code class="language-javascript">java -jar unidbg-0.9.6.jar get &quot;https://www.xiaohongshu.com/api/sns/v1/system_service/check_code?zone=86&amp;phone=18630099999&amp;code=112233&quot; &quot;fid=166893364910401a044595fd44d95587c504e09275d9&amp;device_fingerprint=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;device_fingerprint1=2022112007045266bb5eba5505d24d7b1d35dec1975913018dc5b30ffa5ab5&amp;launch_id=1673279778&amp;tz=Asia%2FHong_Kong&amp;channel=YingYongBao&amp;versionName=6.73.0&amp;deviceId=d7a8fa4f-98a2-398a-a7a5-417bf5e0b971&amp;platform=android&amp;sid=session.1668933583120053844884&amp;identifier_flag=0&amp;t=1673279684&amp;project_id=ECFAAF&amp;build=6730157&amp;x_trace_page_current=login_full_screen_sms_page&amp;lang=zh-Hans&amp;app_id=ECFAAF01&amp;uis=light&quot;  null
 </code></pre>
 <h3 id="3-python">3、 Python调用</h3>
 <h4 id="1-get">(1) GET请求</h4>

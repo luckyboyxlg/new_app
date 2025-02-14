@@ -90,12 +90,12 @@
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
 <a href="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">二十八、无障碍项目部署</a>
-<li class="chapter" data-path="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
-<a href="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">二十九、App逆向入口查找</a>
-<li class="chapter" data-path="day30-%E5%90%84%E7%A7%8Dhook.html">
-<a href="day30-%E5%90%84%E7%A7%8Dhook.html">三十、关于hook知识点</a>
-<li class="chapter" data-path="day31-%E6%8A%96%E9%9F%B3.html">
-<a href="day31-%E6%8A%96%E9%9F%B3.html">三十一、抖音</a>
+<li class="chapter" data-path="day29-%E6%8A%96%E9%9F%B3.html">
+<a href="day29-%E6%8A%96%E9%9F%B3.html">二十九、抖音</a>
+<li class="chapter" data-path="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">三十、App逆向入口查找</a>
+<li class="chapter" data-path="day31-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day31-%E5%90%84%E7%A7%8Dhook.html">三十一、关于hook知识点</a>
 <li class="divider"></li>
 
 
@@ -150,6 +150,19 @@ Theme by GitBook
         this.predicate = aVar;
     }
     public native long initialize(String str);
+}
+</code></pre>
+<p>2、如何确定当前文件是java生成还是so生成</p>
+<ul>
+<li>查看当前是否为native方法，如果是的话则是so文件生成</li>
+<li>如果当前没有查到具体生成加密参数的位置，则可以hook  NewStringUTF，因为这是so文件中返回字符串的方式、在查看是哪个so文件生成的，以及查看当前的调用栈---小红书案例</li>
+</ul>
+<p>3、java定义全局属性</p>
+<pre><code class="language-java">public class XHS extends AbstractJni {
+  private static Request request;
+  public static void main(String[] args) {
+      request = new Request.Builder()
+    }
 }
 </code></pre>
 <h2 id="adb">一、adb常用命令</h2>
@@ -487,6 +500,10 @@ Theme by GitBook
 <h5 id="3_2">(3) 关于 <code>$</code> 符号</h5>
 <p>在 Frida 的 JavaScript API 中，当你使用 <code>Java.use</code> 来引用 Java 类并尝试 hook 其方法时，需要准确地指定类和方法签名。这里的 <code>$</code> 符号用于表示内部类或嵌套类。</p>
 <p>在 Java 中，当一个类是另一个类的内部类（nested class）或者静态嵌套类（static nested class），在编译时，这些类的名字会被转换为包含 <code>$</code> 的形式。例如，如果有一个名为 <code>OuterClass</code> 的外部类和一个名为 <code>InnerClass</code> 的内部类，在字节码中，这个内部类将被命名为 <code>OuterClass$InnerClass</code>。</p>
+<h5 id="4-uuiduuidhook">(4)  如果在检查源码的时候，发现参数是uuid生成的，那么直接自己生成一个uuid验证不通过的话，那么就要通过hook 当前的这个值，在重新进行验证</h5>
+<p>因为当前你自己生成的uuid和人家生成加密用的uuid值不是同一个，所以当验证不通过时，要去拿到hook到的那个值，在重新处理  (小红书验证码参数shield就是这样)</p>
+<h5 id="5-attach-hook">(5) attach 进行hook的时候设备总重启</h5>
+<p>那么可以尝试一下使用spawn的方式进行hook，然后退出再改成attach的方式(小红书hook类属性就是这样的问题)</p>
 <h3 id="7-hook">7、 hook  类中属性值</h3>
 <pre><code class="language-javascript">Java.perform(function () {
     var ContextHolder = Java.use('com.xingin.shield.http.ContextHolder');
@@ -498,6 +515,11 @@ Theme by GitBook
 // 案例 -- 小红书  hook  ContextHolder类中的sAppI、sDeviceId、sExperimen三个属性值
 // frida -UF hook-类中属性值.js
 </code></pre>
+<h3 id="8hook-so">8、hook 调用so的方法</h3>
+<p>需要进行延迟hook</p>
+<h3 id="9hook">9、hook的思路</h3>
+<p>如果普通hook无法hook到正确的结果，那么可以尝试使用延迟hook</p>
+<p>因为当前hook的时候还没有执行</p>
 <h2 id="app">三、绕过app强制更新</h2>
 <pre><code class="language-python"># 以后使用app，更新会遇到两种情况
     1 选择更新：只是弹出更新框，但是有 关闭，可以关闭，暂时不更新----》app中的所有接口肯定是能用的
@@ -1159,14 +1181,14 @@ if(req==PTRACE_ATTACH)
 </ul>
 <p>登录成后，把token的值，存储到手机端的xml中---开始</p>
 <p><code>java
-  SharedPreferences sp= getSharedPreferences("sp_token",MODE_PRIVATE);
+  SharedPreferences sp = getSharedPreferences("sp_token",MODE_PRIVATE);
   SharedPreferences.Editor edit=sp.edit();
   edit.putString("token",r.token);
   edit.commit();</code></p>
 <ul>
 <li>删除xml中的值</li>
 </ul>
-<p><code>SharedPreferences sp1=getSharedPreferences("sp_token",MODE_PRIVATE);
+<p><code>SharedPreferences sp1 = getSharedPreferences("sp_token",MODE_PRIVATE);
   SharedPreferences.Editor edit=sp1.edit();
   edit.remove("token");
   edit.commit();</code></p>
@@ -1373,6 +1395,7 @@ bs[3:10] = [0, 0, 0, 0, 0, 0, 0]
 print(bs)
 </code></pre>
 <h2 id="unidbg">十三、unidbg</h2>
+<h3 id="1_3">1、传参过长处理</h3>
 <p>如果在unidbg中，参数是字符串，并且太长，运行起来会报错， 那么可以使用python循环处理</p>
 <p>9535这个值你给多大的步长都行</p>
 <pre><code class="language-python">info = &quot;超长字符串&quot;
@@ -1406,6 +1429,39 @@ System.out.println(response);
 // 调用
 String filePath = &quot;apks/shihuo/con.txt&quot;; // 替换为你的文件路径
 String body = readFileBody(filePath);
+</code></pre>
+<h3 id="2args">2、参数通过args进行传递</h3>
+<h4 id="1_4">(1) 定义</h4>
+<p>在Java 应用程序的入口点<code>main</code> 方法是中的args进行获取</p>
+<pre><code class="language-java">public static void main(String[] args) {
+        // python调用时，传入的参数取出来
+        String str = args[0]; //actual_played_time=0&amp;aid=466565149&amp;appkey=1d8b6e7d45233436&amp;auto_play=0&amp;ts=1647952932
+        Bili2 che = new Bili2();
+        che.sign(str);
+}
+</code></pre>
+<h4 id="2_3">(2) 终端调用</h4>
+<pre><code class="language-python">java -jar unidbg-0.9.7.jar &quot;actual_played_time=0&amp;aid=466565149&amp;appkey=1d8b6e7d45233436&amp;auto_play=0&amp;ts=1647952932&quot;
+</code></pre>
+<p><img alt="image-20231124190251391" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20231124190251391.png" /></p>
+<h4 id="3-python">(3) python调用</h4>
+<pre><code class="language-python">import subprocess
+body = &quot;actual_played_time=0&amp;aid=466565149&amp;appkey=1d8b6e7d45233436&amp;auto_play=0&amp;ts=1647952932&quot;
+cmd = f'java -jar  unidbg-0.9.7.jar &quot;{body}&quot;'
+signature = subprocess.check_output(cmd, shell=True, cwd=&quot;unidbg_0_9_7_jar&quot;)
+data_string = signature.strip().decode('utf-8').split(&quot;\n&quot;)[-1]
+print(&quot;加密结果为：&quot;,data_string)
+</code></pre>
+<p><img alt="image-20231124190236916" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20231124190236916.png" /></p>
+<h3 id="3unidbg">3、在unidbg中安装三方包</h3>
+<p><strong>okhttp3</strong></p>
+<p>由于我们要主动执行拦截器的方法，所以需要构造请求先关等对象，依赖okhttp3框架。</p>
+<p><img alt="image-20231024180004412" src="imgs/day00-%E6%80%BB%E7%BB%93.assets/image-20231024180004412.png" /></p>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.squareup.okhttp3&lt;/groupId&gt;
+    &lt;artifactId&gt;okhttp&lt;/artifactId&gt;
+    &lt;version&gt;3.4.2&lt;/version&gt;
+&lt;/dependency&gt;
 </code></pre>
 
 

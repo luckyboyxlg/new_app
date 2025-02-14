@@ -90,12 +90,12 @@
 <a href="day27-%E6%97%A0%E9%9A%9C%E7%A2%8D.html">二十七、无障碍开发</a>
 <li class="chapter" data-path="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">
 <a href="day28-%E6%97%A0%E9%9A%9C%E7%A2%8D%E9%83%A8%E7%BD%B2.html">二十八、无障碍项目部署</a>
-<li class="chapter" data-path="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
-<a href="day29-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">二十九、App逆向入口查找</a>
-<li class="chapter" data-path="day30-%E5%90%84%E7%A7%8Dhook.html">
-<a href="day30-%E5%90%84%E7%A7%8Dhook.html">三十、关于hook知识点</a>
-<li class="chapter" data-path="day31-%E6%8A%96%E9%9F%B3.html">
-<a href="day31-%E6%8A%96%E9%9F%B3.html">三十一、抖音</a>
+<li class="chapter" data-path="day29-%E6%8A%96%E9%9F%B3.html">
+<a href="day29-%E6%8A%96%E9%9F%B3.html">二十九、抖音</a>
+<li class="chapter" data-path="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">
+<a href="day30-App%E9%80%86%E5%90%91%E5%85%A5%E5%8F%A3%E6%9F%A5%E6%89%BE.html">三十、App逆向入口查找</a>
+<li class="chapter" data-path="day31-%E5%90%84%E7%A7%8Dhook.html">
+<a href="day31-%E5%90%84%E7%A7%8Dhook.html">三十一、关于hook知识点</a>
 <li class="divider"></li>
 
 
@@ -708,7 +708,7 @@ StackTraceElement[] stackTraceElements = obj.getStackTrace();
 return ProxyDvmObject.createObject(vm, stackTraceElements);
 </code></pre>
 <h4 id="2-java">(2) 补环境中java不存在的模块</h4>
-<p>如果在unidbg补环境中报如下错误，也就是说我们java环境中没有当前的模块，因为是在Android的app下，如果出现这种错误，我们直接创建一个要返回的<code>android/app/ActivityThread</code> 类型的对象既可</p>
+<p>如果在unidbg补环境中报如下错误，也就是说我们java环境中没有当前的模块，因为是在Android的app下，如果出现这种错误，我们直接创建一个要返回的<code>android/app/ActivityThread</code> 类型的对象既可,参数为null</p>
 <p><img alt="image-20250206144720290" src="imgs/day24-unidbg-%E4%B8%8A.assets/image-20250206144720290.png" /></p>
 <p><strong>解决</strong></p>
 <pre><code class="language-java">@Override
