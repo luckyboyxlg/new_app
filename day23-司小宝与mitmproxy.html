@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>二十三、司小宝 - App逆向在线笔记</title>
+<title>二十三、司小宝与mitmproxy - App逆向在线笔记</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <meta name="generator" content="mkdocs-1.6.1, mkdocs-gitbook-1.0.7">
@@ -76,10 +76,10 @@
 <a href="day20-%E5%94%AF%E5%93%81%E4%BC%9A02.html">二十、唯品会02</a>
 <li class="chapter" data-path="day21-DYM.html">
 <a href="day21-DYM.html">二十一、DYM</a>
-<li class="chapter" data-path="day22-%E9%85%92%E4%BB%99%E7%BD%91.html">
-<a href="day22-%E9%85%92%E4%BB%99%E7%BD%91.html">二十二、酒仙网</a>
-<li class="chapter active" data-path="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">
-<a href="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D.html">二十三、司小宝</a>
+<li class="chapter" data-path="day22-%E9%85%92%E4%BB%99%E7%BD%91%26%E5%8F%8D%E8%B0%83%E8%AF%95%26%E8%84%B1%E5%A3%B3.html">
+<a href="day22-%E9%85%92%E4%BB%99%E7%BD%91%26%E5%8F%8D%E8%B0%83%E8%AF%95%26%E8%84%B1%E5%A3%B3.html">二十二、酒仙网&amp;反调试&amp;脱壳</a>
+<li class="chapter active" data-path="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D%E4%B8%8Emitmproxy.html">
+<a href="day23-%E5%8F%B8%E5%B0%8F%E5%AE%9D%E4%B8%8Emitmproxy.html">二十三、司小宝与mitmproxy</a>
 <li class="chapter" data-path="day24-unidbg-%E4%B8%8A.html">
 <a href="day24-unidbg-%E4%B8%8A.html">二十四、unidbg-上</a>
 <li class="chapter" data-path="day25-unidbg-%E4%B8%8B.html">
@@ -134,11 +134,11 @@ Theme by GitBook
 
 
 
-<h1 id="_1">二十三、司小宝</h1>
-<h2 id="_2">一、目标</h2>
+<h1 id="mitmproxy">二十三、司小宝与mitmproxy</h1>
+<h2 id="_1">一、目标</h2>
 <p>目的：手机号+密码 自动登录。</p>
 <p>版本：司小宝v4.0.9</p>
-<h2 id="_3">二、抓包</h2>
+<h2 id="_2">二、抓包</h2>
 <h3 id="1">1、抓包方式</h3>
 <p>设置代理后，如果抓不到包，使用SocketDroid转发即可</p>
 <p><img alt="image-20230907170400344" src="imgs/day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.assets/image-20230907170400344.png" /></p>
@@ -492,7 +492,7 @@ result = quote_plus(_sig)
 print(result)
 </code></pre>
 <h4 id="ps-root">注意：使用ps命令查看的 时候，要使用root权限</h4>
-<h2 id="_4">四、逆向手机号和密码(旧版本不能用了)</h2>
+<h2 id="_3">四、逆向手机号和密码(旧版本不能用了)</h2>
 <h3 id="1_2">1、步骤</h3>
 <pre><code class="language-python"># 1 反编译，搜索 &quot;password&quot;
 # 2 查看跟 LoginResponseEntity 相关，进入，发现使用了retrofit2发送请求
@@ -689,7 +689,7 @@ if __name__ == '__main__':
     run()
 
 </code></pre>
-<h2 id="_5">五、验证码登录</h2>
+<h2 id="_4">五、验证码登录</h2>
 <h3 id="1_3">(1) 分析</h3>
 <pre><code class="language-python"># 请求地址
     https://vega.huoyunren.com/v2/isnb-openapi-proxy/auth/router
@@ -793,7 +793,7 @@ if __name__ == '__main__':
     login(mobile,code,g7timestamp,res)
 
 </code></pre>
-<h2 id="_6">六、免费代理搭建</h2>
+<h2 id="_5">六、免费代理搭建</h2>
 <ul>
 <li>
 <p>地址为：https://github.com/jhao104/proxy_pool</p>
@@ -830,7 +830,7 @@ DB_CONN = 'redis://127.0.0.1:6379/0'</p>
 <p>PROXY_FETCHER = [
 "freeProxy01",      # 这里是启用的代理抓取方法名，所有fetch方法位于fetcher/proxyFetcher.py
 "freeProxy02",</p>
-<h1 id="_7">....</h1>
+<h1 id="_6">....</h1>
 <p>]
 ```</p>
 </li>
@@ -850,7 +850,7 @@ DB_CONN = 'redis://127.0.0.1:6379/0'</p>
 </li>
 </ul>
 <p><img alt="image-20230912012603659" src="imgs/day24-%E5%8F%B8%E5%B0%8F%E5%AE%9D.assets/image-20230912012603659.png" /></p>
-<h2 id="mitmproxy">七、自定义代理工具mitmproxy</h2>
+<h2 id="mitmproxy_1">七、自定义代理工具mitmproxy</h2>
 <h3 id="1_4">1、介绍</h3>
 <ul>
 <li>功能简介</li>
