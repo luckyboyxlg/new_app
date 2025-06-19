@@ -681,6 +681,12 @@ print(result)
 '''
 </code></pre>
 <h3 id="12newsign">12、代码整合newSign</h3>
+<p><strong>newsign加密逻辑：</strong>
+-请求参数的内容，排序--》拼接到字符串中
+-使用aes加密：key:d245a0ba8d678a61
+-加密结果使用base64编码
+-编码完成后使用md5签名
+-最后拼接到请求参数中：newsign=md5签名后的值</p>
 <pre><code class="language-python">import time
 import requests
 import hashlib
